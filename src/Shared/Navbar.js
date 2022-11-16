@@ -5,8 +5,8 @@ import logo from "../Assets/logo-white.png";
 const Navbar = () => {
   const [closeDropDown, setCloseDropDown] = useState(false);
   return (
-    <div className="flex justify-between">
-      <div className="relative mb-[-80px] mt-2 flex mx-5 items-center">
+    <div className="flex justify-between bg-green-500">
+      <div className="relative mb-[-80px] flex mx-5 items-center">
         <Link to="/home">
           <img className="w-32" src={logo} alt="" />
         </Link>
@@ -67,22 +67,6 @@ const Navbar = () => {
           </NavLink>
         </div>
         <div>
-          <div className="dropdown dropdown-end hidden">
-            <label tabIndex={0} className="btn m-1">
-              Click
-            </label>
-            <ul
-              tabIndex={0}
-              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <Link to="/home">Home</Link>
-              </li>
-              <li>
-                <Link to="/about">About Us</Link>
-              </li>
-            </ul>
-          </div>
           <div>
             <div className="dropdown dropdown-end">
               <label
@@ -110,28 +94,59 @@ const Navbar = () => {
                   className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-40"
                 >
                   <li>
-                    <Link
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive ? "btn btn-primary btn-sm text-white" : ""
+                      }
                       to="/home"
                       onClick={() => setCloseDropDown(!closeDropDown)}
                     >
                       Home
-                    </Link>
+                    </NavLink>
                   </li>
                   <li>
-                    <Link
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive ? "btn btn-primary btn-sm text-white" : ""
+                      }
                       to="/about"
                       onClick={() => setCloseDropDown(!closeDropDown)}
                     >
                       About Us
-                    </Link>
+                    </NavLink>
                   </li>
                   <li>
-                    <Link
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive ? "btn btn-primary btn-sm text-white" : ""
+                      }
                       to="/contact"
                       onClick={() => setCloseDropDown(!closeDropDown)}
                     >
                       Contact Us
-                    </Link>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive ? "btn btn-primary btn-sm text-white" : ""
+                      }
+                      to="/login"
+                      onClick={() => setCloseDropDown(!closeDropDown)}
+                    >
+                      Login
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive ? "btn btn-primary btn-sm text-white" : ""
+                      }
+                      to="/register"
+                      onClick={() => setCloseDropDown(!closeDropDown)}
+                    >
+                      Sign Up
+                    </NavLink>
                   </li>
                 </ul>
               )}
