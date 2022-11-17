@@ -2,14 +2,8 @@ import React from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import graphicImg from "../Assets/course image/JCWL-GW01-GRAPHICS-WORK-4.png";
-import fbImg from "../Assets/course image/faceBook markting.png";
-import adMarkImg from "../Assets/course image/advanced markting.jpg";
-import appDevImg from "../Assets/course image/app development.png";
-import socialMediaImg from "../Assets/course image/download.png";
-import insMktImg from "../Assets/course image/instagram-marketing.png";
-import seoImg from "../Assets/course image/Seo markting.png";
-import videoImg from "../Assets/course image/video edit.png";
+import { useQuery } from "react-query";
+import Loading from "../Shared/Loading";
 
 const Header = () => {
   const responsive = {
@@ -30,6 +24,15 @@ const Header = () => {
       items: 3,
     },
   };
+  const { isLoading, data: courses } = useQuery({
+    queryKey: "courses",
+    queryFn: () =>
+      fetch("http://localhost:5000/course").then((res) => res.json()),
+  });
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <div>
       <div className="bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 pt-20 pb-10">
@@ -55,90 +58,20 @@ const Header = () => {
             autoPlay={true}
             autoPlaySpeed={3000}
             responsive={responsive}
-            className="mx-10 mt-16 text-white text-center"
+            className="mx-10 mt-16 text-white text-center z-10"
           >
-            <div>
-              <div className="flex justify-center">
-                <img
-                  className="rounded-full w-3/5 border-white p-1 border-[3px]"
-                  src={graphicImg}
-                  alt=""
-                />
+            {courses.map((c) => (
+              <div>
+                <div className="flex justify-center">
+                  <img
+                    className="rounded-full w-3/5 border-white p-1 border-[3px]"
+                    src={c.img}
+                    alt=""
+                  />
+                </div>
+                <p className="text-center mt-3 text-sm">{c.name}</p>
               </div>
-              <p className="text-center mt-3 text-sm">Graphic Design</p>
-            </div>
-            <div>
-              <div className="flex justify-center">
-                <img
-                  className="rounded-full w-3/5 border-white p-1 border-[3px]"
-                  src={fbImg}
-                  alt=""
-                />
-              </div>
-              <p className="text-center mt-3 text-sm">FaceBook Marketing</p>
-            </div>
-            <div>
-              <div className="flex justify-center">
-                <img
-                  className="rounded-full w-3/5 border-white p-1 border-[3px]"
-                  src={adMarkImg}
-                  alt=""
-                />
-              </div>
-              <p className="text-center mt-3 text-sm">Advance Marketing</p>
-            </div>
-            <div>
-              <div className="flex justify-center">
-                <img
-                  className="rounded-full w-3/5 border-white p-1 border-[3px]"
-                  src={appDevImg}
-                  alt=""
-                />
-              </div>
-              <p className="text-center mt-3 text-sm">App Development</p>
-            </div>
-            <div>
-              <div className="flex justify-center">
-                <img
-                  className="rounded-full w-3/5 border-white p-1 border-[3px]"
-                  src={socialMediaImg}
-                  alt=""
-                />
-              </div>
-              <p className="text-center mt-3 text-sm">Social Media Marketing</p>
-            </div>
-            <div>
-              <div className="flex justify-center">
-                <img
-                  className="rounded-full w-3/5 border-white p-1 border-[3px]"
-                  src={insMktImg}
-                  alt=""
-                />
-              </div>
-              <p className="text-center mt-3 text-sm">Instagram Marketing</p>
-            </div>
-            <div>
-              <div className="flex justify-center">
-                <img
-                  className="rounded-full w-3/5 border-white p-1 border-[3px]"
-                  src={seoImg}
-                  alt=""
-                />
-              </div>
-              <p className="text-center mt-3 text-sm">Seo Marketing</p>
-            </div>
-            <div>
-              <div className="flex justify-center">
-                <img
-                  className="rounded-full w-3/5 border-white p-1 border-[3px]"
-                  src={videoImg}
-                  alt=""
-                />
-              </div>
-              <p className="text-center mt-3 text-sm">
-                Professional Video Editing
-              </p>
-            </div>
+            ))}
           </Carousel>
         </div>
       </div>

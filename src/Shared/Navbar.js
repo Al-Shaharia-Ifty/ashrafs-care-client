@@ -15,17 +15,21 @@ const Navbar = () => {
   const stickNavbar = () => {
     if (window !== undefined) {
       let windowHeight = window.scrollY;
-      windowHeight > 500
-        ? setStickyClass("fixed top-0 left-0 z-50")
+      windowHeight > 100
+        ? setStickyClass(
+            "fixed top-0 left-0 z-50 bg-green-800 w-full 2xl:mx-0 "
+          )
         : setStickyClass("relative");
     }
   };
 
   return (
     <div
-      className={`flex justify-between bg-green-500 2xl:mx-32 ${stickyClass} text-black`}
+      className={`flex justify-between bg-green-500 2xl:mx-32 text-black ${stickyClass}`}
     >
-      <div className="relative mb-[-80px] flex mx-5 items-center">
+      <div
+        className={`relative mb-[-80px] flex px-5 items-center ${stickyClass}`}
+      >
         <Link to="/home">
           <img className="w-48" src={logo} alt="" />
         </Link>
@@ -62,7 +66,9 @@ const Navbar = () => {
           </NavLink>
         </div>
       </div>
-      <div className="relative mb-[-80px] flex mx-5 items-center">
+      <div
+        className={`relative mb-[-80px] flex px-5 items-center justify-end right-0 ${stickyClass}`}
+      >
         <div className="hidden md:flex">
           <NavLink
             to="login"
