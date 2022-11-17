@@ -5,7 +5,13 @@ module.exports = {
     extend: {},
   },
   daisyui: {
-    themes: ["emerald"],
+    themes: [
+      {
+        emerald: {
+          primary: "#6CA73F",
+        },
+      },
+    ],
   },
   plugins: [require("daisyui")],
 };

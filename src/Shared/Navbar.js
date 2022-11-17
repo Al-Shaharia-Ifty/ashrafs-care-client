@@ -1,22 +1,41 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../Assets/logo-white.png";
+import logo from "../Assets/logo-ok-png.png";
 
 const Navbar = () => {
   const [closeDropDown, setCloseDropDown] = useState(false);
+  const [stickyClass, setStickyClass] = useState("relative");
+  useEffect(() => {
+    window.addEventListener("scroll", stickNavbar);
+
+    return () => {
+      window.removeEventListener("scroll", stickNavbar);
+    };
+  }, []);
+  const stickNavbar = () => {
+    if (window !== undefined) {
+      let windowHeight = window.scrollY;
+      windowHeight > 500
+        ? setStickyClass("fixed top-0 left-0 z-50")
+        : setStickyClass("relative");
+    }
+  };
+
   return (
-    <div className="flex justify-between bg-green-500">
+    <div
+      className={`flex justify-between bg-green-500 2xl:mx-32 ${stickyClass} text-black`}
+    >
       <div className="relative mb-[-80px] flex mx-5 items-center">
         <Link to="/home">
-          <img className="w-32" src={logo} alt="" />
+          <img className="w-48" src={logo} alt="" />
         </Link>
-        <div className="hidden md:flex">
+        <div className="hidden md:flex ml-5">
           <NavLink
             to="home"
             className={({ isActive }) =>
               isActive
                 ? "btn btn-primary mx-2 text-white btn-sm"
-                : "btn btn-ghost mx-2 text-white btn-sm"
+                : "btn btn-ghost hover:btn-primary mx-2 text-white btn-sm"
             }
           >
             Home
@@ -26,7 +45,7 @@ const Navbar = () => {
             className={({ isActive }) =>
               isActive
                 ? "btn btn-primary mx-2 text-white btn-sm"
-                : "btn btn-ghost mx-2 text-white btn-sm"
+                : "btn btn-ghost hover:btn-primary mx-2 text-white btn-sm"
             }
           >
             About
@@ -36,21 +55,21 @@ const Navbar = () => {
             className={({ isActive }) =>
               isActive
                 ? "btn btn-primary mx-2 text-white btn-sm"
-                : "btn btn-ghost mx-2 text-white btn-sm"
+                : "btn btn-ghost hover:btn-primary mx-2 text-white btn-sm"
             }
           >
             Contact Us
           </NavLink>
         </div>
       </div>
-      <div className="relative mb-[-80px] mt-2 flex mx-5 items-center">
+      <div className="relative mb-[-80px] flex mx-5 items-center">
         <div className="hidden md:flex">
           <NavLink
             to="login"
             className={({ isActive }) =>
               isActive
                 ? "btn btn-primary mx-2 text-white btn-sm "
-                : "btn btn-ghost mx-2 text-white btn-sm"
+                : "btn btn-ghost hover:btn-primary mx-2 text-white btn-sm"
             }
           >
             Login
@@ -60,7 +79,7 @@ const Navbar = () => {
             className={({ isActive }) =>
               isActive
                 ? "btn btn-primary mx-2 text-white btn-sm"
-                : "btn btn-ghost btn-outline mx-2 text-white btn-sm"
+                : "btn btn-ghost hover:btn-primary btn-outline mx-2 text-white btn-sm"
             }
           >
             Sign Up
