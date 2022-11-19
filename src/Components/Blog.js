@@ -46,7 +46,7 @@ const Blog = () => {
           </div>
         </div>
       </div>
-      <div className="text-center">
+      <div className="text-center mb-10">
         <button className="btn btn-outline btn-info">See More Update</button>
       </div>
     </div>
