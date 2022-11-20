@@ -11,7 +11,7 @@ const Blog = () => {
         Check what's popular on Freepik and make your project look trendy and
         professional.
       </p>
-      <div className="m-10 grid grid-cols-3 gap-4">
+      <div className="m-10 grid grid-cols-3 gap-4 2xl:mx-40">
         <BlogCart />
         <div className="card card-compact bg-base-100 shadow-xl">
           <figure>

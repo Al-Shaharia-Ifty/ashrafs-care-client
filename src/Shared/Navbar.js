@@ -23,7 +23,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`flex justify-between bg-green-500 text-black ${stickyClass} 2xl:px-36`}
+      className={`flex justify-between bg-green-500 text-black ${stickyClass} `}
     >
       <div
         className={`relative mb-[-80px] flex px-5 items-center ${stickyClass}`}

@@ -27,7 +27,9 @@ const Header = () => {
   const { isLoading, data: courses } = useQuery({
     queryKey: "courses",
     queryFn: () =>
-      fetch("http://localhost:5000/course").then((res) => res.json()),
+      fetch("https://ashrafs-servier.vercel.app/course").then((res) =>
+        res.json()
+      ),
   });
   if (isLoading) {
     return <Loading />;
