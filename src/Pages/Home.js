@@ -9,7 +9,7 @@ import Support from "../Components/Support";
 
 const Home = () => {
   return (
-    <div className="text-black">
+    <div>
       <Header />
       <Blog />
       <Profile />

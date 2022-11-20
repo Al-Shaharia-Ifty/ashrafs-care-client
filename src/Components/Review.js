@@ -33,7 +33,7 @@ const Review = () => {
           autoPlay={true}
           autoPlaySpeed={3000}
           responsive={responsive}
-          className="mx-10 mt-16 text-center z-10"
+          className="mx-10 2xl:mx-36 mt-16 text-center z-10"
         >
           <div className="text-center">
             <div className="flex justify-center">
