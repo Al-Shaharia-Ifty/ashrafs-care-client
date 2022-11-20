@@ -1,10 +1,11 @@
 import React from "react";
 import BlogCart from "./BlogCart";
+import PrimaryButton from "./PrimaryButton";
 
 const Blog = () => {
   return (
     <div>
-      <h2 className="text-3xl mt-10 text-center">
+      <h2 className="text-3xl mt-10 text-center text-[#166534]">
         Explore trending categories on Freepik
       </h2>
       <p className="text-lg text-center mt-3 text-gray-600">
@@ -47,7 +48,7 @@ const Blog = () => {
         </div>
       </div>
       <div className="text-center mb-10">
-        <button className="btn btn-outline btn-info">See More Update</button>
+        <PrimaryButton>See More Update</PrimaryButton>
       </div>
     </div>
   );

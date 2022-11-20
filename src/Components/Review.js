@@ -27,7 +27,9 @@ const Review = () => {
   return (
     <div>
       <div className="mt-10">
-        <h2 className="text-4xl text-center">Our Coustomer Reviews</h2>
+        <h2 className="text-4xl text-center text-[#166534]">
+          Our Coustomer Reviews
+        </h2>
         <Carousel
           infinite={true}
           autoPlay={true}

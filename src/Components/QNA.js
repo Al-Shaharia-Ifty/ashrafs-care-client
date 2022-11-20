@@ -4,7 +4,7 @@ const QNA = () => {
   const [close, setClose] = useState("");
   return (
     <div className="bg-[#ae9cf0] py-5 mt-10">
-      <h2 className="text-3xl text-center text-white ">
+      <h2 className="text-3xl text-center text-[#166534] ">
         Frequently Asked Question
       </h2>
       <div

@@ -8,7 +8,9 @@ const Profile = () => {
         <div className="hero-content flex-col lg:flex-row">
           <img src={photo} className="max-w-sm rounded-lg " alt="" />
           <div className="lg:pl-10 shadow-2xl rounded-lg pt-5 bg-white">
-            <h1 className="text-5xl font-bold">Ahmadullah Ashraf</h1>
+            <h1 className="text-5xl font-bold text-[#166534]">
+              Ahmadullah Ashraf
+            </h1>
             <p className="py-6">
               Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
