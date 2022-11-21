@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../Assets/logo-white.png";
 import { AiFillInstagram } from "react-icons/ai";
 import { RiWhatsappFill } from "react-icons/ri";
 
 const Footer = () => {
+  const year = new Date().toLocaleString().split(",")[0].split("/")[2];
   return (
     <div>
-      <footer className="footer p-10 bg-[#166534] text-base-content">
+      <footer className="footer p-10 bg-[#166534] text-white">
         <div>
           <span className="footer-title">Services</span>
           <Link to="/" className="link link-hover">
@@ -85,9 +85,7 @@ const Footer = () => {
       </footer>
       <div className="bg-[#166534]">
         <div className="flex justify-center items-center pb-2">
-          <p className="text-xl ml-10 text-white">
-            © zanjira.com 2022 | Powered by ashrafs.care
-          </p>
+          <p className="text-xl ml-10 text-white">&#169; ashrafs.care {year}</p>
         </div>
         <p></p>
       </div>

@@ -10,7 +10,7 @@ const QNA = () => {
       <div
         onClick={() => setClose(<input type="checkbox" />)}
         onBlur={() => setClose("")}
-        className="px-10 grid grid-cols-2 gap-5 2xl:px-36 py-5"
+        className="px-10 grid grid-cols-1 lg:grid-cols-2 gap-5 2xl:px-36 py-5"
       >
         <div
           tabIndex={0}

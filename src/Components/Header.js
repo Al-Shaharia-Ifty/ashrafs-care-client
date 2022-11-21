@@ -38,10 +38,10 @@ const Header = () => {
   return (
     <div>
       <div className="bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 pt-20 pb-10">
-        <h2 className="text-white text-3xl text-center font-bold mt-10">
+        <h2 className="text-white md:text-3xl text-2xl text-center font-bold mt-10">
           All the assets you need, in one place
         </h2>
-        <h4 className="text-white text-center text-xl mt-5">
+        <h4 className="text-white text-center text-md lg:text-xl mt-5">
           Find and download the best high-quality photos, designs, and mockups
         </h4>
         <form className="mt-5 mx-5 flex justify-center">
@@ -63,7 +63,7 @@ const Header = () => {
             className="mx-10 mt-16 text-white text-center z-10"
           >
             {courses.map((c) => (
-              <div>
+              <div key={c._id}>
                 <div className="flex justify-center">
                   <img
                     className="rounded-full w-3/5 border-white p-1 border-[3px]"

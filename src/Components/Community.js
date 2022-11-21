@@ -6,12 +6,12 @@ const Community = () => {
   return (
     <div>
       <div className="mt-10 mx-10 2xl:mx-36 shadow-xl rounded-2xl bg-gray-100 flex items-center">
-        <div className="p-10 w-3/5 text-center">
-          <h2 className="text-2xl">
+        <div className="p-10 md:w-3/5 w-full text-center">
+          <h2 className="md:text-2xl text-xl">
             Join <span className="font-bold text-[#6DA940]">ashrafs care</span>{" "}
             community.
           </h2>
-          <p className="my-5">
+          <p className="my-5 text-start lg:text-center">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut impedit
             reprehenderit placeat exercitationem voluptatum error esse omnis.
             Incidunt, quasi facilis.
@@ -20,7 +20,7 @@ const Community = () => {
             <PrimaryButton>Join Community</PrimaryButton>
           </div>
         </div>
-        <img className="w-2/4" src={community} alt="" />
+        <img className="w-2/4 hidden md:flex" src={community} alt="" />
       </div>
     </div>
   );
