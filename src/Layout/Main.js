@@ -5,10 +5,12 @@ import Footer from "../Shared/Footer";
 
 const Main = () => {
   return (
-    <div className="text-black">
-      <Navbar />
-      <Outlet />
-      <Footer />
+    <div className="text-black flex justify-center">
+      <div className="max-w-[2000px] w-full">
+        <Navbar />
+        <Outlet />
+        <Footer />
+      </div>
     </div>
   );
 };

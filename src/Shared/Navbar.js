@@ -26,7 +26,7 @@ const Navbar = () => {
       className={`flex justify-between bg-green-500 text-black ${stickyClass} `}
     >
       <div
-        className={`relative mb-[-80px] flex px-10 2xl:px-40 items-center ${stickyClass}`}
+        className={`relative mb-[-80px] flex pl-10 2xl:pl-40 items-center ${stickyClass}`}
       >
         <Link to="/home">
           <img className="w-48" src={logo} alt="" />
@@ -65,7 +65,7 @@ const Navbar = () => {
         </div>
       </div>
       <div
-        className={`relative mb-[-80px] flex px-10 2xl:px-40 items-center justify-end right-0 ${stickyClass}`}
+        className={`relative mb-[-80px] flex pr-10 2xl:pr-40 items-center justify-end right-0 ${stickyClass}`}
       >
         <div className="hidden md:flex">
           <NavLink

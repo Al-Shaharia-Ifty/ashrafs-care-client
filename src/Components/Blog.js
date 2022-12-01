@@ -1,5 +1,6 @@
 import React from "react";
 import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 import Loading from "../Shared/Loading";
 import BlogCart from "./BlogCart";
 import PrimaryButton from "./PrimaryButton";
@@ -25,7 +26,7 @@ const Blog = () => {
         Check what's popular on Freepik and make your project look trendy and
         professional.
       </p>
-      <div className="m-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 2xl:mx-40">
+      <div className="m-10 hidden lg:grid grid-cols-3 gap-4 2xl:mx-40">
         {[...update]
           .reverse()
           .slice(0, 6)
@@ -33,8 +34,26 @@ const Blog = () => {
             <BlogCart u={u} />
           ))}
       </div>
+      <div className="m-10 hidden md:grid lg:hidden grid-cols-2 gap-4 2xl:mx-40">
+        {[...update]
+          .reverse()
+          .slice(0, 4)
+          .map((u) => (
+            <BlogCart u={u} />
+          ))}
+      </div>
+      <div className="m-10 grid md:hidden grid-cols-1 gap-4 2xl:mx-40">
+        {[...update]
+          .reverse()
+          .slice(0, 3)
+          .map((u) => (
+            <BlogCart u={u} />
+          ))}
+      </div>
       <div className="text-center mb-10">
-        <PrimaryButton>See More Update</PrimaryButton>
+        <Link to={"../all-update"}>
+          <PrimaryButton>See More Update</PrimaryButton>
+        </Link>
       </div>
     </div>
   );
