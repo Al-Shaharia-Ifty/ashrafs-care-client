@@ -17,11 +17,11 @@ const Register = () => {
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const [token] = useToken(user);
-  const [member] = useGoogleToken(gUser);
+  const [member] = useGoogleToken(user || gUser);
   let signInErrorMessage;
   const navigate = useNavigate();
   const location = useLocation();
-  let from = location.state?.from?.pathname || "/";
+  let from = location.state?.from?.pathname || "/dashboard";
 
   const {
     register,

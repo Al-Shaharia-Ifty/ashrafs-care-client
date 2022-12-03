@@ -1,5 +1,6 @@
 import React from "react";
 import PrimaryButton from "./PrimaryButton";
+import MessengerCustomerChat from "react-messenger-customer-chat";
 
 const Support = () => {
   return (
@@ -10,6 +11,7 @@ const Support = () => {
         </h2>
         <PrimaryButton>get support</PrimaryButton>
       </div>
+      <MessengerCustomerChat pageId="<PAGE_ID>" appId="<APP_ID>" />,
     </div>
   );
 };
