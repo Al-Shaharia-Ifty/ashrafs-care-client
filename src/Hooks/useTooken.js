@@ -6,7 +6,7 @@ const useToken = (user) => {
   const currentUser = { email: email };
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/user/${email}`, {
+      fetch(`https://ashrafs-servier.vercel.app/user/${email}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

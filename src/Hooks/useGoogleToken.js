@@ -9,7 +9,7 @@ const useGoogleToken = (google) => {
   };
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/googleUser/${email}`, {
+      fetch(`https://ashrafs-servier.vercel.app/googleUser/${email}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

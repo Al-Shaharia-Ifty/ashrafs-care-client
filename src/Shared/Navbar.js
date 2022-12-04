@@ -2,7 +2,7 @@ import { signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "../Assets/logo-ok-png.png";
 import auth from "../firebase.init";
 import Loading from "./Loading";
@@ -14,7 +14,7 @@ const Navbar = () => {
   const { data: userInfo, isLoading } = useQuery({
     queryKey: ["userInfo"],
     queryFn: () =>
-      fetch(`http://localhost:5000/userInfo`, {
+      fetch(`https://ashrafs-servier.vercel.app/userInfo`, {
         method: "GET",
         headers: {
           "content-type": "application/json",
@@ -24,11 +24,12 @@ const Navbar = () => {
   });
   useEffect(() => {
     window.addEventListener("scroll", stickNavbar);
-
+    if (user) {
+    }
     return () => {
       window.removeEventListener("scroll", stickNavbar);
     };
-  }, []);
+  }, [user]);
   const stickNavbar = () => {
     if (window !== undefined) {
       let windowHeight = window.scrollY;
@@ -40,7 +41,6 @@ const Navbar = () => {
   if (loading || isLoading) {
     return <Loading />;
   }
-  console.log(userInfo);
 
   return (
     <div
@@ -88,7 +88,7 @@ const Navbar = () => {
           )}
           {user && (
             <>
-              {userInfo.role === "member" && (
+              {userInfo?.role === "member" && (
                 <NavLink
                   to="/dashboard"
                   className={({ isActive }) =>
@@ -100,7 +100,7 @@ const Navbar = () => {
                   Dashboard
                 </NavLink>
               )}
-              {userInfo.role === "admin" && (
+              {userInfo?.role === "admin" && (
                 <NavLink
                   to="/control-panel"
                   className={({ isActive }) =>
@@ -185,92 +185,109 @@ const Navbar = () => {
               <label
                 tabIndex={0}
                 onClick={() => setCloseDropDown(!closeDropDown)}
-                className="btn btn-ghost md:hidden"
+                className="btn btn-ghost rounded-full p-0 md:hidden"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  className="inline-block w-5 h-5 stroke-current text-white"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  ></path>
-                </svg>
+                <img
+                  className="w-11 rounded-full"
+                  src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+                  alt=""
+                />
               </label>
               {closeDropDown && (
                 <ul
                   tabIndex={0}
                   className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-40"
                 >
-                  <li>
-                    <NavLink
-                      className={({ isActive }) =>
-                        isActive
-                          ? "btn btn-primary btn-sm my-2 pb-2 text-xs text-white"
-                          : ""
-                      }
-                      to="/home"
-                      onClick={() => setCloseDropDown(!closeDropDown)}
-                    >
-                      Home
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      className={({ isActive }) =>
-                        isActive
-                          ? "btn btn-primary btn-sm my-2 pb-2 text-xs text-white"
-                          : ""
-                      }
-                      to="/about"
-                      onClick={() => setCloseDropDown(!closeDropDown)}
-                    >
-                      About Us
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      className={({ isActive }) =>
-                        isActive
-                          ? "btn btn-primary btn-sm my-2 pb-2 text-xs text-white"
-                          : ""
-                      }
-                      to="/contact"
-                      onClick={() => setCloseDropDown(!closeDropDown)}
-                    >
-                      Contact Us
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      className={({ isActive }) =>
-                        isActive
-                          ? "btn btn-primary btn-sm my-2 pb-2 text-xs text-white"
-                          : ""
-                      }
-                      to="/login"
-                      onClick={() => setCloseDropDown(!closeDropDown)}
-                    >
-                      Login
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      className={({ isActive }) =>
-                        isActive
-                          ? "btn btn-primary btn-sm my-2 pb-2 text-xs text-white"
-                          : ""
-                      }
-                      to="/register"
-                      onClick={() => setCloseDropDown(!closeDropDown)}
-                    >
-                      Sign Up
-                    </NavLink>
-                  </li>
+                  {!user && (
+                    <>
+                      <li>
+                        <NavLink
+                          className={({ isActive }) =>
+                            isActive
+                              ? "btn btn-primary btn-sm my-2 pb-2 text-xs text-white"
+                              : ""
+                          }
+                          to="/home"
+                          onClick={() => setCloseDropDown(!closeDropDown)}
+                        >
+                          Home
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          className={({ isActive }) =>
+                            isActive
+                              ? "btn btn-primary btn-sm my-2 pb-2 text-xs text-white"
+                              : ""
+                          }
+                          to="/about"
+                          onClick={() => setCloseDropDown(!closeDropDown)}
+                        >
+                          About Us
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          className={({ isActive }) =>
+                            isActive
+                              ? "btn btn-primary btn-sm my-2 pb-2 text-xs text-white"
+                              : ""
+                          }
+                          to="/contact"
+                          onClick={() => setCloseDropDown(!closeDropDown)}
+                        >
+                          Contact Us
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          className={({ isActive }) =>
+                            isActive
+                              ? "btn btn-primary btn-sm my-2 pb-2 text-xs text-white"
+                              : ""
+                          }
+                          to="/login"
+                          onClick={() => setCloseDropDown(!closeDropDown)}
+                        >
+                          Login
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          className={({ isActive }) =>
+                            isActive
+                              ? "btn btn-primary btn-sm my-2 pb-2 text-xs text-white"
+                              : ""
+                          }
+                          to="/register"
+                          onClick={() => setCloseDropDown(!closeDropDown)}
+                        >
+                          Sign Up
+                        </NavLink>
+                      </li>
+                    </>
+                  )}
+                  {user && (
+                    <>
+                      <li>
+                        <h2>Profile</h2>
+                      </li>
+                      <li>
+                        <h2>Change Password</h2>
+                      </li>
+                      <li>
+                        <h2
+                          onClick={() => {
+                            signOut(auth);
+                            localStorage.removeItem("accessToken");
+                          }}
+                          className="text-red-600 hover:text-white hover:bg-red-600"
+                        >
+                          Sign Out
+                        </h2>
+                      </li>
+                    </>
+                  )}
                 </ul>
               )}
             </div>

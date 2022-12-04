@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import DashBoard from "../Dashboard/DashBoard";
 import ControlPanelLayout from "../Layout/ControlPanelLayout";
 import Main from "../Layout/Main";
 import RequireAuth from "../Layout/RequireAuth";
@@ -6,7 +7,7 @@ import About from "../Pages/About";
 import AllUpdate from "../Pages/AllUpdate";
 import BlogPage from "../Pages/BlogPage";
 import Contact from "../Pages/Contact";
-import Dashboard from "../Pages/Dashboard";
+import DashboardLayout from "../Pages/DashboardLayout";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
@@ -44,8 +45,14 @@ export const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <RequireAuth>
-        <Dashboard />
+        <DashboardLayout />
       </RequireAuth>
     ),
+    children: [
+      {
+        path: "/dashboard",
+        element: <DashBoard />,
+      },
+    ],
   },
 ]);
