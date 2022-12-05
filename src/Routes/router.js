@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import DashBoard from "../Dashboard/DashBoard";
+import FacebookMarketing from "../Dashboard/FacebookMarketing";
 import ControlPanelLayout from "../Layout/ControlPanelLayout";
 import Main from "../Layout/Main";
 import RequireAuth from "../Layout/RequireAuth";
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <DashBoard />,
+      },
+      {
+        path: "/dashboard/faceBook-instagram/marketing",
+        element: <FacebookMarketing />,
       },
     ],
   },

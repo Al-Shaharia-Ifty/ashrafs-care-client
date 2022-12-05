@@ -8,7 +8,7 @@ const Dashboard = () => {
     <div className="text-black">
       <Navbar />
       <div className="pt-20 bg-green-800"></div>
-      <div className="drawer drawer-mobile max-h-[87vh]">
+      <div className="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
           {/* <!-- Page content here --> */}
@@ -26,7 +26,7 @@ const Dashboard = () => {
               <Link to="/dashboard">My Dashboard</Link>
             </li>
             <li>
-              <a>Sidebar Item 2</a>
+              <Link>Sidebar Item 2</Link>
             </li>
           </ul>
         </div>

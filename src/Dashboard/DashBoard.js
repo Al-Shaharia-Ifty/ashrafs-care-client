@@ -2,16 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import google from "../Assets/google-play.png";
 import order from "../Assets/icons/Add Order.png";
+import OrderModal from "../Modal/OrderModal";
 
 const DashBoard = () => {
   return (
     <div className="min-h-screen mx-5 md:mx-10">
       {/* cart */}
       <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 justify-center pt-10 gap-5 md:gap-10">
-        <div className="bg-white p-4 text-center rounded-lg flex items-center justify-evenly">
+        {/* order modal */}
+        <label
+          htmlFor="order-modal"
+          className="label bg-white p-4 text-center rounded-lg flex items-center justify-evenly"
+        >
           <img className="w-14" src={order} alt="" />
           <h2 className="text-2xl text-primary">Add Order</h2>
-        </div>
+        </label>
+
         <div className="bg-white p-4 text-center rounded-lg">
           <h2 className="text-2xl text-primary">Summery</h2>
         </div>
@@ -19,10 +25,10 @@ const DashBoard = () => {
           <h2 className="text-2xl text-primary">Balance</h2>
         </div>
         <div className="bg-white p-4 text-center rounded-lg">
-          <h2 className="text-2xl text-primary"></h2>
+          <h2 className="text-2xl text-primary">Insight</h2>
         </div>
         <div className="bg-white p-4 text-center rounded-lg">
-          <h2 className="text-2xl text-primary"></h2>
+          <h2 className="text-2xl text-primary"> </h2>
         </div>
         <div className="bg-white text-center rounded-2xl">
           <a href="https://youtube.com">
@@ -79,6 +85,7 @@ const DashBoard = () => {
           </div>
         </div>
       </div>
+      <OrderModal />
     </div>
   );
 };
