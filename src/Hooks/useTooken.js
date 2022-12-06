@@ -18,6 +18,19 @@ const useToken = (user) => {
           const accessToken = data.token;
           localStorage.setItem("accessToken", accessToken);
           setToken(accessToken);
+          if (user) {
+            const name = user?.user?.displayName;
+            const email = user?.user?.email;
+            const url = `http://localhost:5000/updateUser/${email}`;
+
+            fetch(url, {
+              method: "PUT",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify({ name }),
+            }).then((res) => res.json());
+          }
         });
     }
   }, [email]);

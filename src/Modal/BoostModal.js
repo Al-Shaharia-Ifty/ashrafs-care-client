@@ -29,6 +29,10 @@ const BoostModal = ({ setBoost }) => {
     const pageName = data.pageName;
     const dollarAmount = data.dollarAmount;
     const boostDay = data.boostDay;
+    const gender = data.gender;
+    const minAge = data.minAge;
+    const maxAge = data.maxAge;
+    const location = data.location;
     const audience = data.audience;
     const postLink = data.postLink;
 
@@ -36,6 +40,10 @@ const BoostModal = ({ setBoost }) => {
       pageName,
       dollarAmount,
       boostDay,
+      gender,
+      minAge,
+      maxAge,
+      location,
       audience,
       postLink,
       name: userInfo.name,
@@ -154,10 +162,133 @@ const BoostModal = ({ setBoost }) => {
                 )}
               </label>
             </div>
+            <div className="form-control flex-row ">
+              <div className=" w-1/3 mr-2">
+                <label className="label flex justify-center">
+                  <span className="label-text text-black">Gender</span>
+                </label>
+                <select
+                  className="select select-bordered w-full"
+                  {...register("gender")}
+                >
+                  <option>All</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+              </div>
+              <div className=" w-2/3 flex items-center">
+                <div className="w-1/2">
+                  <label className="label flex justify-center">
+                    <span className="label-text text-black">Minimum Age</span>
+                  </label>
+                  <input
+                    type="number"
+                    placeholder="18"
+                    className="input input-bordered w-full"
+                    {...register("minAge", {
+                      min: {
+                        value: 18,
+                        message: "Minimum Age 18",
+                      },
+                      max: {
+                        value: 60,
+                        message: "Maximum age 60",
+                      },
+                      required: {
+                        value: true,
+                        message: "Age is required",
+                      },
+                    })}
+                  />
+                  <label className="label">
+                    {errors.minAge?.type === "required" && (
+                      <span className="text-red-500 label-text-alt">
+                        {errors.minAge.message}
+                      </span>
+                    )}
+                    {errors.minAge?.type === "min" && (
+                      <span className="text-red-500 label-text-alt">
+                        {errors.minAge.message}
+                      </span>
+                    )}
+                    {errors.minAge?.type === "max" && (
+                      <span className="text-red-500 label-text-alt">
+                        {errors.minAge.message}
+                      </span>
+                    )}
+                  </label>
+                </div>
+                <p className="mx-1">To</p>
+                <div className="w-1/2">
+                  <label className="label flex justify-center">
+                    <span className="label-text text-black">Max Age</span>
+                  </label>
+                  <input
+                    type="number"
+                    placeholder="65"
+                    className="input input-bordered w-full"
+                    {...register("maxAge", {
+                      min: {
+                        value: 23,
+                        message: "Minimum Age 23",
+                      },
+                      max: {
+                        value: 65,
+                        message: "Maximum age 65",
+                      },
+                      required: {
+                        value: true,
+                        message: "Age is required",
+                      },
+                    })}
+                  />
+                  <label className="label">
+                    {errors.maxAge?.type === "required" && (
+                      <span className="text-red-500 label-text-alt">
+                        {errors.maxAge.message}
+                      </span>
+                    )}
+                    {errors.maxAge?.type === "min" && (
+                      <span className="text-red-500 label-text-alt">
+                        {errors.maxAge.message}
+                      </span>
+                    )}
+                    {errors.maxAge?.type === "max" && (
+                      <span className="text-red-500 label-text-alt">
+                        {errors.maxAge.message}
+                      </span>
+                    )}
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-black">Location</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Location"
+                className="input input-bordered"
+                {...register("location", {
+                  required: {
+                    value: true,
+                    message: "Location is required",
+                  },
+                })}
+              />{" "}
+              <label className="label">
+                {errors.location?.type === "required" && (
+                  <span className="text-red-500 label-text-alt">
+                    {errors.location.message}
+                  </span>
+                )}
+              </label>
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text text-black">
-                  What is Your Audience
+                  Detailed Targeting
                 </span>
               </label>
               <input
@@ -244,7 +375,7 @@ const BoostModal = ({ setBoost }) => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Login</button>
+              <button className="btn btn-primary">Boost</button>
             </div>
           </form>
           <div className="modal-action"></div>

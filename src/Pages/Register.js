@@ -35,19 +35,6 @@ const Register = () => {
     }
   }, [token, from, navigate, member]);
 
-  if (user) {
-    const name = user.displayName;
-    const email = user.email;
-    const url = `http://localhost:5000/updateUser/${email}`;
-
-    fetch(url, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ name }),
-    }).then((res) => res.json());
-  }
   if (gLoading || loading || updating) {
     return <Loading />;
   }
