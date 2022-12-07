@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
+import BasicAudience from "../Dashboard/BasicAudience";
 import DashBoard from "../Dashboard/DashBoard";
 import FacebookMarketing from "../Dashboard/FacebookMarketing";
+import TargetAudience from "../Dashboard/TargetAudience";
 import ControlPanelLayout from "../Layout/ControlPanelLayout";
 import Main from "../Layout/Main";
 import RequireAuth from "../Layout/RequireAuth";
@@ -57,6 +59,14 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/faceBook-instagram/marketing",
         element: <FacebookMarketing />,
+      },
+      {
+        path: "/dashboard/promote/basic-audience",
+        element: <BasicAudience />,
+      },
+      {
+        path: "/dashboard/promote/target-audience",
+        element: <TargetAudience />,
       },
     ],
   },

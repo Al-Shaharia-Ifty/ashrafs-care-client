@@ -1,7 +1,7 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { useQuery } from "react-query";
 import Swal from "sweetalert2";
-import Loading from "../Shared/Loading";
+import { AuthContext } from "../Contexts/AuthProvider";
 
 const BoostModal = ({ setBoost }) => {
   const {
@@ -10,21 +10,8 @@ const BoostModal = ({ setBoost }) => {
     handleSubmit,
   } = useForm();
 
-  const { data: userInfo, isLoading } = useQuery({
-    queryKey: ["userInfo"],
-    queryFn: () =>
-      fetch(`https://ashrafs-servier.vercel.app/userInfo`, {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }).then((res) => res.json()),
-  });
+  const { userInfo } = useContext(AuthContext);
 
-  if (isLoading) {
-    return <Loading />;
-  }
   const onSubmit = (data) => {
     const pageName = data.pageName;
     const dollarAmount = data.dollarAmount;
@@ -35,6 +22,7 @@ const BoostModal = ({ setBoost }) => {
     const location = data.location;
     const audience = data.audience;
     const postLink = data.postLink;
+    const phoneNumber = data.phone;
 
     const boostInfo = {
       pageName,
@@ -48,6 +36,7 @@ const BoostModal = ({ setBoost }) => {
       postLink,
       name: userInfo.name,
       email: userInfo.email,
+      phoneNumber,
     };
 
     fetch("http://localhost:5000/facebookBoost", {

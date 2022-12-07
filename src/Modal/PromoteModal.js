@@ -1,7 +1,5 @@
 import React from "react";
-import { useForm } from "react-hook-form";
-import { useQuery } from "react-query";
-import Loading from "../Shared/Loading";
+import { Link } from "react-router-dom";
 
 const PromoteModal = ({ setPromote }) => {
   return (
@@ -18,7 +16,24 @@ const PromoteModal = ({ setPromote }) => {
           <h3 className="text-lg font-bold">
             What type of promote do you want?
           </h3>
-          <div className=""></div>
+          <div className="grid grid-cols-2 gap-5 mt-5">
+            <Link
+              to={"/dashboard/promote/basic-audience"}
+              onClick={() => setPromote(false)}
+            >
+              <div className="bg-[#166534] text-white text-2xl text-center p-5 rounded-lg">
+                Basic Audience
+              </div>
+            </Link>
+            <Link
+              to={"/dashboard/promote/target-audience"}
+              onClick={() => setPromote(false)}
+            >
+              <div className="bg-[#166534] text-white text-2xl text-center p-5 rounded-lg">
+                Target Audience
+              </div>
+            </Link>
+          </div>
           <div className="modal-action"></div>
         </div>
       </div>
