@@ -22,7 +22,7 @@ const PromoteModal = ({ setPromote }) => {
               onClick={() => setPromote(false)}
             >
               <div className="bg-[#166534] text-white text-2xl text-center p-5 rounded-lg">
-                Basic Audience
+                Basic
               </div>
             </Link>
             <Link
@@ -30,7 +30,7 @@ const PromoteModal = ({ setPromote }) => {
               onClick={() => setPromote(false)}
             >
               <div className="bg-[#166534] text-white text-2xl text-center p-5 rounded-lg">
-                Target Audience
+                Targeting
               </div>
             </Link>
           </div>

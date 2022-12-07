@@ -29,7 +29,7 @@ const BasicAudience = () => {
       email: userInfo.email,
       promote: "basic",
     };
-    fetch("http://localhost:5000/promote/basic", {
+    fetch("http://localhost:5000/promote", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -39,7 +39,7 @@ const BasicAudience = () => {
     })
       .then((res) => res.json())
       .then(() => {
-        Swal.fire("Your Basic Promote is done", "", "success");
+        Swal.fire("Your Promote Inreview", "", "success");
         navigate("/dashboard");
       });
   };

@@ -88,18 +88,7 @@ const Navbar = () => {
           )}
           {user && (
             <>
-              {userInfo?.role === "member" && (
-                <NavLink
-                  to="/dashboard"
-                  className={({ isActive }) =>
-                    isActive
-                      ? "btn btn-primary mx-2 text-white btn-sm"
-                      : "btn btn-ghost hover:btn-primary mx-2 text-white btn-sm"
-                  }
-                >
-                  Dashboard
-                </NavLink>
-              )}
+              {userInfo?.role === "member" && <></>}
               {userInfo?.role === "admin" && (
                 <NavLink
                   to="/control-panel"
