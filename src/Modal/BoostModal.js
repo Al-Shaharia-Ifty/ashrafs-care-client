@@ -60,7 +60,7 @@ const BoostModal = ({ setBoost }) => {
         <div className="modal-box relative">
           <label
             htmlFor="boost-modal"
-            className="btn btn-sm btn-circle text-red-500 hover:text-white hover:bg-red-500 absolute right-2 top-2"
+            className="btn btn-sm btn-circle text-red-500 hover:text-white hover:border-0 hover:bg-red-500 absolute right-2 top-2"
           >
             ✕
           </label>

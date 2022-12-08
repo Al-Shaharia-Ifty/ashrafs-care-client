@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import BoostModal from "../Modal/BoostModal";
 import PromoteModal from "../Modal/PromoteModal";
 
@@ -24,13 +25,12 @@ const FacebookMarketing = () => {
           >
             <h2 className="text-2xl text-primary">Promote</h2>
           </label>
-          <label
-            onClick={() => setPromote(true)}
-            htmlFor="promote-modal"
+          <Link
+            to={"/dashboard/facebook-setup"}
             className="label bg-white p-4 text-center rounded-lg flex items-center justify-evenly"
           >
             <h2 className="text-2xl text-primary">Page Setup</h2>
-          </label>
+          </Link>
         </div>
       </div>
       {boost && <BoostModal setBoost={setBoost} />}
