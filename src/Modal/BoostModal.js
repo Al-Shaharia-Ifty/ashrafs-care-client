@@ -364,7 +364,7 @@ const BoostModal = ({ setBoost }) => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Boost</button>
+              <button className="btn btn-primary text-white">Boost</button>
             </div>
           </form>
           <div className="modal-action"></div>

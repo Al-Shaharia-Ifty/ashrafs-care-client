@@ -32,7 +32,7 @@ const OrderModal = () => {
             </div>
             <div className="bg-[#166534] text-white p-3 rounded-md">
               <Link>
-                <h2 className="text-xl t">Video Editing or Recording</h2>
+                <h2 className="text-xl">Video Editing or Recording</h2>
               </Link>
             </div>
             <div className="bg-[#166534] text-white p-3 rounded-md">
