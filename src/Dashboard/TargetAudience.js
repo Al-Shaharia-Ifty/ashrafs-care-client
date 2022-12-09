@@ -40,7 +40,7 @@ const TargetAudience = () => {
       email: userInfo.email,
       promote: "targeting",
     };
-    fetch("http://localhost:5000/promote", {
+    fetch("https://ashrafs-servier.vercel.app/promote", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -29,7 +29,7 @@ const BasicAudience = () => {
       email: userInfo.email,
       promote: "basic",
     };
-    fetch("http://localhost:5000/promote", {
+    fetch("https://ashrafs-servier.vercel.app/promote", {
       method: "POST",
       headers: {
         "content-type": "application/json",

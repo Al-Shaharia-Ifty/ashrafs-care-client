@@ -2,7 +2,10 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import BoostModal from "../Modal/BoostModal";
+import IDRecoverModal from "../Modal/IDRecoverModal";
+import PageRecoverModal from "../Modal/PageRecoverModal";
 import PromoteModal from "../Modal/PromoteModal";
+import facebookBanner from "../Assets/photos/Banner-for-facebook-marketing.png";
 
 const FacebookMarketing = () => {
   const [boost, setBoost] = useState(false);
@@ -11,6 +14,13 @@ const FacebookMarketing = () => {
   const [idRecover, setIdRecover] = useState(false);
   return (
     <div>
+      <div>
+        <img
+          className="w-full scale-[1.5] md:scale-100"
+          src={facebookBanner}
+          alt="Facebook Marketing Banner"
+        />
+      </div>
       <div className="min-h-screen mx-5 md:mx-10">
         <div className="grid 2xl:grid-cols-4 md:grid-cols-3 grid-cols-2 justify-center pt-10 gap-5 md:gap-10">
           <label
@@ -34,23 +44,39 @@ const FacebookMarketing = () => {
             <h2 className="text-2xl text-primary">Page Setup</h2>
           </Link>
           <label
-            onClick={() => setPromote(true)}
-            htmlFor="promote-modal"
+            onClick={() => setPageRecover("Page Recover")}
+            htmlFor="pageRecover-modal"
             className="label bg-white p-4 text-center rounded-lg flex items-center justify-evenly"
           >
-            <h2 className="text-2xl text-primary">Promote</h2>
+            <h2 className="text-2xl text-primary">Page Restriction Recover</h2>
+          </label>
+          <label
+            onClick={() => setIdRecover("Id Recover")}
+            htmlFor="idRecover-modal"
+            className="label bg-white p-4 text-center rounded-lg flex items-center justify-evenly"
+          >
+            <h2 className="text-2xl text-primary">ID Restriction Recover</h2>
           </label>
           <label
             onClick={() => setPromote(true)}
             htmlFor="promote-modal"
             className="label bg-white p-4 text-center rounded-lg flex items-center justify-evenly"
           >
-            <h2 className="text-2xl text-primary">Promote</h2>
+            <h2 className="text-2xl text-primary">Content Design</h2>
           </label>
         </div>
       </div>
       {boost && <BoostModal setBoost={setBoost} />}
       {promote && <PromoteModal setPromote={setPromote} />}
+      {pageRecover && (
+        <PageRecoverModal
+          pageRecover={pageRecover}
+          setPageRecover={setPageRecover}
+        />
+      )}
+      {idRecover && (
+        <IDRecoverModal idRecover={idRecover} setIdRecover={setIdRecover} />
+      )}
     </div>
   );
 };
