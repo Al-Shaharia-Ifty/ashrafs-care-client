@@ -1,6 +1,6 @@
 import React from "react";
 
-const DashboardNavbar = () => {
+const DashboardMobileNavbar = () => {
   return (
     <div>
       <div className="lg:hidden">
@@ -10,4 +10,4 @@ const DashboardNavbar = () => {
   );
 };
 
-export default DashboardNavbar;
+export default DashboardMobileNavbar;

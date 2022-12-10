@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import google from "../Assets/google-play.png";
-import order from "../Assets/icons/Add Order.png";
+import order from "../Assets/icons/Artboard 2.png";
+import sum from "../Assets/icons/Artboard 22.png";
+import bel from "../Assets/icons/Artboard 11.png";
+import ins from "../Assets/icons/Artboard 39.png";
 import OrderModal from "../Modal/OrderModal";
 
 const DashBoard = () => {
@@ -18,16 +21,19 @@ const DashBoard = () => {
           <h2 className="text-2xl text-primary">Add Order</h2>
         </label>
 
-        <div className="bg-white p-4 text-center rounded-lg">
+        <div className="bg-white p-4 text-center rounded-lg flex items-center justify-evenly">
+          <img className="w-14" src={sum} alt="" />
           <h2 className="text-2xl text-primary">Summery</h2>
         </div>
-        <div className="bg-white p-4 text-center rounded-lg">
-          <h2 className="text-2xl text-primary">Balance</h2>
-        </div>
-        <div className="bg-white p-4 text-center rounded-lg">
+        <div className="bg-white p-4 text-center rounded-lg flex items-center justify-evenly">
+          <img className="w-14" src={ins} alt="" />
           <h2 className="text-2xl text-primary">Insight</h2>
         </div>
-        <div className="bg-white p-4 text-center rounded-lg">
+        <div className="bg-white p-4 text-center rounded-lg flex items-center justify-evenly">
+          <img className="w-14" src={bel} alt="" />
+          <h2 className="text-2xl text-primary">Balance</h2>
+        </div>
+        <div className="bg-white p-4 text-center rounded-lg flex items-center justify-evenly">
           <h2 className="text-2xl text-primary"> </h2>
         </div>
         <div className="bg-white text-center rounded-2xl">

@@ -1,27 +1,21 @@
 import { signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useQuery } from "react-query";
 import { NavLink } from "react-router-dom";
 import logo from "../Assets/logo-ok-png.png";
 import auth from "../firebase.init";
 import Loading from "./Loading";
+import spt from "../Assets/icons/Artboard 17.png";
+import not from "../Assets/icons/Artboard 33.png";
+import pro from "../Assets/icons/Artboard 21.png";
+import { useContext } from "react";
+import { AuthContext } from "../Contexts/AuthProvider";
 
 const Navbar = () => {
   const [closeDropDown, setCloseDropDown] = useState(false);
   const [stickyClass, setStickyClass] = useState("relative");
   const [user, loading] = useAuthState(auth);
-  const { data: userInfo, isLoading } = useQuery({
-    queryKey: ["userInfo"],
-    queryFn: () =>
-      fetch(`https://ashrafs-servier.vercel.app/userInfo`, {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }).then((res) => res.json()),
-  });
+  const { userInfo } = useContext(AuthContext);
   useEffect(() => {
     window.addEventListener("scroll", stickNavbar);
     if (user) {
@@ -38,7 +32,7 @@ const Navbar = () => {
         : setStickyClass("relative");
     }
   };
-  if (loading || isLoading) {
+  if (loading) {
     return <Loading />;
   }
 
@@ -88,7 +82,43 @@ const Navbar = () => {
           )}
           {user && (
             <>
-              {userInfo?.role === "member" && <></>}
+              {userInfo?.role === "member" && (
+                <>
+                  <div className="flex justify-between">
+                    <div>
+                      <NavLink
+                        to="/control-panel"
+                        className={({ isActive }) =>
+                          isActive
+                            ? "btn btn-primary mx-2 text-white"
+                            : "btn btn-ghost hover:btn-primary mx-2 text-white"
+                        }
+                      >
+                        <img className="h-[45px]" src={spt} alt="" />
+                      </NavLink>
+                    </div>
+                    <div className="flex">
+                      <div>
+                        <input
+                          type="text"
+                          placeholder="Type Order ID"
+                          className="input input-bordered w-full max-w-xs"
+                        />
+                      </div>
+                      <NavLink
+                        to="/control-panel"
+                        className={({ isActive }) =>
+                          isActive
+                            ? "btn btn-primary mx-2 text-white"
+                            : "btn btn-ghost hover:btn-primary mx-2 text-white"
+                        }
+                      >
+                        <img className="h-[45px]" src={not} alt="" />
+                      </NavLink>
+                    </div>
+                  </div>
+                </>
+              )}
               {userInfo?.role === "admin" && (
                 <NavLink
                   to="/control-panel"
@@ -114,8 +144,8 @@ const Navbar = () => {
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost rounded-full p-0">
                   <img
-                    className="w-11 rounded-full"
-                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+                    className="w-11 rounded-full bg-white"
+                    src={pro}
                     alt=""
                   />
                 </label>

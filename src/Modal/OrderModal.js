@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import face from "../Assets/icons/Artboard 15.png";
+import gra from "../Assets/icons/Artboard 14.png";
 
 const OrderModal = () => {
   return (
@@ -14,35 +16,44 @@ const OrderModal = () => {
             ✕
           </label>
           <h3 className="text-lg font-bold">Select Our Order.</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-5 my-5 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 my-5">
             <div className="bg-[#166534] text-white p-3 rounded-md">
-              <Link to={`faceBook-instagram/marketing`}>
-                <h2 className="text-xl">FaceBook or Instagram</h2>
+              <Link
+                className="flex justify-start md:justify-center items-center ml-3"
+                to={`faceBook-instagram/marketing`}
+              >
+                <img className="w-10" src={face} alt="" />
+                <h2 className="text-xl mx-2">FaceBook Marketing</h2>
               </Link>
             </div>
             <div className="bg-[#166534] text-white p-3 rounded-md">
-              <Link>
-                <h2 className="text-xl">Graphics Design</h2>
+              <Link className="flex justify-start md:justify-center items-center ml-3">
+                <img className="w-10" src={gra} alt="" />
+                <h2 className="text-xl mx-2">Graphics Design</h2>
               </Link>
             </div>
             <div className="bg-[#166534] text-white p-3 rounded-md">
-              <Link>
-                <h2 className="text-xl">Website Development</h2>
+              <Link className="flex justify-start md:justify-center items-center ml-3">
+                <img className="w-10" src={gra} alt="" />
+                <h2 className="text-xl mx-2">Website Development</h2>
               </Link>
             </div>
             <div className="bg-[#166534] text-white p-3 rounded-md">
-              <Link>
-                <h2 className="text-xl">Video Editing or Recording</h2>
+              <Link className="flex justify-start md:justify-center items-center ml-3">
+                <img className="w-10" src={gra} alt="" />
+                <h2 className="text-xl mx-2">Video Editing or Recording</h2>
               </Link>
             </div>
             <div className="bg-[#166534] text-white p-3 rounded-md">
-              <Link>
-                <h2 className="text-xl">WhatsApp Marketing </h2>
+              <Link className="flex justify-start md:justify-center items-center ml-3">
+                <img className="w-10" src={gra} alt="" />
+                <h2 className="text-xl mx-2">WhatsApp Marketing </h2>
               </Link>
             </div>
             <div className="bg-[#166534] text-white p-3 rounded-md">
-              <Link>
-                <h2 className="text-xl">SMS Marketing</h2>
+              <Link className="flex justify-start md:justify-center items-center ml-3">
+                <img className="w-10" src={gra} alt="" />
+                <h2 className="text-xl mx-2">SMS Marketing</h2>
               </Link>
             </div>
           </div>
