@@ -11,6 +11,8 @@ const PageRecoverModal = ({ setPageRecover, pageRecover }) => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+  const fullDate = new Date().toString();
+  const date = fullDate.split("GMT")[0];
 
   const onSubmit = (data) => {
     const pageName = data.pageName;
@@ -23,6 +25,9 @@ const PageRecoverModal = ({ setPageRecover, pageRecover }) => {
       pageName,
       pageLink,
       number,
+      date: date,
+      amount: "1500Tk",
+      status: "pending",
     };
     fetch("http://localhost:5000/recover", {
       method: "POST",

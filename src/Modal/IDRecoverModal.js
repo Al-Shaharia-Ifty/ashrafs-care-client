@@ -11,6 +11,9 @@ const IDRecoverModal = ({ idRecover, setIdRecover }) => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+  const fullDate = new Date().toString();
+  const date = fullDate.split("GMT")[0];
+
   const onSubmit = (data) => {
     const idName = data.IdName;
     const idLink = data.idLink;
@@ -22,6 +25,9 @@ const IDRecoverModal = ({ idRecover, setIdRecover }) => {
       idName,
       idLink,
       number,
+      date: date,
+      amount: "1500Tk",
+      status: "pending",
     };
     fetch("http://localhost:5000/recover", {
       method: "POST",

@@ -68,7 +68,9 @@ const PageSetup = () => {
               <div className="text-center m-3 mt-0">
                 <label
                   htmlFor="setup-modal"
-                  onClick={() => setSetupModal("Basic")}
+                  onClick={() =>
+                    setSetupModal({ type: "Basic", amount: "1720Tk" })
+                  }
                   className="btn btn-primary text-white w-full"
                 >
                   Chooses
@@ -127,7 +129,9 @@ const PageSetup = () => {
             <div className="text-center m-3 mt-0">
               <label
                 htmlFor="setup-modal"
-                onClick={() => setSetupModal("Premium")}
+                onClick={() =>
+                  setSetupModal({ type: "Premium", amount: "4000Tk" })
+                }
                 className="btn btn-primary text-white w-full"
               >
                 Chooses
@@ -186,7 +190,9 @@ const PageSetup = () => {
               <div className="text-center m-3 mt-0">
                 <label
                   htmlFor="setup-modal"
-                  onClick={() => setSetupModal("Silver")}
+                  onClick={() =>
+                    setSetupModal({ type: "Silver", amount: "2500Tk" })
+                  }
                   className="btn btn-primary text-white w-full"
                 >
                   Chooses

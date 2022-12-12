@@ -5,12 +5,15 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../Contexts/AuthProvider";
 
 const SetupModal = ({ setupModal, setSetupModal }) => {
+  const { type, amount } = setupModal;
   const { userInfo } = useContext(AuthContext);
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
+  const fullDate = new Date().toString();
+  const date = fullDate.split("GMT")[0];
 
   const onSubmit = (data) => {
     const pageName = data.pageName;
@@ -23,7 +26,8 @@ const SetupModal = ({ setupModal, setSetupModal }) => {
     const whatsapp = data.whatsapp;
 
     const pageInfo = {
-      type: setupModal,
+      type: type,
+      amount: amount,
       pageName,
       businessAddress,
       businessCategory,
@@ -35,6 +39,8 @@ const SetupModal = ({ setupModal, setSetupModal }) => {
       name: userInfo.name,
       email: userInfo.email,
       orderType: "page setup",
+      date: date,
+      status: "pending",
     };
     fetch("http://localhost:5000/pageSetup", {
       method: "POST",

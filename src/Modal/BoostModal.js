@@ -11,6 +11,8 @@ const BoostModal = ({ setBoost }) => {
   } = useForm();
 
   const { userInfo } = useContext(AuthContext);
+  const fullDate = new Date().toString();
+  const date = fullDate.split("GMT")[0];
 
   const onSubmit = (data) => {
     const pageName = data.pageName;
@@ -38,6 +40,8 @@ const BoostModal = ({ setBoost }) => {
       email: userInfo.email,
       phoneNumber,
       orderType: "boost",
+      date: date,
+      status: "pending",
     };
 
     fetch("http://localhost:5000/facebookBoost", {

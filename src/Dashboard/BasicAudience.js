@@ -13,6 +13,8 @@ const BasicAudience = () => {
   const navigate = useNavigate();
 
   const { userInfo } = useContext(AuthContext);
+  const fullDate = new Date().toString();
+  const date = fullDate.split("GMT")[0];
 
   const onSubmit = (data) => {
     const like = data.like;
@@ -29,6 +31,8 @@ const BasicAudience = () => {
       email: userInfo.email,
       promote: "basic",
       orderType: "promote",
+      date: date,
+      status: "pending",
     };
     fetch("http://localhost:5000/promote", {
       method: "POST",
