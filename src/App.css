@@ -7,7 +7,13 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+.table :where(thead, tfoot) :where(th, td) {
+  background-color: transparent;
+}
+.table-zebra tbody tr:nth-child(even) th,
+.table-zebra tbody tr:nth-child(even) td {
+  background-color: #f2f2f2;
+}
 #monthly-package-img {
   background-image: url(/src/Assets/photos/monthly-packege-back.jpg);
 }

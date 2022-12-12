@@ -44,7 +44,10 @@ const Dashboard = () => {
               </Link>
             </li>
             <li>
-              <Link className="block text-center mt-2 text-xl">
+              <Link
+                to={"/dashboard/all-order"}
+                className="block text-center mt-2 text-xl"
+              >
                 <div className="flex justify-center mb-2">
                   <img className="w-14" src={ord} alt="" />
                 </div>
