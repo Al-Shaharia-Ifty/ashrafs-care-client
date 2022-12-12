@@ -24,7 +24,7 @@ const PageRecoverModal = ({ setPageRecover, pageRecover }) => {
       pageLink,
       number,
     };
-    fetch("https://ashrafs-servier.vercel.app/recover", {
+    fetch("http://localhost:5000/recover", {
       method: "POST",
       headers: {
         "content-type": "application/json",

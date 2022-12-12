@@ -40,7 +40,7 @@ const BoostModal = ({ setBoost }) => {
       orderType: "boost",
     };
 
-    fetch("https://ashrafs-servier.vercel.app/facebookBoost", {
+    fetch("http://localhost:5000/facebookBoost", {
       method: "POST",
       headers: {
         "content-type": "application/json",

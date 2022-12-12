@@ -36,7 +36,7 @@ const SetupModal = ({ setupModal, setSetupModal }) => {
       email: userInfo.email,
       orderType: "page setup",
     };
-    fetch("https://ashrafs-servier.vercel.app/pageSetup", {
+    fetch("http://localhost:5000/pageSetup", {
       method: "POST",
       headers: {
         "content-type": "application/json",

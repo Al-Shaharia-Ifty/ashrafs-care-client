@@ -30,7 +30,7 @@ const BasicAudience = () => {
       promote: "basic",
       orderType: "promote",
     };
-    fetch("https://ashrafs-servier.vercel.app/promote", {
+    fetch("http://localhost:5000/promote", {
       method: "POST",
       headers: {
         "content-type": "application/json",
