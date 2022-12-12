@@ -19,7 +19,7 @@ const PageRecoverModal = ({ setPageRecover, pageRecover }) => {
 
     const pageInfo = {
       email: userInfo.email,
-      recoverType: pageRecover,
+      orderType: "page recovery",
       pageName,
       pageLink,
       number,

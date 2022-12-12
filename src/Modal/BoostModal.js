@@ -37,6 +37,7 @@ const BoostModal = ({ setBoost }) => {
       name: userInfo.name,
       email: userInfo.email,
       phoneNumber,
+      orderType: "boost",
     };
 
     fetch("https://ashrafs-servier.vercel.app/facebookBoost", {

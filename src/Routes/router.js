@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import AllOrder from "../Dashboard/AllOrder";
 import BasicAudience from "../Dashboard/BasicAudience";
 import DashBoard from "../Dashboard/DashBoard";
 import FacebookMarketing from "../Dashboard/FacebookMarketing";
@@ -57,6 +58,7 @@ export const router = createBrowserRouter([
         path: "/dashboard",
         element: <DashBoard />,
       },
+      // Facebook
       {
         path: "/dashboard/faceBook-instagram/marketing",
         element: <FacebookMarketing />,
@@ -72,6 +74,17 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/promote/target-audience",
         element: <TargetAudience />,
+      },
+      // all Order
+      {
+        path: "/dashboard/all-order",
+        element: <AllOrder />,
+        children: [
+          {
+            path: "/dashboard/all-order",
+            element: <AllOrder />,
+          },
+        ],
       },
     ],
   },

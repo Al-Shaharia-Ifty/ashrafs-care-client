@@ -28,6 +28,7 @@ const BasicAudience = () => {
       name: userInfo.name,
       email: userInfo.email,
       promote: "basic",
+      orderType: "promote",
     };
     fetch("https://ashrafs-servier.vercel.app/promote", {
       method: "POST",

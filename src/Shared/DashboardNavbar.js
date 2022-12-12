@@ -8,14 +8,13 @@ import auth from "../firebase.init";
 import spt from "../Assets/icons/Artboard-17.png";
 import not from "../Assets/icons/Artboard-18.png";
 import pro from "../Assets/icons/Artboard 21.png";
-import { useState } from "react";
 import { signOut } from "firebase/auth";
 import { AiOutlineSearch } from "react-icons/ai";
 
 const DashboardNavbar = () => {
   const [user] = useAuthState(auth);
   const { userInfo } = useContext(AuthContext);
-  const [closeDropDown, setCloseDropDown] = useState(false);
+  // const [closeDropDown, setCloseDropDown] = useState(false);
   return (
     <div>
       <div className="py-5 bg-[#166534] pl-24 pr-14 flex justify-between items-center">

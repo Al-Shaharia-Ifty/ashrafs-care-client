@@ -34,6 +34,7 @@ const SetupModal = ({ setupModal, setSetupModal }) => {
       whatsapp,
       name: userInfo.name,
       email: userInfo.email,
+      orderType: "page setup",
     };
     fetch("https://ashrafs-servier.vercel.app/pageSetup", {
       method: "POST",

@@ -18,7 +18,7 @@ const IDRecoverModal = ({ idRecover, setIdRecover }) => {
 
     const pageInfo = {
       email: userInfo.email,
-      recoverType: idRecover,
+      orderType: "ID recovery",
       idName,
       idLink,
       number,
