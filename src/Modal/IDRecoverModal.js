@@ -29,7 +29,7 @@ const IDRecoverModal = ({ idRecover, setIdRecover }) => {
       amount: "1500Tk",
       status: "pending",
     };
-    fetch("http://localhost:5000/recover", {
+    fetch("https://ashrafs-servier.vercel.app/recover", {
       method: "POST",
       headers: {
         "content-type": "application/json",

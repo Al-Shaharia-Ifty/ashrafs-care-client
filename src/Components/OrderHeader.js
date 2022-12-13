@@ -9,7 +9,7 @@ const OrderHeader = () => {
           to={"/dashboard/all-order"}
           className={({ isActive }) =>
             isActive
-              ? "btn btn-primary rounded-b-none text-white"
+              ? "btn btn-primary md:rounded-b-none text-white"
               : "btn btn-ghost"
           }
         >
@@ -19,7 +19,7 @@ const OrderHeader = () => {
           to={"/dashboard/all-boost"}
           className={({ isActive }) =>
             isActive
-              ? "btn btn-primary rounded-b-none text-white"
+              ? "btn btn-primary md:rounded-b-none text-white"
               : " btn btn-ghost"
           }
         >
@@ -29,7 +29,7 @@ const OrderHeader = () => {
           to={"/dashboard/all-setup"}
           className={({ isActive }) =>
             isActive
-              ? "btn btn-primary rounded-b-none text-white"
+              ? "btn btn-primary md:rounded-b-none text-white"
               : " btn btn-ghost"
           }
         >
@@ -39,7 +39,7 @@ const OrderHeader = () => {
           to={"/dashboard/all-promote"}
           className={({ isActive }) =>
             isActive
-              ? "btn btn-primary rounded-b-none text-white"
+              ? "btn btn-primary md:rounded-b-none text-white"
               : " btn btn-ghost"
           }
         >

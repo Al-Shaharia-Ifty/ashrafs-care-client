@@ -7,6 +7,7 @@
   height: 40vmin;
   pointer-events: none;
 }
+/* table css */
 .table :where(thead, tfoot) :where(th, td) {
   background-color: transparent;
 }
@@ -14,6 +15,10 @@
 .table-zebra tbody tr:nth-child(even) td {
   background-color: #f2f2f2;
 }
+.table th:first-child {
+  position: unset;
+}
+/*  */
 #monthly-package-img {
   background-image: url(/src/Assets/photos/monthly-packege-back.jpg);
 }

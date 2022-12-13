@@ -42,7 +42,7 @@ const SetupModal = ({ setupModal, setSetupModal }) => {
       date: date,
       status: "pending",
     };
-    fetch("http://localhost:5000/pageSetup", {
+    fetch("https://ashrafs-servier.vercel.app/pageSetup", {
       method: "POST",
       headers: {
         "content-type": "application/json",

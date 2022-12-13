@@ -44,7 +44,7 @@ const BoostModal = ({ setBoost }) => {
       status: "pending",
     };
 
-    fetch("http://localhost:5000/facebookBoost", {
+    fetch("https://ashrafs-servier.vercel.app/facebookBoost", {
       method: "POST",
       headers: {
         "content-type": "application/json",

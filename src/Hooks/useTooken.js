@@ -21,7 +21,7 @@ const useToken = (user) => {
           if (user) {
             const name = user?.user?.displayName;
             const email = user?.user?.email;
-            const url = `http://localhost:5000/updateUser/${email}`;
+            const url = `https://ashrafs-servier.vercel.app/updateUser/${email}`;
 
             fetch(url, {
               method: "PUT",

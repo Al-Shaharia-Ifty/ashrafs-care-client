@@ -20,6 +20,7 @@ import Home from "../Pages/Home";
 import AllSetup from "../AllOrder/AllSetup";
 import AllPromote from "../AllOrder/AllPromote";
 import AllRecover from "../AllOrder/AllRecover";
+import OrderDetails from "../Dashboard/OrderDetails";
 
 export const router = createBrowserRouter([
   {
@@ -84,6 +85,12 @@ export const router = createBrowserRouter([
       { path: "/dashboard/all-setup", element: <AllSetup /> },
       { path: "/dashboard/all-promote", element: <AllPromote /> },
       { path: "/dashboard/all-recover", element: <AllRecover /> },
+
+      // Order details
+      {
+        path: "/dashboard/order-details/:id",
+        element: <OrderDetails />,
+      },
     ],
   },
 ]);
