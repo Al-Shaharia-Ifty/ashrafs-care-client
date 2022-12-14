@@ -17,14 +17,14 @@ const PageRecoverModal = ({ setPageRecover, pageRecover }) => {
   const onSubmit = (data) => {
     const pageName = data.pageName;
     const pageLink = data.pageLink;
-    const number = data.phoneNumber;
+    const phoneNumber = data.phoneNumber;
 
     const pageInfo = {
       email: userInfo.email,
       orderType: "page recovery",
       pageName,
       pageLink,
-      number,
+      phoneNumber,
       date: date,
       amount: "1500Tk",
       status: "pending",

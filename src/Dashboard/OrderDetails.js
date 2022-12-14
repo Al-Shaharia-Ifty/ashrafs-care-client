@@ -31,6 +31,8 @@ const OrderDetails = () => {
     location,
     audience,
     postLink,
+    pageLink,
+    idLink,
     name,
     email,
     phoneNumber,
@@ -39,6 +41,13 @@ const OrderDetails = () => {
     status,
     promote,
     like,
+    amount,
+    idName,
+    businessAddress,
+    businessCategory,
+    BusinessEmail,
+    whatsapp,
+    webLink,
   } = details;
 
   return (
@@ -70,6 +79,10 @@ const OrderDetails = () => {
                   <h2 className="text-xl font-bold col-span-2 md:col-span-3">
                     : {audience}
                   </h2>
+                  <h2 className="text-xl">Email</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3">
+                    : {email}
+                  </h2>
                   <h2 className="text-xl">Phone</h2>
                   <h2 className="text-xl font-bold col-span-2 md:col-span-3">
                     : {phoneNumber}
@@ -95,9 +108,14 @@ const OrderDetails = () => {
                     : {location}
                   </h2>
                   <h2 className="text-xl">Post Link</h2>
-                  <h2 className="text-xl font-bold col-span-2 md:col-span-3">
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3 overflow-hidden">
                     :
-                    <a target="_blank" rel="noreferrer" href={postLink}>
+                    <a
+                      className="text-blue-500"
+                      target="_blank"
+                      rel="noreferrer"
+                      href={postLink}
+                    >
                       {postLink}
                     </a>
                   </h2>
@@ -125,6 +143,10 @@ const OrderDetails = () => {
                   <h2 className="text-xl font-bold col-span-2 md:col-span-3">
                     : {audience}
                   </h2>
+                  <h2 className="text-xl">Email</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3">
+                    : {email}
+                  </h2>
                   <h2 className="text-xl">Phone</h2>
                   <h2 className="text-xl font-bold col-span-2 md:col-span-3">
                     : {phoneNumber}
@@ -146,9 +168,14 @@ const OrderDetails = () => {
                     : {location}
                   </h2>
                   <h2 className="text-xl">Post Link</h2>
-                  <h2 className="text-xl font-bold col-span-2 md:col-span-3">
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3 overflow-hidden">
                     :
-                    <a target="_blank" rel="noreferrer" href={postLink}>
+                    <a
+                      className="text-blue-500"
+                      target="_blank"
+                      rel="noreferrer"
+                      href={postLink}
+                    >
                       {postLink}
                     </a>
                   </h2>
@@ -156,6 +183,199 @@ const OrderDetails = () => {
               </div>
             </div>
           )}
+          {promote === "basic" && (
+            <div className="lg:flex block">
+              <div className="mt-5 w-full lg:w-1/2">
+                <div className="grid grid-cols-3 md:grid-cols-4">
+                  <h2 className="text-xl">Name</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3">
+                    : {name}
+                  </h2>
+                  <h2 className="text-xl">Page Name</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3">
+                    : {pageName}
+                  </h2>
+
+                  <h2 className="text-xl">Phone</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3">
+                    : {phoneNumber}
+                  </h2>
+                </div>
+              </div>
+              <div className="lg:mt-5 w-full lg:w-1/2">
+                <div className="grid grid-cols-3 md:grid-cols-4">
+                  <h2 className="text-xl">Like</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3">
+                    : {like}
+                  </h2>
+                  <h2 className="text-xl">Post Link</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3 overflow-hidden">
+                    :
+                    <a
+                      className="text-blue-500"
+                      target="_blank"
+                      rel="noreferrer"
+                      href={postLink}
+                    >
+                      {postLink}
+                    </a>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          )}
+          {orderType === "page recovery" && (
+            <div className="lg:flex block">
+              <div className="mt-5 w-full lg:w-1/2">
+                <div className="grid grid-cols-3 md:grid-cols-4">
+                  <h2 className="text-xl">Page Name</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3">
+                    : {pageName}
+                  </h2>
+                  <h2 className="text-xl">Email</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3">
+                    : {email}
+                  </h2>
+                  <h2 className="text-xl">Phone</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3">
+                    : {phoneNumber}
+                  </h2>
+                </div>
+              </div>
+              <div className="lg:mt-5 w-full lg:w-1/2">
+                <div className="grid grid-cols-3 md:grid-cols-4">
+                  <h2 className="text-xl">Amount</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3">
+                    : {amount}
+                  </h2>
+                  <h2 className="text-xl">Page Link</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3 overflow-hidden">
+                    :
+                    <a
+                      className="text-blue-500"
+                      target="_blank"
+                      rel="noreferrer"
+                      href={pageLink}
+                    >
+                      {pageLink}
+                    </a>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          )}
+          {orderType === "ID recovery" && (
+            <div className="lg:flex block">
+              <div className="mt-5 w-full lg:w-1/2">
+                <div className="grid grid-cols-3 md:grid-cols-4">
+                  <h2 className="text-xl">ID Name</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3">
+                    : {idName}
+                  </h2>
+                  <h2 className="text-xl">Email</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3">
+                    : {email}
+                  </h2>
+                  <h2 className="text-xl">Phone</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3">
+                    : {phoneNumber}
+                  </h2>
+                </div>
+              </div>
+              <div className="lg:mt-5 w-full lg:w-1/2">
+                <div className="grid grid-cols-3 md:grid-cols-4">
+                  <h2 className="text-xl">Amount</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3">
+                    : {amount}
+                  </h2>
+                  <h2 className="text-xl">Page Link</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3 overflow-hidden">
+                    :
+                    <a
+                      className="text-blue-500"
+                      target="_blank"
+                      rel="noreferrer"
+                      href={idLink}
+                    >
+                      {idLink}
+                    </a>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          )}
+          {orderType === "page setup" && (
+            <div className="lg:flex block">
+              <div className="mt-5 w-full lg:w-1/2">
+                <div className="grid grid-cols-3 md:grid-cols-3">
+                  <h2 className="text-xl">Name</h2>
+                  <h2 className="text-xl font-bold col-span-2">: {name}</h2>
+                  <h2 className="text-xl">Page Name</h2>
+                  <h2 className="text-xl font-bold col-span-2">: {pageName}</h2>
+                  <h2 className="text-xl">Business Address</h2>
+                  <h2 className="text-xl font-bold col-span-2">
+                    : {businessAddress}
+                  </h2>
+                  <h2 className="text-lg">Business Category</h2>
+                  <h2 className="text-xl font-bold col-span-2">
+                    : {businessCategory}
+                  </h2>
+                  <h2 className="text-xl">Business Email</h2>
+                  <h2 className="text-xl font-bold col-span-2">
+                    : {BusinessEmail}
+                  </h2>
+                  <h2 className="text-xl">Phone</h2>
+                  <h2 className="text-xl font-bold col-span-2">
+                    : {phoneNumber}
+                  </h2>
+                </div>
+              </div>
+              <div className="lg:mt-5 w-full lg:w-1/2">
+                <div className="grid grid-cols-3 md:grid-cols-4">
+                  <h2 className="text-xl">WhatsApp</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3">
+                    : {whatsapp}
+                  </h2>
+                  <h2 className="text-xl">Web Link</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3 overflow-hidden">
+                    :
+                    <a
+                      className="text-blue-500"
+                      target="_blank"
+                      rel="noreferrer"
+                      href={webLink}
+                      title={webLink}
+                    >
+                      {webLink}
+                    </a>
+                  </h2>
+                  <h2 className="text-xl">Post Link</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3 overflow-hidden">
+                    :
+                    <a
+                      className="text-blue-500"
+                      target="_blank"
+                      rel="noreferrer"
+                      href={pageLink}
+                      title={pageLink}
+                    >
+                      {pageLink}
+                    </a>
+                  </h2>
+                  <h2 className="text-xl">Amount</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3">
+                    : {amount}
+                  </h2>
+                </div>
+              </div>
+            </div>
+          )}
+          <h2 className="text-xl text-end">
+            Status{" "}
+            {status === "pending" && (
+              <span className="text-yellow-400">pending</span>
+            )}
+          </h2>
         </div>
       </div>
     </div>
