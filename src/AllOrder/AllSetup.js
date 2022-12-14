@@ -23,27 +23,26 @@ const AllSetup = () => {
     <div>
       <div className="min-h-screen">
         <h2 className="text-center text-3xl py-5">All Setup</h2>
-        <div className="m-5 mb-0 p-5 bg-white rounded-lg min-h-[500px]">
+        <div className="mx-0 lg:mx-5 px-0 lg:px-5 py-5 mt-5 bg-white rounded-lg min-h-[500px]">
           <OrderHeader />
           <div className="overflow-x-auto">
             <table className="table table-zebra w-full">
               <thead className="border-t-0">
                 <tr className="bg-primary text-white">
-                  <th>Order ID</th>
+                  <th>Order type</th>
                   <th className="hidden lg:flex">date</th>
                   <th>Amount</th>
                   <th>Status</th>
-                  <th className="hidden lg:flex">Order type</th>
                   <th>details</th>
                 </tr>
               </thead>
               <tbody className=" border-gray-100 border-2  border-t-0 rounded-lg">
-                {allOrders.promote
+                {allOrders.pageSetup
                   .slice()
                   .reverse()
                   .map((o, i) => (
                     <tr key={i}>
-                      <th>{o._id}</th>
+                      <th>{o.orderType}</th>
                       <td className="hidden lg:flex">{o.date}</td>
                       <th>{o.dollarAmount || o.like || o.amount}</th>
                       <th>
@@ -51,9 +50,6 @@ const AllSetup = () => {
                           <p className="text-warning">Pending</p>
                         )}
                       </th>
-                      <td className="font-bold hidden lg:flex">
-                        {o.orderType}
-                      </td>
                       <th>
                         <Link to={`/dashboard/order-details/${o._id}`}>
                           <button className="btn btn-xs text-white btn-primary">

@@ -46,40 +46,37 @@ const Navbar = () => {
         <img className="w-48" src={logo} alt="" />
 
         <div className="hidden md:flex ml-5">
-          {!user && (
-            <>
-              <NavLink
-                to="/home"
-                className={({ isActive }) =>
-                  isActive
-                    ? "btn btn-primary mx-2 text-white btn-sm"
-                    : "btn btn-ghost hover:btn-primary mx-2 text-white btn-sm"
-                }
-              >
-                Home
-              </NavLink>
-              <NavLink
-                to="/about"
-                className={({ isActive }) =>
-                  isActive
-                    ? "btn btn-primary mx-2 text-white btn-sm"
-                    : "btn btn-ghost hover:btn-primary mx-2 text-white btn-sm"
-                }
-              >
-                About
-              </NavLink>
-              <NavLink
-                to="/contact"
-                className={({ isActive }) =>
-                  isActive
-                    ? "btn btn-primary mx-2 text-white btn-sm"
-                    : "btn btn-ghost hover:btn-primary mx-2 text-white btn-sm"
-                }
-              >
-                Contact Us
-              </NavLink>
-            </>
-          )}
+          <NavLink
+            to="/home"
+            className={({ isActive }) =>
+              isActive
+                ? "btn btn-primary mx-2 text-white btn-sm"
+                : "btn btn-ghost hover:btn-primary mx-2 text-white btn-sm"
+            }
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive
+                ? "btn btn-primary mx-2 text-white btn-sm"
+                : "btn btn-ghost hover:btn-primary mx-2 text-white btn-sm"
+            }
+          >
+            About
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              isActive
+                ? "btn btn-primary mx-2 text-white btn-sm"
+                : "btn btn-ghost hover:btn-primary mx-2 text-white btn-sm"
+            }
+          >
+            Contact Us
+          </NavLink>
+
           {user && (
             <>
               {userInfo?.role === "member" && (
@@ -87,33 +84,14 @@ const Navbar = () => {
                   <div className="flex justify-between">
                     <div>
                       <NavLink
-                        to="/control-panel"
+                        to="/dashboard"
                         className={({ isActive }) =>
                           isActive
-                            ? "btn btn-primary mx-2 text-white"
-                            : "btn btn-ghost hover:btn-primary mx-2 text-white"
+                            ? "btn btn-primary mx-2 text-white btn-sm"
+                            : "btn btn-ghost hover:btn-primary mx-2 text-white btn-sm"
                         }
                       >
-                        <img className="h-[45px]" src={spt} alt="" />
-                      </NavLink>
-                    </div>
-                    <div className="flex">
-                      <div>
-                        <input
-                          type="text"
-                          placeholder="Type Order ID"
-                          className="input input-bordered w-full max-w-xs"
-                        />
-                      </div>
-                      <NavLink
-                        to="/control-panel"
-                        className={({ isActive }) =>
-                          isActive
-                            ? "btn btn-primary mx-2 text-white"
-                            : "btn btn-ghost hover:btn-primary mx-2 text-white"
-                        }
-                      >
-                        <img className="h-[45px]" src={not} alt="" />
+                        Dashboard
                       </NavLink>
                     </div>
                   </div>
@@ -206,58 +184,54 @@ const Navbar = () => {
                 onClick={() => setCloseDropDown(!closeDropDown)}
                 className="btn btn-ghost rounded-full p-0 md:hidden"
               >
-                <img
-                  className="w-11 rounded-full"
-                  src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
-                  alt=""
-                />
+                <img className="w-11 rounded-full bg-white " src={pro} alt="" />
               </label>
               {closeDropDown && (
                 <ul
                   tabIndex={0}
                   className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-40"
                 >
+                  <li>
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive
+                          ? "btn btn-primary btn-sm my-2 pb-2 text-xs text-white"
+                          : ""
+                      }
+                      to="/home"
+                      onClick={() => setCloseDropDown(!closeDropDown)}
+                    >
+                      Home
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive
+                          ? "btn btn-primary btn-sm my-2 pb-2 text-xs text-white"
+                          : ""
+                      }
+                      to="/about"
+                      onClick={() => setCloseDropDown(!closeDropDown)}
+                    >
+                      About Us
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive
+                          ? "btn btn-primary btn-sm my-2 pb-2 text-xs text-white"
+                          : ""
+                      }
+                      to="/contact"
+                      onClick={() => setCloseDropDown(!closeDropDown)}
+                    >
+                      Contact Us
+                    </NavLink>
+                  </li>
                   {!user && (
                     <>
-                      <li>
-                        <NavLink
-                          className={({ isActive }) =>
-                            isActive
-                              ? "btn btn-primary btn-sm my-2 pb-2 text-xs text-white"
-                              : ""
-                          }
-                          to="/home"
-                          onClick={() => setCloseDropDown(!closeDropDown)}
-                        >
-                          Home
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          className={({ isActive }) =>
-                            isActive
-                              ? "btn btn-primary btn-sm my-2 pb-2 text-xs text-white"
-                              : ""
-                          }
-                          to="/about"
-                          onClick={() => setCloseDropDown(!closeDropDown)}
-                        >
-                          About Us
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          className={({ isActive }) =>
-                            isActive
-                              ? "btn btn-primary btn-sm my-2 pb-2 text-xs text-white"
-                              : ""
-                          }
-                          to="/contact"
-                          onClick={() => setCloseDropDown(!closeDropDown)}
-                        >
-                          Contact Us
-                        </NavLink>
-                      </li>
                       <li>
                         <NavLink
                           className={({ isActive }) =>
@@ -286,14 +260,23 @@ const Navbar = () => {
                       </li>
                     </>
                   )}
+
                   {user && (
                     <>
                       <li>
-                        <h2>Profile</h2>
+                        <NavLink
+                          className={({ isActive }) =>
+                            isActive
+                              ? "btn btn-primary btn-sm my-2 pb-2 text-xs text-white"
+                              : ""
+                          }
+                          to="/dashboard"
+                          onClick={() => setCloseDropDown(!closeDropDown)}
+                        >
+                          Dashboard
+                        </NavLink>
                       </li>
-                      <li>
-                        <h2>Change Password</h2>
-                      </li>
+
                       <li>
                         <h2
                           onClick={() => {
