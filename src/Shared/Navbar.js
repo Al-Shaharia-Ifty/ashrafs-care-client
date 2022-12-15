@@ -1,12 +1,10 @@
 import { signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../Assets/logo-ok-png.png";
 import auth from "../firebase.init";
 import Loading from "./Loading";
-import spt from "../Assets/icons/Artboard 17.png";
-import not from "../Assets/icons/Artboard 33.png";
 import pro from "../Assets/icons/Artboard 21.png";
 import { useContext } from "react";
 import { AuthContext } from "../Contexts/AuthProvider";
@@ -43,7 +41,9 @@ const Navbar = () => {
       <div
         className={`relative mb-[-80px] flex pl-10 2xl:pl-40 w-full items-center ${stickyClass}`}
       >
-        <img className="w-48" src={logo} alt="" />
+        <Link to={"/home"}>
+          <img className="w-48" src={logo} alt="" />
+        </Link>
 
         <div className="hidden md:flex ml-5">
           <NavLink
