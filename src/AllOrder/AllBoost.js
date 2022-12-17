@@ -43,13 +43,9 @@ const AllBoost = () => {
                     <tr key={i}>
                       <th>{o.orderType}</th>
                       <td className="hidden lg:flex">{o.date}</td>
+                      <th>{o.dollarAmount || o.like || o.amount} Tk</th>
                       <th>
-                        {(o.dollarAmount && <p>{o.dollarAmount} Dollar</p>) ||
-                          o.like ||
-                          o.amount}
-                      </th>
-                      <th>
-                        {o.status === "pending" && (
+                        {o.status === "Pending" && (
                           <p className="text-warning">Pending</p>
                         )}
                       </th>

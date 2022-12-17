@@ -32,7 +32,7 @@ const BasicAudience = () => {
       promote: "basic",
       orderType: "promote",
       date: date,
-      status: "pending",
+      status: "Pending",
     };
     fetch("https://ashrafs-servier.vercel.app/promote", {
       method: "POST",
@@ -61,11 +61,11 @@ const BasicAudience = () => {
                   className="select select-bordered w-full max-w-xs"
                   {...register("like")}
                 >
-                  <option>5k Like (3060Tk)</option>
-                  <option>10k Like (5814Tk) 5% off</option>
-                  <option>20k Like (11016Tk) 10% off</option>
-                  <option>50k Like (26928Tk) 15% off</option>
-                  <option>100k Like (52020Tk) 20% off</option>
+                  <option value={"3060"}>5k Like (3060Tk)</option>
+                  <option value={"5814"}>10k Like (5814Tk) 5% off</option>
+                  <option value={"11016"}>20k Like (11016Tk) 10% off</option>
+                  <option value={"26928"}>50k Like (26928Tk) 15% off</option>
+                  <option value={"52020"}>100k Like (52020Tk) 20% off</option>
                 </select>
               </div>
               <div className="form-control w-full max-w-sm">

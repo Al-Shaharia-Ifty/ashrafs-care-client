@@ -10,13 +10,14 @@ const BoostModal = ({ setBoost }) => {
     handleSubmit,
   } = useForm();
 
-  const { userInfo } = useContext(AuthContext);
+  const { userInfo, dollarRate } = useContext(AuthContext);
   const fullDate = new Date().toString();
   const date = fullDate.split("GMT")[0];
 
   const onSubmit = (data) => {
     const pageName = data.pageName;
-    const dollarAmount = data.dollarAmount;
+    const dollar = data.dollarAmount;
+    const dollarAmount = dollarRate[0].dollarRate * dollar;
     const boostDay = data.boostDay;
     const gender = data.gender;
     const minAge = data.minAge;
@@ -28,6 +29,7 @@ const BoostModal = ({ setBoost }) => {
 
     const boostInfo = {
       pageName,
+      dollar,
       dollarAmount,
       boostDay,
       gender,
@@ -41,9 +43,8 @@ const BoostModal = ({ setBoost }) => {
       phoneNumber,
       orderType: "boost",
       date: date,
-      status: "pending",
+      status: "Pending",
     };
-
     fetch("https://ashrafs-servier.vercel.app/facebookBoost", {
       method: "POST",
       headers: {
@@ -156,8 +157,8 @@ const BoostModal = ({ setBoost }) => {
                 )}
               </label>
             </div>
-            <div className="form-control flex-row ">
-              <div className=" w-1/3 mr-2">
+            <div className="form-control md:flex-row ">
+              <div className="md:w-1/3 md:mr-2">
                 <label className="label flex justify-center">
                   <span className="label-text text-black">Gender</span>
                 </label>
@@ -170,7 +171,7 @@ const BoostModal = ({ setBoost }) => {
                   <option>Female</option>
                 </select>
               </div>
-              <div className=" w-2/3 flex items-center">
+              <div className=" md:w-2/3 flex items-center">
                 <div className="w-1/2">
                   <label className="label flex justify-center">
                     <span className="label-text text-black">Minimum Age</span>

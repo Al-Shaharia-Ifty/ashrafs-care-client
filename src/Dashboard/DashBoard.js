@@ -42,6 +42,7 @@ const DashBoard = () => {
   const cancelled = allOrder.filter((p) => {
     return p.status === "Cancelled";
   });
+  console.log(allOrder);
 
   // code.
   return (
@@ -101,7 +102,7 @@ const DashBoard = () => {
           </Link>
         </div>
       </div>
-      <div className="lg:flex hidden">
+      <div className="lg:block hidden">
         <div className="min-h-screen mx-5 md:mx-10">
           {/* cart */}
           <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 justify-center pt-10 gap-5 md:gap-10">
@@ -124,7 +125,10 @@ const DashBoard = () => {
             </div>
             <div className="bg-white p-4 text-center rounded-lg flex items-center justify-evenly">
               <img className="w-14" src={bel} alt="" />
-              <h2 className="text-2xl text-primary">Balance</h2>
+              <div>
+                <h2 className="text-2xl text-primary">Balance</h2>
+                <p>{""}</p>
+              </div>
             </div>
             <div className="bg-white p-4 text-center rounded-lg flex items-center justify-evenly">
               <h2 className="text-2xl text-primary"> </h2>

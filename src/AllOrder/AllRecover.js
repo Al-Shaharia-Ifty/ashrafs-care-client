@@ -44,9 +44,9 @@ const AllRecover = () => {
                     <tr key={i}>
                       <th>{o.orderType}</th>
                       <td className="hidden lg:flex">{o.date}</td>
-                      <th>{o.dollarAmount || o.like || o.amount}</th>
+                      <th>{o.dollarAmount || o.like || o.amount} Tk</th>
                       <th>
-                        {o.status === "pending" && (
+                        {o.status === "Pending" && (
                           <p className="text-warning">Pending</p>
                         )}
                       </th>

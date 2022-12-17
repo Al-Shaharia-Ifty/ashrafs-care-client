@@ -157,7 +157,15 @@ const OrderDetails = () => {
                 <div className="grid grid-cols-3 md:grid-cols-4">
                   <h2 className="text-xl">Like</h2>
                   <h2 className="text-xl font-bold col-span-2 md:col-span-3">
-                    : {like}
+                    {like === "4080" && <p>: 5k Like</p>}
+                    {like === "7752" && <p>: 10k Like 5% off</p>}
+                    {like === "15015" && <p>: 20k Like 10% off</p>}
+                    {like === "35200" && <p>: 50k Like 15% off</p>}
+                    {like === "65100" && <p>: 100k Like 20% off</p>}
+                  </h2>
+                  <h2 className="text-xl">Amount</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3">
+                    : {like} Tk
                   </h2>
                   <h2 className="text-xl">Age</h2>
                   <h2 className="text-xl font-bold col-span-2 md:col-span-3">
@@ -206,7 +214,15 @@ const OrderDetails = () => {
                 <div className="grid grid-cols-3 md:grid-cols-4">
                   <h2 className="text-xl">Like</h2>
                   <h2 className="text-xl font-bold col-span-2 md:col-span-3">
-                    : {like}
+                    {like === "3060" && <p>: 5k Like</p>}
+                    {like === "5814" && <p>: 10k Like 5% off</p>}
+                    {like === "11016" && <p>: 20k Like 10% off</p>}
+                    {like === "26928" && <p>: 50k Like 15% off</p>}
+                    {like === "52020" && <p>: 100k Like 20% off</p>}
+                  </h2>
+                  <h2 className="text-xl">Amount</h2>
+                  <h2 className="text-xl font-bold col-span-2 md:col-span-3">
+                    : {like} Tk
                   </h2>
                   <h2 className="text-xl">Post Link</h2>
                   <h2 className="text-xl font-bold col-span-2 md:col-span-3 overflow-hidden">
@@ -372,8 +388,8 @@ const OrderDetails = () => {
           )}
           <h2 className="text-xl text-end">
             Status{" "}
-            {status === "pending" && (
-              <span className="text-yellow-400">pending</span>
+            {status === "Pending" && (
+              <span className="text-yellow-400 font-semibold">Pending</span>
             )}
           </h2>
         </div>

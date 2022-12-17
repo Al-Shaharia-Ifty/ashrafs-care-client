@@ -40,7 +40,7 @@ const SetupModal = ({ setupModal, setSetupModal }) => {
       email: userInfo.email,
       orderType: "page setup",
       date: date,
-      status: "pending",
+      status: "Pending",
     };
     fetch("https://ashrafs-servier.vercel.app/pageSetup", {
       method: "POST",
