@@ -7,7 +7,6 @@ import pay from "../Assets/icons/Artboard-6.png";
 import ord from "../Assets/icons/Order.png";
 import srp from "../Assets/icons/Artboard 31.png";
 import rpt from "../Assets/icons/Artboard 9.png";
-import DashboardMobileNavbar from "../Shared/DashboardMobileNavbar";
 
 const Dashboard = () => {
   return (
@@ -19,7 +18,6 @@ const Dashboard = () => {
           {/* <!-- Page content here --> */}
 
           <div className="bg-gray-200">
-            <DashboardMobileNavbar />
             <Outlet />
           </div>
         </div>

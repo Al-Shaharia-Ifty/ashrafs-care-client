@@ -21,6 +21,7 @@ import AllSetup from "../AllOrder/AllSetup";
 import AllPromote from "../AllOrder/AllPromote";
 import AllRecover from "../AllOrder/AllRecover";
 import OrderDetails from "../Dashboard/OrderDetails";
+import DashboardMobileNavbar from "../Shared/DashboardMobileNavbar";
 
 export const router = createBrowserRouter([
   {
@@ -60,6 +61,7 @@ export const router = createBrowserRouter([
     ),
     children: [
       { path: "/dashboard", element: <DashBoard /> },
+      { path: "/dashboard/mobile", element: <DashboardMobileNavbar /> },
 
       // Facebook
       {

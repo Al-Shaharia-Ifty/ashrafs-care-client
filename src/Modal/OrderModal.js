@@ -20,7 +20,7 @@ const OrderModal = () => {
             <div className="bg-[#166534] text-white p-3 rounded-md">
               <Link
                 className="flex justify-start md:justify-center items-center ml-3"
-                to={`faceBook-instagram/marketing`}
+                to={`/dashboard/faceBook-instagram/marketing`}
               >
                 <img className="w-10" src={face} alt="" />
                 <h2 className="text-xl mx-2">FaceBook Marketing</h2>

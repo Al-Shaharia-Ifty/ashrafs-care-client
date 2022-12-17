@@ -17,10 +17,10 @@ const DashboardNavbar = () => {
   // const [closeDropDown, setCloseDropDown] = useState(false);
   return (
     <div>
-      <div className="py-5 bg-[#166534] pl-24 pr-14 flex justify-between items-center">
+      <div className="py-5 bg-[#166534] pl-5 pr-5 md:pl-14 md:pr-14 lg:pl-24 flex justify-between items-center">
         <div>
           <Link to={"/dashboard"}>
-            <img className="w-16" src={logo} alt="" />
+            <img className="md:w-16 w-12" src={logo} alt="" />
           </Link>
         </div>
         <div>
@@ -28,39 +28,37 @@ const DashboardNavbar = () => {
             <div className="flex">
               {userInfo?.role === "member" && (
                 <>
-                  <div className="flex justify-between">
-                    <div className="flex">
-                      <div className="flex justify-center items-center h-12">
-                        <input
-                          type="text"
-                          placeholder="Type Order ID"
-                          className="input input-bordered w-full h-full max-w-xs rounded-l-full"
-                        />
-                        <AiOutlineSearch className="bg-white h-full text-xl rounded-r-full px-3 w-16" />
-                      </div>
-                      <div>
-                        <NavLink
-                          to="/control-panel"
-                          className={({ isActive }) =>
-                            isActive
-                              ? "btn btn-primary text-white p-0 mx-8"
-                              : "btn btn-ghost hover:btn-primary text-white p-0 mx-8"
-                          }
-                        >
-                          <img className="h-[45px]" src={spt} alt="" />
-                        </NavLink>
-                      </div>
+                  <div className="flex gap-3 items-center">
+                    <div className="flex justify-center items-center h-11 md:12 w-36 md:w-80">
+                      <input
+                        type="text"
+                        placeholder="Type Order ID"
+                        className="input input-bordered w-full h-full max-w-xs rounded-l-full"
+                      />
+                      <AiOutlineSearch className="bg-white h-full text-xl rounded-r-full px-3 w-16" />
+                    </div>
+                    <div>
                       <NavLink
                         to="/control-panel"
                         className={({ isActive }) =>
                           isActive
-                            ? "btn btn-primary mx-2 text-white p-0"
-                            : "btn btn-ghost hover:btn-primary mx-2 text-white p-0"
+                            ? "btn btn-primary text-white p-0 md:ml-5"
+                            : "btn btn-ghost hover:btn-primary text-white p-0 md:ml-5"
                         }
                       >
-                        <img className="h-[45px]" src={not} alt="" />
+                        <img className="h-[45px]" src={spt} alt="" />
                       </NavLink>
                     </div>
+                    <NavLink
+                      to="/control-panel"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "btn btn-primary text-white p-0 md:ml-5"
+                          : "btn btn-ghost hover:btn-primary text-white p-0 md:ml-5"
+                      }
+                    >
+                      <img className="h-[45px]" src={not} alt="" />
+                    </NavLink>
                   </div>
                 </>
               )}
@@ -76,7 +74,7 @@ const DashboardNavbar = () => {
                   Control Panel
                 </NavLink>
               )}
-              <div className="dropdown dropdown-end ml-8">
+              <div className="dropdown dropdown-end md:ml-5">
                 <label tabIndex={0} className="btn btn-ghost rounded-full p-0">
                   <img
                     className="w-11 rounded-full bg-white"
