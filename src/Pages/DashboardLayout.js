@@ -1,7 +1,8 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import DashboardNavbar from "../Shared/DashboardNavbar";
-import status from "../Assets/icons/Artboard 20.png";
+import status from "../Assets/icons/Artboard 22.png";
+import das from "../Assets/icons/Artboard 1.png";
 import sett from "../Assets/icons/Artboard 23.png";
 import pay from "../Assets/icons/Artboard-6.png";
 import ord from "../Assets/icons/Order.png";
@@ -26,19 +27,22 @@ const Dashboard = () => {
           <ul className="menu p-4 w-52 md:w-60 bg-base-100">
             {/* <!-- Sidebar content here --> */}
             <li>
-              <Link to="/dashboard">
-                <p className="btn btn-primary text-white w-full">Dashboard</p>
+              <Link to="/dashboard" className="block text-center mt-2 text-xl">
+                <div className="flex justify-center mb-2">
+                  <img className="w-14" src={das} alt="" />
+                </div>
+                <p>Dashboard</p>
               </Link>
             </li>
             <li>
               <Link
-                to={"/dashboard/status"}
+                to={"/dashboard/summery"}
                 className="block text-center mt-2 text-xl"
               >
                 <div className="flex justify-center mb-2">
                   <img className="w-14" src={status} alt="" />
                 </div>
-                <p>Status</p>
+                <p>Summery</p>
               </Link>
             </li>
             <li>
@@ -57,7 +61,7 @@ const Dashboard = () => {
                 <div className="flex justify-center mb-2">
                   <img className="w-14" src={pay} alt="" />
                 </div>
-                <p>View Payments</p>
+                <p>Payments</p>
               </Link>
             </li>
             <li>

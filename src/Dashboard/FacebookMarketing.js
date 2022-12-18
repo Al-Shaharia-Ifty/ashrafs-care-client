@@ -14,9 +14,9 @@ const FacebookMarketing = () => {
   const [idRecover, setIdRecover] = useState(false);
   return (
     <div>
-      <div>
+      <div className="overflow-x-hidden relative">
         <img
-          className="w-full scale-[1.5] md:scale-100"
+          className="w-full scale-[1.5] md:scale-100 mb-7"
           src={facebookBanner}
           alt="Facebook Marketing Banner"
         />

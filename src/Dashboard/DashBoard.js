@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import google from "../Assets/google-play.png";
+import das from "../Assets/icons/Artboard 1.png";
 import order from "../Assets/icons/Artboard 2.png";
-import sum from "../Assets/icons/Artboard 22.png";
 import bel from "../Assets/icons/Artboard 11.png";
-import ins from "../Assets/icons/Artboard 39.png";
-import status from "../Assets/icons/Artboard 20.png";
+import status from "../Assets/icons/Artboard 22.png";
 import sett from "../Assets/icons/Artboard 23.png";
 import pay from "../Assets/icons/Artboard-6.png";
 import ord from "../Assets/icons/Order.png";
@@ -36,17 +35,30 @@ const DashBoard = () => {
   const pending = allOrder.filter((p) => {
     return p.status === "Pending";
   });
+  const inReview = allOrder.filter((p) => {
+    return p.status === "In-review";
+  });
+  const activeAds = allOrder.filter((p) => {
+    return p.status === "Active Ads";
+  });
+  const pausedAds = allOrder.filter((p) => {
+    return p.status === "Paused Ads";
+  });
+  const boostRejects = allOrder.filter((p) => {
+    return p.status === "Boost Rejected";
+  });
+  const notDelivering = allOrder.filter((p) => {
+    return p.status === "Not Delivering";
+  });
   const complete = allOrder.filter((p) => {
     return p.status === "Complete";
-  });
-  const cancelled = allOrder.filter((p) => {
-    return p.status === "Cancelled";
   });
   console.log(allOrder);
 
   // code.
   return (
     <div>
+      {/* mobile and tab view */}
       <div className="lg:hidden min-h-screen">
         <div className="grid grid-cols-2 md:grid-cols-3 my-auto">
           <Link
@@ -54,7 +66,7 @@ const DashBoard = () => {
             className="block text-center mt-2 text-xl"
           >
             <div className="flex justify-center mb-2">
-              <img className="w-14" src={status} alt="" />
+              <img className="w-14" src={das} alt="" />
             </div>
             <p>Dashboard</p>
           </Link>
@@ -65,7 +77,7 @@ const DashBoard = () => {
             <div className="flex justify-center mb-2">
               <img className="w-14" src={status} alt="" />
             </div>
-            <p>status</p>
+            <p>Summery</p>
           </Link>
           <Link
             to={"/dashboard/all-order"}
@@ -80,7 +92,7 @@ const DashBoard = () => {
             <div className="flex justify-center mb-2">
               <img className="w-14" src={pay} alt="" />
             </div>
-            <p>View Payments</p>
+            <p>Payments</p>
           </Link>
           <Link className="block text-center mt-2 text-xl">
             <div className="flex justify-center mb-2">
@@ -102,38 +114,27 @@ const DashBoard = () => {
           </Link>
         </div>
       </div>
+      {/* pc view */}
       <div className="lg:block hidden">
         <div className="min-h-screen mx-5 md:mx-10">
           {/* cart */}
-          <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 justify-center pt-10 gap-5 md:gap-10">
+          <div className="grid lg:grid-cols-3 md:grid-cols-3 grid-cols-2 justify-center pt-10 gap-5 md:gap-10">
             {/* order modal */}
             <label
               htmlFor="order-modal"
-              className="label bg-white p-4 text-center rounded-lg flex items-center justify-evenly"
+              className="label bg-white p-4 rounded-lg flex items-center justify-start"
             >
               <img className="w-14" src={order} alt="" />
-              <h2 className="text-2xl text-primary">Add Order</h2>
+              <h2 className="text-2xl ml-5 text-primary">Add Order</h2>
             </label>
-
-            <div className="bg-white p-4 text-center rounded-lg flex items-center justify-evenly">
-              <img className="w-14" src={sum} alt="" />
-              <h2 className="text-2xl text-primary">Summery</h2>
-            </div>
-            <div className="bg-white p-4 text-center rounded-lg flex items-center justify-evenly">
-              <img className="w-14" src={ins} alt="" />
-              <h2 className="text-2xl text-primary">Insight</h2>
-            </div>
-            <div className="bg-white p-4 text-center rounded-lg flex items-center justify-evenly">
+            <div className="bg-white p-4 rounded-lg flex items-center">
               <img className="w-14" src={bel} alt="" />
               <div>
-                <h2 className="text-2xl text-primary">Balance</h2>
+                <h2 className="text-2xl ml-5 text-primary">Balance</h2>
                 <p>{""}</p>
               </div>
             </div>
-            <div className="bg-white p-4 text-center rounded-lg flex items-center justify-evenly">
-              <h2 className="text-2xl text-primary"> </h2>
-            </div>
-            <div className="bg-white text-center rounded-2xl">
+            <div className="bg-white rounded-lg flex justify-center">
               <a href="https://youtube.com">
                 <img className="w-60" src={google} alt="" />
               </a>
@@ -141,7 +142,7 @@ const DashBoard = () => {
           </div>
           {/*  */}
           <div className="mt-10">
-            <h2 className="text-2xl">Summery (last 30 days)</h2>
+            <h2 className="text-2xl">Status</h2>
           </div>
           <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5 md:gap-10 mt-5">
             <div className="bg-white p-4 rounded-md">
@@ -149,45 +150,35 @@ const DashBoard = () => {
               <p>{allOrder.length}</p>
             </div>
             <div className="bg-white p-4 rounded-md">
-              <h2 className="text-xl text-green-400">Delivered</h2>
-              <p>{complete.length}</p>
-            </div>
-            <div className="bg-white p-4 rounded-md">
-              <h2 className="text-xl text-red-500">Cancelled</h2>
-              <p>{cancelled.length}</p>
-            </div>
-            <div className="bg-white p-4 rounded-md">
               <h2 className="text-xl text-yellow-400">Pending</h2>
               <p>{pending.length}</p>
             </div>
-          </div>
-          {/*  */}
-          <div className="grid md:grid-cols-2 grid-cols-1 gap-10 mt-10">
             <div className="bg-white p-4 rounded-md">
-              <h2 className="text-xl">Pending Consignments(0)</h2>
-              <div className="text-end">
-                <Link>
-                  <i>View All</i>
-                </Link>
-              </div>
+              <h2 className="text-xl text-yellow-400">In-review</h2>
+              <p>{inReview.length}</p>
             </div>
             <div className="bg-white p-4 rounded-md">
-              <h2 className="text-xl">Pending Consignments(0)</h2>
-              <div className="text-end">
-                <Link>
-                  <i>View All</i>
-                </Link>
-              </div>
+              <h2 className="text-xl text-green-600">Active Ads</h2>
+              <p>{activeAds.length}</p>
             </div>
             <div className="bg-white p-4 rounded-md">
-              <h2 className="text-xl">Pending Consignments(0)</h2>
-              <div className="text-end">
-                <Link>
-                  <i>View All</i>
-                </Link>
-              </div>
+              <h2 className="text-xl text-red-600">Paused Ads</h2>
+              <p>{pausedAds.length}</p>
+            </div>
+            <div className="bg-white p-4 rounded-md">
+              <h2 className="text-xl text-red-600">Boost Rejected</h2>
+              <p>{boostRejects.length}</p>
+            </div>
+            <div className="bg-white p-4 rounded-md">
+              <h2 className="text-xl text-red-600">Not Delivering</h2>
+              <p>{notDelivering.length}</p>
+            </div>
+            <div className="bg-white p-4 rounded-md">
+              <h2 className="text-xl text-green-600">Complete</h2>
+              <p>{complete.length}</p>
             </div>
           </div>
+
           <OrderModal />
         </div>
       </div>

@@ -25,29 +25,17 @@ const DashboardNavbar = () => {
         </div>
         <div>
           {user && (
-            <div className="flex">
+            <div className="flex items-center">
               {userInfo?.role === "member" && (
                 <>
-                  <div className="flex gap-3 items-center">
-                    <div className="flex justify-center items-center h-11 md:12 w-36 md:w-80">
+                  <div className="flex gap-3 items-center m-2">
+                    <div className="flex justify-center items-center h-9 md:h-12 w-36 md:w-80">
                       <input
                         type="text"
                         placeholder="Type Order ID"
                         className="input input-bordered w-full h-full max-w-xs rounded-l-full"
                       />
                       <AiOutlineSearch className="bg-white h-full text-xl rounded-r-full px-3 w-16" />
-                    </div>
-                    <div>
-                      <NavLink
-                        to="/control-panel"
-                        className={({ isActive }) =>
-                          isActive
-                            ? "btn btn-primary text-white p-0 md:ml-5"
-                            : "btn btn-ghost hover:btn-primary text-white p-0 md:ml-5"
-                        }
-                      >
-                        <img className="h-[45px]" src={spt} alt="" />
-                      </NavLink>
                     </div>
                     <NavLink
                       to="/control-panel"
@@ -57,8 +45,26 @@ const DashboardNavbar = () => {
                           : "btn btn-ghost hover:btn-primary text-white p-0 md:ml-5"
                       }
                     >
-                      <img className="h-[45px]" src={not} alt="" />
+                      <img
+                        className="w-7 md:w-full md:h-[45px]"
+                        src={spt}
+                        alt=""
+                      />
                     </NavLink>
+                    <NavLink
+                      to="/control-panel"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "btn btn-primary text-white p-0 md:ml-5"
+                          : "btn btn-ghost hover:btn-primary text-white p-0 md:ml-5"
+                      }
+                    >
+                      <img
+                        className="w-7 md:w-full md:h-[45px]"
+                        src={not}
+                        alt=""
+                      />
+                    </NavLink>{" "}
                   </div>
                 </>
               )}

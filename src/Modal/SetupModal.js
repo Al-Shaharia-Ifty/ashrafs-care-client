@@ -192,6 +192,7 @@ const SetupModal = ({ setupModal, setSetupModal }) => {
               </label>
               <input
                 type="number"
+                onWheel={(e) => e.target.blur()}
                 placeholder="Phone Number"
                 className="input input-bordered"
                 {...register("phoneNumber", {
@@ -251,6 +252,7 @@ const SetupModal = ({ setupModal, setSetupModal }) => {
               </label>
               <input
                 type="number"
+                onWheel={(e) => e.target.blur()}
                 placeholder="Whatsapp Number"
                 className="input input-bordered"
                 {...register("whatsapp", {

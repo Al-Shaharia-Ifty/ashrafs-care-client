@@ -95,6 +95,7 @@ const BoostModal = ({ setBoost }) => {
                 <div className="w-full">
                   <input
                     type="number"
+                    onWheel={(e) => e.target.blur()}
                     placeholder="Dollar Amount"
                     className="input input-bordered w-full"
                     {...register("dollarAmount", {
@@ -131,6 +132,7 @@ const BoostModal = ({ setBoost }) => {
               </label>
               <input
                 type="number"
+                onWheel={(e) => e.target.blur()}
                 placeholder="Per day 2 Dollars minimum"
                 className="input input-bordered"
                 {...register("boostDay", {
@@ -178,6 +180,7 @@ const BoostModal = ({ setBoost }) => {
                   </label>
                   <input
                     type="number"
+                    onWheel={(e) => e.target.blur()}
                     placeholder="18"
                     className="input input-bordered w-full"
                     {...register("minAge", {
@@ -220,6 +223,7 @@ const BoostModal = ({ setBoost }) => {
                   </label>
                   <input
                     type="number"
+                    onWheel={(e) => e.target.blur()}
                     placeholder="65"
                     className="input input-bordered w-full"
                     {...register("maxAge", {
@@ -343,6 +347,7 @@ const BoostModal = ({ setBoost }) => {
               </label>
               <input
                 type="number"
+                onWheel={(e) => e.target.blur()}
                 placeholder="Phone Number"
                 className="input input-bordered"
                 {...register("phone", {

@@ -131,6 +131,7 @@ const BasicAudience = () => {
                 </label>
                 <input
                   type="number"
+                  onWheel={(e) => e.target.blur()}
                   placeholder="Phone Number"
                   className="input input-bordered w-full max-w-sm"
                   {...register("number", {

@@ -154,6 +154,7 @@ const TargetAudience = () => {
                     </label>
                     <input
                       type="number"
+                      onWheel={(e) => e.target.blur()}
                       placeholder="18"
                       className="input input-bordered w-full"
                       {...register("minAge", {
@@ -196,6 +197,7 @@ const TargetAudience = () => {
                     </label>
                     <input
                       type="number"
+                      onWheel={(e) => e.target.blur()}
                       placeholder="65"
                       className="input input-bordered w-full"
                       {...register("maxAge", {
@@ -289,6 +291,7 @@ const TargetAudience = () => {
                 </label>
                 <input
                   type="number"
+                  onWheel={(e) => e.target.blur()}
                   placeholder="Phone Number"
                   className="input input-bordered w-full max-w-sm"
                   {...register("number", {

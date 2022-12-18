@@ -117,6 +117,7 @@ const IDRecoverModal = ({ idRecover, setIdRecover }) => {
               </label>
               <input
                 type="number"
+                onWheel={(e) => e.target.blur()}
                 placeholder="Phone Number"
                 className="input input-bordered"
                 {...register("phoneNumber", {

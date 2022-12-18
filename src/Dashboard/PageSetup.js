@@ -69,7 +69,7 @@ const PageSetup = () => {
                 <label
                   htmlFor="setup-modal"
                   onClick={() =>
-                    setSetupModal({ type: "Basic", amount: "1720Tk" })
+                    setSetupModal({ type: "Basic", amount: "1720" })
                   }
                   className="btn btn-primary text-white w-full"
                 >
@@ -130,7 +130,7 @@ const PageSetup = () => {
               <label
                 htmlFor="setup-modal"
                 onClick={() =>
-                  setSetupModal({ type: "Premium", amount: "4000Tk" })
+                  setSetupModal({ type: "Premium", amount: "4000" })
                 }
                 className="btn btn-primary text-white w-full"
               >
@@ -191,7 +191,7 @@ const PageSetup = () => {
                 <label
                   htmlFor="setup-modal"
                   onClick={() =>
-                    setSetupModal({ type: "Silver", amount: "2500Tk" })
+                    setSetupModal({ type: "Silver", amount: "2500" })
                   }
                   className="btn btn-primary text-white w-full"
                 >
@@ -201,6 +201,8 @@ const PageSetup = () => {
             </div>
           </div>
         </div>
+
+        {/* mobile and tab view */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:hidden gap-5 mt-5 md:mt-10 mx-5 md:mx-10 pb-10">
           <div className="bg-white w-full lg:w-60 rounded-lg overflow-hidden">
             <h2 className="text-center p-5 text-2xl font-semibold text-white bg-[#166534]">
@@ -253,7 +255,7 @@ const PageSetup = () => {
             <div className="text-center m-3 mt-0">
               <label
                 htmlFor="setup-modal"
-                onClick={() => setSetupModal("Basic")}
+                onClick={() => setSetupModal({ type: "Basic", amount: "1720" })}
                 className="btn btn-primary text-white w-full"
               >
                 Chooses
@@ -311,7 +313,9 @@ const PageSetup = () => {
             <div className="text-center m-3 mt-0">
               <label
                 htmlFor="setup-modal"
-                onClick={() => setSetupModal("Silver")}
+                onClick={() =>
+                  setSetupModal({ type: "Silver", amount: "2500" })
+                }
                 className="btn btn-primary text-white w-full"
               >
                 Chooses
@@ -369,7 +373,9 @@ const PageSetup = () => {
             <div className="text-center m-3 mt-0">
               <label
                 htmlFor="setup-modal"
-                onClick={() => setSetupModal("Premium")}
+                onClick={() =>
+                  setSetupModal({ type: "Premium", amount: "4000" })
+                }
                 className="btn btn-primary text-white w-full"
               >
                 Chooses
