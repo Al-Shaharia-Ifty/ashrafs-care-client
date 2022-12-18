@@ -10,11 +10,12 @@ import not from "../Assets/icons/Artboard-18.png";
 import pro from "../Assets/icons/Artboard 21.png";
 import { signOut } from "firebase/auth";
 import { AiOutlineSearch } from "react-icons/ai";
+import { useState } from "react";
 
 const DashboardNavbar = () => {
   const [user] = useAuthState(auth);
   const { userInfo } = useContext(AuthContext);
-  // const [closeDropDown, setCloseDropDown] = useState(false);
+  const [closeDropDown, setCloseDropDown] = useState(false);
   return (
     <div>
       <div className="py-5 bg-[#166534] pl-5 pr-5 md:pl-14 md:pr-14 lg:pl-24 flex justify-between items-center">
@@ -81,35 +82,57 @@ const DashboardNavbar = () => {
                 </NavLink>
               )}
               <div className="dropdown dropdown-end md:ml-5">
-                <label tabIndex={0} className="btn btn-ghost rounded-full p-0">
+                <label
+                  tabIndex={0}
+                  onClick={() => setCloseDropDown(true)}
+                  className="btn btn-ghost rounded-full p-0"
+                >
                   <img
                     className="w-11 rounded-full bg-white"
                     src={pro}
                     alt=""
                   />
                 </label>
-                <ul
-                  tabIndex={0}
-                  className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4"
-                >
-                  <li>
-                    <h2>Profile</h2>
-                  </li>
-                  <li>
-                    <h2>Change Password</h2>
-                  </li>
-                  <li>
-                    <h2
-                      onClick={() => {
-                        signOut(auth);
-                        localStorage.removeItem("accessToken");
-                      }}
-                      className="text-red-600 hover:text-white hover:bg-red-600"
-                    >
-                      Sign Out
-                    </h2>
-                  </li>
-                </ul>
+                {closeDropDown && (
+                  <ul
+                    tabIndex={0}
+                    className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4"
+                  >
+                    <li>
+                      <NavLink
+                        className={({ isActive }) =>
+                          isActive ? "text-xl text-white bg-primary" : ""
+                        }
+                        onClick={() => setCloseDropDown(false)}
+                        to={"/dashboard/user/profile"}
+                      >
+                        <h2>Profile</h2>
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        className={({ isActive }) =>
+                          isActive ? "text-xl text-white bg-primary" : ""
+                        }
+                        onClick={() => setCloseDropDown(false)}
+                        to={"/dashboard/user/change-password"}
+                      >
+                        <h2>Change Password</h2>
+                      </NavLink>
+                    </li>
+                    <li>
+                      <h2
+                        onClick={() => {
+                          signOut(auth);
+                          localStorage.removeItem("accessToken");
+                        }}
+                        className="text-red-600 hover:text-white hover:bg-red-600"
+                      >
+                        Sign Out
+                      </h2>
+                    </li>
+                  </ul>
+                )}
               </div>
             </div>
           )}

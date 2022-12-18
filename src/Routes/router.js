@@ -22,6 +22,7 @@ import AllPromote from "../AllOrder/AllPromote";
 import AllRecover from "../AllOrder/AllRecover";
 import OrderDetails from "../Dashboard/OrderDetails";
 import DashboardMobileNavbar from "../Shared/DashboardMobileNavbar";
+import UserProfile from "../Pages/UserProfile";
 
 export const router = createBrowserRouter([
   {
@@ -92,6 +93,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/order-details/:id",
         element: <OrderDetails />,
+      },
+      {
+        path: "user/profile",
+        element: <UserProfile />,
       },
     ],
   },
