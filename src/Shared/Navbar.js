@@ -56,27 +56,6 @@ const Navbar = () => {
           >
             Home
           </NavLink>
-          <NavLink
-            to="/about"
-            className={({ isActive }) =>
-              isActive
-                ? "btn btn-primary mx-2 text-white btn-sm"
-                : "btn btn-ghost hover:btn-primary mx-2 text-white btn-sm"
-            }
-          >
-            About
-          </NavLink>
-          <NavLink
-            to="/contact"
-            className={({ isActive }) =>
-              isActive
-                ? "btn btn-primary mx-2 text-white btn-sm"
-                : "btn btn-ghost hover:btn-primary mx-2 text-white btn-sm"
-            }
-          >
-            Contact Us
-          </NavLink>
-
           {user && (
             <>
               {userInfo?.role === "member" && (
@@ -111,6 +90,26 @@ const Navbar = () => {
               )}
             </>
           )}
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive
+                ? "btn btn-primary mx-2 text-white btn-sm"
+                : "btn btn-ghost hover:btn-primary mx-2 text-white btn-sm"
+            }
+          >
+            About
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              isActive
+                ? "btn btn-primary mx-2 text-white btn-sm"
+                : "btn btn-ghost hover:btn-primary mx-2 text-white btn-sm"
+            }
+          >
+            Contact Us
+          </NavLink>
         </div>
       </div>
       <div
@@ -122,8 +121,8 @@ const Navbar = () => {
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost rounded-full p-0">
                   <img
-                    className="w-11 rounded-full bg-white"
-                    src={pro}
+                    className="w-11 h-11 rounded-full bg-white"
+                    src={userInfo?.img ? userInfo.img : pro}
                     alt=""
                   />
                 </label>

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
 const UpdateProfileModal = ({ updateInfo, setUpdateInfo }) => {
-  const { name, email } = updateInfo;
+  const { email } = updateInfo;
 
   const {
     register,
@@ -12,11 +12,13 @@ const UpdateProfileModal = ({ updateInfo, setUpdateInfo }) => {
   } = useForm();
 
   const onSubmit = (data) => {
+    const name = data.name;
     const address = data.address;
     const phoneNumber = data.phoneNumber;
     const companyName = data.companyName;
 
     const userInfo = {
+      name,
       address,
       phoneNumber,
       companyName,
@@ -53,7 +55,24 @@ const UpdateProfileModal = ({ updateInfo, setUpdateInfo }) => {
               <label className="label">
                 <span className="label-text text-black">Your Name</span>
               </label>
-              <input className="input input-bordered" disabled value={name} />
+              <input
+                type="text"
+                placeholder="Your Name"
+                className="input input-bordered"
+                {...register("name", {
+                  required: {
+                    value: true,
+                    message: "Your Name is required",
+                  },
+                })}
+              />
+              <label className="label">
+                {errors.name?.type === "required" && (
+                  <span className="text-red-500 label-text-alt">
+                    {errors.name.message}
+                  </span>
+                )}
+              </label>
             </div>
             <div className="form-control">
               <label className="label">

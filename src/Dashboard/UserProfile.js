@@ -3,47 +3,94 @@ import { useContext } from "react";
 import { AuthContext } from "../Contexts/AuthProvider";
 import pro from "../Assets/icons/Artboard 21.png";
 import UpdateProfileModal from "../Modal/UpdateProfileModal";
+import Swal from "sweetalert2";
 
 const UserProfile = () => {
   const { userInfo } = useContext(AuthContext);
   const { name, email, address, img, phoneNumber, companyName } = userInfo;
   const [updateInfo, setUpdateInfo] = useState(false);
 
+  const imageStorageKey = { key: process.env.REACT_APP_imageStorageKey };
+
+  const handleUpdateProfile = (e) => {
+    const image = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey.key}`;
+
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.success) {
+          const img = result.data.url;
+          const data = {
+            img: img,
+          };
+          fetch(`http://localhost:5000/userInfo`, {
+            method: "PUT",
+            headers: {
+              "content-type": "application/json",
+              authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            },
+            body: JSON.stringify(data),
+          })
+            .then((res) => res.json())
+            .then(() => {
+              Swal.fire("Your profile Picture updated", "", "success");
+            });
+        }
+      });
+  };
+
   return (
     <div>
       <div className="p-0 md:p-5 min-h-screen">
         <div className="bg-white p-5 rounded-lg">
-          <div className="flex justify-between">
+          <div className="flex justify-between mt-5">
             <h2 className="text-xl">Profile Information</h2>
-            <label
-              onClick={() => setUpdateInfo(userInfo)}
-              htmlFor="updateProfileModal"
-              className="btn btn-primary text-white btn-xs"
-            >
-              edit
-            </label>
           </div>
           <div className="bg-gray-400 p-[1px]"></div>
           <div className="hero lg:mt-10">
             <div className="hero-content flex-col w-full px-0">
               <div className="flex justify-center w-full lg:w-32 lg:h-32">
-                <img
-                  src={img ? img : pro}
-                  className="max-w-sm rounded-full w-40 h-40 shadow-2xl"
-                  alt=""
+                <input
+                  type="file"
+                  className="hidden"
+                  id="updatePhoto"
+                  onChange={handleUpdateProfile}
                 />
+                <label htmlFor="updatePhoto">
+                  <img
+                    src={img ? img : pro}
+                    className="max-w-sm rounded-full w-40 h-40"
+                    alt=""
+                  />
+                </label>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 w-full gap-3 mt-10 lg:mt-20">
                 <h2 className="text-xl break-words text-primary font-semibold">
                   Name
                 </h2>
-                <h2 className="text-xl break-words md:col-span-2">
+                <h2 className="text-xl break-words ">
                   {name ? (
                     name
                   ) : (
                     <span className="text-red-600">Please fill up</span>
                   )}
                 </h2>
+                <div className="text-end">
+                  <label
+                    onClick={() => setUpdateInfo(userInfo)}
+                    htmlFor="updateProfileModal"
+                    className="btn btn-primary text-white btn-xs"
+                  >
+                    edit
+                  </label>
+                </div>
+
                 <h2 className="text-xl break-words text-primary font-semibold">
                   Company Name
                 </h2>
