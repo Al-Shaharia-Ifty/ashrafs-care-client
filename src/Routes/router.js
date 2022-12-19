@@ -22,7 +22,7 @@ import AllPromote from "../AllOrder/AllPromote";
 import AllRecover from "../AllOrder/AllRecover";
 import OrderDetails from "../Dashboard/OrderDetails";
 import DashboardMobileNavbar from "../Shared/DashboardMobileNavbar";
-import UserProfile from "../Pages/UserProfile";
+import UserProfile from "../Dashboard/UserProfile";
 
 export const router = createBrowserRouter([
   {
