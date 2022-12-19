@@ -24,16 +24,16 @@ const UserProfile = () => {
             </label>
           </div>
           <div className="bg-gray-400 p-[1px]"></div>
-          <div className="hero ">
-            <div className="hero-content flex-col lg:flex-row-reverse justify-between items-start w-full px-0">
+          <div className="hero lg:mt-10">
+            <div className="hero-content flex-col w-full px-0">
               <div className="flex justify-center w-full lg:w-32 lg:h-32">
                 <img
                   src={img ? img : pro}
-                  className="max-w-sm rounded-full w-32 h-32 shadow-2xl"
+                  className="max-w-sm rounded-full w-40 h-40 shadow-2xl"
                   alt=""
                 />
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 w-full">
+              <div className="grid grid-cols-2 md:grid-cols-3 w-full gap-3 mt-10 lg:mt-20">
                 <h2 className="text-xl break-words text-primary font-semibold">
                   Name
                 </h2>
@@ -89,10 +89,12 @@ const UserProfile = () => {
           </div>
         </div>
       </div>
-      <UpdateProfileModal
-        updateInfo={updateInfo}
-        setUpdateInfo={setUpdateInfo}
-      />
+      {updateInfo && (
+        <UpdateProfileModal
+          updateInfo={updateInfo}
+          setUpdateInfo={setUpdateInfo}
+        />
+      )}
     </div>
   );
 };

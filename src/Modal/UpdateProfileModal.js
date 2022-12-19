@@ -1,8 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const UpdateProfileModal = ({ updateInfo, setUpdateInfo }) => {
-  const { name, email, address, phoneNumber, companyName } = updateInfo;
+  const { name, email } = updateInfo;
 
   const {
     register,
@@ -11,7 +12,28 @@ const UpdateProfileModal = ({ updateInfo, setUpdateInfo }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log("hello");
+    const address = data.address;
+    const phoneNumber = data.phoneNumber;
+    const companyName = data.companyName;
+
+    const userInfo = {
+      address,
+      phoneNumber,
+      companyName,
+    };
+    fetch(`http://localhost:5000/userInfo`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(userInfo),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        setUpdateInfo(false);
+        Swal.fire("Your profile update complite", "", "success");
+      });
   };
 
   return (
@@ -61,10 +83,11 @@ const UpdateProfileModal = ({ updateInfo, setUpdateInfo }) => {
                 <span className="label-text text-black">Your Phone Number</span>
               </label>
               <input
-                type="text"
+                type="number"
                 placeholder="Phone Number"
+                onWheel={(e) => e.target.blur()}
                 className="input input-bordered"
-                {...register("companyName", {
+                {...register("phoneNumber", {
                   required: {
                     value: true,
                     message: "Phone Number is required",
@@ -72,9 +95,9 @@ const UpdateProfileModal = ({ updateInfo, setUpdateInfo }) => {
                 })}
               />
               <label className="label">
-                {errors.companyName?.type === "required" && (
+                {errors.phoneNumber?.type === "required" && (
                   <span className="text-red-500 label-text-alt">
-                    {errors.companyName.message}
+                    {errors.phoneNumber.message}
                   </span>
                 )}
               </label>
