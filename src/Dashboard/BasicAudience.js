@@ -13,8 +13,7 @@ const BasicAudience = () => {
   const navigate = useNavigate();
 
   const { userInfo } = useContext(AuthContext);
-  const fullDate = new Date().toString();
-  const date = fullDate.split("GMT")[0];
+  const date = new Date().toLocaleString();
 
   const onSubmit = (data) => {
     const like = data.like;

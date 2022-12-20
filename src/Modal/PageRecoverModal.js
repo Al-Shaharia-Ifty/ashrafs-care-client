@@ -11,8 +11,7 @@ const PageRecoverModal = ({ setPageRecover, pageRecover }) => {
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const fullDate = new Date().toString();
-  const date = fullDate.split("GMT")[0];
+  const date = new Date().toLocaleString();
 
   const onSubmit = (data) => {
     const pageName = data.pageName;
