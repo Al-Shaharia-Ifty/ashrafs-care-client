@@ -31,6 +31,7 @@ import PausedAds from "../Status/PausedAds";
 import BoostRejected from "../Status/BoostRejected";
 import NotDelivering from "../Status/NotDelivering";
 import Complete from "../Status/Complete";
+import Summery from "../Dashboard/Summery";
 
 export const router = createBrowserRouter([
   {
@@ -82,6 +83,9 @@ export const router = createBrowserRouter([
       { path: "/dashboard/all-not-delivering", element: <NotDelivering /> },
       { path: "/dashboard/all-complete", element: <Complete /> },
 
+      // order summery
+      { path: "/dashboard/summery", element: <Summery /> },
+
       // Facebook
       {
         path: "/dashboard/faceBook-instagram/marketing",
@@ -112,6 +116,8 @@ export const router = createBrowserRouter([
         path: "/dashboard/order-details/:id",
         element: <OrderDetails />,
       },
+
+      // user profile
       {
         path: "user/profile",
         element: <UserProfile />,

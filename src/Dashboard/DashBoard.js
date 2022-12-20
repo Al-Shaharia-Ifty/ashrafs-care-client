@@ -53,7 +53,6 @@ const DashBoard = () => {
   const complete = allOrder.filter((p) => {
     return p.status === "Complete";
   });
-  console.log(allOrder);
 
   // code.
   return (
