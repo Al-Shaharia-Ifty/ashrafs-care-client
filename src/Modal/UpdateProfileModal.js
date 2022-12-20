@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
-const UpdateProfileModal = ({ updateInfo, setUpdateInfo }) => {
+const UpdateProfileModal = ({ updateInfo, setUpdateInfo, refetch }) => {
   const { email } = updateInfo;
 
   const {
@@ -33,6 +33,7 @@ const UpdateProfileModal = ({ updateInfo, setUpdateInfo }) => {
     })
       .then((res) => res.json())
       .then(() => {
+        refetch();
         setUpdateInfo(false);
         Swal.fire("Your profile update complite", "", "success");
       });

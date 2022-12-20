@@ -23,6 +23,14 @@ import AllRecover from "../AllOrder/AllRecover";
 import OrderDetails from "../Dashboard/OrderDetails";
 import DashboardMobileNavbar from "../Shared/DashboardMobileNavbar";
 import UserProfile from "../Dashboard/UserProfile";
+import AllStatus from "../Status/AllStatus";
+import Pending from "../Status/Pending";
+import InReview from "../Status/InReview";
+import ActiveAds from "../Status/ActiveAds";
+import PausedAds from "../Status/PausedAds";
+import BoostRejected from "../Status/BoostRejected";
+import NotDelivering from "../Status/NotDelivering";
+import Complete from "../Status/Complete";
 
 export const router = createBrowserRouter([
   {
@@ -63,6 +71,16 @@ export const router = createBrowserRouter([
     children: [
       { path: "/dashboard", element: <DashBoard /> },
       { path: "/dashboard/mobile", element: <DashboardMobileNavbar /> },
+
+      //all Status
+      { path: "/dashboard/all-status", element: <AllStatus /> },
+      { path: "/dashboard/all-pending", element: <Pending /> },
+      { path: "/dashboard/all-in-review", element: <InReview /> },
+      { path: "/dashboard/all-active-ads", element: <ActiveAds /> },
+      { path: "/dashboard/all-paused-ads", element: <PausedAds /> },
+      { path: "/dashboard/all-boost-rejected", element: <BoostRejected /> },
+      { path: "/dashboard/all-not-delivering", element: <NotDelivering /> },
+      { path: "/dashboard/all-complete", element: <Complete /> },
 
       // Facebook
       {

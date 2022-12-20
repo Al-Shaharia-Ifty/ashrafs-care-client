@@ -145,38 +145,62 @@ const DashBoard = () => {
             <h2 className="text-2xl">Status</h2>
           </div>
           <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5 md:gap-10 mt-5">
-            <div className="bg-white p-4 rounded-md">
+            <Link
+              to={"/dashboard/all-status"}
+              className="bg-white p-4 rounded-md"
+            >
               <h2 className="text-xl">Total Order</h2>
               <p>{allOrder.length}</p>
-            </div>
-            <div className="bg-white p-4 rounded-md">
+            </Link>
+            <Link
+              to={"/dashboard/all-pending"}
+              className="bg-white p-4 rounded-md"
+            >
               <h2 className="text-xl text-yellow-400">Pending</h2>
               <p>{pending.length}</p>
-            </div>
-            <div className="bg-white p-4 rounded-md">
+            </Link>
+            <Link
+              to={"/dashboard/all-in-review"}
+              className="bg-white p-4 rounded-md"
+            >
               <h2 className="text-xl text-yellow-400">In-review</h2>
               <p>{inReview.length}</p>
-            </div>
-            <div className="bg-white p-4 rounded-md">
+            </Link>
+            <Link
+              to={"/dashboard/all-active-ads"}
+              className="bg-white p-4 rounded-md"
+            >
               <h2 className="text-xl text-green-600">Active Ads</h2>
               <p>{activeAds.length}</p>
-            </div>
-            <div className="bg-white p-4 rounded-md">
+            </Link>
+            <Link
+              to={"/dashboard/all-paused-ads"}
+              className="bg-white p-4 rounded-md"
+            >
               <h2 className="text-xl text-red-600">Paused Ads</h2>
               <p>{pausedAds.length}</p>
-            </div>
-            <div className="bg-white p-4 rounded-md">
+            </Link>
+            <Link
+              to={"/dashboard/all-boost-rejected"}
+              className="bg-white p-4 rounded-md"
+            >
               <h2 className="text-xl text-red-600">Boost Rejected</h2>
               <p>{boostRejects.length}</p>
-            </div>
-            <div className="bg-white p-4 rounded-md">
+            </Link>
+            <Link
+              to={"/dashboard/all-not-delivering"}
+              className="bg-white p-4 rounded-md"
+            >
               <h2 className="text-xl text-red-600">Not Delivering</h2>
               <p>{notDelivering.length}</p>
-            </div>
-            <div className="bg-white p-4 rounded-md">
+            </Link>
+            <Link
+              to={"/dashboard/all-complete"}
+              className="bg-white p-4 rounded-md"
+            >
               <h2 className="text-xl text-green-600">Complete</h2>
               <p>{complete.length}</p>
-            </div>
+            </Link>
           </div>
 
           <OrderModal />

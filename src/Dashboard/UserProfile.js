@@ -141,6 +141,7 @@ const UserProfile = () => {
         <UpdateProfileModal
           updateInfo={updateInfo}
           setUpdateInfo={setUpdateInfo}
+          refetch={refetch}
         />
       )}
     </div>
