@@ -23,7 +23,7 @@ const UpdateProfileModal = ({ updateInfo, setUpdateInfo }) => {
       phoneNumber,
       companyName,
     };
-    fetch(`http://localhost:5000/userInfo`, {
+    fetch(`https://ashrafs-servier.vercel.app/userInfo`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -6,7 +6,7 @@ import UpdateProfileModal from "../Modal/UpdateProfileModal";
 import Swal from "sweetalert2";
 
 const UserProfile = () => {
-  const { userInfo } = useContext(AuthContext);
+  const { userInfo, refetch } = useContext(AuthContext);
   const { name, email, address, img, phoneNumber, companyName } = userInfo;
   const [updateInfo, setUpdateInfo] = useState(false);
 
@@ -29,7 +29,7 @@ const UserProfile = () => {
           const data = {
             img: img,
           };
-          fetch(`http://localhost:5000/userInfo`, {
+          fetch(`https://ashrafs-servier.vercel.app/userInfo`, {
             method: "PUT",
             headers: {
               "content-type": "application/json",
@@ -39,6 +39,7 @@ const UserProfile = () => {
           })
             .then((res) => res.json())
             .then(() => {
+              refetch();
               Swal.fire("Your profile Picture updated", "", "success");
             });
         }
@@ -71,17 +72,7 @@ const UserProfile = () => {
                 </label>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 w-full gap-3 mt-10 lg:mt-20">
-                <h2 className="text-xl break-words text-primary font-semibold">
-                  Name
-                </h2>
-                <h2 className="text-xl break-words ">
-                  {name ? (
-                    name
-                  ) : (
-                    <span className="text-red-600">Please fill up</span>
-                  )}
-                </h2>
-                <div className="text-end">
+                <div className="text-end col-span-2 md:col-span-3">
                   <label
                     onClick={() => setUpdateInfo(userInfo)}
                     htmlFor="updateProfileModal"
@@ -90,6 +81,16 @@ const UserProfile = () => {
                     edit
                   </label>
                 </div>
+                <h2 className="text-xl break-words text-primary font-semibold">
+                  Name
+                </h2>
+                <h2 className="text-xl break-words md:col-span-2">
+                  {name ? (
+                    name
+                  ) : (
+                    <span className="text-red-600">Please fill up</span>
+                  )}
+                </h2>
 
                 <h2 className="text-xl break-words text-primary font-semibold">
                   Company Name

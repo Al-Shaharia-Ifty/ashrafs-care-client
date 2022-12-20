@@ -16,7 +16,11 @@ const AuthProvider = ({ children }) => {
       ),
   });
 
-  const { data: userInfo, isLoading } = useQuery({
+  const {
+    data: userInfo,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["userInfo"],
     queryFn: () =>
       fetch(`https://ashrafs-servier.vercel.app/userInfo`, {
@@ -34,6 +38,7 @@ const AuthProvider = ({ children }) => {
   const authInfo = {
     userInfo,
     dollarRate,
+    refetch,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
