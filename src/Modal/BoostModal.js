@@ -11,9 +11,8 @@ const BoostModal = ({ setBoost }) => {
   } = useForm();
 
   const { userInfo, dollarRate } = useContext(AuthContext);
-  // const fullDate = new Date().toString();
-  // const date = fullDate.split("GMT")[0];
-  let date = new Date().toLocaleString();
+
+  const date = new Date().toLocaleString();
 
   console.log(date);
 

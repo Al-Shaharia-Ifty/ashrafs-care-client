@@ -32,6 +32,7 @@ import BoostRejected from "../Status/BoostRejected";
 import NotDelivering from "../Status/NotDelivering";
 import Complete from "../Status/Complete";
 import Summery from "../Dashboard/Summery";
+import GraphicsDesign from "../Dashboard/GraphicsDesign/GraphicsDesign";
 
 export const router = createBrowserRouter([
   {
@@ -103,6 +104,9 @@ export const router = createBrowserRouter([
         path: "/dashboard/promote/target-audience",
         element: <TargetAudience />,
       },
+
+      // /dashboard/graphics-design
+      { path: "/dashboard/graphics-design", element: <GraphicsDesign /> },
 
       // all Order
       { path: "/dashboard/all-order", element: <AllOrder /> },

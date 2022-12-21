@@ -7,7 +7,7 @@ const BlogCart = ({ u }) => {
     <div key={_id}>
       <Link
         to={`../blog/${_id}`}
-        className="card card-compact bg-base-100 shadow-xl"
+        className="card card-compact bg-base-100 hover:-translate-y-1 hover:shadow-lg duration-300"
       >
         <figure>
           <img className="w-full  object-cover" src={img} alt="Shoes" />

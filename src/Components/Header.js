@@ -60,10 +60,10 @@ const Header = () => {
             autoPlay={true}
             autoPlaySpeed={3000}
             responsive={responsive}
-            className="mx-10 mt-16 text-white text-center z-10"
+            className="px-10 pt-16 pb-5 text-white text-center z-10"
           >
             {courses.map((c) => (
-              <div key={c._id}>
+              <div key={c._id} className="lg:hover:scale-110 duration-300">
                 <div className="flex justify-center">
                   <img
                     className="rounded-full w-3/5 border-white p-1 border-[3px]"

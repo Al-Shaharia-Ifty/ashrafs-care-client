@@ -27,7 +27,10 @@ const OrderModal = () => {
               </Link>
             </div>
             <div className="bg-[#166534] text-white p-3 rounded-md">
-              <Link className="flex justify-start md:justify-center items-center ml-3">
+              <Link
+                to={`/dashboard/graphics-design`}
+                className="flex justify-start md:justify-center items-center ml-3"
+              >
                 <img className="w-10" src={gra} alt="" />
                 <h2 className="text-xl mx-2">Graphics Design</h2>
               </Link>

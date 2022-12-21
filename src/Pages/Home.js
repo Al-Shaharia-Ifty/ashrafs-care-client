@@ -2,6 +2,7 @@ import React from "react";
 import Blog from "../Components/Blog";
 import Community from "../Components/Community";
 import Header from "../Components/Header";
+import OurStory from "../Components/OurStory";
 import Profile from "../Components/Profile";
 import QNA from "../Components/QNA";
 import Review from "../Components/Review";
@@ -15,6 +16,7 @@ const Home = () => {
       <Profile />
       <Community />
       <Review />
+      <OurStory />
       <QNA />
       <Support />
     </div>
