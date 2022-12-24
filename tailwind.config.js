@@ -10,6 +10,7 @@ module.exports = {
         emerald: {
           primary: "#6CA73F",
           secondary: "#F2F2F2",
+          accent: "#ffffff",
         },
       },
     ],

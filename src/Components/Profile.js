@@ -1,5 +1,5 @@
 import React from "react";
-import photo from "../Assets/photos/ashraf.png";
+import photo from "../Assets/website-img/ashraf.png";
 
 const Profile = () => {
   return (

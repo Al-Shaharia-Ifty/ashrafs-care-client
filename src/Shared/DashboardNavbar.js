@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../Assets/logo512.png";
+import logo from "../Assets/website-img/logo512.png";
 import { AuthContext } from "../Contexts/AuthProvider";
 import auth from "../firebase.init";
 import spt from "../Assets/icons/Artboard-17.png";

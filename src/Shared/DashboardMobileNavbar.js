@@ -1,5 +1,5 @@
 import React from "react";
-import google from "../Assets/google-play.png";
+import google from "../Assets/website-img/google-play.png";
 import order from "../Assets/icons/Artboard 2.png";
 import bel from "../Assets/icons/Artboard 11.png";
 import OrderModal from "../Modal/OrderModal";

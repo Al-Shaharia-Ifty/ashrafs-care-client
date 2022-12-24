@@ -1,6 +1,6 @@
 import React from "react";
 import PrimaryButton from "./PrimaryButton";
-import community from "../Assets/photos/community.png";
+import community from "../Assets/website-img/community.png";
 
 const Community = () => {
   return (

@@ -1,8 +1,8 @@
 import React from "react";
-import member from "../Assets/new-icon/Artboard 2-8.png";
-import branch from "../Assets/new-icon/Artboard 3-8.png";
-import customer from "../Assets/new-icon/Artboard 4-8.png";
-import investor from "../Assets/new-icon/Artboard 5-8.png";
+import member from "../Assets/icons/Artboard 2-8.png";
+import branch from "../Assets/icons/Artboard 3-8.png";
+import customer from "../Assets/icons/Artboard 4-8.png";
+import investor from "../Assets/icons/Artboard 5-8.png";
 
 const OurStory = () => {
   return (

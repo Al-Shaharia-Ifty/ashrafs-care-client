@@ -2,7 +2,7 @@ import { signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../Assets/logo-ok-png.png";
+import logo from "../Assets/website-img/logo-ok-png.png";
 import auth from "../firebase.init";
 import Loading from "./Loading";
 import pro from "../Assets/icons/Artboard 21.png";
@@ -121,7 +121,7 @@ const Navbar = () => {
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost rounded-full p-0">
                   <img
-                    className="w-11 h-11 rounded-full bg-white"
+                    className="w-11 rounded-full bg-white"
                     src={userInfo?.img ? userInfo.img : pro}
                     alt=""
                   />
@@ -131,7 +131,9 @@ const Navbar = () => {
                   className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4"
                 >
                   <li>
-                    <h2>Profile</h2>
+                    <Link to={"/dashboard/user/profile"}>
+                      <h2>Profile</h2>
+                    </Link>
                   </li>
                   <li>
                     <h2>Change Password</h2>
