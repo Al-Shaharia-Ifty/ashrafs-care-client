@@ -8,7 +8,7 @@ const GraphicsDesign = () => {
   const { data: designs, isLoading } = useQuery({
     queryKey: ["designs"],
     queryFn: () =>
-      fetch(`http://localhost:5000/design`, {
+      fetch(`https://ashrafs-servier.vercel.app/design`, {
         method: "GET",
         headers: {
           "content-type": "application/json",
