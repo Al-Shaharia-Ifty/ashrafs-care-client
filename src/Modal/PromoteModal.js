@@ -5,7 +5,7 @@ const PromoteModal = ({ setPromote }) => {
   return (
     <div>
       <input type="checkbox" id="promote-modal" className="modal-toggle" />
-      <div className="modal">
+      <div className="modal glass">
         <div className="modal-box relative">
           <label
             htmlFor="promote-modal"

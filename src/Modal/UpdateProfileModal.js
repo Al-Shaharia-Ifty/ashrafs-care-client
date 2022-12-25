@@ -42,7 +42,7 @@ const UpdateProfileModal = ({ updateInfo, setUpdateInfo, refetch }) => {
   return (
     <div>
       <input type="checkbox" id="updateProfileModal" className="modal-toggle" />
-      <div className="modal">
+      <div className="modal glass">
         <div className="modal-box relative">
           <label
             htmlFor="updateProfileModal"

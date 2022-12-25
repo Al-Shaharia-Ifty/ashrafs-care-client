@@ -45,7 +45,7 @@ const PageRecoverModal = ({ setPageRecover, pageRecover }) => {
   return (
     <div>
       <input type="checkbox" id="pageRecover-modal" className="modal-toggle" />
-      <div className="modal">
+      <div className="modal glass">
         <div className="modal-box relative">
           <label
             htmlFor="pageRecover-modal"

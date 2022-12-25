@@ -44,6 +44,13 @@ input::-webkit-inner-spin-button {
   background-color: white;
 }
 
+.glass,
+.glass:hover,
+.glass.btn-active {
+  backdrop-filter: blur(var(--glass-blur, 5px));
+  background-color: #0808086e;
+}
+
 /* Smartphones (portrait) */
 @media only screen and (max-width: 320px) {
   /* Styles */

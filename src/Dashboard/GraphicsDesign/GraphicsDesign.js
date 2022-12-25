@@ -3,8 +3,11 @@ import pcImg from "../../Assets/website-banner/banner-for-desktop.png";
 import mobileImg from "../../Assets/website-banner/banner-for-mobile.png";
 import { useQuery } from "react-query";
 import Loading from "../../Shared/Loading";
+import { useState } from "react";
+import GraphicsOrderModal from "../../Modal/GraphicsOrderModal";
 
 const GraphicsDesign = () => {
+  const [order, setOrder] = useState(false);
   const { data: designs, isLoading } = useQuery({
     queryKey: ["designs"],
     queryFn: () =>
@@ -40,11 +43,16 @@ const GraphicsDesign = () => {
             <p className="bg-primary text-white p-[2px] px-2">{d.name}</p>
             <div className="flex items-center justify-between p-2 px-2 text-white bg-[#166534]">
               <p className="text-xs md:text-sm">Price: ৳{d.price}</p>
-              <button className="small-btn">Order Now</button>
+              <button className="small-btn">
+                <label htmlFor="graphic-order" onClick={() => setOrder(d)}>
+                  Order Now
+                </label>
+              </button>
             </div>
           </div>
         ))}
       </div>
+      {order && <GraphicsOrderModal order={order} setOrder={setOrder} />}
     </div>
   );
 };

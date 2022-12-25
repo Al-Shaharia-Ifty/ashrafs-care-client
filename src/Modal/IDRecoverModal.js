@@ -45,7 +45,7 @@ const IDRecoverModal = ({ idRecover, setIdRecover }) => {
   return (
     <div>
       <input type="checkbox" id="idRecover-modal" className="modal-toggle" />
-      <div className="modal">
+      <div className="modal glass">
         <div className="modal-box relative">
           <label
             htmlFor="idRecover-modal"
