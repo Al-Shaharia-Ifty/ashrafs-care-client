@@ -40,9 +40,9 @@ const GraphicsDesign = () => {
         {[...designs].reverse().map((d, i) => (
           <div key={i}>
             <img className="rounded-t-xl" src={d.img} alt="" />
-            <p className="bg-primary text-white p-[2px] px-2">{d.name}</p>
+            <p className="bg-primary text-white p-[2px] px-2">{d.designName}</p>
             <div className="flex items-center justify-between p-2 px-2 text-white bg-[#166534]">
-              <p className="text-xs md:text-sm">Price: ৳{d.price}</p>
+              <p className="text-xs md:text-sm">Price: ৳{d.amount}</p>
               <button className="small-btn">
                 <label htmlFor="graphic-order" onClick={() => setOrder(d)}>
                   Order Now

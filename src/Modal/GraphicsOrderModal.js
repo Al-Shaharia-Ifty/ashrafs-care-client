@@ -1,16 +1,107 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import { AuthContext } from "../Contexts/AuthProvider";
+import Loading from "../Shared/Loading";
 
 const GraphicsOrderModal = ({ order, setOrder }) => {
-  const { name, details } = order;
+  const { userInfo } = useContext(AuthContext);
+  const { name, email } = userInfo;
+  const { designName, details, amount } = order;
+  const [loading, setLoading] = useState(false);
+  const date = new Date().toLocaleString();
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
+  if (loading) {
+    return <Loading />;
+  }
 
   const onSubmit = (data) => {
-    console.log(data);
+    const image = data.image[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    const url = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_imageStorageKey}`;
+    console.log(image);
+    if (image) {
+      fetch(url, {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          if (result.success) {
+            const img = result.data.url;
+            const order = {
+              img: img,
+              phoneNumber: data.phone,
+              description: data.description,
+              designName: designName,
+              email: email,
+              name: name,
+              orderType: "graphic",
+              status: "Pending",
+              date: date,
+              amount: amount,
+            };
+            fetch(`http://localhost:5000/design`, {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+              },
+              body: JSON.stringify(order),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.insertedId) {
+                  setLoading(false);
+                  Swal.fire("Add Order Successful", "", "success");
+                  setOrder(false);
+                } else {
+                  Swal.fire("Failed to Add Order", "", "error");
+                  setOrder(false);
+                }
+              });
+          } else {
+            Swal.fire("Failed to Add Product", "", "error");
+          }
+        });
+    } else {
+      const order = {
+        phoneNumber: data.phone,
+        description: data.description,
+        designName: designName,
+        email: email,
+        name: name,
+        orderType: "graphic",
+        status: "Pending",
+        date: date,
+        amount: amount,
+      };
+      fetch(`http://localhost:5000/design`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(order),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            setLoading(false);
+            Swal.fire("Add Order Successful", "", "success");
+            setOrder(false);
+          } else {
+            Swal.fire("Failed to Add Order", "", "error");
+            setOrder(false);
+          }
+        });
+    }
   };
   return (
     <div>
@@ -23,7 +114,7 @@ const GraphicsOrderModal = ({ order, setOrder }) => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">Your {name} information</h3>
+          <h3 className="text-lg font-bold">Your {designName} information</h3>
           <p className="py-4">{details}</p>
           <form onSubmit={handleSubmit(onSubmit)} className="card-body py-0">
             <div className="form-control">
@@ -65,7 +156,7 @@ const GraphicsOrderModal = ({ order, setOrder }) => {
               </label>
               <textarea
                 placeholder="Description"
-                className="textarea textarea-bordered min-h-[150px] max-h-[200px]"
+                className="textarea textarea-bordered min-h-[110px] max-h-[180px]"
                 {...register("description", {
                   required: {
                     value: true,
@@ -77,6 +168,26 @@ const GraphicsOrderModal = ({ order, setOrder }) => {
                 {errors.description?.type === "required" && (
                   <span className="text-red-500 label-text-alt">
                     {errors.description.message}
+                  </span>
+                )}
+              </label>
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-black">
+                  Your Sample (Optional)
+                </span>
+              </label>
+              <input
+                type="file"
+                className="input input-bordered"
+                accept="image/gif, image/jpeg, image/png"
+                {...register("image")}
+              />
+              <label className="label">
+                {errors.image?.type === "required" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.image.message}
                   </span>
                 )}
               </label>

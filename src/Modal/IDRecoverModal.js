@@ -25,7 +25,7 @@ const IDRecoverModal = ({ idRecover, setIdRecover }) => {
       idLink,
       number,
       date: date,
-      amount: "1500Tk",
+      amount: "1500",
       status: "Pending",
     };
     fetch("https://ashrafs-servier.vercel.app/recover", {

@@ -25,7 +25,7 @@ const PageRecoverModal = ({ setPageRecover, pageRecover }) => {
       pageLink,
       phoneNumber,
       date: date,
-      amount: "1500Tk",
+      amount: "1500",
       status: "Pending",
     };
     fetch("https://ashrafs-servier.vercel.app/recover", {
