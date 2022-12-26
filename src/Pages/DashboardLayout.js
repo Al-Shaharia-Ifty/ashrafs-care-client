@@ -76,7 +76,10 @@ const Dashboard = () => {
               </Link>
             </li>
             <li>
-              <Link className="block text-center mt-2 text-xl">
+              <Link
+                to={`/dashboard/support`}
+                className="block text-center mt-2 text-xl"
+              >
                 <div className="flex justify-center mb-2">
                   <img className="w-14" src={srp} alt="" />
                 </div>
@@ -84,7 +87,10 @@ const Dashboard = () => {
               </Link>
             </li>
             <li>
-              <Link className="block text-center mt-2 text-xl">
+              <Link
+                to={"/dashboard/user/profile"}
+                className="block text-center mt-2 text-xl"
+              >
                 <div className="flex justify-center mb-2">
                   <img className="w-14" src={sett} alt="" />
                 </div>

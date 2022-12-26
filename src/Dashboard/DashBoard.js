@@ -67,7 +67,7 @@ const DashBoard = () => {
             <div className="flex justify-center mb-2">
               <img className="w-14" src={das} alt="" />
             </div>
-            <p>Dashboard</p>
+            <p>Make Order</p>
           </Link>
           <Link
             to={"/dashboard/status"}
@@ -108,7 +108,10 @@ const DashBoard = () => {
             </div>
             <p>Support</p>
           </Link>
-          <Link className="block text-center mt-2 text-xl">
+          <Link
+            to={"/dashboard/user/profile"}
+            className="block text-center mt-2 text-xl"
+          >
             <div className="flex justify-center mb-2">
               <img className="w-14" src={sett} alt="" />
             </div>

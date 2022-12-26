@@ -1,8 +1,16 @@
 import React from "react";
+import { useState } from "react";
 import { BsArrowRightCircle } from "react-icons/bs";
 import SupportFooter from "../Components/SupportFooter";
+import ReportModal from "../Modal/ReportModal";
+import Loading from "../Shared/Loading";
 
 const Report = () => {
+  const [problem, setProblem] = useState(false);
+  const [loading, setLoading] = useState(false);
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div>
       <div className="min-h-screen bg-white">
@@ -18,36 +26,73 @@ const Report = () => {
           </div>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-7 py-24 px-5 md:px-10 lg:px-20">
-          <h2 className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center">
+          <label
+            htmlFor="support-modal"
+            onClick={(e) => setProblem(e.target.textContent)}
+            className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center"
+          >
             আমার বুস্ট নট ডেলিভারিং হয়ে আছে
-          </h2>
-          <h2 className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center">
+          </label>
+          <label
+            htmlFor="support-modal"
+            onClick={(e) => setProblem(e.target.textContent)}
+            className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center"
+          >
             আমার বুস্ট রিজেক্ট করে দিয়েছে
-          </h2>
-          <h2 className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center">
+          </label>
+          <label
+            htmlFor="support-modal"
+            onClick={(e) => setProblem(e.target.textContent)}
+            className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center"
+          >
             আমার বুস্ট নট ডেলিভারিং হয়ে আছে
-          </h2>
-          <h2 className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center">
+          </label>
+          <label
+            htmlFor="support-modal"
+            onClick={(e) => setProblem(e.target.textContent)}
+            className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center"
+          >
             আমার বুস্ট নট ডেলিভারিং হয়ে আছে
-          </h2>
-          <h2 className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center">
+          </label>
+          <label
+            htmlFor="support-modal"
+            onClick={(e) => setProblem(e.target.textContent)}
+            className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center"
+          >
             আমার বুস্ট নট ডেলিভারিং হয়ে আছে
-          </h2>
-          <h2 className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center">
+          </label>
+          <label
+            htmlFor="support-modal"
+            onClick={(e) => setProblem(e.target.textContent)}
+            className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center"
+          >
             আমার বুস্ট রিজেক্ট করে দিয়েছে
-          </h2>
-          <h2 className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center">
+          </label>
+          <label
+            htmlFor="support-modal"
+            onClick={(e) => setProblem(e.target.textContent)}
+            className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center"
+          >
             আমার বুস্ট নট ডেলিভারিং হয়ে আছে
-          </h2>
-          <h2 className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center">
+          </label>
+          <label
+            htmlFor="support-modal"
+            onClick={(e) => setProblem(e.target.textContent)}
+            className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center"
+          >
             আমার বুস্ট নট ডেলিভারিং হয়ে আছে
-          </h2>
+          </label>
           <div className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl flex justify-center items-center">
             আরো ব্রাউজ করুন <BsArrowRightCircle className="ml-3" />
           </div>
         </div>
         <SupportFooter />
       </div>
+      <ReportModal
+        problem={problem}
+        setProblem={setProblem}
+        setLoading={setLoading}
+      />
     </div>
   );
 };

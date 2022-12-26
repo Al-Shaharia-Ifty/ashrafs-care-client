@@ -34,6 +34,7 @@ import Summery from "../Dashboard/Summery";
 import TargetAudience from "../Dashboard/Facebook/TargetAudience";
 import UserProfile from "../Dashboard/UserProfile";
 import Report from "../Dashboard/Report";
+import Support from "../Dashboard/Support";
 
 export const router = createBrowserRouter([
   {
@@ -90,6 +91,9 @@ export const router = createBrowserRouter([
 
       // Report
       { path: "/dashboard/report", element: <Report /> },
+
+      // support
+      { path: "/dashboard/support", element: <Support /> },
 
       // Facebook
       {
