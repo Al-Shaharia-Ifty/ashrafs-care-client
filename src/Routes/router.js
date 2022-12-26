@@ -33,6 +33,7 @@ import Register from "../Pages/Register";
 import Summery from "../Dashboard/Summery";
 import TargetAudience from "../Dashboard/Facebook/TargetAudience";
 import UserProfile from "../Dashboard/UserProfile";
+import Report from "../Dashboard/Report";
 
 export const router = createBrowserRouter([
   {
@@ -86,6 +87,9 @@ export const router = createBrowserRouter([
 
       // order summery
       { path: "/dashboard/summery", element: <Summery /> },
+
+      // Report
+      { path: "/dashboard/report", element: <Report /> },
 
       // Facebook
       {
