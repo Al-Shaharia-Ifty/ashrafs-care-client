@@ -8,6 +8,7 @@ import GraphicsOrderModal from "../../Modal/GraphicsOrderModal";
 
 const GraphicsDesign = () => {
   const [order, setOrder] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { data: designs, isLoading } = useQuery({
     queryKey: ["designs"],
     queryFn: () =>
@@ -19,7 +20,7 @@ const GraphicsDesign = () => {
         },
       }).then((res) => res.json()),
   });
-  if (isLoading) {
+  if (isLoading || loading) {
     return <Loading />;
   }
   return (
@@ -52,7 +53,13 @@ const GraphicsDesign = () => {
           </div>
         ))}
       </div>
-      {order && <GraphicsOrderModal order={order} setOrder={setOrder} />}
+      {order && (
+        <GraphicsOrderModal
+          order={order}
+          setOrder={setOrder}
+          setLoading={setLoading}
+        />
+      )}
     </div>
   );
 };

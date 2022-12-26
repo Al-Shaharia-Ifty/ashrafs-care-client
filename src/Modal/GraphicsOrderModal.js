@@ -1,31 +1,25 @@
 import React, { useContext } from "react";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Contexts/AuthProvider";
-import Loading from "../Shared/Loading";
 
-const GraphicsOrderModal = ({ order, setOrder }) => {
+const GraphicsOrderModal = ({ order, setOrder, setLoading }) => {
   const { userInfo } = useContext(AuthContext);
   const { name, email } = userInfo;
   const { designName, details, amount } = order;
-  const [loading, setLoading] = useState(false);
   const date = new Date().toLocaleString();
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
-  if (loading) {
-    return <Loading />;
-  }
 
   const onSubmit = (data) => {
+    setLoading(true);
     const image = data.image[0];
     const formData = new FormData();
     formData.append("image", image);
     const url = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_imageStorageKey}`;
-    console.log(image);
     if (image) {
       fetch(url, {
         method: "POST",
@@ -47,7 +41,7 @@ const GraphicsOrderModal = ({ order, setOrder }) => {
               date: date,
               amount: amount,
             };
-            fetch(`http://localhost:5000/design`, {
+            fetch(`https://ashrafs-servier.vercel.app/design`, {
               method: "POST",
               headers: {
                 "content-type": "application/json",
@@ -82,7 +76,7 @@ const GraphicsOrderModal = ({ order, setOrder }) => {
         date: date,
         amount: amount,
       };
-      fetch(`http://localhost:5000/design`, {
+      fetch(`https://ashrafs-servier.vercel.app/design`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

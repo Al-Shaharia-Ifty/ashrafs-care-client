@@ -4,7 +4,6 @@ import Community from "../Components/Community";
 import Header from "../Components/Header";
 import OurStory from "../Components/OurStory";
 import Profile from "../Components/Profile";
-import QNA from "../Components/QNA";
 import Review from "../Components/Review";
 import Support from "../Components/Support";
 
@@ -17,7 +16,7 @@ const Home = () => {
       <Community />
       <Review />
       <OurStory />
-      <QNA />
+      {/* <QNA /> */}
       <Support />
     </div>
   );

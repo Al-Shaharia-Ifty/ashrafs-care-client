@@ -59,7 +59,7 @@ const DashBoard = () => {
     <div>
       {/* mobile and tab view */}
       <div className="lg:hidden min-h-screen">
-        <div className="grid grid-cols-2 md:grid-cols-3 my-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 py-10">
           <Link
             to={"/dashboard/mobile"}
             className="block text-center mt-2 text-xl"
@@ -210,3 +210,21 @@ const DashBoard = () => {
 };
 
 export default DashBoard;
+
+/*
+<label htmlFor="order-modal" className="label block text-center">
+  <div className="flex justify-center items-center mb-2">
+    <img className="w-14" src={order} alt="" />
+  </div>
+  <h2 className="text-2xl">Add Order</h2>
+</label>
+<div className="label block text-center">
+  <div className="flex justify-center items-center mb-2">
+    <img className="w-14" src={bel} alt="" />
+  </div>
+  <div>
+    <h2 className="text-2xl">Balance</h2>
+    <p>{""}</p>
+  </div>
+</div>
+*/
