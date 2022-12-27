@@ -5,10 +5,13 @@ import auth from "../firebase.init";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useToken from "../Hooks/useTooken";
 import Loading from "../Shared/Loading";
+import ResetPasswordModal from "../Modal/ResetPasswordModal";
+import { useState } from "react";
 
 const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [modal, setModal] = useState(false);
   const {
     register,
     formState: { errors },
@@ -130,13 +133,18 @@ const Login = () => {
             </p>
             <p>
               Are you forget your password?{" "}
-              <Link to="/reset_pass" className="text-blue-500">
+              <label
+                onClick={() => setModal(true)}
+                htmlFor="reset-modal"
+                className="text-blue-500"
+              >
                 Reset Password
-              </Link>
+              </label>
             </p>
           </div>
         </div>
       </div>
+      {modal && <ResetPasswordModal setModal={setModal} />}
     </div>
   );
 };
