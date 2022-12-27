@@ -1,11 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import google from "../Assets/website-img/google-play.png";
-import das from "../Assets/icons/Artboard 1.png";
 import order from "../Assets/icons/Artboard 2.png";
 import bel from "../Assets/icons/Artboard 11.png";
 import status from "../Assets/icons/Artboard 22.png";
-import sett from "../Assets/icons/Artboard 23.png";
 import pay from "../Assets/icons/Artboard-6.png";
 import ord from "../Assets/icons/Order.png";
 import srp from "../Assets/icons/Artboard 31.png";
@@ -60,17 +58,23 @@ const DashBoard = () => {
       {/* mobile and tab view */}
       <div className="lg:hidden min-h-screen">
         <div className="grid grid-cols-2 md:grid-cols-3 py-10">
-          <Link
-            to={"/dashboard/mobile"}
-            className="block text-center mt-2 text-xl"
-          >
-            <div className="flex justify-center mb-2">
-              <img className="w-14" src={das} alt="" />
+          <label htmlFor="order-modal" className="label block text-center">
+            <div className="flex justify-center items-center mb-2">
+              <img className="w-14" src={order} alt="" />
             </div>
-            <p>Make Order</p>
-          </Link>
+            <h2 className="text-2xl">Add Order</h2>
+          </label>
+          <div className="label block text-center">
+            <div className="flex justify-center items-center mb-2">
+              <img className="w-14" src={bel} alt="" />
+            </div>
+            <div>
+              <h2 className="text-2xl">Balance</h2>
+              <p>{""}</p>
+            </div>
+          </div>
           <Link
-            to={"/dashboard/status"}
+            to={"/dashboard/summery"}
             className="block text-center mt-2 text-xl"
           >
             <div className="flex justify-center mb-2">
@@ -102,20 +106,14 @@ const DashBoard = () => {
             </div>
             <p>Report</p>
           </Link>
-          <Link className="block text-center mt-2 text-xl">
+          <Link
+            to={`/dashboard/support`}
+            className="block text-center mt-2 text-xl"
+          >
             <div className="flex justify-center mb-2">
               <img className="w-14" src={srp} alt="" />
             </div>
             <p>Support</p>
-          </Link>
-          <Link
-            to={"/dashboard/user/profile"}
-            className="block text-center mt-2 text-xl"
-          >
-            <div className="flex justify-center mb-2">
-              <img className="w-14" src={sett} alt="" />
-            </div>
-            <p>Settings</p>
           </Link>
         </div>
       </div>
@@ -207,10 +205,9 @@ const DashBoard = () => {
               <p>{complete.length}</p>
             </Link>
           </div>
-
-          <OrderModal />
         </div>
       </div>
+      <OrderModal />
     </div>
   );
 };
