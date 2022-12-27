@@ -1,12 +1,13 @@
 import React, { createContext } from "react";
 import { useQuery } from "react-query";
 import Loading from "../Shared/Loading";
-// import auth from "../firebase.init";
+import auth from "../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  // const [user] = useAuthState(auth);
+  const [user, userLoading] = useAuthState(auth);
 
   const { data: dollarRate } = useQuery({
     queryKey: ["dollarRate"],
@@ -32,10 +33,11 @@ const AuthProvider = ({ children }) => {
       }).then((res) => res.json()),
   });
 
-  if (isLoading) {
+  if (isLoading || userLoading) {
     return <Loading />;
   }
   const authInfo = {
+    user,
     userInfo,
     dollarRate,
     refetch,

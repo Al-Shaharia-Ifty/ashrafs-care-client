@@ -26,7 +26,7 @@ const ReportModal = ({ problem, setProblem, setLoading }) => {
       question: problem,
       phoneNumber: phoneNumber,
     };
-    fetch("https://ashrafs-servier.vercel.app/support", {
+    fetch("https://ashrafs-servier.vercel.app/report", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -35,6 +35,7 @@ import TargetAudience from "../Dashboard/Facebook/TargetAudience";
 import UserProfile from "../Dashboard/UserProfile";
 import Report from "../Dashboard/Report";
 import Support from "../Dashboard/Support";
+import ChangePassword from "../Dashboard/ChangePassword";
 
 export const router = createBrowserRouter([
   {
@@ -133,6 +134,10 @@ export const router = createBrowserRouter([
       {
         path: "user/profile",
         element: <UserProfile />,
+      },
+      {
+        path: "user/change-password",
+        element: <ChangePassword />,
       },
     ],
   },
