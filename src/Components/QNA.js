@@ -3,11 +3,11 @@ import React, { useState } from "react";
 const QNA = () => {
   const [close, setClose] = useState("");
   return (
-    <div className="bg-[#dfd9f7] py-5 mt-10">
-      <h2 className="text-3xl text-center text-[#166534] ">
+    <div className="py-5">
+      <h2 className="text-center text-3xl md:text-4xl text-primary pt-16 pb-10">
         Frequently Asked Question
       </h2>
-      <div className="grid md:grid-cols-2 grid-cols-1 px-10 gap-4 mt-10">
+      <div className="grid lg:grid-cols-2 grid-cols-1 px-10 gap-5 pb-16">
         <div
           onClick={() => setClose(<input type="checkbox" />)}
           onBlur={() => setClose("")}
@@ -15,7 +15,7 @@ const QNA = () => {
         >
           <div
             tabIndex={0}
-            className="collapse collapse-plus rounded-2xl bg-white"
+            className="collapse collapse-plus rounded-2xl bg-[#C7EAFB94]"
           >
             {close}
             <div className="collapse-title text-xl font-medium">
@@ -33,7 +33,7 @@ const QNA = () => {
         >
           <div
             tabIndex={0}
-            className="collapse collapse-plus rounded-2xl bg-white"
+            className="collapse collapse-plus rounded-2xl bg-[#C7EAFB94]"
           >
             {close}
             <div className="collapse-title text-xl font-medium">
@@ -51,7 +51,7 @@ const QNA = () => {
         >
           <div
             tabIndex={0}
-            className="collapse collapse-plus rounded-2xl bg-white"
+            className="collapse collapse-plus rounded-2xl bg-[#C7EAFB94]"
           >
             {close}
             <div className="collapse-title text-xl font-medium">
@@ -69,7 +69,7 @@ const QNA = () => {
         >
           <div
             tabIndex={0}
-            className="collapse collapse-plus rounded-2xl bg-white"
+            className="collapse collapse-plus rounded-2xl bg-[#C7EAFB94]"
           >
             {close}
             <div className="collapse-title text-xl font-medium">
@@ -87,7 +87,7 @@ const QNA = () => {
         >
           <div
             tabIndex={0}
-            className="collapse collapse-plus rounded-2xl bg-white"
+            className="collapse collapse-plus rounded-2xl bg-[#C7EAFB94]"
           >
             {close}
             <div className="collapse-title text-xl font-medium">
@@ -105,7 +105,7 @@ const QNA = () => {
         >
           <div
             tabIndex={0}
-            className="collapse collapse-plus rounded-2xl bg-white"
+            className="collapse collapse-plus rounded-2xl bg-[#C7EAFB94]"
           >
             {close}
             <div className="collapse-title text-xl font-medium">
@@ -126,7 +126,7 @@ const QNA = () => {
         >
           <div
             tabIndex={0}
-            className="collapse collapse-plus rounded-2xl bg-white"
+            className="collapse collapse-plus rounded-2xl bg-[#C7EAFB94]"
           >
             {close}
             <div className="collapse-title text-xl font-medium">
@@ -147,7 +147,7 @@ const QNA = () => {
         >
           <div
             tabIndex={0}
-            className="collapse collapse-plus rounded-2xl bg-white"
+            className="collapse collapse-plus rounded-2xl bg-[#C7EAFB94]"
           >
             {close}
             <div className="collapse-title text-xl font-medium">

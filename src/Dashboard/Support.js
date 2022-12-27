@@ -1,5 +1,5 @@
 import React from "react";
-import { BsArrowRightCircle } from "react-icons/bs";
+import QNA from "../Components/QNA";
 import SupportFooter from "../Components/SupportFooter";
 
 const Support = () => {
@@ -17,38 +17,8 @@ const Support = () => {
             </p>
           </div>
         </div>
-        <h2 className="text-center text-3xl md:text-4xl text-primary py-16">
-          Frequently Asked Question
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-7 pb-24 px-5 md:px-10 lg:px-20">
-          <label className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center">
-            পেজ সেটআপ এর প্যাকেজ সম্পর্কে জানতে চাই?
-          </label>
-          <label className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center">
-            প্রোমোট করতে চাই। কিভাবে করব?
-          </label>
-          <label className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center">
-            পেজ সেটআপ এর প্যাকেজ সম্পর্কে জানতে চাই?
-          </label>
-          <label className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center">
-            প্রোডাক্ট ডিজাইন চার্জ কত?
-          </label>
-          <label className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center">
-            প্রোডাক্ট ডিজাইন চার্জ কত?
-          </label>
-          <label className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center">
-            আমার বুস্ট রিজেক্ট করে দিয়েছে
-          </label>
-          <label className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center">
-            আমার বুস্ট নট ডেলিভারিং হয়ে আছে
-          </label>
-          <label className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center">
-            আমার বুস্ট নট ডেলিভারিং হয়ে আছে
-          </label>
-          <div className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl flex justify-center items-center">
-            আরো ব্রাউজ করুন <BsArrowRightCircle className="ml-3" />
-          </div>
-        </div>
+        <QNA />
+
         <SupportFooter />
       </div>
     </div>
