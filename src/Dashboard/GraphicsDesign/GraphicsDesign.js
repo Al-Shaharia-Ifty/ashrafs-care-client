@@ -5,6 +5,7 @@ import { useQuery } from "react-query";
 import Loading from "../../Shared/Loading";
 import { useState } from "react";
 import GraphicsOrderModal from "../../Modal/GraphicsOrderModal";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 const GraphicsDesign = () => {
   const [order, setOrder] = useState(false);
@@ -40,7 +41,11 @@ const GraphicsDesign = () => {
       <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 lg:mx-[52px] mx-[14px] gap-[22px] pb-3">
         {[...designs].reverse().map((d, i) => (
           <div key={i}>
-            <img className="rounded-t-xl" src={d.img} alt="" />
+            <PhotoProvider>
+              <PhotoView src={d.img}>
+                <img className="rounded-t-xl" src={d.img} alt="" />
+              </PhotoView>
+            </PhotoProvider>
             <p className="bg-primary text-white p-[2px] px-2">{d.designName}</p>
             <div className="flex items-center justify-between p-2 px-2 text-white bg-[#166534]">
               <p className="text-xs md:text-sm">Price: ৳{d.amount}</p>

@@ -26,13 +26,13 @@ const BlogPage = () => {
             <PhotoView src={img}>
               <img
                 src={img}
-                className="max-w-lg rounded-lg shadow-2xl"
+                className="w-full max-w-lg rounded-lg shadow-2xl"
                 alt=""
               />
             </PhotoView>
           </PhotoProvider>
           <div>
-            <h1 className="text-5xl mt-10 font-bold">{heading}</h1>
+            <h1 className="lg:text-5xl text-2xl mt-10 font-bold">{heading}</h1>
             <p className="py-6 text-xl">{details}</p>
           </div>
         </div>
