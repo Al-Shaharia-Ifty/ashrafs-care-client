@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Contexts/AuthProvider";
 
-const IDRecoverModal = ({ idRecover, setIdRecover }) => {
+const IDRecoverModal = ({ idRecover, setIdRecover, setLoading }) => {
   const { userInfo } = useContext(AuthContext);
   const {
     register,
@@ -14,6 +14,7 @@ const IDRecoverModal = ({ idRecover, setIdRecover }) => {
   const date = new Date().toLocaleString();
 
   const onSubmit = (data) => {
+    setLoading(true);
     const idName = data.IdName;
     const idLink = data.idLink;
     const number = data.phoneNumber;
@@ -38,6 +39,7 @@ const IDRecoverModal = ({ idRecover, setIdRecover }) => {
     })
       .then((res) => res.json())
       .then(() => {
+        setLoading(false);
         setIdRecover(false);
         Swal.fire("Done", "Your Order is Successful", "success");
       });

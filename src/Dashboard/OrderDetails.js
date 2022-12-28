@@ -31,6 +31,7 @@ const OrderDetails = () => {
     date,
     description,
     designName,
+    dollar,
     dollarAmount,
     email,
     gender,
@@ -112,9 +113,13 @@ const OrderDetails = () => {
               </div>
               <div className="lg:mt-5 w-full lg:w-1/2">
                 <div className="grid grid-cols-3 md:grid-cols-4">
+                  <h2 className="text-xl font-bold">Dollar</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-3">
+                    : {dollar} dollar
+                  </h2>
                   <h2 className="text-xl font-bold">Amount</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
-                    : {dollarAmount} Dollar
+                    : {dollarAmount} Tk
                   </h2>
                   <h2 className="text-xl font-bold">Boost Day</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
@@ -279,7 +284,7 @@ const OrderDetails = () => {
                 <div className="grid grid-cols-3 md:grid-cols-4">
                   <h2 className="text-xl font-bold">Amount</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
-                    : {amount}
+                    : {amount} Tk
                   </h2>
                   <h2 className="text-xl font-bold">Page Link</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3 overflow-hidden">
@@ -319,7 +324,7 @@ const OrderDetails = () => {
                 <div className="grid grid-cols-3 md:grid-cols-4">
                   <h2 className="text-xl font-bold">Amount</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
-                    : {amount}
+                    : {amount} Tk
                   </h2>
                   <h2 className="text-xl font-bold">Page Link</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3 overflow-hidden">
@@ -389,7 +394,7 @@ const OrderDetails = () => {
                   </h2>
                   <h2 className="text-xl font-bold">Amount</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
-                    : {amount}
+                    : {amount} Tk
                   </h2>
                 </div>
               </div>
@@ -416,7 +421,7 @@ const OrderDetails = () => {
                   <h2 className="text-xl font-bold">Design name</h2>
                   <h2 className="text-xl col-span-2">: {designName}</h2>
                   <h2 className="text-xl font-bold">Amount</h2>
-                  <h2 className="text-xl col-span-2">: {amount}</h2>
+                  <h2 className="text-xl col-span-2">: {amount} Tk</h2>
                   <h2 className="text-xl font-bold">Sample</h2>
                   {img ? (
                     <img className="col-span-2" src={img} alt="" />

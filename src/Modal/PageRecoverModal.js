@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Contexts/AuthProvider";
 
-const PageRecoverModal = ({ setPageRecover, pageRecover }) => {
+const PageRecoverModal = ({ setPageRecover, pageRecover, setLoading }) => {
   const { userInfo } = useContext(AuthContext);
   const {
     register,
@@ -14,6 +14,7 @@ const PageRecoverModal = ({ setPageRecover, pageRecover }) => {
   const date = new Date().toLocaleString();
 
   const onSubmit = (data) => {
+    setLoading(true);
     const pageName = data.pageName;
     const pageLink = data.pageLink;
     const phoneNumber = data.phoneNumber;
@@ -38,6 +39,7 @@ const PageRecoverModal = ({ setPageRecover, pageRecover }) => {
     })
       .then((res) => res.json())
       .then(() => {
+        setLoading(false);
         setPageRecover(false);
         Swal.fire("Done", "Your Order is Successful", "success");
       });

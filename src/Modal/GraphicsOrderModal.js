@@ -91,6 +91,7 @@ const GraphicsOrderModal = ({ order, setOrder, setLoading }) => {
             Swal.fire("Add Order Successful", "", "success");
             setOrder(false);
           } else {
+            setLoading(false);
             Swal.fire("Failed to Add Order", "", "error");
             setOrder(false);
           }

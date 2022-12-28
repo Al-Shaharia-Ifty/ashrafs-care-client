@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Contexts/AuthProvider";
 
-const SetupModal = ({ setupModal, setSetupModal }) => {
+const SetupModal = ({ setupModal, setSetupModal, setLoading }) => {
   const { type, amount } = setupModal;
   const { userInfo } = useContext(AuthContext);
   const {
@@ -15,6 +15,7 @@ const SetupModal = ({ setupModal, setSetupModal }) => {
   const date = new Date().toLocaleString();
 
   const onSubmit = (data) => {
+    setLoading(true);
     const pageName = data.pageName;
     const businessAddress = data.businessAddress;
     const businessCategory = data.businessCategory;
@@ -51,6 +52,7 @@ const SetupModal = ({ setupModal, setSetupModal }) => {
     })
       .then((res) => res.json())
       .then(() => {
+        setLoading(false);
         setSetupModal(false);
         Swal.fire("Done", "Your Order is Successful", "success");
       });

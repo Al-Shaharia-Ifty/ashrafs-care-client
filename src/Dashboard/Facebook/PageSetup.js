@@ -3,9 +3,14 @@ import { MdOutlineCancel } from "react-icons/md";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { useState } from "react";
 import SetupModal from "../../Modal/SetupModal";
+import Loading from "../../Shared/Loading";
 
 const PageSetup = () => {
   const [setupModal, setSetupModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div>
       <div
@@ -385,7 +390,11 @@ const PageSetup = () => {
         </div>
       </div>
       {setupModal && (
-        <SetupModal setupModal={setupModal} setSetupModal={setSetupModal} />
+        <SetupModal
+          setupModal={setupModal}
+          setSetupModal={setSetupModal}
+          setLoading={setLoading}
+        />
       )}
     </div>
   );

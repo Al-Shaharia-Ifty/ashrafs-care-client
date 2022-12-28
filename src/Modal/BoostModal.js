@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Contexts/AuthProvider";
 
-const BoostModal = ({ setBoost }) => {
+const BoostModal = ({ setBoost, setLoading }) => {
   const {
     register,
     formState: { errors },
@@ -14,9 +14,8 @@ const BoostModal = ({ setBoost }) => {
 
   const date = new Date().toLocaleString();
 
-  console.log(date);
-
   const onSubmit = (data) => {
+    setLoading(true);
     const pageName = data.pageName;
     const dollar = data.dollarAmount;
     const dollarAmount = dollarRate[0].dollarRate * dollar;
@@ -57,6 +56,7 @@ const BoostModal = ({ setBoost }) => {
     })
       .then((res) => res.json())
       .then((data) => {
+        setLoading(false);
         setBoost(false);
         Swal.fire("Your Order is Successful", "", "success");
       });

@@ -6,12 +6,17 @@ import IDRecoverModal from "../../Modal/IDRecoverModal";
 import PageRecoverModal from "../../Modal/PageRecoverModal";
 import PromoteModal from "../../Modal/PromoteModal";
 import facebookBanner from "../../Assets/website-banner/Banner-for-facebook-marketing.png";
+import Loading from "../../Shared/Loading";
 
 const FacebookMarketing = () => {
   const [boost, setBoost] = useState(false);
   const [promote, setPromote] = useState(false);
   const [pageRecover, setPageRecover] = useState(false);
   const [idRecover, setIdRecover] = useState(false);
+  const [loading, setLoading] = useState(false);
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div>
       <div className="overflow-x-hidden relative">
@@ -66,16 +71,21 @@ const FacebookMarketing = () => {
           </label>
         </div>
       </div>
-      {boost && <BoostModal setBoost={setBoost} />}
+      {boost && <BoostModal setBoost={setBoost} setLoading={setLoading} />}
       {promote && <PromoteModal setPromote={setPromote} />}
       {pageRecover && (
         <PageRecoverModal
           pageRecover={pageRecover}
           setPageRecover={setPageRecover}
+          setLoading={setLoading}
         />
       )}
       {idRecover && (
-        <IDRecoverModal idRecover={idRecover} setIdRecover={setIdRecover} />
+        <IDRecoverModal
+          idRecover={idRecover}
+          setIdRecover={setIdRecover}
+          setLoading={setLoading}
+        />
       )}
     </div>
   );

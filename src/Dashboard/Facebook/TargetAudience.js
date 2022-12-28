@@ -1,9 +1,11 @@
 import React from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Contexts/AuthProvider";
+import Loading from "../../Shared/Loading";
 
 const TargetAudience = () => {
   const {
@@ -15,8 +17,13 @@ const TargetAudience = () => {
 
   const { userInfo } = useContext(AuthContext);
   const date = new Date().toLocaleString();
+  const [loading, setLoading] = useState(false);
+  if (loading) {
+    return <Loading />;
+  }
 
   const onSubmit = (data) => {
+    setLoading(true);
     const like = data.like;
     const pageName = data.pageName;
     const postLink = data.pageLink;
@@ -54,6 +61,7 @@ const TargetAudience = () => {
     })
       .then((res) => res.json())
       .then(() => {
+        setLoading(false);
         Swal.fire("Your Promote Inreview", "", "success");
         navigate("/dashboard");
       });
