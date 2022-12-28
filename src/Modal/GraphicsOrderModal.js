@@ -38,6 +38,7 @@ const GraphicsOrderModal = ({ order, setOrder, setLoading }) => {
               name: name,
               orderType: "graphic",
               status: "Pending",
+              payment: "Due",
               date: date,
               amount: amount,
             };
@@ -73,6 +74,7 @@ const GraphicsOrderModal = ({ order, setOrder, setLoading }) => {
         name: name,
         orderType: "graphic",
         status: "Pending",
+        payment: "Due",
         date: date,
         amount: amount,
       };

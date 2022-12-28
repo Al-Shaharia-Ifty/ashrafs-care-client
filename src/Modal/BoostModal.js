@@ -45,7 +45,19 @@ const BoostModal = ({ setBoost, setLoading }) => {
       orderType: "boost",
       date: date,
       status: "Pending",
+      payment: "Due",
     };
+    // fetch("http:localhost:5000/balance",{
+    //   method: "PUT",
+    //   headers: {
+    //     "content-type": "application/json",
+    //     authorization: `bearer ${localStorage.getItem("accessToken")}`,
+    //   },
+    //   body: JSON.stringify(boostInfo),
+    // }).then(res=>res.json())
+    // .then(data=>{
+
+    // })
     fetch("https://ashrafs-servier.vercel.app/facebookBoost", {
       method: "POST",
       headers: {

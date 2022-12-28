@@ -28,6 +28,7 @@ const IDRecoverModal = ({ idRecover, setIdRecover, setLoading }) => {
       date: date,
       amount: "1500",
       status: "Pending",
+      payment: "Due",
     };
     fetch("https://ashrafs-servier.vercel.app/recover", {
       method: "POST",

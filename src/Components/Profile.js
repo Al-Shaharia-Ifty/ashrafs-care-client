@@ -8,7 +8,7 @@ const Profile = () => {
         <div className="hero-content flex-col lg:flex-row">
           <img
             src={photo}
-            className="max-w-sm w-full rounded-full shadow-xl"
+            className="max-w-[220px] w-full rounded-full shadow-xl"
             alt=""
           />
           <div className="lg:p-10 p-5 shadow-xl rounded-lg pt-5 bg-white">

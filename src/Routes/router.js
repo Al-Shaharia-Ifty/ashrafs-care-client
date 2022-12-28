@@ -36,6 +36,7 @@ import UserProfile from "../Dashboard/UserProfile";
 import Report from "../Dashboard/Report";
 import Support from "../Dashboard/Support";
 import ChangePassword from "../Dashboard/ChangePassword";
+import GraphicOrder from "../AllOrder/GraphicOrder";
 
 export const router = createBrowserRouter([
   {
@@ -123,6 +124,7 @@ export const router = createBrowserRouter([
       { path: "/dashboard/all-setup", element: <AllSetup /> },
       { path: "/dashboard/all-promote", element: <AllPromote /> },
       { path: "/dashboard/all-recover", element: <AllRecover /> },
+      { path: "/dashboard/all-graphic-order", element: <GraphicOrder /> },
 
       // Order details
       {

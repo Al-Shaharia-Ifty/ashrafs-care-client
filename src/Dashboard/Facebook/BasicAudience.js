@@ -39,6 +39,7 @@ const BasicAudience = () => {
       orderType: "promote",
       date: date,
       status: "Pending",
+      payment: "Due",
     };
     fetch("https://ashrafs-servier.vercel.app/promote", {
       method: "POST",

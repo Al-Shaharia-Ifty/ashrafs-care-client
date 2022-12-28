@@ -41,6 +41,7 @@ const SetupModal = ({ setupModal, setSetupModal, setLoading }) => {
       orderType: "page setup",
       date: date,
       status: "Pending",
+      payment: "Due",
     };
     fetch("https://ashrafs-servier.vercel.app/pageSetup", {
       method: "POST",

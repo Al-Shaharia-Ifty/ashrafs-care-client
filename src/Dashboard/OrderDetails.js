@@ -1,4 +1,5 @@
 import React from "react";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import Loading from "../Shared/Loading";
@@ -424,7 +425,15 @@ const OrderDetails = () => {
                   <h2 className="text-xl col-span-2">: {amount} Tk</h2>
                   <h2 className="text-xl font-bold">Sample</h2>
                   {img ? (
-                    <img className="col-span-2" src={img} alt="" />
+                    <PhotoProvider>
+                      <PhotoView src={img}>
+                        <img
+                          className="col-span-2 rounded-md"
+                          src={img}
+                          alt=""
+                        />
+                      </PhotoView>
+                    </PhotoProvider>
                   ) : (
                     <h2 className="text-xl col-span-2">: No Image Fount</h2>
                   )}

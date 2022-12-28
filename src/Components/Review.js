@@ -17,7 +17,7 @@ const Review = () => {
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 1,
+      items: 2,
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
@@ -37,7 +37,7 @@ const Review = () => {
           responsive={responsive}
           className="mx-10 2xl:mx-36 mt-16 text-center z-10"
         >
-          <div className="text-center">
+          <div className="text-center mx-5">
             <div className="flex justify-center">
               <img className="h-28 rounded-full" src={user1} alt="" />
             </div>
@@ -49,7 +49,7 @@ const Review = () => {
               animi, est nemo cumque? Sequi, provident neque!
             </p>
           </div>
-          <div className="text-center">
+          <div className="text-center mx-5">
             <div className="flex justify-center">
               <img className="h-28 rounded-full" src={user2} alt="" />
             </div>
@@ -61,7 +61,7 @@ const Review = () => {
               animi, est nemo cumque? Sequi, provident neque!
             </p>
           </div>
-          <div className="text-center">
+          <div className="text-center mx-5">
             <div className="flex justify-center">
               <img className="h-28 rounded-full" src={user3} alt="" />
             </div>
@@ -73,7 +73,7 @@ const Review = () => {
               animi, est nemo cumque? Sequi, provident neque!
             </p>
           </div>
-          <div className="text-center">
+          <div className="text-center mx-5">
             <div className="flex justify-center">
               <img className="h-28 rounded-full" src={user4} alt="" />
             </div>

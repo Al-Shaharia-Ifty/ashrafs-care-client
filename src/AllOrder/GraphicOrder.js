@@ -1,11 +1,12 @@
+import React from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import OrderHeader from "../Components/OrderHeader";
 import Loading from "../Shared/Loading";
 
-const AllBoost = () => {
-  const { data: allBoost, isLoading } = useQuery({
-    queryKey: ["allBoost"],
+const GraphicOrder = () => {
+  const { data: allGraphic, isLoading } = useQuery({
+    queryKey: ["allGraphic"],
     queryFn: () =>
       fetch(`https://ashrafs-servier.vercel.app/all-orders`, {
         method: "GET",
@@ -21,7 +22,7 @@ const AllBoost = () => {
   return (
     <div>
       <div className="min-h-screen">
-        <h2 className="text-center text-3xl py-5">All Boost</h2>
+        <h2 className="text-center text-3xl py-5">Graphic</h2>
         <div className="mx-0 lg:mx-5 px-0 lg:px-5 py-5 mt-5 bg-white rounded-lg min-h-[500px]">
           <OrderHeader />
           <div className="overflow-x-auto">
@@ -36,7 +37,7 @@ const AllBoost = () => {
                 </tr>
               </thead>
               <tbody className=" border-gray-100 border-2  border-t-0 rounded-lg">
-                {allBoost.boost
+                {allGraphic.graphicOrder
                   .slice()
                   .reverse()
                   .map((o, i) => (
@@ -67,4 +68,4 @@ const AllBoost = () => {
   );
 };
 
-export default AllBoost;
+export default GraphicOrder;

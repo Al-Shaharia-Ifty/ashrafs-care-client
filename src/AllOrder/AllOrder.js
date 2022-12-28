@@ -16,7 +16,6 @@ const AllOrder = () => {
         },
       }).then((res) => res.json()),
   });
-  // console.log(allOrders);
   if (isLoading) {
     return <Loading />;
   }
@@ -32,8 +31,9 @@ const AllOrder = () => {
                 <tr className="bg-primary text-white">
                   <th>Order type</th>
                   <th className="hidden lg:flex">date</th>
+                  <th>Work Status</th>
                   <th>Amount</th>
-                  <th>Status</th>
+                  <th>Payment status</th>
                   <th>details</th>
                 </tr>
               </thead>
@@ -63,37 +63,6 @@ const AllOrder = () => {
               </tbody>
             </table>
           </div>
-          {/* <div className="lg:hidden grid grid-cols-4 text-center">
-            <p className="bg-primary text-white p-3">Order Type</p>
-            <p className="bg-primary text-white p-3">Amount</p>
-            <p className="bg-primary text-white p-3">Status</p>
-            <p className="bg-primary text-white p-3">Details</p>
-          </div>
-          {allOrders.allOrder
-            .slice()
-            .reverse()
-            .map((o, i) => (
-              <div key={i} className="lg:hidden grid grid-cols-4 text-center">
-                <p className="font-bold">{o.orderType}</p>
-                <p>
-                  {(o.dollarAmount && <p>{o.dollarAmount} Dollar</p>) ||
-                    o.like ||
-                    o.amount}
-                </p>
-                <p>
-                  {o.status === "pending" && (
-                    <p className="text-warning">Pending</p>
-                  )}
-                </p>
-                <p>
-                  <Link to={`/dashboard/order-details/${o._id}`}>
-                    <button className="btn btn-xs text-white btn-primary">
-                      View
-                    </button>
-                  </Link>
-                </p>
-              </div>
-            ))} */}
         </div>
       </div>
     </div>
