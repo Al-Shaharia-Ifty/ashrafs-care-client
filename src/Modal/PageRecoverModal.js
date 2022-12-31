@@ -30,19 +30,33 @@ const PageRecoverModal = ({ setPageRecover, pageRecover, setLoading }) => {
       status: "Pending",
       payment: "Due",
     };
-    fetch("https://ashrafs-servier.vercel.app/recover", {
-      method: "POST",
+    const balanceInfo = {
+      balance: 1500 * -1,
+    };
+    fetch("https://ashrafs-servier.vercel.app/balance", {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
       },
-      body: JSON.stringify(pageInfo),
+      body: JSON.stringify(balanceInfo),
     })
       .then((res) => res.json())
-      .then(() => {
-        setLoading(false);
-        setPageRecover(false);
-        Swal.fire("Done", "Your Order is Successful", "success");
+      .then((data) => {
+        fetch("https://ashrafs-servier.vercel.app/recover", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+          body: JSON.stringify(pageInfo),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            setLoading(false);
+            setPageRecover(false);
+            Swal.fire("Done", "Your Order is Successful", "success");
+          });
       });
   };
   return (

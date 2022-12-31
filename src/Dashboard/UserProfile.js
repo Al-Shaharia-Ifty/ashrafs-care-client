@@ -4,15 +4,21 @@ import { AuthContext } from "../Contexts/AuthProvider";
 import pro from "../Assets/icons/Artboard 21.png";
 import UpdateProfileModal from "../Modal/UpdateProfileModal";
 import Swal from "sweetalert2";
+import Loading from "../Shared/Loading";
 
 const UserProfile = () => {
   const { userInfo, refetch } = useContext(AuthContext);
   const { name, email, address, img, phoneNumber, companyName } = userInfo;
   const [updateInfo, setUpdateInfo] = useState(false);
+  const [loading, setLoading] = useState(false);
+  if (loading) {
+    return <Loading />;
+  }
 
   const imageStorageKey = { key: process.env.REACT_APP_imageStorageKey };
 
   const handleUpdateProfile = (e) => {
+    setLoading(true);
     const image = e.target.files[0];
     const formData = new FormData();
     formData.append("image", image);
@@ -39,6 +45,7 @@ const UserProfile = () => {
           })
             .then((res) => res.json())
             .then(() => {
+              setLoading(false);
               refetch();
               Swal.fire("Your profile Picture updated", "", "success");
             });
@@ -62,6 +69,7 @@ const UserProfile = () => {
                   className="hidden"
                   id="updatePhoto"
                   onChange={handleUpdateProfile}
+                  accept="image/png, image/gif, image/jpeg"
                 />
                 <label htmlFor="updatePhoto">
                   <img

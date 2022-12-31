@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import google from "../Assets/website-img/google-play.png";
 import order from "../Assets/icons/Artboard 2.png";
@@ -11,8 +11,11 @@ import rpt from "../Assets/icons/Artboard 9.png";
 import OrderModal from "../Modal/OrderModal";
 import { useQuery } from "react-query";
 import Loading from "../Shared/Loading";
+import { AuthContext } from "../Contexts/AuthProvider";
 
 const DashBoard = () => {
+  const { userInfo, refetch } = useContext(AuthContext);
+  refetch();
   const { data: allOrders, isLoading } = useQuery({
     queryKey: ["allOrders"],
     queryFn: () =>
@@ -70,7 +73,6 @@ const DashBoard = () => {
             </div>
             <div>
               <h2 className="text-2xl">Balance</h2>
-              <p>{""}</p>
             </div>
           </div>
           <Link
@@ -134,7 +136,7 @@ const DashBoard = () => {
               <img className="w-14" src={bel} alt="" />
               <div>
                 <h2 className="text-2xl ml-5 text-primary">Balance</h2>
-                <p>{""}</p>
+                <p className="ml-5 font-bold">{userInfo?.balance} Tk</p>
               </div>
             </div>
             <div className="bg-white rounded-lg flex justify-center">

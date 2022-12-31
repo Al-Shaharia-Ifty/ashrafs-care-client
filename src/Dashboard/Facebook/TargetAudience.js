@@ -52,19 +52,33 @@ const TargetAudience = () => {
       status: "Pending",
       payment: "Due",
     };
-    fetch("https://ashrafs-servier.vercel.app/promote", {
-      method: "POST",
+    const balanceInfo = {
+      balance: like * -1,
+    };
+    fetch("https://ashrafs-servier.vercel.app/balance", {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
       },
-      body: JSON.stringify(basic),
+      body: JSON.stringify(balanceInfo),
     })
       .then((res) => res.json())
-      .then(() => {
-        setLoading(false);
-        Swal.fire("Your Promote Inreview", "", "success");
-        navigate("/dashboard");
+      .then((data) => {
+        fetch("https://ashrafs-servier.vercel.app/promote", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+          body: JSON.stringify(basic),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            setLoading(false);
+            Swal.fire("Your Promote Inreview", "", "success");
+            navigate("/dashboard");
+          });
       });
   };
   return (

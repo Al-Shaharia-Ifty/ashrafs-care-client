@@ -47,30 +47,33 @@ const BoostModal = ({ setBoost, setLoading }) => {
       status: "Pending",
       payment: "Due",
     };
-    // fetch("http:localhost:5000/balance",{
-    //   method: "PUT",
-    //   headers: {
-    //     "content-type": "application/json",
-    //     authorization: `bearer ${localStorage.getItem("accessToken")}`,
-    //   },
-    //   body: JSON.stringify(boostInfo),
-    // }).then(res=>res.json())
-    // .then(data=>{
-
-    // })
-    fetch("https://ashrafs-servier.vercel.app/facebookBoost", {
-      method: "POST",
+    const balanceInfo = {
+      balance: dollarAmount * -1,
+    };
+    fetch("https://ashrafs-servier.vercel.app/balance", {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
       },
-      body: JSON.stringify(boostInfo),
+      body: JSON.stringify(balanceInfo),
     })
       .then((res) => res.json())
       .then((data) => {
-        setLoading(false);
-        setBoost(false);
-        Swal.fire("Your Order is Successful", "", "success");
+        fetch("https://ashrafs-servier.vercel.app/facebookBoost", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+          body: JSON.stringify(boostInfo),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            setLoading(false);
+            setBoost(false);
+            Swal.fire("Your Order is Successful", "", "success");
+          });
       });
   };
   return (

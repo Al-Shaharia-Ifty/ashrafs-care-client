@@ -43,19 +43,33 @@ const SetupModal = ({ setupModal, setSetupModal, setLoading }) => {
       status: "Pending",
       payment: "Due",
     };
-    fetch("https://ashrafs-servier.vercel.app/pageSetup", {
-      method: "POST",
+    const balanceInfo = {
+      balance: amount * -1,
+    };
+    fetch("https://ashrafs-servier.vercel.app/balance", {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
       },
-      body: JSON.stringify(pageInfo),
+      body: JSON.stringify(balanceInfo),
     })
       .then((res) => res.json())
-      .then(() => {
-        setLoading(false);
-        setSetupModal(false);
-        Swal.fire("Done", "Your Order is Successful", "success");
+      .then((data) => {
+        fetch("https://ashrafs-servier.vercel.app/pageSetup", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+          body: JSON.stringify(pageInfo),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            setLoading(false);
+            setSetupModal(false);
+            Swal.fire("Done", "Your Order is Successful", "success");
+          });
       });
   };
 

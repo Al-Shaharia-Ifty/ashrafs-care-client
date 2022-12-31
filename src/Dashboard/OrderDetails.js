@@ -17,7 +17,6 @@ const OrderDetails = () => {
         },
       }).then((res) => res.json()),
   });
-  console.log(details);
   if (isLoading) {
     return <Loading />;
   }

@@ -29,7 +29,8 @@ const GraphicsOrderModal = ({ order, setOrder, setLoading }) => {
         .then((result) => {
           if (result.success) {
             const img = result.data.url;
-            const order = {
+            const orderInfo = {
+              orderImg: order.img,
               img: img,
               phoneNumber: data.phone,
               description: data.description,
@@ -42,24 +43,40 @@ const GraphicsOrderModal = ({ order, setOrder, setLoading }) => {
               date: date,
               amount: amount,
             };
-            fetch(`https://ashrafs-servier.vercel.app/design`, {
-              method: "POST",
+            const balanceInfo = {
+              balance: amount * -1,
+            };
+            fetch("https://ashrafs-servier.vercel.app/balance", {
+              method: "PUT",
               headers: {
                 "content-type": "application/json",
-                authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+                authorization: `bearer ${localStorage.getItem("accessToken")}`,
               },
-              body: JSON.stringify(order),
+              body: JSON.stringify(balanceInfo),
             })
               .then((res) => res.json())
               .then((data) => {
-                if (data.insertedId) {
-                  setLoading(false);
-                  Swal.fire("Add Order Successful", "", "success");
-                  setOrder(false);
-                } else {
-                  Swal.fire("Failed to Add Order", "", "error");
-                  setOrder(false);
-                }
+                fetch(`https://ashrafs-servier.vercel.app/design`, {
+                  method: "POST",
+                  headers: {
+                    "content-type": "application/json",
+                    authorization: `Bearer ${localStorage.getItem(
+                      "accessToken"
+                    )}`,
+                  },
+                  body: JSON.stringify(orderInfo),
+                })
+                  .then((res) => res.json())
+                  .then((data) => {
+                    if (data.insertedId) {
+                      setLoading(false);
+                      Swal.fire("Add Order Successful", "", "success");
+                      setOrder(false);
+                    } else {
+                      Swal.fire("Failed to Add Order", "", "error");
+                      setOrder(false);
+                    }
+                  });
               });
           } else {
             Swal.fire("Failed to Add Product", "", "error");

@@ -27,7 +27,7 @@ const DashboardNavbar = () => {
         <div>
           {user && (
             <div className="flex items-center justify-between">
-              {userInfo?.role === "member" && (
+              {userInfo.role === "member" && (
                 <>
                   <div className="flex gap-3 items-center m-2">
                     <div className="flex justify-center items-center h-9 md:h-12 w-32 md:w-80">
@@ -69,7 +69,7 @@ const DashboardNavbar = () => {
                   </div>
                 </>
               )}
-              {userInfo?.role === "admin" && (
+              {userInfo.role === "admin" && (
                 <NavLink
                   to="/control-panel"
                   className={({ isActive }) =>
