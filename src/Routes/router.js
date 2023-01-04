@@ -37,6 +37,7 @@ import Report from "../Dashboard/Report";
 import Support from "../Dashboard/Support";
 import ChangePassword from "../Dashboard/ChangePassword";
 import GraphicOrder from "../AllOrder/GraphicOrder";
+import Payment from "../Dashboard/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -90,6 +91,9 @@ export const router = createBrowserRouter([
 
       // order summery
       { path: "/dashboard/summery", element: <Summery /> },
+
+      // payment
+      { path: "/dashboard/payment", element: <Payment /> },
 
       // Report
       { path: "/dashboard/report", element: <Report /> },

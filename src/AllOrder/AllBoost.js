@@ -28,11 +28,12 @@ const AllBoost = () => {
             <table className="table table-zebra w-full">
               <thead className="border-t-0">
                 <tr className="bg-primary text-white">
-                  <th>Order Type</th>
-                  <th className="hidden lg:flex">date</th>
-                  <th>Amount</th>
-                  <th>Status</th>
-                  <th>details</th>
+                  <th className="px-2">Order type</th>
+                  <th className="hidden lg:flex px-2">date</th>
+                  <th className="px-2">Status</th>
+                  <th className="px-2">Amount</th>
+                  <th className="px-2">Payment </th>
+                  <th className="px-2">details</th>
                 </tr>
               </thead>
               <tbody className=" border-gray-100 border-2  border-t-0 rounded-lg">
@@ -41,21 +42,31 @@ const AllBoost = () => {
                   .reverse()
                   .map((o, i) => (
                     <tr key={i}>
-                      <th>{o.orderType}</th>
-                      <td className="hidden lg:flex">{o.date}</td>
-                      <th>{o.dollarAmount || o.like || o.amount} Tk</th>
-                      <th>
+                      <td className="px-2">{o.orderType}</td>
+                      <td className="hidden lg:flex px-2">{o.date}</td>
+                      <td className="px-2">
                         {o.status === "Pending" && (
                           <p className="text-warning">Pending</p>
                         )}
-                      </th>
-                      <th>
+                      </td>
+                      <td className="px-2">
+                        {o.dollarAmount || o.like || o.amount} Tk
+                      </td>
+                      <td className="px-2">
+                        {o.payment === "Due" && (
+                          <p className="text-error">Due</p>
+                        )}
+                        {o.payment === "Paid" && (
+                          <p className="text-success">Paid</p>
+                        )}
+                      </td>
+                      <td className="px-2">
                         <Link to={`/dashboard/order-details/${o._id}`}>
                           <button className="btn btn-xs text-white btn-primary">
                             View
                           </button>
                         </Link>
-                      </th>
+                      </td>
                     </tr>
                   ))}
               </tbody>

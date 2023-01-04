@@ -31,7 +31,7 @@ const AllOrder = () => {
                 <tr className="bg-primary text-white">
                   <th className="px-2">Order type</th>
                   <th className="hidden lg:flex px-2">date</th>
-                  <th className="px-2">Work Status</th>
+                  <th className="px-2">Status</th>
                   <th className="px-2">Amount</th>
                   <th className="px-2">Payment </th>
                   <th className="px-2">details</th>
@@ -53,7 +53,15 @@ const AllOrder = () => {
                       <td className="px-2">
                         {o.dollarAmount || o.like || o.amount} Tk
                       </td>
-                      <td className="px-2">{o.payment}</td>
+                      <td className="px-2">
+                        {" "}
+                        {o.payment === "Due" && (
+                          <p className="text-error">Due</p>
+                        )}
+                        {o.payment === "Paid" && (
+                          <p className="text-success">Paid</p>
+                        )}
+                      </td>
                       <td className="px-2">
                         <Link to={`/dashboard/order-details/${o._id}`}>
                           <button className="btn btn-xs text-white btn-primary">

@@ -93,7 +93,10 @@ const DashBoard = () => {
             </div>
             <p>All Order</p>
           </Link>
-          <Link className="block text-center mt-2 text-xl">
+          <Link
+            to={"/dashboard/payment"}
+            className="block text-center mt-2 text-xl"
+          >
             <div className="flex justify-center mb-2">
               <img className="w-14" src={pay} alt="" />
             </div>
