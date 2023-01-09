@@ -17,6 +17,12 @@ const SetupModal = ({ setupModal, setSetupModal, setLoading }) => {
   const onSubmit = (data) => {
     setLoading(true);
     const pageName = data.pageName;
+    const chargeAmount = parseInt(amount / 1000);
+    let charge = chargeAmount * 20;
+    if (chargeAmount === 0) {
+      charge = 20;
+    }
+    const totalAmount = parseInt(charge) + parseInt(amount);
     const businessAddress = data.businessAddress;
     const businessCategory = data.businessCategory;
     const BusinessEmail = data.email;
@@ -42,6 +48,8 @@ const SetupModal = ({ setupModal, setSetupModal, setLoading }) => {
       date: date,
       status: "Pending",
       payment: "Due",
+      charge,
+      totalAmount,
     };
     const balanceInfo = {
       balance: amount * -1,
