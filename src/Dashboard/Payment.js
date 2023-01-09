@@ -64,7 +64,9 @@ const Payment = () => {
                       </td>
                       <td className="px-2 bg-[#B2CE9B]">
                         {(o.orderType === "boost" && <p>{o.dollarRate}</p>) ||
-                          (o.orderType !== "boost" && <p>{o.amount}</p>)}
+                          (o.orderType !== "boost" && (
+                            <p>{o.amount || o.like}</p>
+                          ))}
                       </td>
                       <td>{o?.charge}</td>
                       <td className="bg-[#B2CE9B]">{o?.totalAmount}</td>
