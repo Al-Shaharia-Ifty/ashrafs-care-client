@@ -18,7 +18,13 @@ const BoostModal = ({ setBoost, setLoading }) => {
     setLoading(true);
     const pageName = data.pageName;
     const dollar = data.dollarAmount;
-    const dollarAmount = dollarRate[0].dollarRate * dollar;
+    const amount = dollarRate[0].dollarRate * dollar;
+    const chargeAmount = parseInt(amount / 1000);
+    let charge = chargeAmount * 20;
+    if (chargeAmount === 0) {
+      charge = 20;
+    }
+    const totalAmount = charge + amount;
     const boostDay = data.boostDay;
     const gender = data.gender;
     const minAge = data.minAge;
@@ -31,7 +37,7 @@ const BoostModal = ({ setBoost, setLoading }) => {
     const boostInfo = {
       pageName,
       dollar,
-      dollarAmount,
+      amount,
       boostDay,
       gender,
       minAge,
@@ -46,9 +52,12 @@ const BoostModal = ({ setBoost, setLoading }) => {
       date: date,
       status: "Pending",
       payment: "Due",
+      dollarRate: dollarRate[0].dollarRate,
+      charge,
+      totalAmount,
     };
     const balanceInfo = {
-      balance: dollarAmount * -1,
+      balance: amount * -1,
     };
     fetch("https://ashrafs-servier.vercel.app/balance", {
       method: "PUT",
