@@ -25,6 +25,12 @@ const TargetAudience = () => {
   const onSubmit = (data) => {
     setLoading(true);
     const like = data.like;
+    const chargeAmount = parseInt(like / 1000);
+    let charge = chargeAmount * 20;
+    if (chargeAmount === 0) {
+      charge = 20;
+    }
+    const totalAmount = parseInt(charge) + parseInt(like);
     const pageName = data.pageName;
     const postLink = data.pageLink;
     const phoneNumber = data.number;
@@ -51,6 +57,8 @@ const TargetAudience = () => {
       date: date,
       status: "Pending",
       payment: "Due",
+      charge,
+      totalAmount,
     };
     const balanceInfo = {
       balance: like * -1,
