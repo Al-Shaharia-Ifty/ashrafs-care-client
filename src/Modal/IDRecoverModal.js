@@ -29,6 +29,8 @@ const IDRecoverModal = ({ idRecover, setIdRecover, setLoading }) => {
       amount: "1500",
       status: "Pending",
       payment: "Due",
+      charge: "20",
+      totalAmount: "1520",
     };
     const balanceInfo = {
       balance: 1500 * -1,

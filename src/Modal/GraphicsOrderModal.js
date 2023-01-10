@@ -16,6 +16,12 @@ const GraphicsOrderModal = ({ order, setOrder, setLoading }) => {
 
   const onSubmit = (data) => {
     setLoading(true);
+    const chargeAmount = parseInt(amount / 1000);
+    let charge = chargeAmount * 20;
+    if (chargeAmount === 0) {
+      charge = 20;
+    }
+    const totalAmount = parseInt(charge) + parseInt(amount);
     const image = data.image[0];
     const formData = new FormData();
     formData.append("image", image);
@@ -42,6 +48,8 @@ const GraphicsOrderModal = ({ order, setOrder, setLoading }) => {
               payment: "Due",
               date: date,
               amount: amount,
+              charge,
+              totalAmount,
             };
             const balanceInfo = {
               balance: amount * -1,
@@ -94,6 +102,8 @@ const GraphicsOrderModal = ({ order, setOrder, setLoading }) => {
         payment: "Due",
         date: date,
         amount: amount,
+        charge,
+        totalAmount,
       };
       fetch(`https://ashrafs-servier.vercel.app/design`, {
         method: "POST",
