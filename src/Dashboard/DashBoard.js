@@ -15,7 +15,7 @@ import { AuthContext } from "../Contexts/AuthProvider";
 
 const DashBoard = () => {
   const { userInfo, refetch } = useContext(AuthContext);
-  refetch();
+
   const { data: allOrders, isLoading } = useQuery({
     queryKey: ["allOrders"],
     queryFn: () =>
@@ -28,6 +28,7 @@ const DashBoard = () => {
       }).then((res) => res.json()),
   });
   if (isLoading) {
+    refetch();
     return <Loading />;
   }
 

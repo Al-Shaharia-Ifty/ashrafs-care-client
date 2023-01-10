@@ -39,13 +39,14 @@ const Payment = () => {
           <div className="overflow-x-auto mt-10">
             <table className="table w-full">
               <thead>
-                <tr className="bg-[#006837] text-white">
+                <tr className="bg-[#006837] text-white text-center">
                   <th>No</th>
                   <th>Description</th>
                   <th>Dollar</th>
                   <th>Price</th>
                   <th>Charge</th>
                   <th>Total</th>
+                  <th>Due</th>
                   <th>Stutas</th>
                   <th>More</th>
                 </tr>
@@ -55,22 +56,30 @@ const Payment = () => {
                   .slice()
                   .reverse()
                   .map((o, i) => (
-                    <tr key={i}>
-                      {console.log(o)}
+                    <tr key={i} className="text-center">
                       <th className="bg-[#B2CE9B]">{i + 1}</th>
-                      <td className="px-2">{o.orderType}</td>
-                      <td className="px-2">
-                        {o.dollar ? <p>{o.dollar}</p> : <p></p>}
+                      <td className="px-2 text-start xl:w-[350px]">
+                        {o.orderType}
                       </td>
                       <td className="px-2 bg-[#B2CE9B]">
-                        {(o.orderType === "boost" && <p>{o.dollarRate}</p>) ||
+                        {o.dollar ? (
+                          <p className="text-center">{o.dollar}</p>
+                        ) : (
+                          <p></p>
+                        )}
+                      </td>
+                      <td className="px-2">
+                        {(o.orderType === "boost" && (
+                          <p className="text-center">{o.dollarRate}</p>
+                        )) ||
                           (o.orderType !== "boost" && (
-                            <p>{o.amount || o.like}</p>
+                            <p className="text-center">{o.amount || o.like}</p>
                           ))}
                       </td>
-                      <td>{o?.charge}</td>
-                      <td className="bg-[#B2CE9B]">{o?.totalAmount}</td>
-                      <td>{o?.payment}</td>
+                      <td className=" bg-[#B2CE9B]">{o?.charge}</td>
+                      <td className="">{o?.totalAmount}</td>
+                      <td className=" bg-[#B2CE9B]"></td>
+                      <td className="">{o?.payment}</td>
                       <td className="px-2 bg-[#B2CE9B]">
                         <Link to={`/dashboard/order-details/${o._id}`}>
                           <button className="btn btn-xs text-white btn-primary">
