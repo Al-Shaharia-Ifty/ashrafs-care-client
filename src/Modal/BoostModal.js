@@ -55,6 +55,7 @@ const BoostModal = ({ setBoost, setLoading }) => {
       dollarRate: dollarRate[0].dollarRate,
       charge,
       totalAmount,
+      due: totalAmount,
     };
     const balanceInfo = {
       balance: amount * -1,

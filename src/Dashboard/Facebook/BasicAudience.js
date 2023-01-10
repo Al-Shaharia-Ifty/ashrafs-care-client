@@ -48,6 +48,7 @@ const BasicAudience = () => {
       payment: "Due",
       charge,
       totalAmount,
+      due: totalAmount,
     };
     const balanceInfo = {
       balance: like * -1,

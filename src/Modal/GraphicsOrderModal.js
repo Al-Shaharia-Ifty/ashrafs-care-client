@@ -50,6 +50,7 @@ const GraphicsOrderModal = ({ order, setOrder, setLoading }) => {
               amount: amount,
               charge,
               totalAmount,
+              due: totalAmount,
             };
             const balanceInfo = {
               balance: amount * -1,
@@ -104,6 +105,7 @@ const GraphicsOrderModal = ({ order, setOrder, setLoading }) => {
         amount: amount,
         charge,
         totalAmount,
+        due: totalAmount,
       };
       fetch(`https://ashrafs-servier.vercel.app/design`, {
         method: "POST",

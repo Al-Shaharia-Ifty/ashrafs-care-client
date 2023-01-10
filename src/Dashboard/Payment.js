@@ -78,7 +78,7 @@ const Payment = () => {
                       </td>
                       <td className=" bg-[#B2CE9B]">{o?.charge}</td>
                       <td className="">{o?.totalAmount}</td>
-                      <td className=" bg-[#B2CE9B]"></td>
+                      <td className=" bg-[#B2CE9B] text-red-500">{o?.due}</td>
                       <td className="">{o?.payment}</td>
                       <td className="px-2 bg-[#B2CE9B]">
                         <Link to={`/dashboard/order-details/${o._id}`}>

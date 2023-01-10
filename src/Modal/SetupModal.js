@@ -50,6 +50,7 @@ const SetupModal = ({ setupModal, setSetupModal, setLoading }) => {
       payment: "Due",
       charge,
       totalAmount,
+      due: totalAmount,
     };
     const balanceInfo = {
       balance: amount * -1,
