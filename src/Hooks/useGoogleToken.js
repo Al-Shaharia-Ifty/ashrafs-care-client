@@ -5,13 +5,13 @@ const useGoogleToken = (google) => {
   const email = google?.user?.email;
   const img = google?.user.photoURL;
   const name = google?.user.displayName;
-  const memberInfo = {
-    img: img,
-    email: email,
-    name: name,
-    role: "member",
-  };
   useEffect(() => {
+    const memberInfo = {
+      img: img,
+      email: email,
+      name: name,
+      role: "member",
+    };
     if (email) {
       fetch(`https://ashrafs-servier.vercel.app/googleUser/${email}`, {
         method: "PUT",
@@ -27,7 +27,7 @@ const useGoogleToken = (google) => {
           setToken(accessToken);
         });
     }
-  }, [email]);
+  }, [email, img, name]);
 
   return [token];
 };

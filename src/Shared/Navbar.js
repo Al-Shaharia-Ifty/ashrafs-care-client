@@ -13,7 +13,7 @@ const Navbar = () => {
   const [closeDropDown, setCloseDropDown] = useState(false);
   const [stickyClass, setStickyClass] = useState("relative");
   const [user, loading] = useAuthState(auth);
-  const { userInfo } = useContext(AuthContext);
+  const { userInfo, refetch } = useContext(AuthContext);
   useEffect(() => {
     window.addEventListener("scroll", stickNavbar);
     if (user) {
@@ -287,6 +287,7 @@ const Navbar = () => {
                           onClick={() => {
                             signOut(auth);
                             localStorage.removeItem("accessToken");
+                            refetch();
                           }}
                           className="text-red-600 hover:text-white hover:bg-red-600"
                         >

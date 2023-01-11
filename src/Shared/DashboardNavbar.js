@@ -14,7 +14,7 @@ import { useState } from "react";
 
 const DashboardNavbar = () => {
   const [user] = useAuthState(auth);
-  const { userInfo } = useContext(AuthContext);
+  const { userInfo, refetch } = useContext(AuthContext);
   const [closeDropDown, setCloseDropDown] = useState(false);
   return (
     <div>
@@ -125,6 +125,7 @@ const DashboardNavbar = () => {
                         onClick={() => {
                           signOut(auth);
                           localStorage.removeItem("accessToken");
+                          refetch();
                         }}
                         className="text-red-600 hover:text-white hover:bg-red-600"
                       >

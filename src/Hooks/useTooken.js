@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 const useToken = (user) => {
   const [token, setToken] = useState("");
   const email = user?.user?.email;
-  const currentUser = { email: email };
   useEffect(() => {
+    const currentUser = { email: email };
     if (email) {
       fetch(`https://ashrafs-servier.vercel.app/user/${email}`, {
         method: "PUT",
@@ -33,7 +33,7 @@ const useToken = (user) => {
           }
         });
     }
-  }, [email]);
+  }, [email, user]);
   return [token];
 };
 

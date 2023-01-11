@@ -6,7 +6,7 @@ import { AuthContext } from "../Contexts/AuthProvider";
 import Loading from "../Shared/Loading";
 
 const Payment = () => {
-  const { userInfo, dollarRate } = useContext(AuthContext);
+  const { userInfo } = useContext(AuthContext);
   const { balance } = userInfo;
   const { data: allOrders, isLoading } = useQuery({
     queryKey: ["allOrders"],
