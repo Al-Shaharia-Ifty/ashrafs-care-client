@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 const useGoogleToken = (google) => {
   const [token, setToken] = useState(null);
   const email = google?.user?.email;
-  console.log(google?.user);
   const img = google?.user.photoURL;
   const name = google?.user.displayName;
   const memberInfo = {

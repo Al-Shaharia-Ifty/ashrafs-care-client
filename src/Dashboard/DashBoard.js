@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import google from "../Assets/website-img/google-play.png";
 import order from "../Assets/icons/Artboard 2.png";
@@ -27,8 +27,12 @@ const DashBoard = () => {
         },
       }).then((res) => res.json()),
   });
-  if (isLoading) {
+
+  useEffect(() => {
     refetch();
+  }, [refetch]);
+
+  if (isLoading) {
     return <Loading />;
   }
 
@@ -61,21 +65,26 @@ const DashBoard = () => {
     <div>
       {/* mobile and tab view */}
       <div className="lg:hidden min-h-screen">
+        <div className="px-12 pt-10">
+          <Link to={"/dashboard/payment"}>
+            <div className="border-2 p-2 border-black flex items-center rounded-xl justify-between">
+              <div className="flex items-center">
+                <img className="w-14" src={bel} alt="" />
+                <h2 className="md:text-2xl text-xl pl-3">Balance</h2>
+              </div>
+              <p className="ml-5 font-bold bg-primary text-white p-2 rounded-xl">
+                {userInfo?.balance} Tk
+              </p>
+            </div>
+          </Link>
+        </div>
         <div className="grid grid-cols-2 md:grid-cols-3 py-10">
           <label htmlFor="order-modal" className="label block text-center">
             <div className="flex justify-center items-center mb-2">
               <img className="w-14" src={order} alt="" />
             </div>
-            <h2 className="text-2xl">Add Order</h2>
+            <h2 className="text-xl">Add Order</h2>
           </label>
-          <div className="label block text-center">
-            <div className="flex justify-center items-center mb-2">
-              <img className="w-14" src={bel} alt="" />
-            </div>
-            <div>
-              <h2 className="text-2xl">Balance</h2>
-            </div>
-          </div>
           <Link
             to={"/dashboard/summery"}
             className="block text-center mt-2 text-xl"
@@ -136,13 +145,15 @@ const DashBoard = () => {
               <img className="w-14" src={order} alt="" />
               <h2 className="text-2xl ml-5 text-primary">Add Order</h2>
             </label>
-            <div className="bg-white p-4 rounded-lg flex items-center">
-              <img className="w-14" src={bel} alt="" />
-              <div>
-                <h2 className="text-2xl ml-5 text-primary">Balance</h2>
-                <p className="ml-5 font-bold">{userInfo?.balance} Tk</p>
+            <Link to={"/dashboard/payment"}>
+              <div className="bg-white p-4 rounded-lg flex items-center">
+                <img className="w-14" src={bel} alt="" />
+                <div>
+                  <h2 className="text-2xl ml-5 text-primary">Balance</h2>
+                  <p className="ml-5 font-bold">{userInfo?.balance} Tk</p>
+                </div>
               </div>
-            </div>
+            </Link>
             <div className="bg-white rounded-lg flex justify-center">
               <a href="https://youtube.com">
                 <img className="w-60" src={google} alt="" />
@@ -221,19 +232,12 @@ const DashBoard = () => {
 export default DashBoard;
 
 /*
-<label htmlFor="order-modal" className="label block text-center">
-  <div className="flex justify-center items-center mb-2">
-    <img className="w-14" src={order} alt="" />
-  </div>
-  <h2 className="text-2xl">Add Order</h2>
-</label>
 <div className="label block text-center">
   <div className="flex justify-center items-center mb-2">
     <img className="w-14" src={bel} alt="" />
   </div>
   <div>
     <h2 className="text-2xl">Balance</h2>
-    <p>{""}</p>
   </div>
 </div>
 */

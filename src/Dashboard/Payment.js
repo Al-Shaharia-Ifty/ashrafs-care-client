@@ -22,7 +22,6 @@ const Payment = () => {
   if (isLoading) {
     return <Loading />;
   }
-  console.log(dollarRate);
   return (
     <div>
       <div className="min-h-screen">
