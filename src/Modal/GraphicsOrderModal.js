@@ -6,8 +6,8 @@ import { AuthContext } from "../Contexts/AuthProvider";
 const GraphicsOrderModal = ({ order, setOrder, setLoading }) => {
   const { userInfo } = useContext(AuthContext);
   const { name, email } = userInfo;
-  const { designName, details, amount } = order;
   const date = new Date().toLocaleString();
+  const { designName, details, amount } = order;
   const {
     register,
     formState: { errors },

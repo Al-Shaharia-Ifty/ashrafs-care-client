@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SupportFooter = () => {
   return (
@@ -7,7 +8,9 @@ const SupportFooter = () => {
         <div className="w-1/2">
           <h4>আপনার সমস্যা সমাধান হয়নি?</h4>
           <h2 className="text-4xl py-3">Find answers or contact support</h2>
-          <button className="btn btn-accent">get started</button>
+          <Link to={"/dashboard/get-support"}>
+            <button className="btn btn-accent">get started</button>
+          </Link>
         </div>
       </div>
     </div>

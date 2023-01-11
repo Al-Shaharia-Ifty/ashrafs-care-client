@@ -1,6 +1,7 @@
 import React from "react";
 import PrimaryButton from "./PrimaryButton";
 import community from "../Assets/website-img/community.png";
+import { Link } from "react-router-dom";
 
 const Community = () => {
   return (
@@ -17,7 +18,9 @@ const Community = () => {
             Incidunt, quasi facilis.
           </p>
           <div className="text-center">
-            <PrimaryButton>Join Community</PrimaryButton>
+            <Link to={"/dashboard"}>
+              <PrimaryButton>Join Community</PrimaryButton>
+            </Link>
           </div>
         </div>
         <img className="w-2/4 hidden md:flex" src={community} alt="" />

@@ -38,6 +38,7 @@ import Support from "../Dashboard/Support";
 import ChangePassword from "../Dashboard/ChangePassword";
 import GraphicOrder from "../AllOrder/GraphicOrder";
 import Payment from "../Dashboard/Payment";
+import GetSupport from "../Dashboard/GetSupport";
 
 export const router = createBrowserRouter([
   {
@@ -100,6 +101,9 @@ export const router = createBrowserRouter([
 
       // support
       { path: "/dashboard/support", element: <Support /> },
+
+      // GetSupport
+      { path: "/dashboard/get-support", element: <GetSupport /> },
 
       // Facebook
       {
