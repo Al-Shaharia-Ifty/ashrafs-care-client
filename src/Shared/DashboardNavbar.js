@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../Assets/website-img/logo512.png";
 import { AuthContext } from "../Contexts/AuthProvider";
 import auth from "../firebase.init";
@@ -11,11 +11,20 @@ import pro from "../Assets/icons/Artboard 21.png";
 import { signOut } from "firebase/auth";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 const DashboardNavbar = () => {
   const [user] = useAuthState(auth);
   const { userInfo, refetch } = useContext(AuthContext);
   const [closeDropDown, setCloseDropDown] = useState(false);
+  const { register, handleSubmit, reset } = useForm();
+  const navigate = useNavigate();
+
+  const onSubmit = (data) => {
+    const orderID = data.orderID;
+    reset();
+    navigate(`/dashboard/order-details/${orderID}`);
+  };
   return (
     <div>
       <div className="py-5 bg-[#166534] pl-5 pr-5 md:pl-14 md:pr-14 lg:pl-24 flex justify-between items-center">
@@ -30,14 +39,24 @@ const DashboardNavbar = () => {
               {userInfo.role === "member" && (
                 <>
                   <div className="flex gap-3 items-center m-2">
-                    <div className="flex justify-center items-center h-9 md:h-12 w-32 md:w-80">
+                    <form
+                      onSubmit={handleSubmit(onSubmit)}
+                      className="flex justify-center items-center h-9 md:h-12 w-32 md:w-80"
+                    >
                       <input
                         type="text"
                         placeholder="Type Order ID"
                         className="input input-bordered w-full h-full max-w-xs rounded-l-full"
+                        {...register("orderID", {
+                          required: {
+                            value: true,
+                          },
+                        })}
                       />
-                      <AiOutlineSearch className="bg-white h-full text-xl rounded-r-full px-3 w-16" />
-                    </div>
+                      <button className="bg-white h-full rounded-r-full px-3 w-16">
+                        <AiOutlineSearch className="text-3xl" />
+                      </button>
+                    </form>
                     <NavLink
                       to="/control-panel"
                       className={({ isActive }) =>

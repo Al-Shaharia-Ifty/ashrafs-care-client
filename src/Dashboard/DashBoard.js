@@ -50,9 +50,10 @@ const DashBoard = () => {
   const { data: banner } = useQuery({
     queryKey: ["banner"],
     queryFn: () =>
-      fetch(`http://localhost:5000/banner`).then((res) => res.json()),
+      fetch(`https://ashrafs-servier.vercel.app/banner`).then((res) =>
+        res.json()
+      ),
   });
-  console.log(banner);
 
   useEffect(() => {
     refetch();
@@ -88,7 +89,7 @@ const DashBoard = () => {
 
   // code.
   return (
-    <div>
+    <div className="min-h-screen">
       {/* mobile and tab view */}
       <div className="lg:hidden">
         <div className="px-12 pt-10">
@@ -250,7 +251,8 @@ const DashBoard = () => {
           </div>
         </div>
       </div>
-      <div className="p-5">
+      {/* banner */}
+      <div className="p-10 2xl:py-20">
         <PhotoProvider>
           <Carousel
             infinite={true}
