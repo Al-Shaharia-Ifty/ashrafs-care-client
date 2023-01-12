@@ -77,16 +77,22 @@ const Navbar = () => {
                 </>
               )}
               {userInfo?.role === "admin" && (
-                <NavLink
-                  to="/control-panel"
-                  className={({ isActive }) =>
-                    isActive
-                      ? "btn btn-primary mx-2 text-white btn-sm"
-                      : "btn btn-ghost hover:btn-primary mx-2 text-white btn-sm"
-                  }
-                >
-                  Control Panel
-                </NavLink>
+                <>
+                  <div className="flex justify-between">
+                    <div>
+                      <NavLink
+                        to="/dashboard"
+                        className={({ isActive }) =>
+                          isActive
+                            ? "btn btn-primary mx-2 text-white btn-sm"
+                            : "btn btn-ghost hover:btn-primary mx-2 text-white btn-sm"
+                        }
+                      >
+                        Dashboard
+                      </NavLink>
+                    </div>
+                  </div>
+                </>
               )}
             </>
           )}

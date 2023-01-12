@@ -11,7 +11,6 @@ import AllUpdate from "../Pages/AllUpdate";
 import BlogPage from "../Pages/BlogPage";
 import BoostRejected from "../Status/BoostRejected";
 import BasicAudience from "../Dashboard/Facebook/BasicAudience";
-import ControlPanelLayout from "../Layout/ControlPanelLayout";
 import Contact from "../Pages/Contact";
 import Complete from "../Status/Complete";
 import DashboardLayout from "../Pages/DashboardLayout";
@@ -62,14 +61,6 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/control-panel",
-    element: (
-      <RequireAuth>
-        <ControlPanelLayout />
-      </RequireAuth>
-    ),
-  },
-  {
     path: "/dashboard",
     element: (
       <RequireAuth>
@@ -77,6 +68,7 @@ export const router = createBrowserRouter([
       </RequireAuth>
     ),
     children: [
+      // member
       { path: "/dashboard", element: <DashBoard /> },
       { path: "/dashboard/mobile", element: <DashboardMobileNavbar /> },
 
