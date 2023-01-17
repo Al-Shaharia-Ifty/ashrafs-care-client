@@ -57,7 +57,11 @@ const GetSupport = () => {
     <div>
       <div className="hero min-h-screen md:px-10">
         <div className="hero-content flex-col lg:flex-row">
-          <img src={pho} className="max-w-sm rounded-lg mr-20" alt="" />
+          <img
+            src={pho}
+            className="max-w-sm w-full rounded-lg lg:mr-20"
+            alt=""
+          />
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <h2 className="text-xl">

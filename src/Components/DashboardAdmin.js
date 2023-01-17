@@ -12,6 +12,7 @@ import note from "../Assets/admin-logo/admin-panel-8.png";
 import order from "../Assets/admin-logo/admin-panel-4.png";
 import { useQuery } from "react-query";
 import Loading from "../Shared/Loading";
+import OrderModal from "../Modal/OrderModal";
 
 const DashboardAdmin = () => {
   const { data: adminAllOrder, isLoading } = useQuery({
@@ -89,7 +90,34 @@ const DashboardAdmin = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-2 bg-white rounded-md"></div>
+          <div className="col-span-2 bg-white rounded-md">
+            <p className="text-xl p-5 pb-0">Resent Orders</p>
+            <div className="overflow-x-auto">
+              <table className="table table-zebra w-full">
+                <thead>
+                  <tr className="bg-primary text-white">
+                    <th></th>
+                    <th>Name</th>
+                    <th>Order Type</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {adminAllOrder
+                    .slice(0, 3)
+                    .reverse()
+                    .map((o, i) => (
+                      <tr key={i}>
+                        <th>{i + 1}</th>
+                        <td>{o.name}</td>
+                        <td>{o.orderType}</td>
+                        <td>{o.dollarAmount || o.like || o.amount} Tk</td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
         {/* last 3 is here */}
         <div className="grid grid-cols-3 gap-5">
@@ -125,14 +153,17 @@ const DashboardAdmin = () => {
           </div>
           <div className="flex justify-center items-center bg-white rounded-md">
             <div>
-              <img className="w-36" src={order} alt="" />
-              <p className="text-center font-bold text-secondary text-2xl">
-                Add Order
-              </p>
+              <label htmlFor="order-modal">
+                <img className="w-36" src={order} alt="" />
+                <p className="text-center font-bold text-secondary text-2xl">
+                  Add Order
+                </p>
+              </label>
             </div>
           </div>
         </div>
       </div>
+      <OrderModal />
     </div>
   );
 };
