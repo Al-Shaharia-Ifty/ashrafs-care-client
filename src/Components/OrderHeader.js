@@ -18,6 +18,23 @@ const OrderHeader = () => {
   if (isLoading) {
     return <Loading />;
   }
+  const allOrder = allOrders.allOrder;
+
+  const allBoost = allOrder.filter((p) => {
+    return p.orderType === "boost";
+  });
+  const allSetup = allOrder.filter((p) => {
+    return p.orderType === "page setup";
+  });
+  const allPromote = allOrder.filter((p) => {
+    return p.orderType === "promote";
+  });
+  const allRecovery = allOrder.filter((p) => {
+    return p.orderType === "page recovery";
+  });
+  const allGraphic = allOrder.filter((p) => {
+    return p.orderType === "graphic";
+  });
   return (
     <div>
       <div className="flex justify-start flex-wrap gap-5 mx-5">
@@ -32,7 +49,7 @@ const OrderHeader = () => {
           All Order
         </NavLink>
 
-        {allOrders?.boost?.length > 0 && (
+        {allBoost?.length > 0 && (
           <NavLink
             to={"/dashboard/all-boost"}
             className={({ isActive }) =>
@@ -44,7 +61,7 @@ const OrderHeader = () => {
             Boost
           </NavLink>
         )}
-        {allOrders?.pageSetup?.length > 0 && (
+        {allSetup?.length > 0 && (
           <NavLink
             to={"/dashboard/all-setup"}
             className={({ isActive }) =>
@@ -56,7 +73,7 @@ const OrderHeader = () => {
             Setup
           </NavLink>
         )}
-        {allOrders?.promote?.length > 0 && (
+        {allPromote?.length > 0 && (
           <NavLink
             to={"/dashboard/all-promote"}
             className={({ isActive }) =>
@@ -68,7 +85,7 @@ const OrderHeader = () => {
             Promote
           </NavLink>
         )}
-        {allOrders?.recover?.length > 0 && (
+        {allRecovery?.length > 0 && (
           <NavLink
             to={"/dashboard/all-recover"}
             className={({ isActive }) =>
@@ -80,7 +97,7 @@ const OrderHeader = () => {
             Recover
           </NavLink>
         )}
-        {allOrders?.graphicOrder?.length > 0 && (
+        {allGraphic?.length > 0 && (
           <NavLink
             to={"/dashboard/all-graphic-order"}
             className={({ isActive }) =>

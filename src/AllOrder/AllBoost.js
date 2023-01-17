@@ -4,8 +4,8 @@ import OrderHeader from "../Components/OrderHeader";
 import Loading from "../Shared/Loading";
 
 const AllBoost = () => {
-  const { data: allBoost, isLoading } = useQuery({
-    queryKey: ["allBoost"],
+  const { data: allOrders, isLoading } = useQuery({
+    queryKey: ["allOrders"],
     queryFn: () =>
       fetch(`https://ashrafs-servier.vercel.app/all-orders`, {
         method: "GET",
@@ -18,6 +18,13 @@ const AllBoost = () => {
   if (isLoading) {
     return <Loading />;
   }
+
+  // all order function
+  const allOrder = allOrders.allOrder;
+
+  const allBoost = allOrder.filter((p) => {
+    return p.orderType === "boost";
+  });
   return (
     <div>
       <div className="min-h-screen">
@@ -37,7 +44,7 @@ const AllBoost = () => {
                 </tr>
               </thead>
               <tbody className=" border-gray-100 border-2  border-t-0 rounded-lg">
-                {allBoost.boost
+                {allBoost
                   .slice()
                   .reverse()
                   .map((o, i) => (

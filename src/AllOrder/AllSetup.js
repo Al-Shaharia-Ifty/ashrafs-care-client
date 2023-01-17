@@ -19,6 +19,11 @@ const AllSetup = () => {
   if (isLoading) {
     return <Loading />;
   }
+  const allOrder = allOrders.allOrder;
+
+  const allSetup = allOrder.filter((p) => {
+    return p.orderType === "page setup";
+  });
   return (
     <div>
       <div className="min-h-screen">
@@ -38,7 +43,7 @@ const AllSetup = () => {
                 </tr>
               </thead>
               <tbody className=" border-gray-100 border-2  border-t-0 rounded-lg">
-                {allOrders.pageSetup
+                {allSetup
                   .slice()
                   .reverse()
                   .map((o, i) => (

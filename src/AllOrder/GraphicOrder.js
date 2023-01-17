@@ -5,8 +5,8 @@ import OrderHeader from "../Components/OrderHeader";
 import Loading from "../Shared/Loading";
 
 const GraphicOrder = () => {
-  const { data: allGraphic, isLoading } = useQuery({
-    queryKey: ["allGraphic"],
+  const { data: allOrders, isLoading } = useQuery({
+    queryKey: ["allOrders"],
     queryFn: () =>
       fetch(`https://ashrafs-servier.vercel.app/all-orders`, {
         method: "GET",
@@ -19,6 +19,11 @@ const GraphicOrder = () => {
   if (isLoading) {
     return <Loading />;
   }
+  const allOrder = allOrders.allOrder;
+
+  const allGraphic = allOrder.filter((p) => {
+    return p.orderType === "graphic";
+  });
   return (
     <div>
       <div className="min-h-screen">
@@ -38,7 +43,7 @@ const GraphicOrder = () => {
                 </tr>
               </thead>
               <tbody className=" border-gray-100 border-2  border-t-0 rounded-lg">
-                {allGraphic.graphicOrder
+                {allGraphic
                   .slice()
                   .reverse()
                   .map((o, i) => (

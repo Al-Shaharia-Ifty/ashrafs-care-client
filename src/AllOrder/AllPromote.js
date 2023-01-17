@@ -19,6 +19,11 @@ const AllPromote = () => {
   if (isLoading) {
     return <Loading />;
   }
+  const allOrder = allOrders.allOrder;
+
+  const allPromote = allOrder.filter((p) => {
+    return p.orderType === "promote";
+  });
   return (
     <div>
       <div className="min-h-screen">
@@ -38,7 +43,7 @@ const AllPromote = () => {
                 </tr>
               </thead>
               <tbody className=" border-gray-100 border-2  border-t-0 rounded-lg">
-                {allOrders.promote
+                {allPromote
                   .slice()
                   .reverse()
                   .map((o, i) => (

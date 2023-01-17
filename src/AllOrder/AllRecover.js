@@ -19,6 +19,11 @@ const AllRecover = () => {
   if (isLoading) {
     return <Loading />;
   }
+  const allOrder = allOrders.allOrder;
+
+  const allRecovery = allOrder.filter((p) => {
+    return p.orderType === "page recovery";
+  });
   return (
     <div>
       <div className="min-h-screen">
@@ -38,7 +43,7 @@ const AllRecover = () => {
                 </tr>
               </thead>
               <tbody className=" border-gray-100 border-2  border-t-0 rounded-lg">
-                {allOrders.recover
+                {allRecovery
                   .slice()
                   .reverse()
                   .map((o, i) => (
