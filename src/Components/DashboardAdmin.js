@@ -13,12 +13,18 @@ import order from "../Assets/admin-logo/admin-panel-4.png";
 import { useQuery } from "react-query";
 import Loading from "../Shared/Loading";
 import OrderModal from "../Modal/OrderModal";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const DashboardAdmin = () => {
-  const { data: adminAllOrder, isLoading } = useQuery({
+  const {
+    data: adminAllOrder,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["adminAllOrder"],
     queryFn: () =>
-      fetch(`http://localhost:5000/admin/allOrder`, {
+      fetch(`https://ashrafs-servier.vercel.app/admin/allOrder`, {
         method: "GET",
         headers: {
           "content-type": "application/json",
@@ -26,15 +32,62 @@ const DashboardAdmin = () => {
         },
       }).then((res) => res.json()),
   });
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
 
   if (isLoading) {
     return <Loading />;
   }
 
-  // all order function
+  // date
+  const date = new Date().toLocaleString();
+  const monthArray = date.split(",")[0].split("/");
+  monthArray.splice(1, 1);
+  const todayDate = date.split(",")[0].split("/");
+
+  // all pending order function
   const pending = adminAllOrder.filter((p) => {
     return p.status === "Pending";
   });
+
+  // all order amount
+  const allAmount = adminAllOrder.map((p) => {
+    return parseInt(p.amount) || parseInt(p.like) || parseInt(p.dollarAmount);
+  });
+
+  let totalAmount = allAmount.reduce((a, b) => {
+    return a + b;
+  });
+
+  // this mount collection
+  const thisMonth = adminAllOrder.filter((p) => {
+    const orderMouth = p.date.split(",")[0].split("/");
+    orderMouth.splice(1, 1);
+    return orderMouth[0] === monthArray[0] && orderMouth[1] === monthArray[1];
+  });
+  const thisMountAmount = thisMonth.map((p) => {
+    return parseInt(p.amount) || parseInt(p.like) || parseInt(p.dollarAmount);
+  });
+  let monthAmount = thisMountAmount.reduce((a, b) => {
+    return a + b;
+  });
+
+  // today collection
+  const today = adminAllOrder.filter((p) => {
+    return (
+      p.date.split(",")[0].split("/")[0] === todayDate[0] &&
+      p.date.split(",")[0].split("/")[1] === todayDate[1] &&
+      p.date.split(",")[0].split("/")[2] === todayDate[2]
+    );
+  });
+  const thisDayAmount = today.map((p) => {
+    return parseInt(p.amount) || parseInt(p.like) || parseInt(p.dollarAmount);
+  });
+  let todayAmount = thisDayAmount.reduce((a, b) => {
+    return a + b;
+  });
+
   return (
     <div>
       <div className="p-8">
@@ -46,7 +99,9 @@ const DashboardAdmin = () => {
               <img className="h-10" src={sell} alt="" />
             </div>
             <div className="h-[180px] flex justify-center items-center">
-              <p className="text-5xl text-[#0D6739] font-bold">12110 ৳</p>
+              <p className="text-5xl text-[#0D6739] font-bold">
+                {!totalAmount ? 0 : totalAmount} ৳
+              </p>
             </div>
           </div>
           <div className="bg-white rounded-md">
@@ -55,7 +110,9 @@ const DashboardAdmin = () => {
               <img className="h-10" src={month} alt="" />
             </div>
             <div className="h-[180px] flex justify-center items-center">
-              <p className="text-5xl text-[#0D6739] font-bold">12110 ৳</p>
+              <p className="text-5xl text-[#0D6739] font-bold">
+                {!monthAmount ? 0 : monthAmount} ৳
+              </p>
             </div>
           </div>
           <div className="bg-white rounded-md">
@@ -64,7 +121,9 @@ const DashboardAdmin = () => {
               <img className="h-10" src={amt} alt="" />
             </div>
             <div className="h-[180px] flex justify-center items-center">
-              <p className="text-5xl text-[#0D6739] font-bold">12110 ৳</p>
+              <p className="text-5xl text-[#0D6739] font-bold">
+                {!todayAmount ? 0 : todayAmount} ৳
+              </p>
             </div>
           </div>
         </div>
@@ -100,11 +159,12 @@ const DashboardAdmin = () => {
                     <th>Name</th>
                     <th>Order Type</th>
                     <th>Amount</th>
+                    <th>More</th>
                   </tr>
                 </thead>
                 <tbody>
                   {adminAllOrder
-                    .slice(0, 3)
+                    .slice(-3)
                     .reverse()
                     .map((o, i) => (
                       <tr key={i}>
@@ -112,6 +172,13 @@ const DashboardAdmin = () => {
                         <td>{o.name}</td>
                         <td>{o.orderType}</td>
                         <td>{o.dollarAmount || o.like || o.amount} Tk</td>
+                        <td>
+                          <Link to={`/dashboard/order-details/${o._id}`}>
+                            <button className="btn btn-xs text-white btn-primary">
+                              View
+                            </button>
+                          </Link>
+                        </td>
                       </tr>
                     ))}
                 </tbody>
