@@ -38,11 +38,13 @@ import ChangePassword from "../Dashboard/ChangePassword";
 import GraphicOrder from "../AllOrder/GraphicOrder";
 import Payment from "../Dashboard/Payment";
 import GetSupport from "../Dashboard/GetSupport";
+import ErrorPage from "../Shared/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <ErrorPage />,
     children: [
       { path: "/", element: <Home /> },
       { path: "/home", element: <Home /> },
@@ -67,6 +69,7 @@ export const router = createBrowserRouter([
         <DashboardLayout />
       </RequireAuth>
     ),
+    errorElement: <ErrorPage />,
     children: [
       // member
       { path: "/dashboard", element: <DashBoard /> },

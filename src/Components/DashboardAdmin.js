@@ -56,9 +56,7 @@ const DashboardAdmin = () => {
     return parseInt(p.amount) || parseInt(p.like) || parseInt(p.dollarAmount);
   });
 
-  let totalAmount = allAmount.reduce((a, b) => {
-    return a + b;
-  });
+  let totalAmount = allAmount.reduce((a, b) => a + b, 0);
 
   // this mount collection
   const thisMonth = adminAllOrder.filter((p) => {
@@ -69,9 +67,7 @@ const DashboardAdmin = () => {
   const thisMountAmount = thisMonth.map((p) => {
     return parseInt(p.amount) || parseInt(p.like) || parseInt(p.dollarAmount);
   });
-  let monthAmount = thisMountAmount.reduce((a, b) => {
-    return a + b;
-  });
+  let monthAmount = thisMountAmount.reduce((a, b) => a + b, 0);
 
   // today collection
   const today = adminAllOrder.filter((p) => {
@@ -84,9 +80,7 @@ const DashboardAdmin = () => {
   const thisDayAmount = today.map((p) => {
     return parseInt(p.amount) || parseInt(p.like) || parseInt(p.dollarAmount);
   });
-  let todayAmount = thisDayAmount.reduce((a, b) => {
-    return a + b;
-  });
+  let todayAmount = thisDayAmount.reduce((a, b) => a + b, 0);
 
   return (
     <div>
