@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import google from "../Assets/website-img/google-play.png";
+import das from "../Assets/icons/Artboard 1.png";
 import order from "../Assets/icons/Artboard 2.png";
 import bel from "../Assets/icons/Artboard 11.png";
 import status from "../Assets/icons/Artboard 22.png";
@@ -276,10 +277,74 @@ const DashBoard = () => {
               </Carousel>
             </PhotoProvider>
           </div>
-          <OrderModal />
         </>
       )}
-      {userInfo.role === "admin" && <DashboardAdmin />}
+      {userInfo.role === "admin" && (
+        <>
+          <div className="hidden lg:flex lg:flex-col">
+            <DashboardAdmin />
+          </div>
+          <div className="lg:hidden">
+            <div className="grid grid-cols-2 md:grid-cols-3 py-10">
+              <Link
+                to={"/dashboard/mobile"}
+                className="block text-center mt-2 text-xl"
+              >
+                <div className="flex justify-center mb-2">
+                  <img className="w-14" src={das} alt="" />
+                </div>
+                <p>Dashboard</p>
+              </Link>
+              <Link
+                to={"/dashboard/summery"}
+                className="block text-center mt-2 text-xl"
+              >
+                <div className="flex justify-center mb-2">
+                  <img className="w-14" src={status} alt="" />
+                </div>
+                <p>Summery</p>
+              </Link>
+              <Link
+                to={"/dashboard/all-order"}
+                className="block text-center mt-2 text-xl"
+              >
+                <div className="flex justify-center mb-2">
+                  <img className="w-14" src={ord} alt="" />
+                </div>
+                <p>All Order</p>
+              </Link>
+              <Link
+                to={"/dashboard/payment"}
+                className="block text-center mt-2 text-xl"
+              >
+                <div className="flex justify-center mb-2">
+                  <img className="w-14" src={pay} alt="" />
+                </div>
+                <p>Payments</p>
+              </Link>
+              <Link
+                to={`/dashboard/report`}
+                className="block text-center mt-2 text-xl"
+              >
+                <div className="flex justify-center mb-2">
+                  <img className="w-14" src={rpt} alt="" />
+                </div>
+                <p>Report</p>
+              </Link>
+              <Link
+                to={`/dashboard/support`}
+                className="block text-center mt-2 text-xl"
+              >
+                <div className="flex justify-center mb-2">
+                  <img className="w-14" src={srp} alt="" />
+                </div>
+                <p>Support</p>
+              </Link>
+            </div>
+          </div>
+        </>
+      )}
+      <OrderModal />
     </div>
   );
 };

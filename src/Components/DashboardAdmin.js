@@ -84,135 +84,182 @@ const DashboardAdmin = () => {
 
   return (
     <div>
-      <div className="p-8">
-        {/* first 3 is here */}
-        <div className="grid grid-cols-3 gap-5">
-          <div className="bg-white rounded-md">
-            <div className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-8 rounded-md text-white text-lg">
-              <h2>Total Sale</h2>
-              <img className="h-10" src={sell} alt="" />
+      <div className="hidden lg:flex lg:flex-col">
+        <div className="p-8">
+          {/* first 3 is here */}
+          <div className="grid grid-cols-3 gap-5">
+            <div className="bg-white rounded-md">
+              <div className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-8 rounded-md text-white text-lg">
+                <h2>Total Sale</h2>
+                <img className="h-10" src={sell} alt="" />
+              </div>
+              <div className="h-[180px] flex justify-center items-center">
+                <p className="text-5xl text-[#0D6739] font-bold">
+                  {!totalAmount ? 0 : totalAmount} ৳
+                </p>
+              </div>
             </div>
-            <div className="h-[180px] flex justify-center items-center">
-              <p className="text-5xl text-[#0D6739] font-bold">
-                {!totalAmount ? 0 : totalAmount} ৳
-              </p>
+            <div className="bg-white rounded-md">
+              <div className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-8 rounded-md text-white text-lg">
+                <h2>Current Month Sale</h2>
+                <img className="h-10" src={month} alt="" />
+              </div>
+              <div className="h-[180px] flex justify-center items-center">
+                <p className="text-5xl text-[#0D6739] font-bold">
+                  {!monthAmount ? 0 : monthAmount} ৳
+                </p>
+              </div>
+            </div>
+            <div className="bg-white rounded-md">
+              <div className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-8 rounded-md text-white text-lg">
+                <h2>Today'zs Sale</h2>
+                <img className="h-10" src={amt} alt="" />
+              </div>
+              <div className="h-[180px] flex justify-center items-center">
+                <p className="text-5xl text-[#0D6739] font-bold">
+                  {!todayAmount ? 0 : todayAmount} ৳
+                </p>
+              </div>
             </div>
           </div>
-          <div className="bg-white rounded-md">
-            <div className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-8 rounded-md text-white text-lg">
-              <h2>Current Month Sale</h2>
-              <img className="h-10" src={month} alt="" />
+          {/* middle 2 is here */}
+          <div className="grid grid-cols-3 gap-5 py-5 text-[#0D6739]">
+            <div>
+              <div className="bg-white flex justify-evenly items-center rounded-md p-4 text-2xl font-bold">
+                <p>Ad Banner</p>
+                <img className="w-36" src={adBanner} alt="" />
+              </div>
+              <div className="grid grid-cols-2 gap-5 text-center pt-5 text-xl font-bold">
+                <div className="bg-white rounded-md p-3">
+                  <div className="flex justify-center">
+                    <img className="h-20 mb-2" src={adUpdate} alt="" />
+                  </div>
+                  <p>Ad Update</p>
+                </div>
+                <div className="bg-white rounded-md p-3">
+                  <div className="flex justify-center">
+                    <img className="h-20 mb-2" src={adRate} alt="" />
+                  </div>
+                  <p>Ad Rate</p>
+                </div>
+              </div>
             </div>
-            <div className="h-[180px] flex justify-center items-center">
-              <p className="text-5xl text-[#0D6739] font-bold">
-                {!monthAmount ? 0 : monthAmount} ৳
-              </p>
+            <div className="col-span-2 bg-white rounded-md">
+              <p className="text-xl p-5 pb-0">Resent Orders</p>
+              <div className="overflow-x-auto">
+                <table className="table table-zebra w-full">
+                  <thead>
+                    <tr className="bg-primary text-white">
+                      <th></th>
+                      <th>Name</th>
+                      <th>Order Type</th>
+                      <th>Amount</th>
+                      <th>More</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {adminAllOrder
+                      .slice(-3)
+                      .reverse()
+                      .map((o, i) => (
+                        <tr key={i}>
+                          <th>{i + 1}</th>
+                          <td>{o.name}</td>
+                          <td>{o.orderType}</td>
+                          <td>{o.dollarAmount || o.like || o.amount} Tk</td>
+                          <td>
+                            <Link to={`/dashboard/order-details/${o._id}`}>
+                              <button className="btn btn-xs text-white btn-primary">
+                                View
+                              </button>
+                            </Link>
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
-          <div className="bg-white rounded-md">
-            <div className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-8 rounded-md text-white text-lg">
-              <h2>Today'zs Sale</h2>
-              <img className="h-10" src={amt} alt="" />
+          {/* last 3 is here */}
+          <div className="grid grid-cols-3 gap-5">
+            {/* 4 item is here */}
+            <div className="grid grid-cols-2 gap-5 text-white text-center">
+              <div className="bg-[#0D6739] rounded-md p-5">
+                <div className="flex justify-center">
+                  <img className="h-16" src={panel} alt="" />
+                </div>
+                <p>User Panel</p>
+              </div>
+              <div className="bg-[#307C3D] rounded-md p-5">
+                <div className="flex justify-center">
+                  <img className="h-16" src={custom} alt="" />
+                </div>
+                <p>Customers</p>
+              </div>
+              <div className="bg-[#508F41] rounded-md p-5">
+                <div className="flex justify-center">
+                  <img className="h-16" src={icon} alt="" />
+                </div>
+                <p>Ad Icon</p>
+              </div>
+              <div className="bg-[#6DA642] rounded-md p-5">
+                <div className="flex justify-center">
+                  <img className="h-16" src={note} alt="" />
+                </div>
+                <p>Ad Note</p>
+              </div>
             </div>
-            <div className="h-[180px] flex justify-center items-center">
-              <p className="text-5xl text-[#0D6739] font-bold">
-                {!todayAmount ? 0 : todayAmount} ৳
+            <div className="bg-white rounded-md text-secondary">
+              <p className="p-8 text-3xl font-bold">Pending Order</p>
+              <p className="text-center font-bold text-8xl">
+                {pending?.length}
               </p>
+            </div>
+            <div className="flex justify-center items-center bg-white rounded-md">
+              <div>
+                <label htmlFor="order-modal">
+                  <img className="w-36" src={order} alt="" />
+                  <p className="text-center font-bold text-secondary text-2xl">
+                    Add Order
+                  </p>
+                </label>
+              </div>
             </div>
           </div>
         </div>
-        {/* middle 2 is here */}
-        <div className="grid grid-cols-3 gap-5 py-5 text-[#0D6739]">
-          <div>
-            <div className="bg-white flex justify-evenly items-center rounded-md p-4 text-2xl font-bold">
-              <p>Ad Banner</p>
-              <img className="w-36" src={adBanner} alt="" />
-            </div>
-            <div className="grid grid-cols-2 gap-5 text-center pt-5 text-xl font-bold">
-              <div className="bg-white rounded-md p-3">
-                <div className="flex justify-center">
-                  <img className="h-20 mb-2" src={adUpdate} alt="" />
-                </div>
-                <p>Ad Update</p>
-              </div>
-              <div className="bg-white rounded-md p-3">
-                <div className="flex justify-center">
-                  <img className="h-20 mb-2" src={adRate} alt="" />
-                </div>
-                <p>Ad Rate</p>
-              </div>
-            </div>
+      </div>
+      <div className="lg:hidden p-4 md:p-8 grid gap-3">
+        {/* 3 amount option */}
+        <div className="grid gap-3">
+          <div className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-4 md:p-8 rounded-md text-white text-lg">
+            <h2>Total Sale</h2>
+            <p className="text-4xl text-white font-bold">
+              {!totalAmount ? 0 : totalAmount} ৳
+            </p>
           </div>
-          <div className="col-span-2 bg-white rounded-md">
-            <p className="text-xl p-5 pb-0">Resent Orders</p>
-            <div className="overflow-x-auto">
-              <table className="table table-zebra w-full">
-                <thead>
-                  <tr className="bg-primary text-white">
-                    <th></th>
-                    <th>Name</th>
-                    <th>Order Type</th>
-                    <th>Amount</th>
-                    <th>More</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {adminAllOrder
-                    .slice(-3)
-                    .reverse()
-                    .map((o, i) => (
-                      <tr key={i}>
-                        <th>{i + 1}</th>
-                        <td>{o.name}</td>
-                        <td>{o.orderType}</td>
-                        <td>{o.dollarAmount || o.like || o.amount} Tk</td>
-                        <td>
-                          <Link to={`/dashboard/order-details/${o._id}`}>
-                            <button className="btn btn-xs text-white btn-primary">
-                              View
-                            </button>
-                          </Link>
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
-            </div>
+          <div className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-4 md:p-8 rounded-md text-white text-lg">
+            <h2>Current Month</h2>
+            <p className="text-4xl text-white font-bold">
+              {!monthAmount ? 0 : monthAmount} ৳
+            </p>
+          </div>
+          <div className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-4 md:p-8 rounded-md text-white text-lg">
+            <h2>Today'zs Sale</h2>
+            <p className="text-4xl text-white font-bold">
+              {!todayAmount ? 0 : todayAmount} ৳
+            </p>
           </div>
         </div>
-        {/* last 3 is here */}
-        <div className="grid grid-cols-3 gap-5">
-          <div className="grid grid-cols-2 gap-5 text-white text-center">
-            <div className="bg-[#0D6739] rounded-md p-5">
-              <div className="flex justify-center">
-                <img className="h-16" src={panel} alt="" />
-              </div>
-              <p>User Panel</p>
-            </div>
-            <div className="bg-[#307C3D] rounded-md p-5">
-              <div className="flex justify-center">
-                <img className="h-16" src={custom} alt="" />
-              </div>
-              <p>Customers</p>
-            </div>
-            <div className="bg-[#508F41] rounded-md p-5">
-              <div className="flex justify-center">
-                <img className="h-16" src={icon} alt="" />
-              </div>
-              <p>Ad Icon</p>
-            </div>
-            <div className="bg-[#6DA642] rounded-md p-5">
-              <div className="flex justify-center">
-                <img className="h-16" src={note} alt="" />
-              </div>
-              <p>Ad Note</p>
-            </div>
+        {/* pending and order option */}
+        <div className="grid grid-cols-2 gap-3">
+          <div className="p-2 bg-white rounded-md text-secondary">
+            <p className="text-2xl font-bold">Pending Order</p>
+            <p className="text-center pt-4 font-bold text-8xl">
+              {pending?.length}
+            </p>
           </div>
-          <div className="bg-white rounded-md text-secondary">
-            <p className="p-8 text-3xl font-bold">Pending Order</p>
-            <p className="text-center font-bold text-8xl">{pending?.length}</p>
-          </div>
-          <div className="flex justify-center items-center bg-white rounded-md">
+          <div className="flex justify-center items-center bg-white rounded-md p-2">
             <div>
               <label htmlFor="order-modal">
                 <img className="w-36" src={order} alt="" />
@@ -221,6 +268,55 @@ const DashboardAdmin = () => {
                 </p>
               </label>
             </div>
+          </div>
+        </div>
+        {/* ad banner and ets. */}
+        <div>
+          <div className="bg-white flex justify-evenly items-center rounded-md p-4 text-2xl font-bold">
+            <p>Ad Banner</p>
+            <img className="w-36" src={adBanner} alt="" />
+          </div>
+          {/* update */}
+          <div className="grid grid-cols-2 gap-3 text-center pt-3 text-xl font-bold">
+            <div className="bg-white rounded-md p-3">
+              <div className="flex justify-center">
+                <img className="h-20 mb-2" src={adUpdate} alt="" />
+              </div>
+              <p>Ad Update</p>
+            </div>
+            <div className="bg-white rounded-md p-3">
+              <div className="flex justify-center">
+                <img className="h-20 mb-2" src={adRate} alt="" />
+              </div>
+              <p>Ad Rate</p>
+            </div>
+          </div>
+        </div>
+        {/* last 4 part */}
+        <div className="grid grid-cols-2 gap-3 text-white text-center">
+          <div className="bg-[#0D6739] rounded-md p-5">
+            <div className="flex justify-center">
+              <img className="h-16" src={panel} alt="" />
+            </div>
+            <p>User Panel</p>
+          </div>
+          <div className="bg-[#307C3D] rounded-md p-5">
+            <div className="flex justify-center">
+              <img className="h-16" src={custom} alt="" />
+            </div>
+            <p>Customers</p>
+          </div>
+          <div className="bg-[#508F41] rounded-md p-5">
+            <div className="flex justify-center">
+              <img className="h-16" src={icon} alt="" />
+            </div>
+            <p>Ad Icon</p>
+          </div>
+          <div className="bg-[#6DA642] rounded-md p-5">
+            <div className="flex justify-center">
+              <img className="h-16" src={note} alt="" />
+            </div>
+            <p>Ad Note</p>
           </div>
         </div>
       </div>

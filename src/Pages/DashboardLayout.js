@@ -15,13 +15,14 @@ const Dashboard = () => {
   const { userInfo } = useContext(AuthContext);
   return (
     <div className="text-black">
-      <DashboardNavbar />
       <div className="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
           {/* <!-- Page content here --> */}
 
           <div className="bg-gray-200">
+            {" "}
+            <DashboardNavbar />
             <Outlet />
           </div>
         </div>
