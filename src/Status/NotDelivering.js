@@ -31,7 +31,7 @@ const NotDelivering = () => {
     <div>
       <div className="min-h-screen">
         <h2 className="text-center text-3xl py-5 font-bold">All Active Ads</h2>
-        <div className="mx-0 lg:mx-5 py-5 bg-white rounded-lg min-h-[500px]">
+        <div className="mx-0 py-5 bg-white rounded-lg min-h-[500px]">
           <StatusHeader />
           <div className="overflow-x-auto">
             <table className="table table-zebra w-full">

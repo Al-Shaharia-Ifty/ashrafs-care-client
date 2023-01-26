@@ -27,7 +27,7 @@ const DashboardNavbar = () => {
   };
   return (
     <div>
-      <div className="py-5 bg-[#166534] pl-5 pr-5 md:pl-14 md:pr-14 lg:pl-24 flex justify-between items-center">
+      <div className="py-5 bg-[#166534] pl-5 pr-5 md:pl-8 md:pr-8 flex justify-between items-center">
         <div>
           <Link to={"/dashboard"}>
             <img className="md:w-16 w-12" src={logo} alt="" />

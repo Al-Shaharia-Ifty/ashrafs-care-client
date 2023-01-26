@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import StatusHeader from "../Components/StatusHeader";
+import { AuthContext } from "../Contexts/AuthProvider";
 import Loading from "../Shared/Loading";
 
 const Pending = () => {
+  const { userInfo, adminAllOrder, adminOrderLoading } =
+    useContext(AuthContext);
+
   const { data: allOrders, isLoading } = useQuery({
     queryKey: ["allOrders"],
     queryFn: () =>
@@ -16,12 +20,17 @@ const Pending = () => {
         },
       }).then((res) => res.json()),
   });
-  if (isLoading) {
+  if (isLoading || adminOrderLoading) {
     return <Loading />;
   }
 
   // all order function
-  const allOrder = allOrders.allOrder;
+  let allOrder = [];
+  if (userInfo.role === "member") {
+    allOrder = allOrders?.allOrder;
+  } else if (userInfo.role === "admin") {
+    allOrder = adminAllOrder;
+  }
   const pending = allOrder.filter((p) => {
     return p.status === "Pending";
   });
@@ -30,7 +39,7 @@ const Pending = () => {
     <div>
       <div className="min-h-screen">
         <h2 className="text-center text-3xl py-5 font-bold">All Pending</h2>
-        <div className="mx-0 lg:mx-5 py-5 bg-white rounded-lg min-h-[500px]">
+        <div className="mx-0 py-5 bg-white rounded-lg min-h-[500px]">
           <StatusHeader />
           <div className="overflow-x-auto">
             <table className="table table-zebra w-full">

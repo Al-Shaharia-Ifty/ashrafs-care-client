@@ -4,13 +4,13 @@ import { NavLink } from "react-router-dom";
 const StatusHeader = () => {
   return (
     <div>
-      <div className="grid gap-3 lg:gap-0 lg:grid-cols-8 md:grid-cols-4 grid-cols-2 mx-5 ">
+      <div className="grid gap-3 lg:gap-0 lg:grid-cols-11 md:grid-cols-4 grid-cols-2 mx-2">
         <NavLink
           to={"/dashboard/all-status"}
           className={({ isActive }) =>
             isActive
-              ? "btn btn-primary lg:rounded-b-none text-white"
-              : "btn btn-ghost bg-gray-200"
+              ? "btn text-xs btn-primary lg:rounded-b-none text-white"
+              : "btn text-xs btn-ghost"
           }
         >
           Total Order
@@ -19,8 +19,8 @@ const StatusHeader = () => {
           to={"/dashboard/all-pending"}
           className={({ isActive }) =>
             isActive
-              ? "btn btn-primary lg:rounded-b-none text-white"
-              : " btn btn-ghost bg-gray-200"
+              ? "btn text-xs btn-primary lg:rounded-b-none text-white"
+              : " btn text-xs btn-ghost"
           }
         >
           Pending
@@ -29,28 +29,28 @@ const StatusHeader = () => {
           to={"/dashboard/all-in-review"}
           className={({ isActive }) =>
             isActive
-              ? "btn btn-primary lg:rounded-b-none text-white"
-              : " btn btn-ghost bg-gray-200"
+              ? "btn text-xs btn-primary lg:rounded-b-none text-white"
+              : " btn text-xs btn-ghost"
           }
         >
           in-review
         </NavLink>
         <NavLink
-          to={"/dashboard/all-active-ads"}
+          to={"/dashboard/all-active"}
           className={({ isActive }) =>
             isActive
-              ? "btn btn-primary lg:rounded-b-none text-white"
-              : " btn btn-ghost bg-gray-200"
+              ? "btn text-xs btn-primary lg:rounded-b-none text-white"
+              : " btn text-xs btn-ghost"
           }
         >
           active-ads
         </NavLink>
         <NavLink
-          to={"/dashboard/all-paused-ads"}
+          to={"/dashboard/all-paused"}
           className={({ isActive }) =>
             isActive
-              ? "btn btn-primary md:rounded-b-none text-white"
-              : " btn btn-ghost bg-gray-200"
+              ? "btn text-xs btn-primary md:rounded-b-none text-white"
+              : " btn text-xs btn-ghost"
           }
         >
           paused-ads
@@ -59,8 +59,8 @@ const StatusHeader = () => {
           to={"/dashboard/all-boost-rejected"}
           className={({ isActive }) =>
             isActive
-              ? "btn btn-primary md:rounded-b-none text-white"
-              : " btn btn-ghost bg-gray-200"
+              ? "btn text-xs btn-primary md:rounded-b-none text-white"
+              : " btn text-xs btn-ghost"
           }
         >
           Boost Rejected
@@ -69,8 +69,8 @@ const StatusHeader = () => {
           to={"/dashboard/all-not-delivering"}
           className={({ isActive }) =>
             isActive
-              ? "btn btn-primary rounded-b-none text-white"
-              : " btn btn-ghost bg-gray-200"
+              ? "btn text-xs btn-primary rounded-b-none text-white"
+              : " btn text-xs btn-ghost"
           }
         >
           Not Delivering
@@ -79,11 +79,41 @@ const StatusHeader = () => {
           to={"/dashboard/all-complete"}
           className={({ isActive }) =>
             isActive
-              ? "btn btn-primary rounded-b-none text-white"
-              : " btn btn-ghost bg-gray-200"
+              ? "btn text-xs btn-primary rounded-b-none text-white"
+              : " btn text-xs btn-ghost"
           }
         >
           Complete
+        </NavLink>
+        <NavLink
+          to={"/dashboard/all-page-restricted"}
+          className={({ isActive }) =>
+            isActive
+              ? "btn text-xs btn-primary rounded-b-none text-white"
+              : " btn text-xs btn-ghost"
+          }
+        >
+          Page Restricted
+        </NavLink>
+        <NavLink
+          to={"/dashboard/all-access-need"}
+          className={({ isActive }) =>
+            isActive
+              ? "btn text-xs btn-primary rounded-b-none text-white"
+              : " btn text-xs btn-ghost"
+          }
+        >
+          Access Need
+        </NavLink>
+        <NavLink
+          to={"/dashboard/all-full-access-need"}
+          className={({ isActive }) =>
+            isActive
+              ? "btn text-xs btn-primary rounded-b-none text-white"
+              : " btn text-xs btn-ghost"
+          }
+        >
+          Full Access Need
         </NavLink>
       </div>
     </div>

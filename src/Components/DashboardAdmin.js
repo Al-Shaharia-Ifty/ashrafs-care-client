@@ -84,6 +84,7 @@ const DashboardAdmin = () => {
 
   return (
     <div>
+      {/* pc view */}
       <div className="hidden lg:flex lg:flex-col">
         <div className="p-8">
           {/* first 3 is here */}
@@ -145,21 +146,12 @@ const DashboardAdmin = () => {
               </div>
             </div>
             <div className="col-span-2 bg-white rounded-md">
-              <p className="text-xl p-5 pb-0">Resent Orders</p>
+              <p className="text-xl p-5 pb-0 text-center">Resent Orders</p>
               <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">
-                  <thead>
-                    <tr className="bg-primary text-white">
-                      <th></th>
-                      <th>Name</th>
-                      <th>Order Type</th>
-                      <th>Amount</th>
-                      <th>More</th>
-                    </tr>
-                  </thead>
                   <tbody>
                     {adminAllOrder
-                      .slice(-3)
+                      .slice(-4)
                       .reverse()
                       .map((o, i) => (
                         <tr key={i}>
@@ -229,6 +221,7 @@ const DashboardAdmin = () => {
           </div>
         </div>
       </div>
+      {/* mobile view */}
       <div className="lg:hidden p-4 md:p-8 grid gap-3">
         {/* 3 amount option */}
         <div className="grid gap-3">
@@ -268,6 +261,32 @@ const DashboardAdmin = () => {
                 </p>
               </label>
             </div>
+          </div>
+        </div>
+        <div className="bg-white rounded-md">
+          <p className="text-xl p-5 pb-0 text-center">Resent Orders</p>
+          <div className="overflow-x-auto">
+            <table className="table table-zebra w-full">
+              <tbody>
+                {adminAllOrder
+                  .slice(-4)
+                  .reverse()
+                  .map((o, i) => (
+                    <tr className="text-xs" key={i}>
+                      <td>{o.name}</td>
+                      <td>{o.orderType}</td>
+                      <td>{o.dollarAmount || o.like || o.amount} Tk</td>
+                      <td>
+                        <Link to={`/dashboard/order-details/${o._id}`}>
+                          <button className="btn btn-xs text-white btn-primary">
+                            View
+                          </button>
+                        </Link>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
           </div>
         </div>
         {/* ad banner and ets. */}

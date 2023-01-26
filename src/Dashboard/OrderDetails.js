@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useState } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+import { AuthContext } from "../Contexts/AuthProvider";
 import Loading from "../Shared/Loading";
 
 const OrderDetails = () => {
+  const { userInfo } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
   const params = useParams();
-  const { data: details, isLoading } = useQuery({
+  const {
+    data: details,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["details"],
     queryFn: () =>
       fetch(`https://ashrafs-servier.vercel.app/order-details/${params.id}`, {
@@ -17,7 +25,7 @@ const OrderDetails = () => {
         },
       }).then((res) => res.json()),
   });
-  if (isLoading) {
+  if (isLoading || loading) {
     return <Loading />;
   }
   const {
@@ -32,7 +40,6 @@ const OrderDetails = () => {
     description,
     designName,
     dollar,
-    dollarAmount,
     email,
     gender,
     idLink,
@@ -53,6 +60,25 @@ const OrderDetails = () => {
     whatsapp,
     webLink,
   } = details;
+  console.log(details);
+  const handleChange = (e) => {
+    setLoading(true);
+    const value = e.target.value;
+    const changeState = { status: value };
+    fetch(`http://localhost:5000/admin/orderStatus/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(changeState),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        setLoading(false);
+        refetch();
+      });
+  };
 
   return (
     <div>
@@ -74,12 +100,35 @@ const OrderDetails = () => {
                 <h2 className="text-xl">Status</h2>
                 <h2 className="text-xl col-span-2">
                   :{" "}
-                  {status === "Pending" && (
+                  {(status === "Pending" && (
                     <span className="text-yellow-400 font-semibold">
                       Pending
                     </span>
-                  )}
+                  )) ||
+                    (status !== "Pending" && status)}
                 </h2>
+                {userInfo.role === "admin" && (
+                  <div className="col-span-3 flex justify-end">
+                    <select
+                      onChange={handleChange}
+                      className="select select-bordered ml-4 w-36"
+                    >
+                      <option disabled selected>
+                        Status
+                      </option>
+                      <option>In-review</option>
+                      <option>Pending</option>
+                      <option>Active</option>
+                      <option>Paused</option>
+                      <option>Complete</option>
+                      <option>Rejected</option>
+                      <option>Page Restricted</option>
+                      <option>Not Delivering</option>
+                      <option>Access Need</option>
+                      <option>Full Access Need</option>
+                    </select>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -119,7 +168,7 @@ const OrderDetails = () => {
                   </h2>
                   <h2 className="text-xl font-bold">Amount</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
-                    : {dollarAmount} Tk
+                    : {amount} Tk
                   </h2>
                   <h2 className="text-xl font-bold">Boost Day</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
