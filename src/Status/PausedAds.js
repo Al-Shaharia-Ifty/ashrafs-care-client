@@ -40,7 +40,7 @@ const PausedAds = () => {
   return (
     <div>
       <div className="min-h-screen">
-        <h2 className="text-center text-3xl py-5 font-bold">All Active Ads</h2>
+        <h2 className="text-center text-3xl py-5 font-bold">All Paused Ads</h2>
         <div className="mx-0 py-5 bg-white rounded-lg min-h-[500px]">
           <StatusHeader />
           <div className="overflow-x-auto">
@@ -64,9 +64,10 @@ const PausedAds = () => {
                       <td className="hidden lg:flex">{o.date}</td>
                       <th>{o.dollarAmount || o.like || o.amount} Tk</th>
                       <th>
-                        {o.status === "Pending" && (
+                        {(o.status === "Pending" && (
                           <p className="text-warning">Pending</p>
-                        )}
+                        )) ||
+                          (o.status !== "Pending" && o.status)}
                       </th>
                       <th>
                         <Link to={`/dashboard/order-details/${o._id}`}>

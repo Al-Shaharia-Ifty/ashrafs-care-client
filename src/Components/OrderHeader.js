@@ -1,9 +1,13 @@
 import React from "react";
+import { useContext } from "react";
 import { useQuery } from "react-query";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../Contexts/AuthProvider";
 import Loading from "../Shared/Loading";
 
 const OrderHeader = () => {
+  const { userInfo, adminAllOrder, adminOrderLoading } =
+    useContext(AuthContext);
   const { data: allOrders, isLoading } = useQuery({
     queryKey: ["allOrders"],
     queryFn: () =>
@@ -15,10 +19,16 @@ const OrderHeader = () => {
         },
       }).then((res) => res.json()),
   });
-  if (isLoading) {
+  if (isLoading || adminOrderLoading) {
     return <Loading />;
   }
-  const allOrder = allOrders.allOrder;
+  // check admin and member
+  let allOrder = [];
+  if (userInfo.role === "member") {
+    allOrder = allOrders?.allOrder;
+  } else if (userInfo.role === "admin") {
+    allOrder = adminAllOrder;
+  }
 
   const allBoost = allOrder.filter((p) => {
     return p.orderType === "boost";

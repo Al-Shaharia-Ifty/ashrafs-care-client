@@ -125,7 +125,7 @@ const Summery = () => {
           to={"/dashboard/all-page-restricted"}
           className="bg-white p-4 rounded-md"
         >
-          <h2 className="text-xl text-green-600">Page Restricted</h2>
+          <h2 className="text-xl text-red-600">Page Restricted</h2>
           <p>{pageRestricted.length}</p>
         </Link>
         <Link
@@ -139,7 +139,7 @@ const Summery = () => {
           to={"/dashboard/all-full-access-need"}
           className="bg-white p-4 rounded-md"
         >
-          <h2 className="text-xl text-green-600">Full Access Need</h2>
+          <h2 className="text-xl text-red-600">Full Access Need</h2>
           <p>{fullAccessNeed.length}</p>
         </Link>
       </div>

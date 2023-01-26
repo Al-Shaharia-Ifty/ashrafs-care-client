@@ -65,7 +65,7 @@ const OrderDetails = () => {
     setLoading(true);
     const value = e.target.value;
     const changeState = { status: value };
-    fetch(`http://localhost:5000/admin/orderStatus/${_id}`, {
+    fetch(`https://ashrafs-servier.vercel.app/admin/orderStatus/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -82,6 +82,64 @@ const OrderDetails = () => {
 
   return (
     <div>
+      {userInfo.role === "admin" && (
+        <div className="lg:pt-10">
+          <div className="overflow-x-auto">
+            <table className="table table-zebra w-full">
+              <thead>
+                <tr className="bg-primary text-white ">
+                  <th>Editor ID</th>
+                  <th>Ad Monster</th>
+                  <th>Bill</th>
+                  <th>Status</th>
+                  <th>Mathod</th>
+                  <th>Trans.ID</th>
+                  <th>Remarks</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Cy Ganderton</td>
+                  <td>Quality Control Specialist</td>
+                  <td>Blue</td>
+                  <td>
+                    <select className="select select-primary  ">
+                      <option disabled selected>
+                        Due
+                      </option>
+                      <option>Due</option>
+                      <option>Paid</option>
+                      <option>Old Payment</option>
+                      <option>Advanced</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select className="select select-primary  ">
+                      <option disabled selected>
+                        Method
+                      </option>
+                      <option>Nagad 29</option>
+                      <option>BKM 23</option>
+                      <option>BK 501</option>
+                      <option>NG 29</option>
+                      <option>NG 800</option>
+                      <option>BKM 66</option>
+                      <option>City</option>
+                      <option>DBBL</option>
+                      <option>IBBL</option>
+                      <option>EBL</option>
+                      <option>BKM 33</option>
+                      <option>BK 69</option>
+                    </select>
+                  </td>
+                  <td>Blue</td>
+                  <td>Blue</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
       <div className="min-h-screen p-0 lg:p-10">
         <div className="p-5 md:p-10 rounded-lg bg-white">
           <h2 className="text-2xl text-center">
@@ -105,13 +163,16 @@ const OrderDetails = () => {
                       Pending
                     </span>
                   )) ||
+                    (status === "Active" && (
+                      <span className="text-primary">Active</span>
+                    )) ||
                     (status !== "Pending" && status)}
                 </h2>
                 {userInfo.role === "admin" && (
                   <div className="col-span-3 flex justify-end">
                     <select
                       onChange={handleChange}
-                      className="select select-bordered ml-4 w-36"
+                      className="select select-primary select-bordered ml-4 w-36"
                     >
                       <option disabled selected>
                         Status

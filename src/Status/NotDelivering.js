@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import StatusHeader from "../Components/StatusHeader";
+import { AuthContext } from "../Contexts/AuthProvider";
 import Loading from "../Shared/Loading";
 
 const NotDelivering = () => {
+  const { userInfo, adminAllOrder, adminOrderLoading } =
+    useContext(AuthContext);
+
   const { data: allOrders, isLoading } = useQuery({
     queryKey: ["allOrders"],
     queryFn: () =>
@@ -16,12 +20,17 @@ const NotDelivering = () => {
         },
       }).then((res) => res.json()),
   });
-  if (isLoading) {
+  if (isLoading || adminOrderLoading) {
     return <Loading />;
   }
 
   // all order function
-  const allOrder = allOrders.allOrder;
+  let allOrder = [];
+  if (userInfo.role === "member") {
+    allOrder = allOrders?.allOrder;
+  } else if (userInfo.role === "admin") {
+    allOrder = adminAllOrder;
+  }
 
   const notDelivering = allOrder.filter((p) => {
     return p.status === "Not Delivering";
@@ -30,7 +39,9 @@ const NotDelivering = () => {
   return (
     <div>
       <div className="min-h-screen">
-        <h2 className="text-center text-3xl py-5 font-bold">All Active Ads</h2>
+        <h2 className="text-center text-3xl py-5 font-bold">
+          All Not Delivering
+        </h2>
         <div className="mx-0 py-5 bg-white rounded-lg min-h-[500px]">
           <StatusHeader />
           <div className="overflow-x-auto">
@@ -54,9 +65,10 @@ const NotDelivering = () => {
                       <td className="hidden lg:flex">{o.date}</td>
                       <th>{o.dollarAmount || o.like || o.amount} Tk</th>
                       <th>
-                        {o.status === "Pending" && (
+                        {(o.status === "Pending" && (
                           <p className="text-warning">Pending</p>
-                        )}
+                        )) ||
+                          (o.status !== "Pending" && o.status)}
                       </th>
                       <th>
                         <Link to={`/dashboard/order-details/${o._id}`}>

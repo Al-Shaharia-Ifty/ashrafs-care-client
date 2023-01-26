@@ -39,6 +39,9 @@ import GraphicOrder from "../AllOrder/GraphicOrder";
 import Payment from "../Dashboard/Payment";
 import GetSupport from "../Dashboard/GetSupport";
 import ErrorPage from "../Shared/ErrorPage";
+import PageRejected from "../Status/PageRejected";
+import AccessNeed from "../Status/AccessNeed";
+import FullAccessNeed from "../Status/FullAccessNeed";
 
 export const router = createBrowserRouter([
   {
@@ -84,6 +87,9 @@ export const router = createBrowserRouter([
       { path: "/dashboard/all-boost-rejected", element: <BoostRejected /> },
       { path: "/dashboard/all-not-delivering", element: <NotDelivering /> },
       { path: "/dashboard/all-complete", element: <Complete /> },
+      { path: "/dashboard/all-page-restricted", element: <PageRejected /> },
+      { path: "/dashboard/all-access-need", element: <AccessNeed /> },
+      { path: "/dashboard/all-full-access-need", element: <FullAccessNeed /> },
 
       // order summery
       { path: "/dashboard/summery", element: <Summery /> },

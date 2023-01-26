@@ -202,12 +202,15 @@ const DashboardAdmin = () => {
                 <p>Ad Note</p>
               </div>
             </div>
-            <div className="bg-white rounded-md text-secondary">
+            <Link
+              to={"/dashboard/all-pending"}
+              className="bg-white rounded-md text-secondary"
+            >
               <p className="p-8 text-3xl font-bold">Pending Order</p>
               <p className="text-center font-bold text-8xl">
                 {pending?.length}
               </p>
-            </div>
+            </Link>
             <div className="flex justify-center items-center bg-white rounded-md">
               <div>
                 <label htmlFor="order-modal">

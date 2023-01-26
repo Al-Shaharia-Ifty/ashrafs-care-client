@@ -6,7 +6,7 @@ import StatusHeader from "../Components/StatusHeader";
 import { AuthContext } from "../Contexts/AuthProvider";
 import Loading from "../Shared/Loading";
 
-const BoostRejected = () => {
+const PageRejected = () => {
   const { userInfo, adminAllOrder, adminOrderLoading } =
     useContext(AuthContext);
 
@@ -32,17 +32,13 @@ const BoostRejected = () => {
   } else if (userInfo.role === "admin") {
     allOrder = adminAllOrder;
   }
-
-  const boostRejects = allOrder.filter((p) => {
-    return p.status === "Rejected";
+  const pageRestricted = allOrder.filter((p) => {
+    return p.status === "Page Restricted";
   });
-
   return (
     <div>
       <div className="min-h-screen">
-        <h2 className="text-center text-3xl py-5 font-bold">
-          All Boost Rejected
-        </h2>
+        <h2 className="text-center text-3xl py-5 font-bold">All Pending</h2>
         <div className="mx-0 py-5 bg-white rounded-lg min-h-[500px]">
           <StatusHeader />
           <div className="overflow-x-auto">
@@ -57,7 +53,7 @@ const BoostRejected = () => {
                 </tr>
               </thead>
               <tbody className="rounded-lg">
-                {boostRejects
+                {pageRestricted
                   .slice()
                   .reverse()
                   .map((o, i) => (
@@ -89,4 +85,4 @@ const BoostRejected = () => {
   );
 };
 
-export default BoostRejected;
+export default PageRejected;

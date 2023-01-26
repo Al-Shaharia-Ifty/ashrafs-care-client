@@ -1,9 +1,13 @@
+import { useContext } from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import OrderHeader from "../Components/OrderHeader";
+import { AuthContext } from "../Contexts/AuthProvider";
 import Loading from "../Shared/Loading";
 
 const AllBoost = () => {
+  const { userInfo, adminAllOrder, adminOrderLoading } =
+    useContext(AuthContext);
   const { data: allOrders, isLoading } = useQuery({
     queryKey: ["allOrders"],
     queryFn: () =>
@@ -15,13 +19,17 @@ const AllBoost = () => {
         },
       }).then((res) => res.json()),
   });
-  if (isLoading) {
+  if (isLoading || adminOrderLoading) {
     return <Loading />;
   }
 
   // all order function
-  const allOrder = allOrders.allOrder;
-
+  let allOrder = [];
+  if (userInfo.role === "member") {
+    allOrder = allOrders?.allOrder;
+  } else if (userInfo.role === "admin") {
+    allOrder = adminAllOrder;
+  }
   const allBoost = allOrder.filter((p) => {
     return p.orderType === "boost";
   });
@@ -52,9 +60,13 @@ const AllBoost = () => {
                       <td className="px-2">{o.orderType}</td>
                       <td className="hidden lg:flex px-2">{o.date}</td>
                       <td className="px-2">
-                        {o.status === "Pending" && (
+                        {(o.status === "Pending" && (
                           <p className="text-warning">Pending</p>
-                        )}
+                        )) ||
+                          (o.status === "Active" && (
+                            <p className="text-primary">Active</p>
+                          )) ||
+                          (o.status !== "Pending" && o.status)}
                       </td>
                       <td className="px-2">
                         {o.dollarAmount || o.like || o.amount} Tk

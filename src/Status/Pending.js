@@ -62,9 +62,10 @@ const Pending = () => {
                       <td className="hidden lg:flex">{o.date}</td>
                       <th>{o.dollarAmount || o.like || o.amount} Tk</th>
                       <th>
-                        {o.status === "Pending" && (
+                        {(o.status === "Pending" && (
                           <p className="text-warning">Pending</p>
-                        )}
+                        )) ||
+                          (o.status !== "Pending" && o.status)}
                       </th>
                       <th>
                         <Link to={`/dashboard/order-details/${o._id}`}>
