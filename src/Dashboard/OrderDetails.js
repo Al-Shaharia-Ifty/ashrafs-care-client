@@ -4,10 +4,12 @@ import { PhotoProvider, PhotoView } from "react-photo-view";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthProvider";
+import BillingModal from "../Modal/BillingModal";
 import Loading from "../Shared/Loading";
 
 const OrderDetails = () => {
   const { userInfo } = useContext(AuthContext);
+  const [baill, setBill] = useState(false);
   const [loading, setLoading] = useState(false);
   const params = useParams();
   const {
@@ -59,8 +61,14 @@ const OrderDetails = () => {
     status,
     whatsapp,
     webLink,
+    editor,
+    manager,
+    bill,
+    payment,
+    method,
+    transID,
+    remarks,
   } = details;
-  console.log(details);
   const handleChange = (e) => {
     setLoading(true);
     const value = e.target.value;
@@ -84,56 +92,37 @@ const OrderDetails = () => {
     <div>
       {userInfo.role === "admin" && (
         <div className="lg:pt-10">
+          <div className="flex justify-end mb-2">
+            <label
+              onClick={() => setBill(_id)}
+              htmlFor="billing-modal"
+              className="btn btn-secondary text-white"
+            >
+              Edit
+            </label>
+          </div>
           <div className="overflow-x-auto">
             <table className="table table-zebra w-full">
               <thead>
                 <tr className="bg-primary text-white ">
-                  <th>Editor ID</th>
-                  <th>Ad Monster</th>
+                  <th>Editor</th>
+                  <th>Ad Manager</th>
                   <th>Bill</th>
                   <th>Status</th>
-                  <th>Mathod</th>
+                  <th>Method</th>
                   <th>Trans.ID</th>
                   <th>Remarks</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Cy Ganderton</td>
-                  <td>Quality Control Specialist</td>
-                  <td>Blue</td>
-                  <td>
-                    <select className="select select-primary  ">
-                      <option disabled selected>
-                        Due
-                      </option>
-                      <option>Due</option>
-                      <option>Paid</option>
-                      <option>Old Payment</option>
-                      <option>Advanced</option>
-                    </select>
-                  </td>
-                  <td>
-                    <select className="select select-primary  ">
-                      <option disabled selected>
-                        Method
-                      </option>
-                      <option>Nagad 29</option>
-                      <option>BKM 23</option>
-                      <option>BK 501</option>
-                      <option>NG 29</option>
-                      <option>NG 800</option>
-                      <option>BKM 66</option>
-                      <option>City</option>
-                      <option>DBBL</option>
-                      <option>IBBL</option>
-                      <option>EBL</option>
-                      <option>BKM 33</option>
-                      <option>BK 69</option>
-                    </select>
-                  </td>
-                  <td>Blue</td>
-                  <td>Blue</td>
+                  <th>{editor}</th>
+                  <th>{manager}</th>
+                  <th>{bill}</th>
+                  <th>{payment}</th>
+                  <th>{method}</th>
+                  <th>{transID}</th>
+                  <th>{remarks}</th>
                 </tr>
               </tbody>
             </table>
@@ -223,6 +212,20 @@ const OrderDetails = () => {
               </div>
               <div className="lg:mt-5 w-full lg:w-1/2">
                 <div className="grid grid-cols-3 md:grid-cols-4">
+                  <h2 className="text-xl font-bold">Payment</h2>
+                  <h2
+                    className={`text-xl col-span-2 md:col-span-3 ${
+                      (payment === "Due" && "text-error") ||
+                      (payment === "Paid" && "text-success") ||
+                      (payment !== "Due" &&
+                        payment !== "Paid" &&
+                        "text-success")
+                    }`}
+                  >
+                    :{" "}
+                    {(payment === "Due" && "Due") ||
+                      (payment !== "Due" && "Paid")}
+                  </h2>
                   <h2 className="text-xl font-bold">Dollar</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
                     : {dollar} dollar
@@ -289,6 +292,10 @@ const OrderDetails = () => {
               </div>
               <div className="lg:mt-5 w-full lg:w-1/2">
                 <div className="grid grid-cols-3 md:grid-cols-4">
+                  <h2 className="text-xl font-bold">Payment</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-3">
+                    : {payment}
+                  </h2>
                   <h2 className="text-xl font-bold">Like</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
                     {like === "4080" && <p>: 5k Like</p>}
@@ -344,6 +351,10 @@ const OrderDetails = () => {
               </div>
               <div className="lg:mt-5 w-full lg:w-1/2">
                 <div className="grid grid-cols-3 md:grid-cols-4">
+                  <h2 className="text-xl font-bold">Payment</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-3">
+                    : {payment}
+                  </h2>
                   <h2 className="text-xl font-bold">Like</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
                     {like === "3060" && <p>: 5k Like</p>}
@@ -392,6 +403,10 @@ const OrderDetails = () => {
               </div>
               <div className="lg:mt-5 w-full lg:w-1/2">
                 <div className="grid grid-cols-3 md:grid-cols-4">
+                  <h2 className="text-xl font-bold">Payment</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-3">
+                    : {payment}
+                  </h2>
                   <h2 className="text-xl font-bold">Amount</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
                     : {amount} Tk
@@ -432,6 +447,10 @@ const OrderDetails = () => {
               </div>
               <div className="lg:mt-5 w-full lg:w-1/2">
                 <div className="grid grid-cols-3 md:grid-cols-4">
+                  <h2 className="text-xl font-bold">Payment</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-3">
+                    : {payment}
+                  </h2>
                   <h2 className="text-xl font-bold">Amount</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
                     : {amount} Tk
@@ -472,6 +491,10 @@ const OrderDetails = () => {
               </div>
               <div className="lg:mt-5 w-full lg:w-1/2">
                 <div className="grid grid-cols-3 md:grid-cols-4">
+                  <h2 className="text-xl font-bold">Payment</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-3">
+                    : {payment}
+                  </h2>
                   <h2 className="text-xl font-bold">WhatsApp</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
                     : {whatsapp}
@@ -528,6 +551,10 @@ const OrderDetails = () => {
               </div>
               <div className="mt-5 w-full lg:w-1/2">
                 <div className="grid grid-cols-3">
+                  <h2 className="text-xl font-bold">Payment</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-3">
+                    : {payment}
+                  </h2>
                   <h2 className="text-xl font-bold">Design name</h2>
                   <h2 className="text-xl col-span-2">: {designName}</h2>
                   <h2 className="text-xl font-bold">Amount</h2>
@@ -552,6 +579,14 @@ const OrderDetails = () => {
           )}
         </div>
       </div>
+      {baill && (
+        <BillingModal
+          setBill={setBill}
+          details={details}
+          refetch={refetch}
+          setLoading={setLoading}
+        />
+      )}
     </div>
   );
 };

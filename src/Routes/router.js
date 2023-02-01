@@ -42,6 +42,8 @@ import ErrorPage from "../Shared/ErrorPage";
 import PageRejected from "../Status/PageRejected";
 import AccessNeed from "../Status/AccessNeed";
 import FullAccessNeed from "../Status/FullAccessNeed";
+import RequireAdmin from "../Layout/RequireAdmin";
+import AdminPanel from "../Dashboard/AdminPanel";
 
 export const router = createBrowserRouter([
   {
@@ -146,9 +148,21 @@ export const router = createBrowserRouter([
         path: "user/profile",
         element: <UserProfile />,
       },
+
+      // changed password
       {
         path: "user/change-password",
         element: <ChangePassword />,
+      },
+
+      // admin panel
+      {
+        path: "admin-panel",
+        element: (
+          <RequireAdmin>
+            <AdminPanel />
+          </RequireAdmin>
+        ),
       },
     ],
   },

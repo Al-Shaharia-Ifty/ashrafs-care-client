@@ -177,12 +177,15 @@ const DashboardAdmin = () => {
           <div className="grid grid-cols-3 gap-5">
             {/* 4 item is here */}
             <div className="grid grid-cols-2 gap-5 text-white text-center">
-              <div className="bg-[#0D6739] rounded-md p-5">
+              <Link
+                to={"/dashboard/admin-panel"}
+                className="bg-[#0D6739] rounded-md p-5"
+              >
                 <div className="flex justify-center">
                   <img className="h-16" src={panel} alt="" />
                 </div>
                 <p>User Panel</p>
-              </div>
+              </Link>
               <div className="bg-[#307C3D] rounded-md p-5">
                 <div className="flex justify-center">
                   <img className="h-16" src={custom} alt="" />
@@ -316,12 +319,15 @@ const DashboardAdmin = () => {
         </div>
         {/* last 4 part */}
         <div className="grid grid-cols-2 gap-3 text-white text-center">
-          <div className="bg-[#0D6739] rounded-md p-5">
+          <Link
+            to={"/dashboard/admin-panel"}
+            className="bg-[#0D6739] rounded-md p-5"
+          >
             <div className="flex justify-center">
               <img className="h-16" src={panel} alt="" />
             </div>
             <p>User Panel</p>
-          </div>
+          </Link>
           <div className="bg-[#307C3D] rounded-md p-5">
             <div className="flex justify-center">
               <img className="h-16" src={custom} alt="" />
