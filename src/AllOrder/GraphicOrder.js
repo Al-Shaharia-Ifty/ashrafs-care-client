@@ -77,7 +77,7 @@ const GraphicOrder = () => {
                         {o.payment === "Due" && (
                           <p className="text-error">Due</p>
                         )}
-                        {o.payment === "Paid" && (
+                        {o.payment !== "Due" && (
                           <p className="text-success">Paid</p>
                         )}
                       </td>

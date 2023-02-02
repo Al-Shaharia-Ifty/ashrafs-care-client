@@ -100,7 +100,10 @@ const DashboardAdmin = () => {
                 </p>
               </div>
             </div>
-            <div className="bg-white rounded-md">
+            <Link
+              to={"/dashboard/admin/this-month"}
+              className="bg-white rounded-md"
+            >
               <div className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-8 rounded-md text-white text-lg">
                 <h2>Current Month Sale</h2>
                 <img className="h-10" src={month} alt="" />
@@ -110,7 +113,7 @@ const DashboardAdmin = () => {
                   {!monthAmount ? 0 : monthAmount} ৳
                 </p>
               </div>
-            </div>
+            </Link>
             <div className="bg-white rounded-md">
               <div className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-8 rounded-md text-white text-lg">
                 <h2>Today'zs Sale</h2>
@@ -233,31 +236,31 @@ const DashboardAdmin = () => {
         <div className="grid gap-3">
           <div className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-4 md:p-8 rounded-md text-white text-lg">
             <h2>Total Sale</h2>
-            <p className="text-4xl text-white font-bold">
-              {!totalAmount ? 0 : totalAmount} ৳
-            </p>
+            <p className="text-4xl text-white font-bold">{totalAmount} ৳</p>
           </div>
-          <div className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-4 md:p-8 rounded-md text-white text-lg">
+          <Link
+            to={"/dashboard/admin/this-month"}
+            className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-4 md:p-8 rounded-md text-white text-lg"
+          >
             <h2>Current Month</h2>
-            <p className="text-4xl text-white font-bold">
-              {!monthAmount ? 0 : monthAmount} ৳
-            </p>
-          </div>
+            <p className="text-4xl text-white font-bold">{monthAmount} ৳</p>
+          </Link>
           <div className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-4 md:p-8 rounded-md text-white text-lg">
             <h2>Today'zs Sale</h2>
-            <p className="text-4xl text-white font-bold">
-              {!todayAmount ? 0 : todayAmount} ৳
-            </p>
+            <p className="text-4xl text-white font-bold">{todayAmount} ৳</p>
           </div>
         </div>
         {/* pending and order option */}
         <div className="grid grid-cols-2 gap-3">
-          <div className="p-2 bg-white rounded-md text-secondary">
+          <Link
+            to={"/dashboard/all-pending"}
+            className="p-2 bg-white rounded-md text-secondary"
+          >
             <p className="text-2xl font-bold">Pending Order</p>
             <p className="text-center pt-4 font-bold text-8xl">
               {pending?.length}
             </p>
-          </div>
+          </Link>
           <div className="flex justify-center items-center bg-white rounded-md p-2">
             <div>
               <label htmlFor="order-modal">
