@@ -15,8 +15,12 @@ import Loading from "../Shared/Loading";
 import OrderModal from "../Modal/OrderModal";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import DollarRateModal from "../Modal/DollarRateModal";
+import { useState } from "react";
 
 const DashboardAdmin = () => {
+  const [modal, setModal] = useState(false);
+  const [loading, setLoading] = useState(false);
   const {
     data: adminAllOrder,
     isLoading,
@@ -36,7 +40,7 @@ const DashboardAdmin = () => {
     refetch();
   }, [refetch]);
 
-  if (isLoading) {
+  if (isLoading || loading) {
     return <Loading />;
   }
 
@@ -140,12 +144,16 @@ const DashboardAdmin = () => {
                   </div>
                   <p>Ad Update</p>
                 </div>
-                <div className="bg-white rounded-md p-3">
+                <label
+                  htmlFor="dollar-rate-modal"
+                  className="bg-white rounded-md p-3"
+                  onClick={() => setModal(true)}
+                >
                   <div className="flex justify-center">
                     <img className="h-20 mb-2" src={adRate} alt="" />
                   </div>
                   <p>Ad Rate</p>
-                </div>
+                </label>
               </div>
             </div>
             <div className="col-span-2 bg-white rounded-md">
@@ -352,6 +360,7 @@ const DashboardAdmin = () => {
         </div>
       </div>
       <OrderModal />
+      {modal && <DollarRateModal setLoading={setLoading} />}
     </div>
   );
 };
