@@ -5,7 +5,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../Assets/website-img/logo512.png";
 import { AuthContext } from "../Contexts/AuthProvider";
 import auth from "../firebase.init";
-import spt from "../Assets/icons/Artboard-17.png";
+// import spt from "../Assets/icons/Artboard-17.png";
 import not from "../Assets/icons/Artboard-18.png";
 import pro from "../Assets/icons/Artboard 21.png";
 import { signOut } from "firebase/auth";
@@ -15,11 +15,10 @@ import { useForm } from "react-hook-form";
 
 const DashboardNavbar = () => {
   const [user] = useAuthState(auth);
-  const { userInfo, refetch } = useContext(AuthContext);
+  const { userInfo, refetch, notification } = useContext(AuthContext);
   const [closeDropDown, setCloseDropDown] = useState(false);
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
-
   const onSubmit = (data) => {
     const orderID = data.orderID;
     reset();
@@ -57,34 +56,31 @@ const DashboardNavbar = () => {
                         <AiOutlineSearch className="text-3xl" />
                       </button>
                     </form>
-                    <NavLink
-                      to="/control-panel"
-                      className={({ isActive }) =>
-                        isActive
-                          ? "btn btn-primary text-white p-0 md:ml-5"
-                          : "btn btn-ghost hover:btn-primary text-white p-0 md:ml-5"
-                      }
-                    >
-                      <img
-                        className="w-7 md:w-full md:h-[45px]"
-                        src={spt}
-                        alt=""
-                      />
-                    </NavLink>
-                    <NavLink
-                      to="/control-panel"
-                      className={({ isActive }) =>
-                        isActive
-                          ? "btn btn-primary text-white p-0 md:ml-5"
-                          : "btn btn-ghost hover:btn-primary text-white p-0 md:ml-5"
-                      }
-                    >
-                      <img
-                        className="w-7 md:w-full md:h-[45px]"
-                        src={not}
-                        alt=""
-                      />
-                    </NavLink>{" "}
+                    <div className="dropdown dropdown-end">
+                      <label tabIndex={0} className="">
+                        <img
+                          className="w-7 md:w-full md:h-[45px]"
+                          src={not}
+                          alt=""
+                        />
+                      </label>
+                      <ul
+                        tabIndex={0}
+                        className="dropdown-content p-2 shadow bg-base-100 rounded-box w-64 mt-4 max-h-[400px] overflow-y-auto"
+                      >
+                        {notification
+                          ?.slice()
+                          .reverse()
+                          .map((n, i) => (
+                            <li
+                              key={i}
+                              className="m-2 p-3 bg-primary rounded-md text-white text-xl"
+                            >
+                              <p>{n.p}</p>
+                            </li>
+                          ))}
+                      </ul>
+                    </div>
                   </div>
                 </>
               )}
@@ -109,34 +105,32 @@ const DashboardNavbar = () => {
                         <AiOutlineSearch className="text-3xl" />
                       </button>
                     </form>
-                    <NavLink
-                      to="/control-panel"
-                      className={({ isActive }) =>
-                        isActive
-                          ? "btn btn-primary text-white p-0 md:ml-5"
-                          : "btn btn-ghost hover:btn-primary text-white p-0 md:ml-5"
-                      }
-                    >
-                      <img
-                        className="w-7 md:w-full md:h-[45px]"
-                        src={spt}
-                        alt=""
-                      />
-                    </NavLink>
-                    <NavLink
-                      to="/control-panel"
-                      className={({ isActive }) =>
-                        isActive
-                          ? "btn btn-primary text-white p-0 md:ml-5"
-                          : "btn btn-ghost hover:btn-primary text-white p-0 md:ml-5"
-                      }
-                    >
-                      <img
-                        className="w-7 md:w-full md:h-[45px]"
-                        src={not}
-                        alt=""
-                      />
-                    </NavLink>{" "}
+                    {/*  */}
+                    <div className="dropdown dropdown-end">
+                      <label tabIndex={0} className="">
+                        <img
+                          className="w-7 md:w-full md:h-[45px]"
+                          src={not}
+                          alt=""
+                        />
+                      </label>
+                      <ul
+                        tabIndex={0}
+                        className="dropdown-content p-2 shadow bg-base-100 rounded-box w-64 mt-4 max-h-[400px] overflow-y-auto"
+                      >
+                        {notification
+                          ?.slice()
+                          .reverse()
+                          .map((n, i) => (
+                            <li
+                              key={i}
+                              className="m-2 p-3 bg-primary rounded-md text-white text-xl"
+                            >
+                              <p>{n.p}</p>
+                            </li>
+                          ))}
+                      </ul>
+                    </div>
                   </div>
                 </>
               )}
@@ -203,3 +197,28 @@ const DashboardNavbar = () => {
 };
 
 export default DashboardNavbar;
+/*
+<div className="dropdown dropdown-end">
+  <label tabIndex={0} className="btn m-1">Click</label>
+  <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+    <li><a>Item 1</a></li>
+    <li><a>Item 2</a></li>
+  </ul>
+</div>
+
+<NavLink
+  to="/control-panel"
+  className={({ isActive }) =>
+    isActive
+      ? "btn btn-primary text-white p-0 md:ml-5"
+      : "btn btn-ghost hover:btn-primary text-white p-0 md:ml-5"
+  }
+>
+  <img
+    className="w-7 md:w-full md:h-[45px]"
+    src={spt}
+    alt=""
+  />
+</NavLink>
+
+*/

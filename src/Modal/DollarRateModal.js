@@ -19,7 +19,7 @@ const DollarRateModal = ({ setLoading }) => {
       rate: parseInt(rate),
       id: id,
     };
-    fetch("http://localhost:5000/admin/updateDollarRate", {
+    fetch("https://ashrafs-servier.vercel.app/admin/updateDollarRate", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -30,6 +30,14 @@ const DollarRateModal = ({ setLoading }) => {
       .then((res) => res.json())
       .then((data) => {
         setLoading(false);
+        fetch(`https://ashrafs-servier.vercel.app/admin/add-notification`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+          body: JSON.stringify({ p: `Now DollarRate is ${rate} Taka` }),
+        });
       });
   };
   return (

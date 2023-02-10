@@ -45,6 +45,18 @@ const AuthProvider = ({ children }) => {
       }).then((res) => res.json()),
   });
 
+  const { data: notification } = useQuery({
+    queryKey: ["notification"],
+    queryFn: () =>
+      fetch(`https://ashrafs-servier.vercel.app/get-notification`, {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }).then((res) => res.json()),
+  });
+
   if (isLoading || userLoading) {
     return <Loading />;
   }
@@ -54,6 +66,7 @@ const AuthProvider = ({ children }) => {
     dollarRate,
     adminAllOrder,
     adminOrderLoading,
+    notification,
     refetch,
   };
   return (
