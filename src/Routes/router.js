@@ -45,6 +45,7 @@ import FullAccessNeed from "../Status/FullAccessNeed";
 import RequireAdmin from "../Layout/RequireAdmin";
 import AdminPanel from "../Dashboard/AdminPanel";
 import ThisMonth from "../Pages/ThisMonth";
+import UserPanel from "../Dashboard/UserPanel";
 
 export const router = createBrowserRouter([
   {
@@ -162,6 +163,16 @@ export const router = createBrowserRouter([
         element: (
           <RequireAdmin>
             <AdminPanel />
+          </RequireAdmin>
+        ),
+      },
+
+      // user panel
+      {
+        path: "user-panel",
+        element: (
+          <RequireAdmin>
+            <UserPanel />
           </RequireAdmin>
         ),
       },

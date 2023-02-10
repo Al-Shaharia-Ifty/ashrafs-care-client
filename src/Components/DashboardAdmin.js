@@ -195,14 +195,17 @@ const DashboardAdmin = () => {
                 <div className="flex justify-center">
                   <img className="h-16" src={panel} alt="" />
                 </div>
-                <p>User Panel</p>
+                <p>Admin Panel</p>
               </Link>
-              <div className="bg-[#307C3D] rounded-md p-5">
+              <Link
+                to={"/dashboard/user-panel"}
+                className="bg-[#307C3D] rounded-md p-5"
+              >
                 <div className="flex justify-center">
                   <img className="h-16" src={custom} alt="" />
                 </div>
-                <p>Customers</p>
-              </div>
+                <p>User Panel</p>
+              </Link>
               <div className="bg-[#508F41] rounded-md p-5">
                 <div className="flex justify-center">
                   <img className="h-16" src={icon} alt="" />

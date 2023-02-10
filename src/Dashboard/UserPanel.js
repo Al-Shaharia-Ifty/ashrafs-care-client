@@ -1,9 +1,8 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import Loading from "../Shared/Loading";
 
-const AdminPanel = () => {
+const UserPanel = () => {
   const [loading, setLoading] = useState(false);
   const {
     data: allUser,
@@ -21,8 +20,8 @@ const AdminPanel = () => {
       }).then((res) => res.json()),
   });
 
-  const admins = allUser?.filter((p) => {
-    return p.role === "admin";
+  const members = allUser?.filter((p) => {
+    return p.role === "member";
   });
 
   if (isLoading || loading) {
@@ -68,7 +67,7 @@ const AdminPanel = () => {
   return (
     <div>
       <div className="min-h-screen">
-        <h2 className="text-4xl text-center py-5">Admin Panel</h2>
+        <h2 className="text-4xl text-center py-5">User Panel</h2>
         <div className="overflow-x-auto">
           <table className="table table-zebra w-full">
             <thead>
@@ -82,7 +81,7 @@ const AdminPanel = () => {
               </tr>
             </thead>
             <tbody>
-              {admins.map((u, i) => (
+              {members.map((u, i) => (
                 <tr key={i}>
                   <th>
                     <img className="w-14" src={u.img} alt="" />
@@ -118,4 +117,4 @@ const AdminPanel = () => {
   );
 };
 
-export default AdminPanel;
+export default UserPanel;
