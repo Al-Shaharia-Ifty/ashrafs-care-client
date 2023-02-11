@@ -38,7 +38,6 @@ const ThisMonth = () => {
     orderMouth.splice(1, 1);
     return orderMouth[0] === monthArray[0] && orderMouth[1] === monthArray[1];
   });
-  console.log(thisMonth);
   return (
     <div>
       <div className="min-h-screen">

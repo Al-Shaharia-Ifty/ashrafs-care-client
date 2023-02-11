@@ -12,8 +12,10 @@ import { signOut } from "firebase/auth";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import Loading from "./Loading";
 
 const DashboardNavbar = () => {
+  const [loading, setLoading] = useState(false);
   const [user] = useAuthState(auth);
   const { userInfo, refetch, notification } = useContext(AuthContext);
   const [closeDropDown, setCloseDropDown] = useState(false);
@@ -23,6 +25,26 @@ const DashboardNavbar = () => {
     const orderID = data.orderID;
     reset();
     navigate(`/dashboard/order-details/${orderID}`);
+  };
+  if (loading) {
+    return <Loading />;
+  }
+
+  // update notification
+  const deleteNot = (id) => {
+    setLoading(true);
+    fetch("http://localhost:5000/admin/deleteNot", {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify({ id }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setLoading(false);
+      });
   };
   return (
     <div>
@@ -74,7 +96,7 @@ const DashboardNavbar = () => {
                           .map((n, i) => (
                             <li
                               key={i}
-                              className="m-2 p-3 bg-primary rounded-md text-white text-xl"
+                              className="m-2 p-3 border-2 border-primary rounded-md text-xl"
                             >
                               <p>{n.p}</p>
                             </li>
@@ -124,9 +146,18 @@ const DashboardNavbar = () => {
                           .map((n, i) => (
                             <li
                               key={i}
-                              className="m-2 p-3 bg-primary rounded-md text-white text-xl"
+                              className="m-2 p-3 border-2 border-primary rounded-md text-xl"
                             >
                               <p>{n.p}</p>
+                              <button className="btn btn-outline btn-secondary mr-3">
+                                Update
+                              </button>
+                              <button
+                                onClick={() => deleteNot(n._id)}
+                                className="btn btn-error"
+                              >
+                                Delete
+                              </button>
                             </li>
                           ))}
                       </ul>
