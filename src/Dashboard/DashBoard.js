@@ -67,6 +67,14 @@ const DashBoard = () => {
 
   // all order function
   const allOrder = allOrders.allOrder;
+  const allBalance = allOrder.filter((p) => {
+    return p.payment === "Due";
+  });
+  const allAmount = allBalance.map((p) => {
+    return parseInt(p.amount) || parseInt(p.like) || parseInt(p.dollarAmount);
+  });
+  let totalAmount = allAmount.reduce((a, b) => a + b, 0);
+
   const pending = allOrder.filter((p) => {
     return p.status === "Pending";
   });
@@ -104,7 +112,7 @@ const DashBoard = () => {
                     <h2 className="md:text-2xl text-xl pl-3">Balance</h2>
                   </div>
                   <p className="ml-5 font-bold bg-primary text-white p-2 rounded-xl">
-                    {userInfo?.balance} Tk
+                    Due {totalAmount} Tk
                   </p>
                 </div>
               </Link>
@@ -181,7 +189,13 @@ const DashBoard = () => {
                     <img className="w-14" src={bel} alt="" />
                     <div>
                       <h2 className="text-2xl ml-5 text-primary">Balance</h2>
-                      <p className="ml-5 font-bold">{userInfo?.balance} Tk</p>
+                      <p className="ml-5 font-bold">
+                        Due{" "}
+                        <span className="text-red-600 text-xl">
+                          {totalAmount}
+                        </span>
+                        Tk
+                      </p>
                     </div>
                   </div>
                 </Link>

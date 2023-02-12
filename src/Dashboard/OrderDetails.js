@@ -552,7 +552,7 @@ const OrderDetails = () => {
               <div className="mt-5 w-full lg:w-1/2">
                 <div className="grid grid-cols-3">
                   <h2 className="text-xl font-bold">Payment</h2>
-                  <h2 className="text-xl col-span-2 md:col-span-3">
+                  <h2 className="text-xl col-span-2 md:col-span-2">
                     : {payment}
                   </h2>
                   <h2 className="text-xl font-bold">Design name</h2>
