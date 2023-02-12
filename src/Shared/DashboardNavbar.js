@@ -13,9 +13,11 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Loading from "./Loading";
+import UpdateNoteModal from "../Modal/UpdateNoteModal";
 
 const DashboardNavbar = () => {
   const [loading, setLoading] = useState(false);
+  const [note, setNote] = useState(false);
   const [user] = useAuthState(auth);
   const { userInfo, refetch, notification } = useContext(AuthContext);
   const [closeDropDown, setCloseDropDown] = useState(false);
@@ -33,7 +35,7 @@ const DashboardNavbar = () => {
   // update notification
   const deleteNot = (id) => {
     setLoading(true);
-    fetch("http://localhost:5000/admin/deleteNot", {
+    fetch("https://ashrafs-servier.vercel.app/admin/deleteNot", {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
@@ -149,9 +151,13 @@ const DashboardNavbar = () => {
                               className="m-2 p-3 border-2 border-primary rounded-md text-xl"
                             >
                               <p>{n.p}</p>
-                              <button className="btn btn-outline btn-secondary mr-3">
+                              <label
+                                htmlFor="update-note-modal"
+                                onClick={() => setNote(n)}
+                                className="btn btn-outline btn-secondary mr-3"
+                              >
                                 Update
-                              </button>
+                              </label>
                               <button
                                 onClick={() => deleteNot(n._id)}
                                 className="btn btn-error"
@@ -223,6 +229,7 @@ const DashboardNavbar = () => {
           )}
         </div>
       </div>
+      {note && <UpdateNoteModal note={note} setLoading={setLoading} />}
     </div>
   );
 };
