@@ -20,11 +20,10 @@ const Blog = () => {
   return (
     <div>
       <h2 className="text-3xl mt-10 text-center text-[#166534]">
-        Explore trending categories on Freepik
+        Updates on some of our recent work
       </h2>
       <p className="text-lg text-center mt-3 text-gray-600">
-        Check what's popular on Freepik and make your project look trendy and
-        professional.
+        These designs will take your marketing a step further
       </p>
       <div className="m-10 hidden lg:grid grid-cols-3 gap-4 2xl:mx-40">
         {[...update]

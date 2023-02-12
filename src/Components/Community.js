@@ -12,14 +12,17 @@ const Community = () => {
             Join <span className="font-bold text-[#6DA940]">ashrafs care</span>{" "}
             community.
           </h2>
-          <p className="my-5 text-start lg:text-center">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut impedit
-            reprehenderit placeat exercitationem voluptatum error esse omnis.
-            Incidunt, quasi facilis.
+          <p className="my-5 text-justify">
+            Do marketing with planning. If you plan and do marketing, you will
+            succeed in business quickly. Your marketing platform is huge on all
+            social media including Facebook, Instagram, and YouTube. We have
+            positive reviews from 2000+ members. We are with you to boost your
+            confidence. Our goal is to serve you honestly through long
+            experience and hard work.
           </p>
           <div className="text-center">
             <Link to={"/dashboard"}>
-              <PrimaryButton>Join Community</PrimaryButton>
+              <PrimaryButton>Join Now</PrimaryButton>
             </Link>
           </div>
         </div>

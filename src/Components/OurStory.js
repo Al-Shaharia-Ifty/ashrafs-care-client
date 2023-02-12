@@ -13,12 +13,13 @@ const OurStory = () => {
         </h2>
         <div className="flex justify-center">
           <p className="lg:w-3/4 w-ful p-5 font-semibold text-gray-500">
-            We had an organization called Designbari, the organization was
-            short-lived Gained nationwide reputation. However, Designbari's
-            service was limited. Customer demand was high. So we are endlessly
-            encouraging customers After getting love, we made a big change in
-            our service and called it Rangchitra Let's start walking anew, today
-            Rangchitra is your love institution.
+            From 2018 to 2022 our service was limited, the company was
+            short-lived and gained a nationwide reputation. Customer demand was
+            high. And our plans were far-reaching. So we are constantly
+            encouraging customers. After receiving love, we have made a big
+            change in our service and it is now the largest marketing platform
+            in Bangladesh. Let's start walking anew, today ashrafs care is your
+            organization of love.
           </p>
         </div>
       </div>

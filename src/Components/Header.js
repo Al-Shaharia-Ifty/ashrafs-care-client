@@ -1,5 +1,5 @@
 import React from "react";
-import { AiOutlineSearch } from "react-icons/ai";
+// import { AiOutlineSearch } from "react-icons/ai";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useQuery } from "react-query";
@@ -39,21 +39,12 @@ const Header = () => {
     <div>
       <div className="bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 pt-20 pb-10">
         <h2 className="text-white md:text-3xl text-2xl text-center font-bold mt-10">
-          All the assets you need, in one place
+          All marketing solutions in one place
         </h2>
         <h4 className="text-white text-center text-md lg:text-xl mt-5">
-          Find and download the best high-quality photos, designs, and mockups
+          We provide advanced Facebook promotion and digital marketing services.
+          find and take service.
         </h4>
-        <form className="mt-5 mx-5 flex justify-center">
-          <input
-            type="text"
-            name=""
-            className="w-full lg:w-3/5 rounded-l-full input input-bordered"
-          />
-          <button className="bg-white rounded-r-full text-2xl px-3 text-black">
-            <AiOutlineSearch />
-          </button>
-        </form>
         <div>
           <Carousel
             infinite={true}
@@ -82,3 +73,16 @@ const Header = () => {
 };
 
 export default Header;
+
+/*
+ <form className="mt-5 mx-5 flex justify-center">
+  <input
+    type="text"
+    name=""
+    className="w-full lg:w-3/5 rounded-l-full input input-bordered"
+  />
+  <button className="bg-white rounded-r-full text-2xl px-3 text-black">
+    <AiOutlineSearch />
+  </button>
+ </form>
+*/
