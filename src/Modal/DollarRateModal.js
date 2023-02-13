@@ -43,7 +43,7 @@ const DollarRateModal = ({ setLoading }) => {
   return (
     <div>
       <input type="checkbox" id="dollar-rate-modal" className="modal-toggle" />
-      <div className="modal">
+      <div className="modal glass">
         <div className="modal-box relative">
           <label
             htmlFor="dollar-rate-modal"

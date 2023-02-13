@@ -19,7 +19,8 @@ const DashboardNavbar = () => {
   const [loading, setLoading] = useState(false);
   const [note, setNote] = useState(false);
   const [user] = useAuthState(auth);
-  const { userInfo, refetch, notification } = useContext(AuthContext);
+  const { userInfo, refetch, notification, adminAllOrder } =
+    useContext(AuthContext);
   const [closeDropDown, setCloseDropDown] = useState(false);
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
@@ -30,6 +31,19 @@ const DashboardNavbar = () => {
   };
   if (loading) {
     return <Loading />;
+  }
+
+  // admin balance
+  let totalPaidAmount;
+  if (userInfo.role === "admin") {
+    const allOrders = adminAllOrder;
+    const paidBalance = allOrders?.filter((p) => {
+      return p.payment !== "Due" && p.payment !== "Old Payment";
+    });
+    const paidAmount = paidBalance?.map((p) => {
+      return parseInt(p.amount) || parseInt(p.like) || parseInt(p.dollarAmount);
+    });
+    totalPaidAmount = paidAmount?.reduce((a, b) => a + b, 0);
   }
 
   // update notification
@@ -51,10 +65,18 @@ const DashboardNavbar = () => {
   return (
     <div>
       <div className="py-5 bg-[#166534] pl-5 pr-5 md:pl-8 md:pr-8 flex justify-between items-center">
-        <div>
+        <div className="flex">
           <Link to={"/dashboard"}>
             <img className="md:w-16 w-12" src={logo} alt="" />
           </Link>
+          {userInfo.role === "admin" && (
+            <div className="hidden lg:flex items-center">
+              <div className="bg-white p-3 rounded-lg ml-5 flex items-center">
+                <p className="font-bold text-xl">Balance</p>
+                <p className="text-2xl ml-5">{totalPaidAmount} Tk</p>
+              </div>
+            </div>
+          )}
         </div>
         <div>
           {user && (
@@ -64,7 +86,7 @@ const DashboardNavbar = () => {
                   <div className="flex gap-3 items-center m-2">
                     <form
                       onSubmit={handleSubmit(onSubmit)}
-                      className="flex justify-center items-center h-9 md:h-12 w-32 md:w-80"
+                      className="flex justify-center items-center h-9 md:h-12 w-40 md:w-80"
                     >
                       <input
                         type="text"
@@ -83,7 +105,7 @@ const DashboardNavbar = () => {
                     <div className="dropdown dropdown-end">
                       <label tabIndex={0} className="">
                         <img
-                          className="w-7 md:w-full md:h-[45px]"
+                          className="w-9 md:w-full md:h-[45px]"
                           src={not}
                           alt=""
                         />
@@ -113,7 +135,7 @@ const DashboardNavbar = () => {
                   <div className="flex gap-3 items-center m-2">
                     <form
                       onSubmit={handleSubmit(onSubmit)}
-                      className="flex justify-center items-center h-9 md:h-12 w-32 md:w-80"
+                      className="flex justify-center items-center h-9 md:h-12 w-40 md:w-80"
                     >
                       <input
                         type="text"
@@ -133,7 +155,7 @@ const DashboardNavbar = () => {
                     <div className="dropdown dropdown-end">
                       <label tabIndex={0} className="">
                         <img
-                          className="w-7 md:w-full md:h-[45px]"
+                          className="w-9 md:w-full md:h-[45px]"
                           src={not}
                           alt=""
                         />

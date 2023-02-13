@@ -152,7 +152,7 @@ const DashboardAdmin = () => {
                   <div className="flex justify-center">
                     <img className="h-20 mb-2" src={adRate} alt="" />
                   </div>
-                  <p>Ad Rate</p>
+                  <p>Ad Rating</p>
                 </label>
               </div>
             </div>
@@ -242,23 +242,29 @@ const DashboardAdmin = () => {
         </div>
       </div>
       {/* mobile view */}
-      <div className="lg:hidden p-4 md:p-8 grid gap-3">
+      <div className="lg:hidden p-2 md:p-8 grid gap-3">
         {/* 3 amount option */}
         <div className="grid gap-3">
           <div className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-4 md:p-8 rounded-md text-white text-lg">
             <h2>Total Sale</h2>
-            <p className="text-4xl text-white font-bold">{totalAmount} ৳</p>
+            <p className="text-4xl text-white font-bold">
+              {!totalAmount ? 0 : totalAmount} ৳
+            </p>
           </div>
           <Link
             to={"/dashboard/admin/this-month"}
             className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-4 md:p-8 rounded-md text-white text-lg"
           >
             <h2>Current Month</h2>
-            <p className="text-4xl text-white font-bold">{monthAmount} ৳</p>
+            <p className="text-4xl text-white font-bold">
+              {!monthAmount ? 0 : monthAmount} ৳
+            </p>
           </Link>
           <div className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-4 md:p-8 rounded-md text-white text-lg">
             <h2>Today'zs Sale</h2>
-            <p className="text-4xl text-white font-bold">{todayAmount} ৳</p>
+            <p className="text-4xl text-white font-bold">
+              {!todayAmount ? 0 : todayAmount} ৳
+            </p>
           </div>
         </div>
         {/* pending and order option */}
@@ -275,7 +281,7 @@ const DashboardAdmin = () => {
           <div className="flex justify-center items-center bg-white rounded-md p-2">
             <div>
               <label htmlFor="order-modal">
-                <img className="w-36" src={order} alt="" />
+                <img className="w-full" src={order} alt="" />
                 <p className="text-center font-bold text-secondary text-2xl">
                   Add Order
                 </p>
@@ -327,7 +333,7 @@ const DashboardAdmin = () => {
               <div className="flex justify-center">
                 <img className="h-20 mb-2" src={adRate} alt="" />
               </div>
-              <p>Ad Rate</p>
+              <p>Ad Rating</p>
             </div>
           </div>
         </div>

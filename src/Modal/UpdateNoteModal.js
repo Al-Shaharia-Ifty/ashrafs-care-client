@@ -34,7 +34,7 @@ const UpdateNoteModal = ({ note, setLoading }) => {
   return (
     <div>
       <input type="checkbox" id="update-note-modal" className="modal-toggle" />
-      <div className="modal">
+      <div className="modal glass">
         <div className="modal-box relative">
           <label
             htmlFor="update-note-modal"

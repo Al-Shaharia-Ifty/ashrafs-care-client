@@ -47,7 +47,7 @@ const ReportModal = ({ problem, setProblem, setLoading }) => {
   return (
     <div>
       <input type="checkbox" id="support-modal" className="modal-toggle" />
-      <div className="modal">
+      <div className="modal glass">
         <div className="modal-box relative">
           <label
             htmlFor="support-modal"

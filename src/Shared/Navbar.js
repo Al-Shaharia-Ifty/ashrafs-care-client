@@ -127,8 +127,8 @@ const Navbar = () => {
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost rounded-full p-0">
                   <img
-                    className="w-11 rounded-full bg-white"
-                    src={userInfo?.img ? userInfo.img : pro}
+                    className="w-11 h-11 rounded-full bg-white"
+                    src={userInfo?.img ? userInfo?.img : pro}
                     alt=""
                   />
                 </label>
