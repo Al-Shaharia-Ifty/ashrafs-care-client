@@ -21,7 +21,7 @@ const Report = () => {
   } = useQuery({
     queryKey: ["reports"],
     queryFn: () =>
-      fetch(`http://localhost:5000/admin/allReport`, {
+      fetch(`https://ashrafs-servier.vercel.app/admin/allReport`, {
         method: "GET",
         headers: {
           "content-type": "application/json",
@@ -47,7 +47,7 @@ const Report = () => {
         solve: "false",
       };
     }
-    fetch(`http://localhost:5000/admin/report-solve`, {
+    fetch(`https://ashrafs-servier.vercel.app/admin/report-solve`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -142,7 +142,7 @@ const Report = () => {
       )}
       {userInfo.role === "admin" && (
         <div className="min-h-screen">
-          <div className="grid grid-cols-3 gap-4 p-8">
+          <div className="grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-4 p-4">
             {reports
               .slice()
               .reverse()
