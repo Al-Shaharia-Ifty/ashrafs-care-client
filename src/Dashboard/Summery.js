@@ -70,7 +70,6 @@ const Summery = () => {
   const fullAccessNeed = allOrder.filter((p) => {
     return p.status === "Full Access Need";
   });
-  console.log(paused);
   return (
     <div className="min-h-screen mx-5">
       <div className="pt-10">
