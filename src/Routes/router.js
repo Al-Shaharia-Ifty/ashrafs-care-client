@@ -46,6 +46,7 @@ import RequireAdmin from "../Layout/RequireAdmin";
 import AdminPanel from "../Dashboard/AdminPanel";
 import ThisMonth from "../Pages/ThisMonth";
 import UserPanel from "../Dashboard/UserPanel";
+import AddGraphic from "../AdPost/AddGraphic";
 
 export const router = createBrowserRouter([
   {
@@ -183,6 +184,16 @@ export const router = createBrowserRouter([
         element: (
           <RequireAdmin>
             <ThisMonth />
+          </RequireAdmin>
+        ),
+      },
+
+      // admin add post
+      {
+        path: "admin/add-graphic",
+        element: (
+          <RequireAdmin>
+            <AddGraphic />
           </RequireAdmin>
         ),
       },

@@ -17,9 +17,11 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import DollarRateModal from "../Modal/DollarRateModal";
 import { useState } from "react";
+import AdPostModal from "../Modal/AdPostModal";
 
 const DashboardAdmin = () => {
   const [modal, setModal] = useState(false);
+  const [adPost, setAdPost] = useState(false);
   const [loading, setLoading] = useState(false);
   const {
     data: adminAllOrder,
@@ -133,10 +135,14 @@ const DashboardAdmin = () => {
           {/* middle 2 is here */}
           <div className="grid grid-cols-3 gap-5 py-5 text-[#0D6739]">
             <div>
-              <div className="bg-white flex justify-evenly items-center rounded-md p-4 text-2xl font-bold">
-                <p>Ad Banner</p>
+              <label
+                onClick={() => setAdPost(true)}
+                htmlFor="ad-post-modal"
+                className="bg-white flex justify-evenly items-center rounded-md p-4 text-2xl font-bold"
+              >
+                <p>Ad Post</p>
                 <img className="w-36" src={adBanner} alt="" />
-              </div>
+              </label>
               <div className="grid grid-cols-2 gap-5 text-center pt-5 text-xl font-bold">
                 <div className="bg-white rounded-md p-3">
                   <div className="flex justify-center">
@@ -370,6 +376,7 @@ const DashboardAdmin = () => {
       </div>
       <OrderModal />
       {modal && <DollarRateModal setLoading={setLoading} />}
+      {adPost && <AdPostModal setAdPost={setAdPost} />}
     </div>
   );
 };

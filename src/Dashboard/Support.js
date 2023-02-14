@@ -17,7 +17,7 @@ const Support = () => {
   } = useQuery({
     queryKey: ["supports"],
     queryFn: () =>
-      fetch(`http://localhost:5000/admin/allSupport`, {
+      fetch(`https://ashrafs-servier.vercel.app/admin/allSupport`, {
         method: "GET",
         headers: {
           "content-type": "application/json",
@@ -44,7 +44,7 @@ const Support = () => {
         solve: "false",
       };
     }
-    fetch(`http://localhost:5000/admin/support-solve`, {
+    fetch(`https://ashrafs-servier.vercel.app/admin/support-solve`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
