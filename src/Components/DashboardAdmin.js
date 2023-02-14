@@ -162,8 +162,8 @@ const DashboardAdmin = () => {
                 </label>
                 <label
                   htmlFor="dollar-rate-modal"
-                  className="bg-white rounded-md p-3"
                   onClick={() => setModal(true)}
+                  className="bg-white rounded-md p-3"
                 >
                   <div className="flex justify-center">
                     <img className="h-20 mb-2" src={adRate} alt="" />
@@ -341,24 +341,36 @@ const DashboardAdmin = () => {
         </div>
         {/* ad banner and ets. */}
         <div>
-          <div className="bg-white flex justify-evenly items-center rounded-md p-4 text-2xl font-bold">
-            <p>Ad Banner</p>
+          <label
+            onClick={() => setAdPost(true)}
+            htmlFor="ad-post-modal"
+            className="bg-white flex justify-evenly items-center rounded-md p-4 text-2xl font-bold"
+          >
+            <p>Ad Post</p>
             <img className="w-36" src={adBanner} alt="" />
-          </div>
+          </label>
           {/* update */}
           <div className="grid grid-cols-2 gap-3 text-center pt-3 text-xl font-bold">
-            <div className="bg-white rounded-md p-3">
+            <label
+              onClick={() => setAddUpdate(true)}
+              htmlFor="add-update-modal"
+              className="bg-white rounded-md p-3"
+            >
               <div className="flex justify-center">
                 <img className="h-20 mb-2" src={adUpdate} alt="" />
               </div>
               <p>Ad Update</p>
-            </div>
-            <div className="bg-white rounded-md p-3">
+            </label>
+            <label
+              htmlFor="dollar-rate-modal"
+              onClick={() => setModal(true)}
+              className="bg-white rounded-md p-3"
+            >
               <div className="flex justify-center">
                 <img className="h-20 mb-2" src={adRate} alt="" />
               </div>
               <p>Ad Rating</p>
-            </div>
+            </label>
           </div>
         </div>
         {/* last 4 part */}
@@ -372,24 +384,35 @@ const DashboardAdmin = () => {
             </div>
             <p>User Panel</p>
           </Link>
-          <div className="bg-[#307C3D] rounded-md p-5">
+          <Link
+            to={"/dashboard/user-panel"}
+            className="bg-[#307C3D] rounded-md p-5"
+          >
             <div className="flex justify-center">
               <img className="h-16" src={custom} alt="" />
             </div>
             <p>Customers</p>
-          </div>
-          <div className="bg-[#508F41] rounded-md p-5">
+          </Link>
+          <label
+            htmlFor="add-banner-modal"
+            onClick={() => setAddBanner(true)}
+            className="bg-[#508F41] rounded-md p-5"
+          >
             <div className="flex justify-center">
               <img className="h-16" src={icon} alt="" />
             </div>
-            <p>Ad Icon</p>
-          </div>
-          <div className="bg-[#6DA642] rounded-md p-5">
+            <p>Ad Banner</p>
+          </label>
+          <label
+            onClick={() => setAddNote(true)}
+            htmlFor="add-note-modal"
+            className="bg-[#6DA642] rounded-md p-5"
+          >
             <div className="flex justify-center">
               <img className="h-16" src={note} alt="" />
             </div>
             <p>Ad Note</p>
-          </div>
+          </label>
         </div>
       </div>
       <OrderModal />

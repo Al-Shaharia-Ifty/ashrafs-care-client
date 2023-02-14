@@ -28,7 +28,6 @@ const Support = () => {
   if (loading || isLoading) {
     return <Loading />;
   }
-  console.log(supports);
 
   const onSubmit = (id, state) => {
     setLoading(true);
