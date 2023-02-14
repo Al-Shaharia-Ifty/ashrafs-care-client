@@ -23,7 +23,7 @@ const AddBannerModal = ({ setAddBanner, setLoading }) => {
         .then((result) => {
           if (result.success) {
             const img = result.data.url;
-            fetch(`http://localhost:5000/admin/post-banner`, {
+            fetch(`https://ashrafs-servier.vercel.app/admin/post-banner`, {
               method: "POST",
               headers: {
                 "content-type": "application/json",

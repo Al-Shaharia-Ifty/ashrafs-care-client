@@ -20,12 +20,14 @@ import { useState } from "react";
 import AdPostModal from "../Modal/AdPostModal";
 import AddBannerModal from "../Modal/AddBannerModal";
 import AddNoteModal from "../Modal/AddNoteModal";
+import AddUpdateModal from "../Modal/AddUpdateModal";
 
 const DashboardAdmin = () => {
   const [modal, setModal] = useState(false);
   const [adPost, setAdPost] = useState(false);
   const [addBanner, setAddBanner] = useState(false);
   const [addNote, setAddNote] = useState(false);
+  const [addUpdate, setAddUpdate] = useState(false);
   const [loading, setLoading] = useState(false);
   const {
     data: adminAllOrder,
@@ -148,12 +150,16 @@ const DashboardAdmin = () => {
                 <img className="w-36" src={adBanner} alt="" />
               </label>
               <div className="grid grid-cols-2 gap-5 text-center pt-5 text-xl font-bold">
-                <div className="bg-white rounded-md p-3">
+                <label
+                  onClick={() => setAddUpdate(true)}
+                  htmlFor="add-update-modal"
+                  className="bg-white rounded-md p-3"
+                >
                   <div className="flex justify-center">
                     <img className="h-20 mb-2" src={adUpdate} alt="" />
                   </div>
                   <p>Ad Update</p>
-                </div>
+                </label>
                 <label
                   htmlFor="dollar-rate-modal"
                   className="bg-white rounded-md p-3"
@@ -394,6 +400,9 @@ const DashboardAdmin = () => {
       )}
       {addNote && (
         <AddNoteModal setAddNote={setAddNote} setLoading={setLoading} />
+      )}
+      {addUpdate && (
+        <AddUpdateModal setAddUpdate={setAddUpdate} setLoading={setLoading} />
       )}
     </div>
   );

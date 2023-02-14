@@ -1,21 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import Loading from "../Shared/Loading";
 
-const AddGraphic = () => {
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+const AddUpdateModal = ({ setAddUpdate, setLoading }) => {
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
-  if (loading) {
-    return <Loading />;
-  }
-
   const onSubmit = (data) => {
     setLoading(true);
     const image = data.image[0];
@@ -33,11 +24,11 @@ const AddGraphic = () => {
             const img = result.data.url;
             const postInfo = {
               img,
-              designName: data.designName,
-              amount: data.amount,
+              heading: data.heading,
+              details: data.details,
             };
 
-            fetch(`https://ashrafs-servier.vercel.app/admin/post-design`, {
+            fetch(`https://ashrafs-servier.vercel.app/admin/add-update`, {
               method: "POST",
               headers: {
                 "content-type": "application/json",
@@ -47,13 +38,7 @@ const AddGraphic = () => {
             })
               .then((res) => res.json())
               .then((data) => {
-                if (data.insertedId) {
-                  setLoading(false);
-                  Swal.fire("Add Order Successful", "", "success");
-                  navigate("/dashboard");
-                } else {
-                  Swal.fire("Failed to Add Order", "", "error");
-                }
+                setLoading(false);
               });
           }
         });
@@ -61,35 +46,17 @@ const AddGraphic = () => {
   };
   return (
     <div>
-      <div className="min-h-screen flex justify-center items-center">
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <h2 className="text-2xl m-4 mb-0 text-center font-bold">
-            Add Graphic Design
-          </h2>
+      <input type="checkbox" id="add-update-modal" className="modal-toggle" />
+      <div className="modal glass">
+        <div className="modal-box relative">
+          <label
+            htmlFor="add-update-modal"
+            className="btn btn-sm btn-circle text-red-500 hover:text-white hover:border-0 hover:bg-red-500 absolute right-2 top-2"
+          >
+            ✕
+          </label>
+          <h3 className="text-lg font-bold">Add Update!</h3>
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text text-black">Your Design Name</span>
-              </label>
-              <input
-                type="text"
-                placeholder="Design Name"
-                className="input input-bordered"
-                {...register("designName", {
-                  required: {
-                    value: true,
-                    message: "Design Name is required",
-                  },
-                })}
-              />
-              <label className="label">
-                {errors.designName?.type === "required" && (
-                  <span className="text-red-500 label-text-alt">
-                    {errors.designName.message}
-                  </span>
-                )}
-              </label>
-            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text text-black">Your Image</span>
@@ -115,30 +82,51 @@ const AddGraphic = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text text-black">Your Design Price</span>
+                <span className="label-text text-black">Your Heading Name</span>
               </label>
               <input
-                type="number"
-                onWheel={(e) => e.target.blur()}
-                placeholder="Design Price"
+                type="text"
+                placeholder="Heading Name"
                 className="input input-bordered"
-                {...register("amount", {
+                {...register("heading", {
                   required: {
                     value: true,
-                    message: "Design Price is required",
+                    message: "Heading Name is required",
                   },
                 })}
               />
               <label className="label">
-                {errors.amount?.type === "required" && (
+                {errors.heading?.type === "required" && (
                   <span className="text-red-500 label-text-alt">
-                    {errors.amount.message}
+                    {errors.heading.message}
+                  </span>
+                )}
+              </label>
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-black">Description</span>
+              </label>
+              <textarea
+                placeholder="Description"
+                className="textarea textarea-bordered min-h-[110px] max-h-[180px]"
+                {...register("details", {
+                  required: {
+                    value: true,
+                    message: "Description is required",
+                  },
+                })}
+              ></textarea>
+              <label className="label">
+                {errors.details?.type === "required" && (
+                  <span className="text-red-500 label-text-alt">
+                    {errors.details.message}
                   </span>
                 )}
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary text-white">Ad Post</button>
+              <button className="btn btn-primary text-white">Add Update</button>
             </div>
           </form>
         </div>
@@ -147,4 +135,4 @@ const AddGraphic = () => {
   );
 };
 
-export default AddGraphic;
+export default AddUpdateModal;
