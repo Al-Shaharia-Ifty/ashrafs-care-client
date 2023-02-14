@@ -18,10 +18,12 @@ import { useEffect } from "react";
 import DollarRateModal from "../Modal/DollarRateModal";
 import { useState } from "react";
 import AdPostModal from "../Modal/AdPostModal";
+import AddBannerModal from "../Modal/AddBannerModal";
 
 const DashboardAdmin = () => {
   const [modal, setModal] = useState(false);
   const [adPost, setAdPost] = useState(false);
+  const [addBanner, setAddBanner] = useState(false);
   const [loading, setLoading] = useState(false);
   const {
     data: adminAllOrder,
@@ -212,12 +214,16 @@ const DashboardAdmin = () => {
                 </div>
                 <p>User Panel</p>
               </Link>
-              <div className="bg-[#508F41] rounded-md p-5">
+              <label
+                htmlFor="add-banner-modal"
+                onClick={() => setAddBanner(true)}
+                className="bg-[#508F41] rounded-md p-5"
+              >
                 <div className="flex justify-center">
                   <img className="h-16" src={icon} alt="" />
                 </div>
-                <p>Ad Icon</p>
-              </div>
+                <p>Ad Banner</p>
+              </label>
               <div className="bg-[#6DA642] rounded-md p-5">
                 <div className="flex justify-center">
                   <img className="h-16" src={note} alt="" />
@@ -377,6 +383,9 @@ const DashboardAdmin = () => {
       <OrderModal />
       {modal && <DollarRateModal setLoading={setLoading} />}
       {adPost && <AdPostModal setAdPost={setAdPost} />}
+      {addBanner && (
+        <AddBannerModal setAddBanner={setAddBanner} setLoading={setLoading} />
+      )}
     </div>
   );
 };

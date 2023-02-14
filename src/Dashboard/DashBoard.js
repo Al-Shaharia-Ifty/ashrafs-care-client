@@ -292,15 +292,18 @@ const DashBoard = () => {
                 responsive={responsive}
                 className=" text-white text-center z-10"
               >
-                {banner?.map((c) => (
-                  <div key={c._id} className="">
-                    <div className="flex justify-center">
-                      <PhotoView src={c.img}>
-                        <img className="w-full" src={c.img} alt="" />
-                      </PhotoView>
+                {banner
+                  ?.slice(-3)
+                  .reverse()
+                  .map((c) => (
+                    <div key={c._id} className="">
+                      <div className="flex justify-center">
+                        <PhotoView src={c.img}>
+                          <img className="w-full" src={c.img} alt="" />
+                        </PhotoView>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
               </Carousel>
             </PhotoProvider>
           </div>
