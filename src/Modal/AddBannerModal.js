@@ -76,9 +76,8 @@ const AddBannerModal = ({ setAddBanner, setLoading }) => {
                 )}
               </label>
             </div>
-
             <div className="form-control mt-6">
-              <button className="btn btn-primary text-white">Ad Post</button>
+              <button className="btn btn-primary text-white">Ad Banner</button>
             </div>
           </form>
         </div>

@@ -19,11 +19,13 @@ import DollarRateModal from "../Modal/DollarRateModal";
 import { useState } from "react";
 import AdPostModal from "../Modal/AdPostModal";
 import AddBannerModal from "../Modal/AddBannerModal";
+import AddNoteModal from "../Modal/AddNoteModal";
 
 const DashboardAdmin = () => {
   const [modal, setModal] = useState(false);
   const [adPost, setAdPost] = useState(false);
   const [addBanner, setAddBanner] = useState(false);
+  const [addNote, setAddNote] = useState(false);
   const [loading, setLoading] = useState(false);
   const {
     data: adminAllOrder,
@@ -224,12 +226,16 @@ const DashboardAdmin = () => {
                 </div>
                 <p>Ad Banner</p>
               </label>
-              <div className="bg-[#6DA642] rounded-md p-5">
+              <label
+                onClick={() => setAddNote(true)}
+                htmlFor="add-note-modal"
+                className="bg-[#6DA642] rounded-md p-5"
+              >
                 <div className="flex justify-center">
                   <img className="h-16" src={note} alt="" />
                 </div>
                 <p>Ad Note</p>
-              </div>
+              </label>
             </div>
             <Link
               to={"/dashboard/all-pending"}
@@ -385,6 +391,9 @@ const DashboardAdmin = () => {
       {adPost && <AdPostModal setAdPost={setAdPost} />}
       {addBanner && (
         <AddBannerModal setAddBanner={setAddBanner} setLoading={setLoading} />
+      )}
+      {addNote && (
+        <AddNoteModal setAddNote={setAddNote} setLoading={setLoading} />
       )}
     </div>
   );
