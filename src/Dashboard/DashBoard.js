@@ -79,14 +79,26 @@ const DashBoard = () => {
 
   // all order function
   const allOrder = allOrders.allOrder;
-  const allBalance = allOrder.filter((p) => {
-    return p.payment === "Due";
+  const allBalanceDue = allOrder.filter((p) => {
+    return p.due;
   });
-  const allAmount = allBalance.map((p) => {
-    return parseInt(p.amount) || parseInt(p.like) || parseInt(p.dollarAmount);
-  });
-  let totalAmount = allAmount.reduce((a, b) => a + b, 0);
 
+  const allAmount = allBalanceDue.map((p) => {
+    return parseInt(p?.due);
+  });
+  let dueAmount = allAmount.reduce((a, b) => a + b, 0);
+
+  const allBalanceBill = allOrder.filter((p) => {
+    return p.bill;
+  });
+  const allBill = allBalanceBill.map((p) => {
+    return parseInt(p?.bill);
+  });
+  let billAmount = allBill.reduce((a, b) => a + b, 0);
+
+  const totalAmount = dueAmount - billAmount;
+
+  //
   const pending = allOrder.filter((p) => {
     return p.status === "Pending";
   });

@@ -32,7 +32,7 @@ const AllRecover = () => {
   }
 
   const allRecovery = allOrder.filter((p) => {
-    return p.orderType === "page recovery";
+    return p.orderType === "page recovery" || p.orderType === "ID recovery";
   });
   return (
     <div>
@@ -68,7 +68,6 @@ const AllRecover = () => {
                             <p className="text-primary">Active</p>
                           )) ||
                           (o.status !== "Pending" && o.status)}
-                        s
                       </td>
                       <td className="px-2">
                         {o.dollarAmount || o.like || o.amount} Tk

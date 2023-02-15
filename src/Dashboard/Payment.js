@@ -1,13 +1,9 @@
 import React from "react";
-import { useContext } from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../Contexts/AuthProvider";
 import Loading from "../Shared/Loading";
 
 const Payment = () => {
-  const { userInfo } = useContext(AuthContext);
-  const { balance } = userInfo;
   const { data: allOrders, isLoading } = useQuery({
     queryKey: ["allOrders"],
     queryFn: () =>
@@ -22,6 +18,25 @@ const Payment = () => {
   if (isLoading) {
     return <Loading />;
   }
+  const allOrder = allOrders.allOrder;
+  const allBalanceDue = allOrder.filter((p) => {
+    return p.due;
+  });
+
+  const allAmount = allBalanceDue.map((p) => {
+    return parseInt(p?.due);
+  });
+  let dueAmount = allAmount.reduce((a, b) => a + b, 0);
+
+  const allBalanceBill = allOrder.filter((p) => {
+    return p.bill;
+  });
+  const allBill = allBalanceBill.map((p) => {
+    return parseInt(p?.bill);
+  });
+  let billAmount = allBill.reduce((a, b) => a + b, 0);
+
+  const totalAmount = dueAmount - billAmount;
   return (
     <div>
       <div className="min-h-screen">
@@ -32,7 +47,7 @@ const Payment = () => {
           <h4>
             Your Balance{" "}
             <span className="px-5 bg-primary text-white font-normal">
-              {balance}
+              Due {totalAmount}
             </span>
           </h4>
           <div className="overflow-x-auto mt-10">
@@ -77,7 +92,9 @@ const Payment = () => {
                       </td>
                       <td className=" bg-[#B2CE9B]">{o?.charge}</td>
                       <td className="">{o?.totalAmount}</td>
-                      <td className=" bg-[#B2CE9B] text-red-500">{o?.due}</td>
+                      <td className=" bg-[#B2CE9B] text-red-500">
+                        {o?.bill ? o?.due - o?.bill : o?.due}
+                      </td>
                       <td className="">
                         {o?.payment === "Due" ? "Due" : "Paid"}
                       </td>

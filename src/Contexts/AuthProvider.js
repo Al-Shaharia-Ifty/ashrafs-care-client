@@ -57,6 +57,19 @@ const AuthProvider = ({ children }) => {
       }).then((res) => res.json()),
   });
 
+  // admin balance
+  const { data: adminBalance } = useQuery({
+    queryKey: ["adminBalance"],
+    queryFn: () =>
+      fetch(`http://localhost:5000/admin-balance`, {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }).then((res) => res.json()),
+  });
+
   if (isLoading || userLoading) {
     return <Loading />;
   }
@@ -67,6 +80,7 @@ const AuthProvider = ({ children }) => {
     adminAllOrder,
     adminOrderLoading,
     notification,
+    adminBalance,
     refetch,
   };
   return (

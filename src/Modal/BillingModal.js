@@ -1,12 +1,14 @@
 import React from "react";
+import { useContext } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../Contexts/AuthProvider";
 
 const BillingModal = ({ setBill, details, refetch, setLoading }) => {
   const { _id, editor, manager, bill, transID, remarks } = details;
+  const { adminBalance } = useContext(AuthContext);
   const [edit, setEditor] = useState(editor);
   const [mana, setManager] = useState(manager);
-  const [billing, setBilling] = useState(bill);
   const [trans, setTransID] = useState(transID);
   const [remark, setRemarks] = useState(remarks);
   const {
@@ -16,36 +18,55 @@ const BillingModal = ({ setBill, details, refetch, setLoading }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    setLoading(true);
+    // setLoading(true);
     const editor = edit;
     const manager = mana;
-    const bill = billing;
+    const addBill = data.addBill;
+
+    const newBill = parseInt(addBill) + parseInt(bill);
     const payment = data.status;
     const method = data.method;
     const transID = trans;
     const remarks = remark;
+    const oldBalance = adminBalance[0].balance;
+    const newBalance = oldBalance + parseInt(addBill);
+    const balance = {
+      balance: newBalance,
+      id: adminBalance[0]._id,
+    };
     const update = {
       editor,
       manager,
-      bill,
+      bill: newBill,
       payment,
       method,
       transID,
       remarks,
     };
-    fetch(`https://ashrafs-servier.vercel.app/admin/orderStatus/${_id}`, {
+    fetch(`http://localhost:5000/admin/update-balance`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
       },
-      body: JSON.stringify(update),
+      body: JSON.stringify(balance),
     })
       .then((res) => res.json())
-      .then(() => {
-        setLoading(false);
-        refetch();
-        setBill(false);
+      .then((data) => {
+        fetch(`https://ashrafs-servier.vercel.app/admin/orderStatus/${_id}`, {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+          body: JSON.stringify(update),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            setLoading(false);
+            refetch();
+            setBill(false);
+          });
       });
   };
   return (
@@ -87,16 +108,27 @@ const BillingModal = ({ setBill, details, refetch, setLoading }) => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text text-black">Bill</span>
+                <span className="label-text text-black">Paid Bill {bill}</span>
               </label>
               <input
                 type="number"
                 onWheel={(e) => e.target.blur()}
-                placeholder="Bill"
+                placeholder="Add Now Bill"
                 className="input input-bordered"
-                value={billing}
-                onChange={(e) => setBilling(e.target.value)}
+                {...register("addBill", {
+                  required: {
+                    value: true,
+                    message: "Add Minimum 0",
+                  },
+                })}
               />
+              <label className="label">
+                {errors.addBill?.type === "required" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.addBill.message}
+                  </span>
+                )}
+              </label>
             </div>
             <div className="form-control">
               <label className="label">

@@ -32,7 +32,7 @@ const OrderDetails = () => {
   }
   const {
     _id,
-    amount,
+    // amount,
     audience,
     boostDay,
     businessAddress,
@@ -68,6 +68,7 @@ const OrderDetails = () => {
     method,
     transID,
     remarks,
+    totalAmount,
   } = details;
   const handleChange = (e) => {
     setLoading(true);
@@ -232,7 +233,7 @@ const OrderDetails = () => {
                   </h2>
                   <h2 className="text-xl font-bold">Amount</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
-                    : {amount} Tk
+                    : {totalAmount} Tk
                   </h2>
                   <h2 className="text-xl font-bold">Boost Day</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
@@ -306,7 +307,7 @@ const OrderDetails = () => {
                   </h2>
                   <h2 className="text-xl font-bold">Amount</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
-                    : {like} Tk
+                    : {totalAmount} Tk
                   </h2>
                   <h2 className="text-xl font-bold">Age</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
@@ -365,7 +366,7 @@ const OrderDetails = () => {
                   </h2>
                   <h2 className="text-xl font-bold">Amount</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
-                    : {like} Tk
+                    : {totalAmount} Tk
                   </h2>
                   <h2 className="text-xl font-bold">Post Link</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3 overflow-hidden">
@@ -409,7 +410,7 @@ const OrderDetails = () => {
                   </h2>
                   <h2 className="text-xl font-bold">Amount</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
-                    : {amount} Tk
+                    : {totalAmount} Tk
                   </h2>
                   <h2 className="text-xl font-bold">Page Link</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3 overflow-hidden">
@@ -453,7 +454,7 @@ const OrderDetails = () => {
                   </h2>
                   <h2 className="text-xl font-bold">Amount</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
-                    : {amount} Tk
+                    : {totalAmount} Tk
                   </h2>
                   <h2 className="text-xl font-bold">Page Link</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3 overflow-hidden">
@@ -527,7 +528,7 @@ const OrderDetails = () => {
                   </h2>
                   <h2 className="text-xl font-bold">Amount</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
-                    : {amount} Tk
+                    : {totalAmount} Tk
                   </h2>
                 </div>
               </div>
@@ -558,7 +559,7 @@ const OrderDetails = () => {
                   <h2 className="text-xl font-bold">Design name</h2>
                   <h2 className="text-xl col-span-2">: {designName}</h2>
                   <h2 className="text-xl font-bold">Amount</h2>
-                  <h2 className="text-xl col-span-2">: {amount} Tk</h2>
+                  <h2 className="text-xl col-span-2">: {totalAmount} Tk</h2>
                   <h2 className="text-xl font-bold">Sample</h2>
                   {img ? (
                     <PhotoProvider>
