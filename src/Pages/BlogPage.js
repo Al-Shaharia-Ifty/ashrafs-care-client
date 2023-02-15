@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useState } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { AuthContext } from "../Contexts/AuthProvider";
 import Loading from "../Shared/Loading";
 
 const BlogPage = () => {
   const params = useParams();
+  const { userInfo } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const { isLoading, data: news } = useQuery({
     queryKey: "news",
     queryFn: () =>
@@ -13,15 +18,37 @@ const BlogPage = () => {
         (res) => res.json()
       ),
   });
-  if (isLoading) {
+  if (isLoading || loading) {
     return <Loading />;
   }
-  const { heading, img, details } = news;
+  const { heading, img, details, _id } = news;
+
+  const deleteUpdate = (id) => {
+    setLoading(true);
+    fetch("https://ashrafs-servier.vercel.app/admin/delete-update", {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify({ id }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setLoading(false);
+        navigate("/");
+      });
+  };
   return (
     <div>
       <div className="pt-20 bg-green-800"></div>
       <div className="hero min-h-screen ">
         <div className="hero-content flex-col ">
+          {userInfo.role === "admin" && (
+            <button onClick={() => deleteUpdate(_id)} className="btn btn-error">
+              Delete Update
+            </button>
+          )}
           <PhotoProvider>
             <PhotoView src={img}>
               <img
