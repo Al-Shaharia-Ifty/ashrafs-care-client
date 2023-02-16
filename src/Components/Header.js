@@ -37,7 +37,7 @@ const Header = () => {
 
   return (
     <div>
-      <div className="bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 pt-20 pb-10">
+      <div className="bg-gradient-to-r from-[#317D3C] via-[#046738] to-[#337D3F] pt-20 pb-10">
         <h2 className="text-white md:text-3xl text-2xl text-center font-bold mt-10">
           All marketing solutions in one place
         </h2>
