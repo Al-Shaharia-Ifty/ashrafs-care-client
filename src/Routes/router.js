@@ -47,6 +47,7 @@ import AdminPanel from "../Dashboard/AdminPanel";
 import ThisMonth from "../Pages/ThisMonth";
 import UserPanel from "../Dashboard/UserPanel";
 import AddGraphic from "../AdPost/AddGraphic";
+import ViewUserProfile from "../DashboardAdmin/ViewUserProfile";
 
 export const router = createBrowserRouter([
   {
@@ -194,6 +195,16 @@ export const router = createBrowserRouter([
         element: (
           <RequireAdmin>
             <AddGraphic />
+          </RequireAdmin>
+        ),
+      },
+
+      // admin view user profile
+      {
+        path: "admin/view-user-profile/:email",
+        element: (
+          <RequireAdmin>
+            <ViewUserProfile />
           </RequireAdmin>
         ),
       },

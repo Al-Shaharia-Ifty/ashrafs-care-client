@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 import Loading from "../Shared/Loading";
 
 const UserPanel = () => {
@@ -77,6 +78,7 @@ const UserPanel = () => {
                 <th>Email</th>
                 <th>Role</th>
                 <th>Edit</th>
+                <th>more</th>
               </tr>
             </thead>
             <tbody>
@@ -106,6 +108,14 @@ const UserPanel = () => {
                       </button>
                     )}
                   </td>
+                  <td>
+                    <Link
+                      to={`/dashboard/admin/view-user-profile/${u.email}`}
+                      className="btn btn-secondary btn-sm"
+                    >
+                      edit
+                    </Link>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -117,3 +127,13 @@ const UserPanel = () => {
 };
 
 export default UserPanel;
+
+/*
+ <label
+                      htmlFor="admin-update-profile"
+                      className="btn btn-secondary btn-sm"
+                      onClick={() => setUserInfo(u.email)}
+                    >
+                      Edit
+                    </label>
+*/
