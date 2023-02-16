@@ -22,8 +22,13 @@ const BillingModal = ({ setBill, details, refetch, setLoading }) => {
     const editor = edit;
     const manager = mana;
     const addBill = data.addBill;
+    let newBill;
+    if (bill) {
+      newBill = parseInt(addBill) + parseInt(bill);
+    } else {
+      newBill = parseInt(addBill);
+    }
 
-    const newBill = parseInt(addBill) + parseInt(bill);
     const payment = data.status;
     const method = data.method;
     const transID = trans;
@@ -43,7 +48,7 @@ const BillingModal = ({ setBill, details, refetch, setLoading }) => {
       transID,
       remarks,
     };
-    fetch(`http://localhost:5000/admin/update-balance`, {
+    fetch(`https://ashrafs-servier.vercel.app/admin/update-balance`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

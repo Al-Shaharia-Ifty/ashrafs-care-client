@@ -173,7 +173,7 @@ const DashboardAdmin = () => {
               </div>
             </div>
             <div className="col-span-2 bg-white rounded-md">
-              <p className="text-xl p-5 pb-0 text-center">Resent Orders</p>
+              <p className="text-xl p-5 pb-0 text-center">Recent Orders</p>
               <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">
                   <tbody>
@@ -314,7 +314,7 @@ const DashboardAdmin = () => {
           </div>
         </div>
         <div className="bg-white rounded-md">
-          <p className="text-xl p-5 pb-0 text-center">Resent Orders</p>
+          <p className="text-xl p-5 pb-0 text-center">Recent Orders</p>
           <div className="overflow-x-auto">
             <table className="table table-zebra w-full">
               <tbody>

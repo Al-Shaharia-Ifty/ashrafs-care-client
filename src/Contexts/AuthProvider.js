@@ -61,7 +61,7 @@ const AuthProvider = ({ children }) => {
   const { data: adminBalance } = useQuery({
     queryKey: ["adminBalance"],
     queryFn: () =>
-      fetch(`http://localhost:5000/admin-balance`, {
+      fetch(`https://ashrafs-servier.vercel.app/admin-balance`, {
         method: "GET",
         headers: {
           "content-type": "application/json",

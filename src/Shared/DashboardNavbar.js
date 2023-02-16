@@ -14,6 +14,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Loading from "./Loading";
 import UpdateNoteModal from "../Modal/UpdateNoteModal";
+import AdminBalance from "../Components/AdminBalance";
 
 const DashboardNavbar = () => {
   const [loading, setLoading] = useState(false);
@@ -59,10 +60,7 @@ const DashboardNavbar = () => {
           </Link>
           {userInfo.role === "admin" && (
             <div className="hidden lg:flex items-center">
-              <div className="bg-white p-3 rounded-lg ml-5 flex items-center">
-                <p className="font-bold text-xl">Balance</p>
-                <p className="text-2xl ml-5">{adminBalance[0].balance} Tk</p>
-              </div>
+              <AdminBalance />
             </div>
           )}
         </div>

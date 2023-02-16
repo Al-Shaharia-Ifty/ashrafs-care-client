@@ -69,7 +69,9 @@ const OrderDetails = () => {
     transID,
     remarks,
     totalAmount,
+    due,
   } = details;
+  console.log(details);
   const handleChange = (e) => {
     setLoading(true);
     const value = e.target.value;
@@ -201,6 +203,10 @@ const OrderDetails = () => {
                   <h2 className="text-xl col-span-2 md:col-span-3">
                     : {audience}
                   </h2>
+                  <h2 className="text-xl font-bold">Location</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-3">
+                    : {location}
+                  </h2>
                   <h2 className="text-xl font-bold">Email</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
                     : {email}
@@ -235,6 +241,10 @@ const OrderDetails = () => {
                   <h2 className="text-xl col-span-2 md:col-span-3">
                     : {totalAmount} Tk
                   </h2>
+                  <h2 className="text-xl font-bold">Due</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-3 text-red-600">
+                    : {bill ? due - bill : due} Tk
+                  </h2>
                   <h2 className="text-xl font-bold">Boost Day</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
                     : {boostDay}
@@ -242,10 +252,6 @@ const OrderDetails = () => {
                   <h2 className="text-xl font-bold">Age</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
                     : {minAge}-{maxAge}
-                  </h2>
-                  <h2 className="text-xl font-bold">Location</h2>
-                  <h2 className="text-xl col-span-2 md:col-span-3">
-                    : {location}
                   </h2>
                   <h2 className="text-xl font-bold">Post Link</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3 overflow-hidden">
