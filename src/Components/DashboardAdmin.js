@@ -126,7 +126,7 @@ const DashboardAdmin = () => {
                 </p>
               </div>
             </Link>
-            <div className="bg-white rounded-md">
+            <Link to={"/dashboard/admin/today"} className="bg-white rounded-md">
               <div className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-8 rounded-md text-white text-lg">
                 <h2>Today'zs Sale</h2>
                 <img className="h-10" src={amt} alt="" />
@@ -136,7 +136,7 @@ const DashboardAdmin = () => {
                   {!todayAmount ? 0 : todayAmount} ৳
                 </p>
               </div>
-            </div>
+            </Link>
           </div>
           {/* middle 2 is here */}
           <div className="grid grid-cols-3 gap-5 py-5 text-[#0D6739]">

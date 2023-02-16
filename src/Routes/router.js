@@ -48,6 +48,7 @@ import ThisMonth from "../Pages/ThisMonth";
 import UserPanel from "../Dashboard/UserPanel";
 import AddGraphic from "../AdPost/AddGraphic";
 import ViewUserProfile from "../DashboardAdmin/ViewUserProfile";
+import TodayOrder from "../Pages/TodayOrder";
 
 export const router = createBrowserRouter([
   {
@@ -185,6 +186,16 @@ export const router = createBrowserRouter([
         element: (
           <RequireAdmin>
             <ThisMonth />
+          </RequireAdmin>
+        ),
+      },
+
+      // daily all order
+      {
+        path: "admin/today",
+        element: (
+          <RequireAdmin>
+            <TodayOrder />
           </RequireAdmin>
         ),
       },

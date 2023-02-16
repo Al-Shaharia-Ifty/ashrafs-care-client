@@ -59,8 +59,10 @@ const BlogPage = () => {
             </PhotoView>
           </PhotoProvider>
           <div>
-            <h1 className="lg:text-5xl text-2xl mt-10 font-bold">{heading}</h1>
-            <p className="py-6 text-xl">{details}</p>
+            <h1 className="lg:text-5xl text-2xl text-center mt-10 font-bold">
+              {heading}
+            </h1>
+            <p className="py-6 text-xl text-justify">{details}</p>
           </div>
         </div>
       </div>
