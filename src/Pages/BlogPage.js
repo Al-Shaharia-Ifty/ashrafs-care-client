@@ -21,7 +21,8 @@ const BlogPage = () => {
   if (isLoading || loading) {
     return <Loading />;
   }
-  const { heading, img, details, _id } = news;
+  const { heading, img, details, _id, details2, details3, details4, details5 } =
+    news;
 
   const deleteUpdate = (id) => {
     setLoading(true);
@@ -43,7 +44,7 @@ const BlogPage = () => {
     <div>
       <div className="pt-20 bg-green-800"></div>
       <div className="hero min-h-screen ">
-        <div className="hero-content flex-col ">
+        <div className="hero-content flex-col lg:w-full">
           {userInfo.role === "admin" && (
             <button onClick={() => deleteUpdate(_id)} className="btn btn-error">
               Delete Update
@@ -58,11 +59,15 @@ const BlogPage = () => {
               />
             </PhotoView>
           </PhotoProvider>
-          <div>
+          <div className="w-full">
             <h1 className="lg:text-5xl text-2xl text-center mt-10 font-bold">
               {heading}
             </h1>
             <p className="py-6 text-xl text-justify">{details}</p>
+            <p className="py-6 text-xl text-justify">{details2}</p>
+            <p className="py-6 text-xl text-justify">{details3}</p>
+            <p className="py-6 text-xl text-justify">{details4}</p>
+            <p className="py-6 text-xl text-justify">{details5}</p>
           </div>
         </div>
       </div>

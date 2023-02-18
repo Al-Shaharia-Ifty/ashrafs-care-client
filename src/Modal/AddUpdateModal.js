@@ -26,6 +26,10 @@ const AddUpdateModal = ({ setAddUpdate, setLoading }) => {
               img,
               heading: data.heading,
               details: data.details,
+              details2: data.details2,
+              details3: data.details3,
+              details4: data.details4,
+              details5: data.details5,
             };
 
             fetch(`https://ashrafs-servier.vercel.app/admin/add-update`, {
@@ -124,6 +128,46 @@ const AddUpdateModal = ({ setAddUpdate, setLoading }) => {
                   </span>
                 )}
               </label>
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-black">Description 2</span>
+              </label>
+              <textarea
+                placeholder="Description"
+                className="textarea textarea-bordered min-h-[110px] max-h-[180px]"
+                {...register("details2")}
+              ></textarea>
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-black">Description 3</span>
+              </label>
+              <textarea
+                placeholder="Description"
+                className="textarea textarea-bordered min-h-[110px] max-h-[180px]"
+                {...register("details3")}
+              ></textarea>
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-black">Description 4</span>
+              </label>
+              <textarea
+                placeholder="Description"
+                className="textarea textarea-bordered min-h-[110px] max-h-[180px]"
+                {...register("details4")}
+              ></textarea>
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-black">Description 5</span>
+              </label>
+              <textarea
+                placeholder="Description"
+                className="textarea textarea-bordered min-h-[110px] max-h-[180px]"
+                {...register("details5")}
+              ></textarea>
             </div>
             <div className="form-control mt-6">
               <button className="btn btn-primary text-white">Add Update</button>
