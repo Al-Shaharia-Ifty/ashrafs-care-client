@@ -215,6 +215,21 @@ const Navbar = () => {
                       Home
                     </NavLink>
                   </li>
+                  {user && (
+                    <li>
+                      <NavLink
+                        className={({ isActive }) =>
+                          isActive
+                            ? "btn btn-primary btn-sm my-2 pb-2 text-xs text-white"
+                            : ""
+                        }
+                        to="/dashboard"
+                        onClick={() => setCloseDropDown(!closeDropDown)}
+                      >
+                        Dashboard
+                      </NavLink>
+                    </li>
+                  )}
                   <li>
                     <NavLink
                       className={({ isActive }) =>
@@ -271,23 +286,8 @@ const Navbar = () => {
                       </li>
                     </>
                   )}
-
                   {user && (
                     <>
-                      <li>
-                        <NavLink
-                          className={({ isActive }) =>
-                            isActive
-                              ? "btn btn-primary btn-sm my-2 pb-2 text-xs text-white"
-                              : ""
-                          }
-                          to="/dashboard"
-                          onClick={() => setCloseDropDown(!closeDropDown)}
-                        >
-                          Dashboard
-                        </NavLink>
-                      </li>
-
                       <li>
                         <h2
                           onClick={() => {

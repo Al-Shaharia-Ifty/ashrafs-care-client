@@ -16,9 +16,10 @@ import { AuthContext } from "../Contexts/AuthProvider";
 import Carousel from "react-multi-carousel";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import DashboardAdmin from "../Components/DashboardAdmin";
+import AdminBalance from "../Components/AdminBalance";
 
 const DashBoard = () => {
-  const { userInfo, refetch, adminAllOrder } = useContext(AuthContext);
+  const { userInfo, refetch } = useContext(AuthContext);
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 1660 },
@@ -37,18 +38,6 @@ const DashBoard = () => {
       items: 1,
     },
   };
-  // admin balance
-  let totalPaidAmount;
-  if (userInfo.role === "admin") {
-    const allOrders = adminAllOrder;
-    const paidBalance = allOrders?.filter((p) => {
-      return p.payment !== "Due" && p.payment !== "Old Payment";
-    });
-    const paidAmount = paidBalance?.map((p) => {
-      return parseInt(p.amount) || parseInt(p.like) || parseInt(p.dollarAmount);
-    });
-    totalPaidAmount = paidAmount?.reduce((a, b) => a + b, 0);
-  }
 
   const { data: allOrders, isLoading } = useQuery({
     queryKey: ["allOrders"],
@@ -324,15 +313,7 @@ const DashBoard = () => {
       {userInfo.role === "admin" && (
         <>
           <div className="lg:hidden">
-            <div className="border-2 m-5 mb-0 p-2 border-primary flex items-center rounded-xl justify-between">
-              <div className="flex items-center">
-                <img className="w-14" src={bel} alt="" />
-                <h2 className="md:text-2xl text-xl pl-3">Balance</h2>
-              </div>
-              <p className="ml-5 font-bold bg-primary text-white p-2 rounded-xl">
-                {totalPaidAmount} Tk
-              </p>
-            </div>
+            <AdminBalance />
             <div className="grid grid-cols-2 md:grid-cols-3 py-10">
               <Link
                 to={"/dashboard/summery"}

@@ -71,7 +71,6 @@ const OrderDetails = () => {
     totalAmount,
     due,
   } = details;
-  console.log(details);
   const handleChange = (e) => {
     setLoading(true);
     const value = e.target.value;

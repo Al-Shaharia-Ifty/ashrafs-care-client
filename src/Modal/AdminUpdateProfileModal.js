@@ -29,7 +29,6 @@ const AdminUpdateProfileModal = ({
       phoneNumber,
       companyName,
     };
-    console.log(userIn);
     fetch(
       `https://ashrafs-servier.vercel.app/admin/update-userInfo/${updateInfo}`,
       {

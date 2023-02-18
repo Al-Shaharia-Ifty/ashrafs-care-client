@@ -284,12 +284,15 @@ const DashboardAdmin = () => {
               {!monthAmount ? 0 : monthAmount} ৳
             </p>
           </Link>
-          <div className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-4 md:p-8 rounded-md text-white text-lg">
+          <Link
+            to={"/dashboard/admin/today"}
+            className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-4 md:p-8 rounded-md text-white text-lg"
+          >
             <h2>Today'zs Sale</h2>
             <p className="text-4xl text-white font-bold">
               {!todayAmount ? 0 : todayAmount} ৳
             </p>
-          </div>
+          </Link>
         </div>
         {/* pending and order option */}
         <div className="grid grid-cols-2 gap-3">
