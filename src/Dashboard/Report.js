@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { useState } from "react";
 import { BsArrowRightCircle } from "react-icons/bs";
 import { useQuery } from "react-query";
+import MemberReports from "../Components/MemberReports";
 import SupportFooter from "../Components/SupportFooter";
 import { AuthContext } from "../Contexts/AuthProvider";
 import ReportModal from "../Modal/ReportModal";
@@ -137,6 +138,7 @@ const Report = () => {
               আরো ব্রাউজ করুন <BsArrowRightCircle className="ml-3" />
             </div>
           </div>
+          <MemberReports />
           <SupportFooter />
         </div>
       )}
