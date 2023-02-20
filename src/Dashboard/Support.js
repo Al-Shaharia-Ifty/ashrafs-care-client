@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useQuery } from "react-query";
+import MemberSupport from "../Components/MemberSupport";
 import QNA from "../Components/QNA";
 import SupportFooter from "../Components/SupportFooter";
 import { AuthContext } from "../Contexts/AuthProvider";
@@ -74,6 +75,7 @@ const Support = () => {
             </div>
           </div>
           <QNA />
+          <MemberSupport />
           <SupportFooter />
         </div>
       )}
