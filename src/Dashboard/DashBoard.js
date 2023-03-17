@@ -113,7 +113,7 @@ const DashBoard = () => {
   // code.
   return (
     <div className="min-h-screen">
-      {userInfo.role === "member" && (
+      {userInfo?.role === "member" && (
         <>
           {/* mobile and tab view */}
           <div className="lg:hidden">
@@ -310,7 +310,7 @@ const DashBoard = () => {
           </div>
         </>
       )}
-      {userInfo.role === "admin" && (
+      {userInfo?.role === "admin" && (
         <>
           <div className="lg:hidden">
             <AdminBalance />

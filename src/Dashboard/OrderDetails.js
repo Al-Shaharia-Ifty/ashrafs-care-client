@@ -5,11 +5,13 @@ import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthProvider";
 import BillingModal from "../Modal/BillingModal";
+import DeleteOrderModal from "../Modal/DeleteOrderModal";
 import Loading from "../Shared/Loading";
 
 const OrderDetails = () => {
   const { userInfo } = useContext(AuthContext);
   const [baill, setBill] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const params = useParams();
   const {
@@ -101,6 +103,13 @@ const OrderDetails = () => {
               className="btn btn-secondary text-white"
             >
               Edit
+            </label>
+            <label
+              onClick={() => setDeleteModal(details)}
+              htmlFor="order-delete"
+              className="btn btn-error ml-3"
+            >
+              Delete
             </label>
           </div>
           <div className="overflow-x-auto">
@@ -592,6 +601,9 @@ const OrderDetails = () => {
           refetch={refetch}
           setLoading={setLoading}
         />
+      )}
+      {deleteModal && (
+        <DeleteOrderModal deleteModal={deleteModal} setLoading={setLoading} />
       )}
     </div>
   );

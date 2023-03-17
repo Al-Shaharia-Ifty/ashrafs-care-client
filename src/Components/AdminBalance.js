@@ -40,7 +40,7 @@ const AdminBalance = () => {
           <h2 className="md:text-2xl text-xl pl-3">Balance</h2>
         </div>
         <p className="ml-5 font-bold bg-primary text-white p-2 rounded-xl">
-          {adminBalance[0].balance} Tk
+          {adminBalance[0]?.balance} Tk
         </p>
       </div>
     </div>
