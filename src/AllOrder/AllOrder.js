@@ -6,6 +6,7 @@ import { AuthContext } from "../Contexts/AuthProvider";
 import Loading from "../Shared/Loading";
 
 const AllOrder = () => {
+  // const [number, setNumber] = useState("");
   const { userInfo, adminAllOrder, adminOrderLoading } =
     useContext(AuthContext);
   const { data: allOrders, isLoading } = useQuery({
@@ -34,18 +35,42 @@ const AllOrder = () => {
     <div>
       <div className="min-h-screen">
         <h2 className="text-center text-3xl py-5">All Order</h2>
+        {/* <div className="flex justify-end items-center mr-5">
+          <input
+            type="number"
+            onChange={(e) => setNumber(e.target.value)}
+            placeholder="Phone Number"
+            className="input w-full max-w-xs"
+          />
+          <button
+            onClick={handleSearchNumber}
+            className="btn text-white ml-3 btn-primary"
+          >
+            search
+          </button>
+          <button
+            onClick={() => refetch()}
+            className="btn text-white ml-3 btn-info"
+          >
+            clear
+          </button>
+        </div> */}
         <div className="mx-0 lg:mx-5 px-0 lg:px-5 py-5 mt-5 bg-white rounded-lg min-h-[500px]">
           <OrderHeader />
           <div className="overflow-x-auto">
             <table className="table table-zebra w-full">
               <thead className="border-t-0">
                 <tr className="bg-primary text-white">
-                  <th className="px-2">Order type</th>
-                  <th className="hidden lg:flex px-2">date</th>
-                  <th className="px-2">Status</th>
-                  <th className="px-2">Amount</th>
-                  <th className="px-2">Payment </th>
-                  <th className="px-2">details</th>
+                  <th className="">Order type</th>
+                  <th className="hidden lg:flex ">date</th>
+                  <th className="">name</th>
+                  <th className="">page name</th>
+                  <th className="">phone Number</th>
+                  <th className="">Status</th>
+                  <th className="">ad manager</th>
+                  <th className="">Amount</th>
+                  <th className="">Payment </th>
+                  <th className="">details</th>
                 </tr>
               </thead>
               <tbody className=" border-gray-100 border-2  border-t-0 rounded-lg">
@@ -54,9 +79,26 @@ const AllOrder = () => {
                   .reverse()
                   .map((o, i) => (
                     <tr key={i}>
-                      <td className="px-2">{o.orderType}</td>
-                      <td className="hidden lg:flex px-2">{o.date}</td>
-                      <td className="px-2">
+                      <td className="uppercase font-semibold">{o.orderType}</td>
+                      <td className="hidden lg:flex ">
+                        {o.date.split(",")[0]}
+                      </td>
+                      <td className="">{o.name}</td>
+                      <td className="">
+                        {o.pageName.length > 20 ? (
+                          <span>{o.pageName.slice(0, 20)}...</span>
+                        ) : (
+                          o.pageName
+                        )}
+                      </td>
+                      <td className="">
+                        {o?.phoneNumber?.length > 11 ? (
+                          <span>{o.phoneNumber.slice(0, 11)}...</span>
+                        ) : (
+                          o.phoneNumber
+                        )}
+                      </td>
+                      <td className="">
                         {(o.status === "Pending" && (
                           <p className="text-warning">Pending</p>
                         )) ||
@@ -65,10 +107,17 @@ const AllOrder = () => {
                           )) ||
                           (o.status !== "Pending" && o.status)}
                       </td>
-                      <td className="px-2">
+                      <td className="">
+                        {o?.manager?.length > 15 ? (
+                          <span>{o.manager.slice(0, 15)}...</span>
+                        ) : (
+                          o.manager
+                        )}
+                      </td>
+                      <td className="">
                         {o.dollarAmount || o.like || o.amount} Tk
                       </td>
-                      <td className="px-2">
+                      <td className="">
                         {" "}
                         {o.payment === "Due" && (
                           <p className="text-error">Due</p>
@@ -77,7 +126,7 @@ const AllOrder = () => {
                           <p className="text-success">Paid</p>
                         )}
                       </td>
-                      <td className="px-2">
+                      <td className="">
                         <Link to={`/dashboard/order-details/${o._id}`}>
                           <button className="btn btn-xs text-white btn-primary">
                             View

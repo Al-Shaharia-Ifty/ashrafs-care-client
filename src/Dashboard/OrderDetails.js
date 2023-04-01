@@ -6,11 +6,13 @@ import { useParams } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthProvider";
 import BillingModal from "../Modal/BillingModal";
 import DeleteOrderModal from "../Modal/DeleteOrderModal";
+import EditOrderDetails from "../Modal/EditOrderDetails";
 import Loading from "../Shared/Loading";
 
 const OrderDetails = () => {
   const { userInfo } = useContext(AuthContext);
   const [baill, setBill] = useState(false);
+  const [editOrder, setEditOrder] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const params = useParams();
@@ -146,6 +148,17 @@ const OrderDetails = () => {
             ID: <span className="font-bold">{_id}</span>
           </h2>
           <div className="divider"></div>
+          {userInfo.role === "admin" && (
+            <div className="flex justify-end mb-5">
+              <label
+                onClick={() => setEditOrder(details)}
+                htmlFor="edit-order-details"
+                className="btn btn-info text-white"
+              >
+                Edit
+              </label>
+            </div>
+          )}
           <div className="block lg:flex justify-between">
             <div className="w-auto lg:w-1/2">
               <div className="grid lg:flex grid-cols-3">
@@ -323,6 +336,10 @@ const OrderDetails = () => {
                   <h2 className="text-xl col-span-2 md:col-span-3">
                     : {totalAmount} Tk
                   </h2>
+                  <h2 className="text-xl font-bold">Due</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-3 text-red-600">
+                    : {bill ? due - bill : due} Tk
+                  </h2>
                   <h2 className="text-xl font-bold">Age</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
                     : {minAge}-{maxAge}
@@ -382,6 +399,10 @@ const OrderDetails = () => {
                   <h2 className="text-xl col-span-2 md:col-span-3">
                     : {totalAmount} Tk
                   </h2>
+                  <h2 className="text-xl font-bold">Due</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-3 text-red-600">
+                    : {bill ? due - bill : due} Tk
+                  </h2>
                   <h2 className="text-xl font-bold">Post Link</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3 overflow-hidden">
                     :
@@ -426,6 +447,10 @@ const OrderDetails = () => {
                   <h2 className="text-xl col-span-2 md:col-span-3">
                     : {totalAmount} Tk
                   </h2>
+                  <h2 className="text-xl font-bold">Due</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-3 text-red-600">
+                    : {bill ? due - bill : due} Tk
+                  </h2>
                   <h2 className="text-xl font-bold">Page Link</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3 overflow-hidden">
                     :
@@ -469,6 +494,10 @@ const OrderDetails = () => {
                   <h2 className="text-xl font-bold">Amount</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3">
                     : {totalAmount} Tk
+                  </h2>
+                  <h2 className="text-xl font-bold">Due</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-3 text-red-600">
+                    : {bill ? due - bill : due} Tk
                   </h2>
                   <h2 className="text-xl font-bold">Page Link</h2>
                   <h2 className="text-xl col-span-2 md:col-span-3 overflow-hidden">
@@ -544,6 +573,10 @@ const OrderDetails = () => {
                   <h2 className="text-xl col-span-2 md:col-span-3">
                     : {totalAmount} Tk
                   </h2>
+                  <h2 className="text-xl font-bold">Due</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-3 text-red-600">
+                    : {bill ? due - bill : due} Tk
+                  </h2>
                 </div>
               </div>
             </div>
@@ -573,7 +606,13 @@ const OrderDetails = () => {
                   <h2 className="text-xl font-bold">Design name</h2>
                   <h2 className="text-xl col-span-2">: {designName}</h2>
                   <h2 className="text-xl font-bold">Amount</h2>
-                  <h2 className="text-xl col-span-2">: {totalAmount} Tk</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-3">
+                    : {totalAmount} Tk
+                  </h2>
+                  <h2 className="text-xl font-bold">Due</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-3 text-red-600">
+                    : {bill ? due - bill : due} Tk
+                  </h2>
                   <h2 className="text-xl font-bold">Sample</h2>
                   {img ? (
                     <PhotoProvider>
@@ -605,6 +644,12 @@ const OrderDetails = () => {
       {deleteModal && (
         <DeleteOrderModal deleteModal={deleteModal} setLoading={setLoading} />
       )}
+      <EditOrderDetails
+        editOrder={editOrder}
+        refetch={refetch}
+        setLoading={setLoading}
+        setEditOrder={setEditOrder}
+      />
     </div>
   );
 };
