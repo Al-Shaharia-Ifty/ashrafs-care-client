@@ -56,7 +56,7 @@ const Register = () => {
           <div className="card-body sm:w-96 w-80  border-2 rounded-lg">
             <h2 className="text-center text-3xl">Sign Up</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-              {/* Email */}
+              {/* Name */}
               <div className="form-control w-full max-w-sm">
                 <label className="label">
                   <span className="label-text text-black">Name</span>

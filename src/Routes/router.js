@@ -49,6 +49,7 @@ import UserPanel from "../Dashboard/UserPanel";
 import AddGraphic from "../AdPost/AddGraphic";
 import ViewUserProfile from "../DashboardAdmin/ViewUserProfile";
 import TodayOrder from "../Pages/TodayOrder";
+import Policy from "../Pages/Policy";
 
 export const router = createBrowserRouter([
   {
@@ -67,6 +68,7 @@ export const router = createBrowserRouter([
         element: <BlogPage />,
       },
       { path: "/about", element: <About /> },
+      { path: "/privacy_policy", element: <Policy /> },
       { path: "/contact", element: <Contact /> },
       { path: "/login", element: <Login /> },
       { path: "register", element: <Register /> },

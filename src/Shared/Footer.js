@@ -7,7 +7,7 @@ const Footer = () => {
   const year = new Date().toLocaleString().split(",")[0].split("/")[2];
   return (
     <div>
-      <footer className="footer p-10 bg-[#166534] text-white">
+      <footer className="footer p-10 2xl:px-40 duration-500 bg-[#166534] text-white">
         <div>
           <span className="footer-title">Services</span>
           <Link to="/" className="link link-hover">
