@@ -1,14 +1,48 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import pcBanner from "../Assets/website-banner/About.png";
+import mobileBanner from "../Assets/website-banner/mobile-About.png";
 
 const Policy = () => {
   return (
     <div>
       <div className="pt-20 bg-green-800"></div>
-      <div className="my-10 mx-16 2xl:mx-40 duration-500">
-        <h2 className="text-center text-2xl md:text-3xl lg:text-4xl xl:text-5xl  font-bold">
-          Our Privacy Policy
-        </h2>
-        <ol className="list-decimal">
+      <div className="overflow-x-hidden relative">
+        <img
+          className="w-full hidden md:flex mb-7"
+          src={pcBanner}
+          alt="Facebook Marketing Banner"
+        />
+        <img
+          className="w-full md:hidden mb-7 -mt-14"
+          src={mobileBanner}
+          alt="Facebook Marketing Banner"
+        />
+      </div>
+
+      <div className="flex justify-center gap-2 mb-4">
+        <Link
+          to={"/about"}
+          className="btn bg-primary hover:bg-[#056739] border-0 text-white"
+        >
+          About Us
+        </Link>
+        <Link
+          to={"/privacy_policy"}
+          className="btn bg-[#056739] hover:bg-[#056739] border-0 text-white"
+        >
+          Privacy Policy
+        </Link>
+        <Link
+          to={"/refund_policy"}
+          className="btn bg-primary hover:bg-[#056739] border-0 text-white"
+        >
+          Refund Policy
+        </Link>
+      </div>
+
+      <div className="my-10 mx-5 md:mx-10 2xl:mx-40 duration-500">
+        <ol className="list-decimal list-inside">
           <li className="underline underline-offset-1 mt-5 text-2xl">
             Purpose
           </li>
@@ -21,7 +55,7 @@ const Policy = () => {
           <li className="underline underline-offset-1 mt-5 text-2xl">
             Client Engagement
           </li>
-          <ol className="list-decimal text-justify text-xl font-extralight text-gray-500">
+          <ol className="list-decimal list-inside text-justify text-xl font-extralight text-gray-500">
             <li>
               We strive to understand our clients' goals, objectives and target
               audience to deliver effective marketing strategies and campaigns.
@@ -39,7 +73,7 @@ const Policy = () => {
           <li className="underline underline-offset-1 mt-5 text-2xl">
             Professionalism
           </li>
-          <ol className="list-decimal text-justify text-xl font-extralight text-gray-500">
+          <ol className="list-decimal list-inside text-justify text-xl font-extralight text-gray-500">
             <li>
               Our team members will maintain a high level of professionalism in
               all interactions, both internally and externally.
@@ -57,7 +91,7 @@ const Policy = () => {
           <li className="underline underline-offset-1 mt-5 text-2xl">
             Professionalism
           </li>
-          <ol className="list-decimal text-justify text-xl font-extralight text-gray-500">
+          <ol className="list-decimal list-inside text-justify text-xl font-extralight text-gray-500">
             <li>
               We will conduct our business operations ethically in compliance
               with all applicable laws, regulations and industry standards.
@@ -76,7 +110,7 @@ const Policy = () => {
           <li className="underline underline-offset-1 mt-5 text-2xl">
             Team collaboration
           </li>
-          <ol className="list-decimal text-justify text-xl font-extralight text-gray-500">
+          <ol className="list-decimal list-inside text-justify text-xl font-extralight text-gray-500">
             <li>
               We will foster a collaborative and inclusive work environment,
               promoting teamwork and open communication among team members.
@@ -94,7 +128,7 @@ const Policy = () => {
           <li className="underline underline-offset-1 mt-5 text-2xl">
             Privacy and Security
           </li>
-          <ol className="list-decimal text-justify text-xl font-extralight text-gray-500">
+          <ol className="list-decimal list-inside text-justify text-xl font-extralight text-gray-500">
             <li>
               We will treat all client information and data with utmost
               confidentiality and take necessary measures to ensure its
@@ -110,7 +144,7 @@ const Policy = () => {
           <li className="underline underline-offset-1 mt-5 text-2xl">
             Intellectual Property
           </li>
-          <ol className="list-decimal text-justify text-xl font-extralight text-gray-500">
+          <ol className="list-decimal list-inside text-justify text-xl font-extralight text-gray-500">
             <li>
               We respect intellectual property rights and will not infringe the
               copyrights, trademarks or patents of others.
@@ -124,7 +158,7 @@ const Policy = () => {
           <li className="underline underline-offset-1 mt-5 text-2xl">
             Performance measurement
           </li>
-          <ol className="list-decimal text-justify text-xl font-extralight text-gray-500">
+          <ol className="list-decimal list-inside text-justify text-xl font-extralight text-gray-500">
             <li>
               We will establish performance metrics and key performance
               indicators (KPIs) to evaluate the effectiveness and efficiency of
@@ -143,7 +177,7 @@ const Policy = () => {
           <li className="underline underline-offset-1 mt-5 text-2xl">
             Consent
           </li>
-          <ol className="list-decimal text-justify text-xl font-extralight text-gray-500">
+          <ol className="list-decimal list-inside text-justify text-xl font-extralight text-gray-500">
             <li>
               All team members are expected to familiarize themselves with this
               policy and abide by its provisions

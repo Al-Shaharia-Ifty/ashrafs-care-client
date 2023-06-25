@@ -104,9 +104,9 @@ const Navbar = () => {
                 : "btn btn-ghost hover:btn-primary mx-2 text-white btn-sm"
             }
           >
-            About
+            About and Policy
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to="/contact"
             className={({ isActive }) =>
               isActive
@@ -115,7 +115,7 @@ const Navbar = () => {
             }
           >
             Contact Us
-          </NavLink>
+          </NavLink> */}
         </div>
       </div>
       <div
@@ -240,10 +240,10 @@ const Navbar = () => {
                       to="/about"
                       onClick={() => setCloseDropDown(!closeDropDown)}
                     >
-                      About Us
+                      About and Policy
                     </NavLink>
                   </li>
-                  <li>
+                  {/* <li>
                     <NavLink
                       className={({ isActive }) =>
                         isActive
@@ -255,7 +255,7 @@ const Navbar = () => {
                     >
                       Contact Us
                     </NavLink>
-                  </li>
+                  </li> */}
                   {!user && (
                     <>
                       <li>

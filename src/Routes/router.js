@@ -11,7 +11,6 @@ import AllUpdate from "../Pages/AllUpdate";
 import BlogPage from "../Pages/BlogPage";
 import BoostRejected from "../Status/BoostRejected";
 import BasicAudience from "../Dashboard/Facebook/BasicAudience";
-import Contact from "../Pages/Contact";
 import Complete from "../Status/Complete";
 import DashboardLayout from "../Pages/DashboardLayout";
 import DashboardMobileNavbar from "../Shared/DashboardMobileNavbar";
@@ -50,6 +49,7 @@ import AddGraphic from "../AdPost/AddGraphic";
 import ViewUserProfile from "../DashboardAdmin/ViewUserProfile";
 import TodayOrder from "../Pages/TodayOrder";
 import Policy from "../Pages/Policy";
+import Refund from "../Pages/Refund";
 
 export const router = createBrowserRouter([
   {
@@ -69,7 +69,7 @@ export const router = createBrowserRouter([
       },
       { path: "/about", element: <About /> },
       { path: "/privacy_policy", element: <Policy /> },
-      { path: "/contact", element: <Contact /> },
+      { path: "/refund_policy", element: <Refund /> },
       { path: "/login", element: <Login /> },
       { path: "register", element: <Register /> },
     ],
