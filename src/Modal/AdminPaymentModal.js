@@ -18,6 +18,7 @@ const AdminPaymentModal = ({
     setLoading(true);
     const amount = data.amount;
     const transaction = data.transaction;
+    const transactionID = data.transactionID;
     const netBalance = modal[0].balance - parseInt(amount);
     const balance = {
       balance: netBalance,
@@ -28,6 +29,7 @@ const AdminPaymentModal = ({
       date: date,
       amount,
       transaction,
+      transactionID,
     };
     fetch(`https://ashrafs-servier.vercel.app/admin/update-balance`, {
       method: "PUT",
@@ -111,11 +113,34 @@ const AdminPaymentModal = ({
                     message: "Transaction is required",
                   },
                 })}
-              />{" "}
+              />
               <label className="label">
                 {errors.transaction?.type === "required" && (
                   <span className="text-red-500 label-text-alt">
                     {errors.transaction.message}
+                  </span>
+                )}
+              </label>
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-black">Transaction ID</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Transaction ID"
+                className="input input-bordered"
+                {...register("transactionID", {
+                  required: {
+                    value: true,
+                    message: "Transaction ID is required",
+                  },
+                })}
+              />
+              <label className="label">
+                {errors.transactionID?.type === "required" && (
+                  <span className="text-red-500 label-text-alt">
+                    {errors.transactionID.message}
                   </span>
                 )}
               </label>

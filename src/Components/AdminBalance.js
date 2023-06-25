@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useQuery } from "react-query";
 import Loading from "../Shared/Loading";
 import bel from "../Assets/icons/Artboard 11.png";
+import { Link } from "react-router-dom";
 
 const AdminBalance = () => {
   // admin balance
@@ -29,8 +30,8 @@ const AdminBalance = () => {
   }
 
   return (
-    <div>
-      <div className="bg-white p-3 rounded-lg ml-5 hidden lg:flex items-center">
+    <Link to={"/dashboard/payment"}>
+      <div className="bg-white p-3 rounded-lg ml-8 hidden lg:flex items-center">
         <p className="font-bold text-xl">Balance</p>
         <p className="text-2xl ml-5">{adminBalance[0].balance} Tk</p>
       </div>
@@ -43,7 +44,7 @@ const AdminBalance = () => {
           {adminBalance[0]?.balance} Tk
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 

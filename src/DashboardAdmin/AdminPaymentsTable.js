@@ -21,13 +21,14 @@ const AdminPaymentsTable = () => {
   }
   return (
     <div>
-      <div className="mt-5">
+      <div className="mt-5 mx-8">
         <div className="overflow-x-auto">
           <table className="table table-zebra w-full">
             <thead>
               <tr className="bg-primary text-white">
                 <th>Date</th>
                 <th>transaction</th>
+                <th>transaction Id</th>
                 <th>AMount</th>
               </tr>
             </thead>
@@ -39,6 +40,7 @@ const AdminPaymentsTable = () => {
                   <tr>
                     <td>{d.date}</td>
                     <td>{d.transaction}</td>
+                    <td>{d?.transactionID}</td>
                     <td>{d.amount}</td>
                   </tr>
                 ))}

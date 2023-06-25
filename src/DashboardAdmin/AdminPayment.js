@@ -38,7 +38,7 @@ const AdminPayment = () => {
         <div className="lg:flex">
           <AdminBalance />
         </div>
-        <div className="text-end">
+        <div className="text-end mx-8">
           <label
             onClick={() => setModal(balance)}
             className="btn btn-primary text-white"
