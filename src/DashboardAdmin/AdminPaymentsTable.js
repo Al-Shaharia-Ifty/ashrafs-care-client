@@ -37,7 +37,7 @@ const AdminPaymentsTable = () => {
                 .slice()
                 .reverse()
                 .map((d, i) => (
-                  <tr>
+                  <tr key={i}>
                     <td>{d.date}</td>
                     <td>{d.transaction}</td>
                     <td>{d?.transactionID}</td>

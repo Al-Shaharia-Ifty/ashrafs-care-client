@@ -22,22 +22,22 @@ const Payment = () => {
     return <Loading />;
   }
   const allOrder = allOrders.allOrder;
-  const allBalanceDue = allOrder.filter((p) => {
+  const allBalanceDue = allOrder?.filter((p) => {
     return p.due;
   });
 
-  const allAmount = allBalanceDue.map((p) => {
+  const allAmount = allBalanceDue?.map((p) => {
     return parseInt(p?.due);
   });
-  let dueAmount = allAmount.reduce((a, b) => a + b, 0);
+  let dueAmount = allAmount?.reduce((a, b) => a + b, 0);
 
-  const allBalanceBill = allOrder.filter((p) => {
+  const allBalanceBill = allOrder?.filter((p) => {
     return p.bill;
   });
-  const allBill = allBalanceBill.map((p) => {
+  const allBill = allBalanceBill?.map((p) => {
     return parseInt(p?.bill);
   });
-  let billAmount = allBill.reduce((a, b) => a + b, 0);
+  let billAmount = allBill?.reduce((a, b) => a + b, 0);
 
   const totalAmount = dueAmount - billAmount;
   return (
