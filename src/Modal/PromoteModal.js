@@ -34,6 +34,11 @@ const PromoteModal = ({ setPromote }) => {
               </div>
             </Link>
           </div>
+          <p className="mt-5 text-xl">
+            টার্গেটিং মানে নির্দিষ্ট এরিয়া, বয়স, জেন্ডার এবং স্পেসিফিক ডিটেইল
+            টার্গেটিং ইত্যাদি সিলেক্ট করে প্রোমোট করা। আর বেসিক মানে যে কেউ
+            আপনার পেজে লাইক করবে।
+          </p>
           <div className="modal-action"></div>
         </div>
       </div>
