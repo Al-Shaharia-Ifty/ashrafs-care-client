@@ -141,14 +141,28 @@ const DashboardAdmin = () => {
           {/* middle 2 is here */}
           <div className="grid grid-cols-3 gap-5 py-5 text-[#0D6739]">
             <div>
-              <label
-                onClick={() => setAdPost(true)}
-                htmlFor="ad-post-modal"
-                className="bg-white flex justify-evenly items-center rounded-md p-4 text-2xl font-bold"
-              >
-                <p>Ad Post</p>
-                <img className="w-36" src={adBanner} alt="" />
-              </label>
+              <div className="grid grid-cols-2 gap-5 text-center text-xl font-bold">
+                <label
+                  onClick={() => setAdPost(true)}
+                  htmlFor="ad-post-modal"
+                  className="bg-white rounded-md p-3"
+                >
+                  <div className="flex justify-center">
+                    <img className="h-20 mb-2" src={adBanner} alt="" />
+                  </div>
+                  <p>Ad Post</p>
+                </label>
+                <label
+                  htmlFor="dollar-rate-modal"
+                  onClick={() => setModal(true)}
+                  className="bg-white rounded-md p-3"
+                >
+                  <div className="flex justify-center">
+                    <img className="h-20 mb-2" src={adRate} alt="" />
+                  </div>
+                  <p>Ad Rating</p>
+                </label>
+              </div>
               <div className="grid grid-cols-2 gap-5 text-center pt-5 text-xl font-bold">
                 <label
                   onClick={() => setAddUpdate(true)}
@@ -168,7 +182,7 @@ const DashboardAdmin = () => {
                   <div className="flex justify-center">
                     <img className="h-20 mb-2" src={adRate} alt="" />
                   </div>
-                  <p>Ad Rating</p>
+                  <p>Currency Rate</p>
                 </label>
               </div>
             </div>

@@ -31,7 +31,7 @@ const AdminBalance = () => {
     return <Loading />;
   }
 
-  const allAmount = adminAllOrder.filter((p) => {
+  const allAmount = adminAllOrder?.filter((p) => {
     return p.payment === "Due";
   });
   const allDueAmount = allAmount?.map((p) => {

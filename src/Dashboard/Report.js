@@ -97,45 +97,45 @@ const Report = () => {
               onClick={(e) => setProblem(e.target.textContent)}
               className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center"
             >
-              আমার বুস্ট নট ডেলিভারিং হয়ে আছে
+              আমার বুস্ট একাউন্ট ডিজেবল্ড হয়ে গেছে
             </label>
             <label
               htmlFor="support-modal"
               onClick={(e) => setProblem(e.target.textContent)}
               className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center"
             >
-              আমার বুস্ট নট ডেলিভারিং হয়ে আছে
+              আমার বুস্ট ডলার কাটছে না
             </label>
             <label
               htmlFor="support-modal"
               onClick={(e) => setProblem(e.target.textContent)}
               className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center"
             >
-              আমার বুস্ট নট ডেলিভারিং হয়ে আছে
+              আমার বুস্ট এখনো এক্টিভ হয়নি
             </label>
             <label
               htmlFor="support-modal"
               onClick={(e) => setProblem(e.target.textContent)}
               className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center"
             >
-              আমার বুস্ট রিজেক্ট করে দিয়েছে
+              আমার কাজের আপডেট জানতে চাই
             </label>
             <label
               htmlFor="support-modal"
               onClick={(e) => setProblem(e.target.textContent)}
               className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center"
             >
-              আমার বুস্ট নট ডেলিভারিং হয়ে আছে
+              আমার পেইজ লাইক কমপ্লিট হয়নি
             </label>
             <label
               htmlFor="support-modal"
               onClick={(e) => setProblem(e.target.textContent)}
               className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl text-center"
             >
-              আমার বুস্ট নট ডেলিভারিং হয়ে আছে
+              আমার বুস্টের সব ডলার স্পেন্ড হয়নি
             </label>
             <div className="p-11 px-5 md:px-7 lg:px-11 bg-[#C7EAFB94] font-semibold rounded-2xl flex justify-center items-center">
-              আরো ব্রাউজ করুন <BsArrowRightCircle className="ml-3" />
+              সাপোট <BsArrowRightCircle className="ml-3" />
             </div>
           </div>
           <MemberReports />

@@ -97,7 +97,7 @@ const OrderDetails = () => {
   return (
     <div>
       {userInfo.role === "admin" && (
-        <div className="lg:pt-10">
+        <div className="lg:pt-10 p-0 lg:p-10 pb-0">
           <div className="flex justify-end mb-2">
             <label
               onClick={() => setBill(_id)}
@@ -142,7 +142,7 @@ const OrderDetails = () => {
           </div>
         </div>
       )}
-      <div className="min-h-screen p-0 lg:p-10">
+      <div className="min-h-screen p-0 lg:p-10 pt-0">
         <div className="p-5 md:p-10 rounded-lg bg-white">
           <h2 className="text-2xl text-center">
             ID: <span className="font-bold">{_id}</span>
