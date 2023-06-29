@@ -160,23 +160,12 @@ const BillingModal = ({ setBill, details, refetch, setLoading }) => {
               <label className="label">
                 <span className="label-text text-black">Method</span>
               </label>
-              <select
-                className="select select-bordered w-full"
+              <input
+                type="text"
+                placeholder="Method"
+                className="input input-bordered"
                 {...register("method")}
-              >
-                <option>Nagad 29</option>
-                <option>BKM 23</option>
-                <option>BK 501</option>
-                <option>NG 29</option>
-                <option>NG 800</option>
-                <option>BKM 66</option>
-                <option>City</option>
-                <option>DBBL</option>
-                <option>IBBL</option>
-                <option>EBL</option>
-                <option>BKM 33</option>
-                <option>BK 69</option>
-              </select>
+              />
               <label className="label">
                 {errors.status?.type === "required" && (
                   <span className="text-red-500 label-text-alt">
