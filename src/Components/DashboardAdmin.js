@@ -21,6 +21,7 @@ import AdPostModal from "../Modal/AdPostModal";
 import AddBannerModal from "../Modal/AddBannerModal";
 import AddNoteModal from "../Modal/AddNoteModal";
 import AddUpdateModal from "../Modal/AddUpdateModal";
+import AddRating from "../Modal/AddRating";
 
 const DashboardAdmin = () => {
   const [modal, setModal] = useState(false);
@@ -29,6 +30,7 @@ const DashboardAdmin = () => {
   const [addNote, setAddNote] = useState(false);
   const [addUpdate, setAddUpdate] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [rating, setRating] = useState(false);
   const {
     data: adminAllOrder,
     isLoading,
@@ -153,8 +155,8 @@ const DashboardAdmin = () => {
                   <p>Ad Post</p>
                 </label>
                 <label
-                  htmlFor="dollar-rate-modal"
-                  onClick={() => setModal(true)}
+                  htmlFor="add-rating-modal"
+                  onClick={() => setRating(true)}
                   className="bg-white rounded-md p-3"
                 >
                   <div className="flex justify-center">
@@ -444,6 +446,7 @@ const DashboardAdmin = () => {
       {addUpdate && (
         <AddUpdateModal setAddUpdate={setAddUpdate} setLoading={setLoading} />
       )}
+      {rating && <AddRating setLoading={setLoading} />}
     </div>
   );
 };
