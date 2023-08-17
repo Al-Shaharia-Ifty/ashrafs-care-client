@@ -40,22 +40,31 @@ const AdminBalance = () => {
   let dueAmount = allDueAmount?.reduce((a, b) => a + b, 0);
 
   return (
-    <Link to={"/dashboard/payment"}>
+    <div>
       <div className="hidden lg:flex items-center">
-        <div className="bg-white p-3 rounded-lg ml-8 flex items-center">
+        <Link
+          to={"/dashboard/payment"}
+          className="bg-white p-3 rounded-lg ml-8 flex items-center"
+        >
           <p className="font-bold text-md xl:text-xl">Balance</p>
           <p className="text-md xl:text-2xl ml-5">
             {adminBalance[0].balance} Tk
           </p>
-        </div>
-        <div className="bg-white p-3 rounded-lg ml-3 flex items-center">
+        </Link>
+        <Link
+          to={"/dashboard/due-payment"}
+          className="bg-white p-3 rounded-lg ml-3 flex items-center"
+        >
           <p className="font-bold text-md xl:text-xl text-red-500">Due</p>
           <p className="text-md xl:text-2xl ml-5">{dueAmount} Tk</p>
-        </div>
+        </Link>
       </div>
 
       <div className="border-primary border-2 m-5 rounded-xl lg:hidden">
-        <div className=" mb-0 p-2 flex items-center justify-between">
+        <Link
+          to={"/dashboard/payment"}
+          className=" mb-0 p-2 flex items-center justify-between"
+        >
           <div className="flex items-center">
             <img className="w-14" src={bel} alt="" />
             <h2 className="md:text-2xl text-xl pl-3">Balance</h2>
@@ -63,8 +72,11 @@ const AdminBalance = () => {
           <p className="ml-5 font-bold bg-primary text-white p-2 rounded-xl">
             {adminBalance[0]?.balance} Tk
           </p>
-        </div>
-        <div className=" mb-0 p-2 flex items-center rounded-xl justify-between">
+        </Link>
+        <Link
+          to={"/dashboard/due-payment"}
+          className=" mb-0 p-2 flex items-center rounded-xl justify-between"
+        >
           <div className="flex items-center">
             <img className="w-14" src={bel} alt="" />
             <h2 className="md:text-2xl text-xl pl-3 text-red-500">Due</h2>
@@ -72,9 +84,9 @@ const AdminBalance = () => {
           <p className="ml-5 font-bold bg-primary text-white p-2 rounded-xl">
             {dueAmount} Tk
           </p>
-        </div>
+        </Link>
       </div>
-    </Link>
+    </div>
   );
 };
 

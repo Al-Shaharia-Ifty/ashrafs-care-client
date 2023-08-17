@@ -50,6 +50,7 @@ import ViewUserProfile from "../DashboardAdmin/ViewUserProfile";
 import TodayOrder from "../Pages/TodayOrder";
 import Policy from "../Pages/Policy";
 import Refund from "../Pages/Refund";
+import Due from "../Pages/Due";
 
 export const router = createBrowserRouter([
   {
@@ -105,6 +106,9 @@ export const router = createBrowserRouter([
 
       // payment
       { path: "/dashboard/payment", element: <Payment /> },
+
+      // due
+      { path: "/dashboard/due-payment", element: <Due /> },
 
       // Report
       { path: "/dashboard/report", element: <Report /> },
