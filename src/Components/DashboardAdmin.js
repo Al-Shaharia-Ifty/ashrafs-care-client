@@ -10,6 +10,7 @@ import custom from "../Assets/admin-logo/admin-panel-7.png";
 import icon from "../Assets/admin-logo/admin-panel-6.png";
 import note from "../Assets/admin-logo/admin-panel-8.png";
 import order from "../Assets/admin-logo/admin-panel-4.png";
+import currRate from "../Assets/admin-logo/currency-rate.png";
 import { useQuery } from "react-query";
 import Loading from "../Shared/Loading";
 import OrderModal from "../Modal/OrderModal";
@@ -182,7 +183,7 @@ const DashboardAdmin = () => {
                   className="bg-white rounded-md p-3"
                 >
                   <div className="flex justify-center">
-                    <img className="h-20 mb-2" src={adRate} alt="" />
+                    <img className="h-20 mb-2" src={currRate} alt="" />
                   </div>
                   <p>Currency Rate</p>
                 </label>
@@ -359,38 +360,49 @@ const DashboardAdmin = () => {
           </div>
         </div>
         {/* ad banner and ets. */}
-        <div>
+        <div className="grid grid-cols-2 gap-2 text-center text-xl font-bold">
           <label
             onClick={() => setAdPost(true)}
             htmlFor="ad-post-modal"
-            className="bg-white flex justify-evenly items-center rounded-md p-4 text-2xl font-bold"
+            className="bg-white rounded-md p-3"
           >
+            <div className="flex justify-center">
+              <img className="h-20 mb-2" src={adBanner} alt="" />
+            </div>
             <p>Ad Post</p>
-            <img className="w-36" src={adBanner} alt="" />
           </label>
-          {/* update */}
-          <div className="grid grid-cols-2 gap-3 text-center pt-3 text-xl font-bold">
-            <label
-              onClick={() => setAddUpdate(true)}
-              htmlFor="add-update-modal"
-              className="bg-white rounded-md p-3"
-            >
-              <div className="flex justify-center">
-                <img className="h-20 mb-2" src={adUpdate} alt="" />
-              </div>
-              <p>Ad Update</p>
-            </label>
-            <label
-              htmlFor="dollar-rate-modal"
-              onClick={() => setModal(true)}
-              className="bg-white rounded-md p-3"
-            >
-              <div className="flex justify-center">
-                <img className="h-20 mb-2" src={adRate} alt="" />
-              </div>
-              <p>Ad Rating</p>
-            </label>
-          </div>
+          <label
+            htmlFor="add-rating-modal"
+            onClick={() => setRating(true)}
+            className="bg-white rounded-md p-3"
+          >
+            <div className="flex justify-center">
+              <img className="h-20 mb-2" src={adRate} alt="" />
+            </div>
+            <p>Ad Rating</p>
+          </label>
+        </div>
+        <div className="grid grid-cols-2 gap-2 text-center text-xl font-bold">
+          <label
+            onClick={() => setAddUpdate(true)}
+            htmlFor="add-update-modal"
+            className="bg-white rounded-md p-3"
+          >
+            <div className="flex justify-center">
+              <img className="h-20 mb-2" src={adUpdate} alt="" />
+            </div>
+            <p>Ad Update</p>
+          </label>
+          <label
+            htmlFor="dollar-rate-modal"
+            onClick={() => setModal(true)}
+            className="bg-white rounded-md p-3"
+          >
+            <div className="flex justify-center">
+              <img className="h-20 mb-2" src={currRate} alt="" />
+            </div>
+            <p>Currency Rate</p>
+          </label>
         </div>
         {/* last 4 part */}
         <div className="grid grid-cols-2 gap-3 text-white text-center">
