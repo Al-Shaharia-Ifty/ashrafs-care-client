@@ -131,7 +131,7 @@ const DashboardAdmin = () => {
             </Link>
             <Link to={"/dashboard/admin/today"} className="bg-white rounded-md">
               <div className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-8 rounded-md text-white text-lg">
-                <h2>Today'zs Sale</h2>
+                <h2>Today's Sale</h2>
                 <img className="h-10" src={amt} alt="" />
               </div>
               <div className="h-[180px] flex justify-center items-center">
@@ -305,7 +305,7 @@ const DashboardAdmin = () => {
             to={"/dashboard/admin/today"}
             className="flex items-center bg-gradient-to-l from-[#0D6739] to-[#6CA743] justify-between p-4 md:p-8 rounded-md text-white text-lg"
           >
-            <h2>Today'zs Sale</h2>
+            <h2>Today's Sale</h2>
             <p className="text-4xl text-white font-bold">
               {!todayAmount ? 0 : todayAmount} ৳
             </p>
