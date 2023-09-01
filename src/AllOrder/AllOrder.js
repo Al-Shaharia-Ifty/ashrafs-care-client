@@ -85,7 +85,7 @@ const AllOrder = () => {
                       </td>
                       <td className="">{o.name}</td>
                       <td className="">
-                        {o.pageName.length > 20 ? (
+                        {o.pageName?.length > 20 ? (
                           <span>{o.pageName.slice(0, 20)}...</span>
                         ) : (
                           o.pageName
@@ -126,13 +126,13 @@ const AllOrder = () => {
                           <p className="text-success">Paid</p>
                         )}
                       </td>
-                      <td className="">
+                      <th className="">
                         <Link to={`/dashboard/order-details/${o._id}`}>
                           <button className="btn btn-xs text-white btn-primary">
                             View
                           </button>
                         </Link>
-                      </td>
+                      </th>
                     </tr>
                   ))}
               </tbody>

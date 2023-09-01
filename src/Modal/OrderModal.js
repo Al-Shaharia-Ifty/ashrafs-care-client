@@ -40,25 +40,37 @@ const OrderModal = () => {
               </Link>
             </div>
             <div className="bg-[#166534] text-white p-3 rounded-md">
-              <Link className="flex justify-start md:justify-center items-center ml-3">
+              <Link
+                to={`/dashboard/web-design`}
+                className="flex justify-start md:justify-center items-center ml-3"
+              >
                 <img className="w-10" src={web} alt="" />
                 <h2 className="text-xl mx-2">Website Development</h2>
               </Link>
             </div>
             <div className="bg-[#166534] text-white p-3 rounded-md">
-              <Link className="flex justify-start md:justify-center items-center ml-3">
+              <Link
+                to={`/dashboard/video-editing`}
+                className="flex justify-start md:justify-center items-center ml-3"
+              >
                 <img className="w-10" src={vid} alt="" />
                 <h2 className="text-xl mx-2">Video Editing or Recording</h2>
               </Link>
             </div>
             <div className="bg-[#166534] text-white p-3 rounded-md">
-              <Link className="flex justify-start md:justify-center items-center ml-3">
+              <Link
+                to={`/dashboard/whatsapp-marketing`}
+                className="flex justify-start md:justify-center items-center ml-3"
+              >
                 <img className="w-10" src={what} alt="" />
                 <h2 className="text-xl mx-2">WhatsApp Marketing </h2>
               </Link>
             </div>
             <div className="bg-[#166534] text-white p-3 rounded-md">
-              <Link className="flex justify-start md:justify-center items-center ml-3">
+              <Link
+                to={`/dashboard/sms-marketing`}
+                className="flex justify-start md:justify-center items-center ml-3"
+              >
                 <img className="w-10" src={sms} alt="" />
                 <h2 className="text-xl mx-2">SMS Marketing</h2>
               </Link>

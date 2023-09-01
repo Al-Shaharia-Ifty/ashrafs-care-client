@@ -51,6 +51,16 @@ import TodayOrder from "../Pages/TodayOrder";
 import Policy from "../Pages/Policy";
 import Refund from "../Pages/Refund";
 import Due from "../Pages/Due";
+import ContentDesign from "../Dashboard/Facebook/ContentDesign";
+import WebDesign from "../Dashboard/WebDeshgn/WebDesign";
+import VideoEditing from "../Dashboard/VideoEditingRecording/VideoEditing";
+import WhatsApp from "../Dashboard/WhatsAppMarketing/WhatsApp";
+import SMSMarketing from "../Dashboard/SMSMarketing/SMSMarketing";
+import AddContent from "../AdPost/AddContent";
+import AddWeb from "../AdPost/AddWeb";
+import AddWhatsApp from "../AdPost/AddWhatsApp";
+import AddVideoEditing from "../AdPost/AddVideoEditing";
+import AddSMS from "../AdPost/AddSMS";
 
 export const router = createBrowserRouter([
   {
@@ -136,9 +146,25 @@ export const router = createBrowserRouter([
         path: "/dashboard/promote/target-audience",
         element: <TargetAudience />,
       },
+      {
+        path: "/dashboard/promote/content-design",
+        element: <ContentDesign />,
+      },
 
       // /dashboard/graphics-design
       { path: "/dashboard/graphics-design", element: <GraphicsDesign /> },
+
+      // /dashboard/web-design
+      { path: "/dashboard/web-design", element: <WebDesign /> },
+
+      // /dashboard/video-editing
+      { path: "/dashboard/video-editing", element: <VideoEditing /> },
+
+      // /dashboard/whatsapp-marketing
+      { path: "/dashboard/whatsapp-marketing", element: <WhatsApp /> },
+
+      // /dashboard/sms-marketing
+      { path: "/dashboard/sms-marketing", element: <SMSMarketing /> },
 
       // all Order
       { path: "/dashboard/all-order", element: <AllOrder /> },
@@ -206,12 +232,63 @@ export const router = createBrowserRouter([
         ),
       },
 
-      // admin add post
+      // admin add
+      // graphic post
       {
         path: "admin/add-graphic",
         element: (
           <RequireAdmin>
             <AddGraphic />
+          </RequireAdmin>
+        ),
+      },
+
+      // facebook content
+      {
+        path: "admin/add-content",
+        element: (
+          <RequireAdmin>
+            <AddContent />
+          </RequireAdmin>
+        ),
+      },
+
+      // Web Design
+      {
+        path: "admin/add-webDesign",
+        element: (
+          <RequireAdmin>
+            <AddWeb />
+          </RequireAdmin>
+        ),
+      },
+
+      // whatsApp Marketing
+      {
+        path: "admin/add-whatsApp",
+        element: (
+          <RequireAdmin>
+            <AddWhatsApp />
+          </RequireAdmin>
+        ),
+      },
+
+      // video Edit
+      {
+        path: "admin/add-videoEdit",
+        element: (
+          <RequireAdmin>
+            <AddVideoEditing />
+          </RequireAdmin>
+        ),
+      },
+
+      // SMS Marketing
+      {
+        path: "admin/add-smsMarketing",
+        element: (
+          <RequireAdmin>
+            <AddSMS />
           </RequireAdmin>
         ),
       },

@@ -43,7 +43,7 @@ const GraphicOrder = () => {
           <div className="overflow-x-auto">
             <table className="table table-zebra w-full">
               <thead className="border-t-0">
-              <tr className="bg-primary text-white">
+                <tr className="bg-primary text-white">
                   <th className="">Order type</th>
                   <th className="hidden lg:flex ">date</th>
                   <th className="">name</th>
@@ -68,7 +68,7 @@ const GraphicOrder = () => {
                       </td>
                       <td className="">{o.name}</td>
                       <td className="">
-                        {o.pageName.length > 20 ? (
+                        {o.pageName?.length > 20 ? (
                           <span>{o.pageName.slice(0, 20)}...</span>
                         ) : (
                           o.pageName

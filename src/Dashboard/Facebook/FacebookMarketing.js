@@ -62,13 +62,19 @@ const FacebookMarketing = () => {
           >
             <h2 className="text-2xl text-primary">ID Restriction Recover</h2>
           </label>
-          <label
+          <Link
+            to={"/dashboard/promote/content-design"}
+            className="label bg-white p-4 text-center rounded-lg flex items-center justify-evenly"
+          >
+            <h2 className="text-2xl text-primary">Content Design</h2>
+          </Link>
+          {/* <label
             onClick={() => setPromote(true)}
             htmlFor="promote-modal"
             className="label bg-white p-4 text-center rounded-lg flex items-center justify-evenly"
           >
             <h2 className="text-2xl text-primary">Content Design</h2>
-          </label>
+          </label> */}
         </div>
       </div>
       {boost && <BoostModal setBoost={setBoost} setLoading={setLoading} />}

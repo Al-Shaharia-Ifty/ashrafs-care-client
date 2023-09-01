@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Contexts/AuthProvider";
 
-const GraphicsOrderModal = ({ order, setOrder, setLoading, imag }) => {
+const ContentOrderModel = ({ order, setOrder, setLoading, imag }) => {
   const { userInfo } = useContext(AuthContext);
   const { name, email } = userInfo;
   const date = new Date().toLocaleString();
@@ -43,7 +43,7 @@ const GraphicsOrderModal = ({ order, setOrder, setLoading, imag }) => {
               designName: designName,
               email: email,
               name: name,
-              orderType: "graphic",
+              orderType: "facebookContent",
               status: "Pending",
               payment: "Due",
               date: date,
@@ -99,7 +99,7 @@ const GraphicsOrderModal = ({ order, setOrder, setLoading, imag }) => {
         designName: designName,
         email: email,
         name: name,
-        orderType: "graphic",
+        orderType: "facebook content",
         status: "Pending",
         payment: "Due",
         date: date,
@@ -230,4 +230,4 @@ const GraphicsOrderModal = ({ order, setOrder, setLoading, imag }) => {
   );
 };
 
-export default GraphicsOrderModal;
+export default ContentOrderModel;

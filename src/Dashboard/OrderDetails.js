@@ -51,6 +51,7 @@ const OrderDetails = () => {
     idLink,
     idName,
     img,
+    imag,
     like,
     location,
     maxAge,
@@ -290,6 +291,7 @@ const OrderDetails = () => {
               </div>
             </div>
           )}
+
           {promote === "targeting" && (
             <div className="lg:flex block">
               <div className="mt-5 w-full lg:w-1/2">
@@ -364,6 +366,7 @@ const OrderDetails = () => {
               </div>
             </div>
           )}
+
           {promote === "basic" && (
             <div className="lg:flex block">
               <div className="mt-5 w-full lg:w-1/2">
@@ -419,6 +422,7 @@ const OrderDetails = () => {
               </div>
             </div>
           )}
+
           {orderType === "page recovery" && (
             <div className="lg:flex block">
               <div className="mt-5 w-full lg:w-1/2">
@@ -467,6 +471,7 @@ const OrderDetails = () => {
               </div>
             </div>
           )}
+
           {orderType === "ID recovery" && (
             <div className="lg:flex block">
               <div className="mt-5 w-full lg:w-1/2">
@@ -515,6 +520,7 @@ const OrderDetails = () => {
               </div>
             </div>
           )}
+
           {orderType === "page setup" && (
             <div className="lg:flex block">
               <div className="mt-5 w-full lg:w-1/2">
@@ -581,6 +587,7 @@ const OrderDetails = () => {
               </div>
             </div>
           )}
+
           {orderType === "graphic" && (
             <div className="lg:flex block">
               <div className="mt-5 w-full lg:w-1/2">
@@ -595,6 +602,20 @@ const OrderDetails = () => {
                   <h2 className="text-xl col-span-2">: {email}</h2>
                   <h2 className="text-xl font-bold">Phone</h2>
                   <h2 className="text-xl col-span-2">: {phoneNumber}</h2>
+                  <h2 className="text-xl font-bold">Design</h2>
+                  {imag ? (
+                    <PhotoProvider>
+                      <PhotoView src={imag}>
+                        <img
+                          className="col-span-2 rounded-md"
+                          src={imag}
+                          alt=""
+                        />
+                      </PhotoView>
+                    </PhotoProvider>
+                  ) : (
+                    <h2 className="text-xl col-span-2">: No Image Fount</h2>
+                  )}
                 </div>
               </div>
               <div className="mt-5 w-full lg:w-1/2">
@@ -606,11 +627,336 @@ const OrderDetails = () => {
                   <h2 className="text-xl font-bold">Design name</h2>
                   <h2 className="text-xl col-span-2">: {designName}</h2>
                   <h2 className="text-xl font-bold">Amount</h2>
-                  <h2 className="text-xl col-span-2 md:col-span-3">
+                  <h2 className="text-xl col-span-2 md:col-span-2">
                     : {totalAmount} Tk
                   </h2>
                   <h2 className="text-xl font-bold">Due</h2>
-                  <h2 className="text-xl col-span-2 md:col-span-3 text-red-600">
+                  <h2 className="text-xl col-span-2 md:col-span-2 text-red-600">
+                    : {bill ? due - bill : due} Tk
+                  </h2>
+                  <h2 className="text-xl font-bold">Sample</h2>
+                  {img ? (
+                    <PhotoProvider>
+                      <PhotoView src={img}>
+                        <img
+                          className="col-span-2 rounded-md"
+                          src={img}
+                          alt=""
+                        />
+                      </PhotoView>
+                    </PhotoProvider>
+                  ) : (
+                    <h2 className="text-xl col-span-2">: No Image Fount</h2>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {orderType === "facebook content" && (
+            <div className="lg:flex block">
+              <div className="mt-5 w-full lg:w-1/2">
+                <div className="grid grid-cols-3">
+                  <h2 className="text-xl font-bold">Name</h2>
+                  <h2 className="text-xl col-span-2">: {name}</h2>
+                  <h2 className="text-xl font-bold">Description</h2>
+                  <h2 className="text-xl col-span-2 flex flex-wrap w-full">
+                    : {description}
+                  </h2>
+                  <h2 className="text-xl font-bold">Email</h2>
+                  <h2 className="text-xl col-span-2">: {email}</h2>
+                  <h2 className="text-xl font-bold">Phone</h2>
+                  <h2 className="text-xl col-span-2">: {phoneNumber}</h2>
+                  <h2 className="text-xl font-bold">Design</h2>
+                  {imag ? (
+                    <PhotoProvider>
+                      <PhotoView src={imag}>
+                        <img
+                          className="col-span-2 rounded-md"
+                          src={imag}
+                          alt=""
+                        />
+                      </PhotoView>
+                    </PhotoProvider>
+                  ) : (
+                    <h2 className="text-xl col-span-2">: No Image Fount</h2>
+                  )}
+                </div>
+              </div>
+              <div className="mt-5 w-full lg:w-1/2">
+                <div className="grid grid-cols-3">
+                  <h2 className="text-xl font-bold">Payment</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-2">
+                    : {payment}
+                  </h2>
+                  <h2 className="text-xl font-bold">Design name</h2>
+                  <h2 className="text-xl col-span-2">: {designName}</h2>
+                  <h2 className="text-xl font-bold">Amount</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-2">
+                    : {totalAmount} Tk
+                  </h2>
+                  <h2 className="text-xl font-bold">Due</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-2 text-red-600">
+                    : {bill ? due - bill : due} Tk
+                  </h2>
+                  <h2 className="text-xl font-bold">Sample</h2>
+                  {img ? (
+                    <PhotoProvider>
+                      <PhotoView src={img}>
+                        <img
+                          className="col-span-2 rounded-md"
+                          src={img}
+                          alt=""
+                        />
+                      </PhotoView>
+                    </PhotoProvider>
+                  ) : (
+                    <h2 className="text-xl col-span-2">: No Image Fount</h2>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {orderType === "web design" && (
+            <div className="lg:flex block">
+              <div className="mt-5 w-full lg:w-1/2">
+                <div className="grid grid-cols-3">
+                  <h2 className="text-xl font-bold">Name</h2>
+                  <h2 className="text-xl col-span-2">: {name}</h2>
+                  <h2 className="text-xl font-bold">Description</h2>
+                  <h2 className="text-xl col-span-2 flex flex-wrap w-full">
+                    : {description}
+                  </h2>
+                  <h2 className="text-xl font-bold">Email</h2>
+                  <h2 className="text-xl col-span-2">: {email}</h2>
+                  <h2 className="text-xl font-bold">Phone</h2>
+                  <h2 className="text-xl col-span-2">: {phoneNumber}</h2>
+                  <h2 className="text-xl font-bold">Design</h2>
+                  {imag ? (
+                    <PhotoProvider>
+                      <PhotoView src={imag}>
+                        <img
+                          className="col-span-2 rounded-md"
+                          src={imag}
+                          alt=""
+                        />
+                      </PhotoView>
+                    </PhotoProvider>
+                  ) : (
+                    <h2 className="text-xl col-span-2">: No Image Fount</h2>
+                  )}
+                </div>
+              </div>
+              <div className="mt-5 w-full lg:w-1/2">
+                <div className="grid grid-cols-3">
+                  <h2 className="text-xl font-bold">Payment</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-2">
+                    : {payment}
+                  </h2>
+                  <h2 className="text-xl font-bold">Design name</h2>
+                  <h2 className="text-xl col-span-2">: {designName}</h2>
+                  <h2 className="text-xl font-bold">Amount</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-2">
+                    : {totalAmount} Tk
+                  </h2>
+                  <h2 className="text-xl font-bold">Due</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-2 text-red-600">
+                    : {bill ? due - bill : due} Tk
+                  </h2>
+                  <h2 className="text-xl font-bold">Sample</h2>
+                  {img ? (
+                    <PhotoProvider>
+                      <PhotoView src={img}>
+                        <img
+                          className="col-span-2 rounded-md"
+                          src={img}
+                          alt=""
+                        />
+                      </PhotoView>
+                    </PhotoProvider>
+                  ) : (
+                    <h2 className="text-xl col-span-2">: No Image Fount</h2>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {orderType === "video or recording" && (
+            <div className="lg:flex block">
+              <div className="mt-5 w-full lg:w-1/2">
+                <div className="grid grid-cols-3">
+                  <h2 className="text-xl font-bold">Name</h2>
+                  <h2 className="text-xl col-span-2">: {name}</h2>
+                  <h2 className="text-xl font-bold">Description</h2>
+                  <h2 className="text-xl col-span-2 flex flex-wrap w-full">
+                    : {description}
+                  </h2>
+                  <h2 className="text-xl font-bold">Email</h2>
+                  <h2 className="text-xl col-span-2">: {email}</h2>
+                  <h2 className="text-xl font-bold">Phone</h2>
+                  <h2 className="text-xl col-span-2">: {phoneNumber}</h2>
+                  <h2 className="text-xl font-bold">Design</h2>
+                  {imag ? (
+                    <PhotoProvider>
+                      <PhotoView src={imag}>
+                        <img
+                          className="col-span-2 rounded-md"
+                          src={imag}
+                          alt=""
+                        />
+                      </PhotoView>
+                    </PhotoProvider>
+                  ) : (
+                    <h2 className="text-xl col-span-2">: No Image Fount</h2>
+                  )}
+                </div>
+              </div>
+              <div className="mt-5 w-full lg:w-1/2">
+                <div className="grid grid-cols-3">
+                  <h2 className="text-xl font-bold">Payment</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-2">
+                    : {payment}
+                  </h2>
+                  <h2 className="text-xl font-bold">Design name</h2>
+                  <h2 className="text-xl col-span-2">: {designName}</h2>
+                  <h2 className="text-xl font-bold">Amount</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-2">
+                    : {totalAmount} Tk
+                  </h2>
+                  <h2 className="text-xl font-bold">Due</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-2 text-red-600">
+                    : {bill ? due - bill : due} Tk
+                  </h2>
+                  <h2 className="text-xl font-bold">Sample</h2>
+                  {img ? (
+                    <PhotoProvider>
+                      <PhotoView src={img}>
+                        <img
+                          className="col-span-2 rounded-md"
+                          src={img}
+                          alt=""
+                        />
+                      </PhotoView>
+                    </PhotoProvider>
+                  ) : (
+                    <h2 className="text-xl col-span-2">: No Image Fount</h2>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {orderType === "whatsApp" && (
+            <div className="lg:flex block">
+              <div className="mt-5 w-full lg:w-1/2">
+                <div className="grid grid-cols-3">
+                  <h2 className="text-xl font-bold">Name</h2>
+                  <h2 className="text-xl col-span-2">: {name}</h2>
+                  <h2 className="text-xl font-bold">Description</h2>
+                  <h2 className="text-xl col-span-2 flex flex-wrap w-full">
+                    : {description}
+                  </h2>
+                  <h2 className="text-xl font-bold">Email</h2>
+                  <h2 className="text-xl col-span-2">: {email}</h2>
+                  <h2 className="text-xl font-bold">Phone</h2>
+                  <h2 className="text-xl col-span-2">: {phoneNumber}</h2>
+                  <h2 className="text-xl font-bold">Design</h2>
+                  {imag ? (
+                    <PhotoProvider>
+                      <PhotoView src={imag}>
+                        <img
+                          className="col-span-2 rounded-md"
+                          src={imag}
+                          alt=""
+                        />
+                      </PhotoView>
+                    </PhotoProvider>
+                  ) : (
+                    <h2 className="text-xl col-span-2">: No Image Fount</h2>
+                  )}
+                </div>
+              </div>
+              <div className="mt-5 w-full lg:w-1/2">
+                <div className="grid grid-cols-3">
+                  <h2 className="text-xl font-bold">Payment</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-2">
+                    : {payment}
+                  </h2>
+                  <h2 className="text-xl font-bold">Design name</h2>
+                  <h2 className="text-xl col-span-2">: {designName}</h2>
+                  <h2 className="text-xl font-bold">Amount</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-2">
+                    : {totalAmount} Tk
+                  </h2>
+                  <h2 className="text-xl font-bold">Due</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-2 text-red-600">
+                    : {bill ? due - bill : due} Tk
+                  </h2>
+                  <h2 className="text-xl font-bold">Sample</h2>
+                  {img ? (
+                    <PhotoProvider>
+                      <PhotoView src={img}>
+                        <img
+                          className="col-span-2 rounded-md"
+                          src={img}
+                          alt=""
+                        />
+                      </PhotoView>
+                    </PhotoProvider>
+                  ) : (
+                    <h2 className="text-xl col-span-2">: No Image Fount</h2>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {orderType === "sms marketing" && (
+            <div className="lg:flex block">
+              <div className="mt-5 w-full lg:w-1/2">
+                <div className="grid grid-cols-3">
+                  <h2 className="text-xl font-bold">Name</h2>
+                  <h2 className="text-xl col-span-2">: {name}</h2>
+                  <h2 className="text-xl font-bold">Description</h2>
+                  <h2 className="text-xl col-span-2 flex flex-wrap w-full">
+                    : {description}
+                  </h2>
+                  <h2 className="text-xl font-bold">Email</h2>
+                  <h2 className="text-xl col-span-2">: {email}</h2>
+                  <h2 className="text-xl font-bold">Phone</h2>
+                  <h2 className="text-xl col-span-2">: {phoneNumber}</h2>
+                  <h2 className="text-xl font-bold">Design</h2>
+                  {imag ? (
+                    <PhotoProvider>
+                      <PhotoView src={imag}>
+                        <img
+                          className="col-span-2 rounded-md"
+                          src={imag}
+                          alt=""
+                        />
+                      </PhotoView>
+                    </PhotoProvider>
+                  ) : (
+                    <h2 className="text-xl col-span-2">: No Image Fount</h2>
+                  )}
+                </div>
+              </div>
+              <div className="mt-5 w-full lg:w-1/2">
+                <div className="grid grid-cols-3">
+                  <h2 className="text-xl font-bold">Payment</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-2">
+                    : {payment}
+                  </h2>
+                  <h2 className="text-xl font-bold">Design name</h2>
+                  <h2 className="text-xl col-span-2">: {designName}</h2>
+                  <h2 className="text-xl font-bold">Amount</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-2">
+                    : {totalAmount} Tk
+                  </h2>
+                  <h2 className="text-xl font-bold">Due</h2>
+                  <h2 className="text-xl col-span-2 md:col-span-2 text-red-600">
                     : {bill ? due - bill : due} Tk
                   </h2>
                   <h2 className="text-xl font-bold">Sample</h2>

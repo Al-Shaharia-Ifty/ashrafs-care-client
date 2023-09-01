@@ -1,27 +1,24 @@
-import React, { useContext } from "react";
-import pcImg from "../../Assets/website-banner/banner-for-desktop.png";
-import mobileImg from "../../Assets/website-banner/banner-for-mobile.png";
+import React, { useContext, useState } from "react";
 import { useQuery } from "react-query";
 import Loading from "../../Shared/Loading";
-import { useState } from "react";
-import GraphicsOrderModal from "../../Modal/GraphicsOrderModal";
 import { PhotoProvider, PhotoView } from "react-photo-view";
-import DeleteDesignModal from "../../Modal/DeleteDesignModal";
+import WhatsAppOrderModal from "../../Modal/WhatsAppOrderModal";
 import { AuthContext } from "../../Contexts/AuthProvider";
+import DeleteWhatsAppModal from "../../Modal/DeleteWhatsAppModal";
 
-const GraphicsDesign = () => {
+const WhatsApp = () => {
   const { userInfo } = useContext(AuthContext);
   const [designDelete, setDesignDelete] = useState(false);
   const [order, setOrder] = useState(false);
   const [loading, setLoading] = useState(false);
   const {
-    data: designs,
+    data: whatsApp,
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["designs"],
+    queryKey: ["whatsApp"],
     queryFn: () =>
-      fetch(`https://ashrafs-servier.vercel.app/design`, {
+      fetch(`https://ashrafs-servier.vercel.app/whatsApp-design`, {
         method: "GET",
         headers: {
           "content-type": "application/json",
@@ -34,20 +31,8 @@ const GraphicsDesign = () => {
   }
   return (
     <div className="min-h-screen">
-      <div className="overflow-x-hidden relative">
-        <img
-          className="w-full hidden md:flex mb-7"
-          src={pcImg}
-          alt="Facebook Marketing Banner"
-        />
-        <img
-          className="w-full md:hidden mb-7"
-          src={mobileImg}
-          alt="Facebook Marketing Banner"
-        />
-      </div>
-      <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 lg:mx-[52px] mx-[14px] gap-[22px] pb-3">
-        {[...designs].reverse().map((d, i) => (
+      <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 lg:mx-[52px] mx-[14px] gap-[22px] pb-3 mt-5">
+        {[...whatsApp].reverse().map((d, i) => (
           <div key={i}>
             <PhotoProvider>
               <PhotoView src={d.img}>
@@ -76,7 +61,7 @@ const GraphicsDesign = () => {
               </div>
             )}
             {order && (
-              <GraphicsOrderModal
+              <WhatsAppOrderModal
                 order={order}
                 setOrder={setOrder}
                 setLoading={setLoading}
@@ -87,7 +72,7 @@ const GraphicsDesign = () => {
         ))}
       </div>
       {designDelete && (
-        <DeleteDesignModal
+        <DeleteWhatsAppModal
           designDelete={designDelete}
           setLoading={setLoading}
           refetch={refetch}
@@ -97,4 +82,4 @@ const GraphicsDesign = () => {
   );
 };
 
-export default GraphicsDesign;
+export default WhatsApp;
